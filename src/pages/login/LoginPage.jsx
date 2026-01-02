@@ -1,47 +1,97 @@
-
+import { useState, useEffect } from "react"
 import LoginImg from "../../assets/images/thumbnail-login.png"
 
 export default function LoginPage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const slides = [
+    {
+      image: LoginImg,
+      text: "Kamu sudah melangkah sejauh ini.",
+      quote: "Yuk, Kita lanjutin perjalanan sehatmu! Pelan-pelan tapi tetap konsisten."
+    },
+    {
+      image: LoginImg,
+      text: "Setiap langkah kecil itu berarti.",
+      quote: "Jangan berhenti sekarang! Progresmu sudah sangat bagus, terus semangat!"
+    },
+    {
+      image: LoginImg,
+      text: "Kesehatan adalah investasi terbaik.",
+      quote: "Tubuh sehat, pikiran jernih. Mari jaga kesehatan bersama-sama!"
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [slides.length])
+
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-      {/* Left Image Section */}
-      <div className="hidden lg:flex lg:w-1/2 relative lg:m-5 rounded-none lg:rounded-3xl overflow-hidden">
-        <img
-          src={LoginImg}
-          alt="thumbnail-login"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      {/* Section Kiri */}
+      <div className="flex lg:w-1/2 relative h-48 rounded-b-lg lg:h-auto lg:m-5 rounded-none lg:rounded-3xl overflow-hidden">
+        {/* Carousel Gambar */}
+        {slides.map((slide, index) => (
+          <img
+            key={index}
+            src={slide.image}
+            alt={`slide-${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-black/40" />
 
-        <div className="w-full z-10 flex flex-col justify-between px-6 md:px-8 lg:px-10 py-6 md:py-8 text-white">
+        <div className="w-full z-10 flex flex-col justify-between px-6 md:px-8 lg:px-10 py-4 lg:py-6 md:py-8 text-white">
           <div className="flex justify-between">
             <div className="flex text-lg md:text-xl font-semibold">
               SiMug
             </div>
             <button className="text-sm md:text-base">← Kembali</button>
           </div>
-          <div className="">
-            <div>
-              <p className="text-xs md:text-sm mb-1">Kamu sudah melangkah sejauh ini.</p>
-              <h2 className="text-2xl md:text-3xl font-semibold leading-snug">
-                "Yuk, Kita lanjutin perjalanan <br />
-                sehatmu! Pelan-pelan tapi <br />
-                tetap konsisten."
-              </h2>
+          <div className="hidden lg:block">
+            {/* Carousel Isi */}
+            <div className="relative min-h-[200px]">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                >
+                  <p className="text-xs md:text-sm mb-1">{slide.text}</p>
+                  <h2 className="text-2xl md:text-3xl font-semibold leading-snug">
+                    "{slide.quote}"
+                  </h2>
+                </div>
+              ))}
             </div>
 
-            <div className="flex gap-2 md:gap-3 mt-8 md:mt-15">
-              <span className="w-8 md:w-10 h-1.5 bg-white rounded-full" />
-              <span className="w-8 md:w-10 h-1.5 bg-white/40 rounded-full" />
-              <span className="w-8 md:w-10 h-1.5 bg-white/40 rounded-full" />
+            {/* Titik Carousel */}
+            <div className="flex gap-2 md:gap-3 mt-8 md:mt-6">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? 'w-8 md:w-10 bg-white'
+                    : 'w-8 md:w-10 bg-white/40 hover:bg-white/60'
+                    }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Right Form Section */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 sm:px-6 md:px-8 py-6 md:py-7">
-        <div className="max-w-md w-full">
+      {/* Section Kanan */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-9 sm:px-6 md:px-8 py-6 md:py-7">
+        <div className="max-w-md w-full ">
+          {/* Link Belum Punya Akun */}
           <div className="flex flex-col items-start text-xs sm:text-sm mb-3 md:mb-4">
             <a className="text-gray-500">Belum Punya Akun?</a>
             <a href="#" className="text-blue-500 font-medium">Buat Akun</a>
@@ -51,7 +101,7 @@ export default function LoginPage() {
             <p className="text-sm md:text-base text-gray-500 font-normal">Akses kembali course, materi, progres tracker, dan artikel yang kamu simpan. Jangan sampai ketinggalan update terbaru!</p>
           </div>
 
-
+          {/* Form */}
           <form className="space-y-4 md:space-y-5">
             <div>
               <label className="block text-xs sm:text-sm font-medium mb-1">Email or Username</label>
