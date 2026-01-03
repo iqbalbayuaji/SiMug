@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import LoginImg from "../../assets/images/thumbnail-login.png"
 
 export default function LoginPage() {
@@ -93,8 +94,8 @@ export default function LoginPage() {
         <div className="max-w-md w-full ">
           {/* Link Belum Punya Akun */}
           <div className="flex flex-col items-start text-xs sm:text-sm mb-3 md:mb-4">
-            <a className="text-gray-500">Belum Punya Akun?</a>
-            <a href="#" className="text-blue-500 font-medium">Buat Akun</a>
+            <span className="text-gray-500">Belum Punya Akun?</span>
+            <Link to="/register" className="text-blue-500 font-medium">Buat Akun</Link>
           </div>
           <div className="space-y-1.5 md:space-y-2 mb-6 md:mb-10 mt-4 md:mt-6">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-medium leading-tight">Hi, Selamat Datang Kembali, Udah Siap Lanjutin Progress?</h1>
@@ -103,21 +104,25 @@ export default function LoginPage() {
 
           {/* Form */}
           <form className="space-y-4 md:space-y-5">
-            <div>
-              <label className="block text-xs sm:text-sm font-medium mb-1">Email or Username</label>
+            <div className="relative">
+              <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
+                Email or Username
+              </label>
               <input
                 type="text"
                 placeholder="Masukkan Email atau Username"
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
-            <div>
-              <label className="block text-xs sm:text-sm font-medium mb-1">Password</label>
+            <div className="relative">
+              <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
+                Password
+              </label>
               <input
                 type="password"
                 placeholder="Masukkan Password"
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm md:text-base rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
