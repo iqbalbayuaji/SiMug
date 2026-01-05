@@ -49,10 +49,8 @@ export default function LoginPage() {
 
         <div className="w-full z-10 flex flex-col justify-between px-6 md:px-8 lg:px-10 py-4 lg:py-6 md:py-8 text-white">
           <div className="flex justify-between">
-            <div className="flex text-lg md:text-xl font-semibold">
-              SiMug
-            </div>
             <button className="text-sm md:text-base">← Kembali</button>
+            <div className="flex text-lg md:text-xl font-semibold">SiMug</div>
           </div>
           <div className="hidden lg:block">
             {/* Carousel Isi */}

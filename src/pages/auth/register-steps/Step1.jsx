@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom"
 import Carousel from "../../../components/Carousel"
 
-export default function Step1({ 
-  formData, 
-  handleInputChange, 
-  agreeToTerms, 
-  setAgreeToTerms, 
+export default function Step1({
+  formData,
+  handleInputChange,
+  agreeToTerms,
+  setAgreeToTerms,
   handleNextStep,
   currentStep,
   totalSteps,
-  getStepLabel 
+  getStepLabel
 }) {
   return (
     <>
@@ -30,11 +30,10 @@ export default function Step1({
             {[...Array(totalSteps)].map((_, index) => (
               <div
                 key={index}
-                className={`flex-1 h-1.5 rounded-full transition-all duration-300 ${
-                  index < currentStep
-                    ? "bg-[#4177FF]"
-                    : "bg-gray-200"
-                }`}
+                className={`flex-1 h-1.5 rounded-full transition-all duration-300 ${index < currentStep
+                  ? "bg-[#4177FF]"
+                  : "bg-gray-200"
+                  }`}
               />
             ))}
           </div>
