@@ -1,4 +1,6 @@
 import { useEffect } from "react"
+import { testimonials } from "../../../constants/testimonials"
+import FloatingDots from "../../../components/FloatingDots"
 
 export default function Step4({ 
   selectedMethod,
@@ -34,24 +36,6 @@ export default function Step4({
     }
   ]
 
-  const testimonials = [
-    {
-      quote: "Luar biasa!",
-      text: "Kursus yang sangat membantu. Saya jadi paham cara mengelola waktu yang baik saat berolahraga meski jadwa padat",
-      author: "@MuhammadBali"
-    },
-    {
-      quote: "Sangat Recommended!",
-      text: "Program yang terstruktur dan mudah diikuti. Kesehatan saya meningkat drastis dalam 3 bulan!",
-      author: "@SitiNurhayati"
-    },
-    {
-      quote: "Terbaik!",
-      text: "Komunitas yang supportif dan materi yang lengkap. Worth it banget!",
-      author: "@BudiSantoso"
-    }
-  ]
-
   // Auto-slide testimonial carousel
   useEffect(() => {
     const timer = setInterval(() => {
@@ -64,10 +48,8 @@ export default function Step4({
     <>
       {/* Step 4 - Section Kiri - Blue Background dengan Testimoni */}
       <div className="hidden lg:flex lg:w-[35%] bg-[#4177FF] flex-col justify-between p-8 relative">
-        {/* Decorative Dots */}
-        <div className="absolute top-8 left-8 w-16 h-16 rounded-full bg-[#81A5FF] opacity-40"></div>
-        <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-[#81A5FF] opacity-40"></div>
-        <div className="absolute bottom-8 left-8 w-20 h-20 rounded-full bg-[#81A5FF] opacity-40"></div>
+        {/* Decorative Floating Dots */}
+        <FloatingDots />
 
         {/* Back Button */}
         <button 
@@ -94,17 +76,17 @@ export default function Step4({
         {/* Tagline */}
         <div className="text-white z-10 space-y-6">
           <p className="text-3xl md:text-4xl font-bold leading-snug">
-            Belajar akan terasa lebih menyenangkan jika sesuai minat.
+            Ingin proses belajar kamu lebih nyaman?
           </p>
           <p className="text-3xl md:text-4xl font-bold leading-snug">
-            Fokuslah pada hal yang benar-benar ingin kamu pahami.
+            Bergabunglah bersama kami!
           </p>
           <div className="w-56 h-1.5 bg-white rounded-full mt-6"></div>
         </div>
 
         {/* Testimonial Carousel */}
         <div className="z-10">
-          <div className="relative h-[200px]">
+          <div className="relative h-[210px]">
             {testimonials.map((testimonial, index) => {
               const isActive = index === testimonialSlide
               const isNext = index === (testimonialSlide + 1) % testimonials.length
@@ -142,7 +124,7 @@ export default function Step4({
                     <h3 className="text-white text-2xl font-bold mb-4">
                       "{testimonial.quote}"
                     </h3>
-                    <p className="text-white/95 text-sm leading-relaxed mb-4">
+                    <p className="text-white/95 text-xl leading-relaxed mb-2">
                       {testimonial.text}
                     </p>
                     <p className="text-white text-base font-medium">
@@ -201,10 +183,10 @@ export default function Step4({
 
         {/* Title */}
         <div className="mb-8 md:mb-10">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">
             Apa metode belajar yang sesuai dan relevan dengan Kamu?
           </h1>
-          <p className="text-sm md:text-base text-gray-500">
+          <p className="text-md md:text-xm text-gray-500">
             SiMug pengen tahu apa yang pengen Kamu capai saat ini.
             <br />
             SiMug bakal nyesuain course yang paling relevan buat Kamu.
@@ -230,10 +212,10 @@ export default function Step4({
                   )}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-gray-900 mb-1 text-xl">
                     {method.title}
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-md text-gray-500">
                     {method.description}
                   </p>
                 </div>
