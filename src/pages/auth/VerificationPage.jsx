@@ -1,11 +1,52 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import mascotGif from "../../assets/video/Desain tanpa judul.gif"
+import loadingSound from "../../assets/audio/0107.MP3"
 
 export default function VerificationPage() {
   const [progress, setProgress] = useState(0)
   const [currentTip, setCurrentTip] = useState(0)
+  const [audioBlocked, setAudioBlocked] = useState(false)
   const navigate = useNavigate()
+  const audioRef = useRef(null)
+
+  // Initialize and play background audio
+  useEffect(() => {
+    const audio = new Audio(loadingSound)
+    audio.loop = false // Play once until audio ends
+    audio.volume = 0.4 // Set volume to 40%
+    audioRef.current = audio
+
+    // Try to play audio
+    const playAudio = async () => {
+      try {
+        await audio.play()
+        setAudioBlocked(false)
+      } catch (error) {
+        console.log("Autoplay blocked:", error)
+        setAudioBlocked(true)
+      }
+    }
+    playAudio()
+
+    // Cleanup on unmount
+    return () => {
+      audio.pause()
+      audio.currentTime = 0
+    }
+  }, [])
+
+  // Handle user click to start audio if blocked
+  const handleStartAudio = async () => {
+    if (audioRef.current && audioBlocked) {
+      try {
+        await audioRef.current.play()
+        setAudioBlocked(false)
+      } catch (error) {
+        console.log("Still blocked:", error)
+      }
+    }
+  }
 
   // Add custom animations to the page
   const floatingAnimation = `
@@ -247,6 +288,30 @@ export default function VerificationPage() {
           <path d="M10,50 Q30,20 50,50 T90,50" stroke="#4177FF" strokeWidth="3" fill="none"/>
         </svg>
       </div>
+
+      {/* Audio Control Button - Top Right */}
+      <button
+        onClick={handleStartAudio}
+        className={`fixed top-6 right-6 z-50 p-3 rounded-full shadow-lg transition-all duration-300 ${
+          audioBlocked 
+            ? 'bg-[#4177FF] text-white animate-pulse hover:bg-[#3461D9]' 
+            : 'bg-white/80 text-[#4177FF] hover:bg-white border border-[#4177FF]/20'
+        }`}
+        title={audioBlocked ? "Klik untuk memutar musik" : "Musik sedang diputar"}
+      >
+        {audioBlocked ? (
+          // Speaker Off Icon
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+        ) : (
+          // Speaker On Icon with waves
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+        )}
+      </button>
 
       <div className="w-full max-w-2xl relative z-10">
         {/* Verification Badge */}
