@@ -287,6 +287,72 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Features Grid Section */}
+            <section className="py-10 bg-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    {/* Header */}
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
+                            Fitur-fitur Unggulan <span className="text-blue-600">SiMug</span>
+                        </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed px-15">
+                            Semua fitur disusun secara progresif, bisa dimulai gratis, dan didampingi oleh mentor, komunitas, serta AI assistant.
+                        </p>
+                    </div>
+
+                    {/* Grid Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                        {/* 1. Top Left Card */}
+                        <div className="bg-gray-400/80 rounded-2xl aspect-video w-full"></div>
+
+                        {/* 2. Top Middle Card */}
+                        <div className="bg-gray-400/80 rounded-2xl aspect-video w-full"></div>
+
+                        {/* 3. Right Tall Card (Spans 2 rows) */}
+                        <div className="bg-gray-400/80 rounded-2xl w-full md:row-span-2 md:h-full min-h-[300px]"></div>
+
+                        {/* 4. Bottom Wide Card (Spans 2 columns) */}
+                        <div className="bg-gray-400/80 rounded-2xl w-full md:col-span-2 aspect-[2.1/0.7]"></div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="flex justify-start">
+                        <button className="flex group items-center gap-2 hover:gap-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold pl-4 pr-3 py-2.5 rounded-full transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1">
+                            Coba Fitur Sekarang!
+                            <svg className="w-5 h-5 group-hover:rotate-90 ease-out transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            {/* Container */}
+            <section className='py-20 bg-white'>
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className='group relative bg-blue-600 rounded-3xl overflow-hidden px-6 py-10 md:px-16 hover:md:py-15 py-20 group transition-all duration-500 hover:shadow-2xl hover:scale-[1.009]'>
+                        {/* Background Decorations */}
+                        <div className="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 rounded-full border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:rotate-12"></div>
+
+                        <div className="absolute -bottom-24 -left-24 w-64 h-64 md:w-80 md:h-80 rounded-full border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:-rotate-12"></div>
+
+                        {/* Content */}
+                        <div className="relative z-10">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white group-hover:mb-15 mb-6 transition-all duration-500 leading-tight">
+                                Lebih dari 10.000+ Mentor <br className="hidden md:block" />
+                                Bakal Ngajarin Kamu <br className="hidden md:block" />
+                                Mulai dari Nol!
+                            </h2>
+                            <p className="text-blue-50 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl">
+                                Nggak harus langsung jago. Di SiMug, kamu <br className="hidden lg:block" />
+                                mulai dari yang basic, naik level sesuai <br className="hidden lg:block" />
+                                progres, dan dapet arahan yang jelas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }
