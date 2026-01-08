@@ -4,7 +4,11 @@ import gridHiasan from "../../assets/images/grid-hiasan.png"
 import ImageCard1 from "../../assets/images/fitness_training_card.png"
 import ImageCard2 from "../../assets/images/running_progress_card.png"
 import ImageCard3 from "../../assets/images/community_fitness_card.png"
-import { FaArrowTrendUp } from "react-icons/fa6"
+import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
+import { HiLightningBolt } from "react-icons/hi"  // Assuming we might need an icon for the logo if text isn't enough, but user used just text in nav. In footer image there is a logo icon. I'll simulate it or use a similar icon.
+// Actually, looking at the image, there is a logo icon "lightning" inside a circle.
+// I will use simple text or an icon if available. I'll stick to text + simple styling or a generic icon.
+// Let's just update the fa6 import.
 
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
@@ -181,7 +185,7 @@ export default function LandingPage() {
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center flex w-full">
                                 {/* Left: Main Title */}
                                 <div className='flex gap-4'>
-                                    <div className="w-1.5 bg-blue-600 h-24 lg:h-23 rounded-full flex-shrink-0"></div>
+                                    <div className="w-1.5 bg-blue-600 h-16 lg:h-23 rounded-full flex-shrink-0"></div>
                                     <div>
                                         <h2 className="text-2xl lg:text-4xl font-semibold text-gray-900 leading-tight">
                                             Temukan Jalur Sehatmu<br />
@@ -218,7 +222,7 @@ export default function LandingPage() {
                                 <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-4">
                                     Membantu hidup sehat dengan arah yang jelas
                                 </h3>
-                                <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-2">
                                     SiMug menyediakan program dan course progresif agar pengguna tidak bingung harus mulai dari mana dan bisa berkembang sesuai level.
                                 </p>
                             </div>
@@ -237,7 +241,7 @@ export default function LandingPage() {
                                 <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-4">
                                     Membantu hidup sehat dengan arah yang jelas
                                 </h3>
-                                <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-2">
                                     SiMug menyediakan program dan course progresif agar pengguna tidak bingung harus mulai dari mana dan bisa berkembang sesuai level.
                                 </p>
                             </div>
@@ -256,7 +260,7 @@ export default function LandingPage() {
                                 <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-4">
                                     Membantu hidup sehat dengan arah yang jelas
                                 </h3>
-                                <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-2">
                                     SiMug menyediakan program dan course progresif agar pengguna tidak bingung harus mulai dari mana dan bisa berkembang sesuai level.
                                 </p>
                             </div>
@@ -266,7 +270,7 @@ export default function LandingPage() {
             </section>
 
             {/* Benefits Section */}
-            <section className="py-20 bg-white">
+            <section className="py-10 lg:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {/* Title & Description Items */}
@@ -289,14 +293,14 @@ export default function LandingPage() {
             </section>
 
             {/* Features Grid Section */}
-            <section className="py-10 bg-white">
+            <section className="py-5 lg:py-10 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Header */}
                     <div className="text-center mb-12">
                         <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
                             Fitur-fitur Unggulan <span className="text-blue-600">SiMug</span>
                         </h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed px-15">
+                        <p className="text-gray-600 max-w-2xl mx-auto md:text-lg text-base lg:text-xl leading-relaxed lg:px-15">
                             Semua fitur disusun secara progresif, bisa dimulai gratis, dan didampingi oleh mentor, komunitas, serta AI assistant.
                         </p>
                     </div>
@@ -320,7 +324,7 @@ export default function LandingPage() {
                     <div className="flex justify-start">
                         <button className="flex group items-center gap-2 hover:gap-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold pl-4 pr-3 py-2.5 rounded-full transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1">
                             Coba Fitur Sekarang!
-                            <svg className="w-5 h-5 group-hover:rotate-90 ease-out transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 group-hover:rotate-90 ease-out transition-transform duration-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                             </svg>
                         </button>
@@ -329,17 +333,17 @@ export default function LandingPage() {
             </section>
 
             {/* Container */}
-            <section className='py-20 bg-white'>
+            <section className='py-5 lg:py-20 bg-white'>
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className='group relative bg-blue-600 rounded-3xl overflow-hidden px-6 py-10 md:px-16 hover:md:py-15 py-20 group transition-all duration-500 hover:shadow-2xl hover:scale-[1.009]'>
+                    <div className='group relative bg-blue-600 hover:bg-blue-700 rounded-3xl overflow-hidden px-6 md:px-16 hover:md:py-15 py-10 lg:py-20 group transition-all duration-500 hover:shadow-2xl hover:scale-[1.009]'>
                         {/* Background Decorations */}
-                        <div className="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 rounded-full border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:rotate-12"></div>
+                        <div className="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 rounded-full border-[30px] lg:border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:rotate-12"></div>
 
-                        <div className="absolute -bottom-24 -left-24 w-64 h-64 md:w-80 md:h-80 rounded-full border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:-rotate-12"></div>
+                        <div className="absolute -bottom-24 -left-24 w-64 h-64 md:w-80 md:h-80 rounded-full border-[30px] lg:border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:-rotate-12"></div>
 
                         {/* Content */}
                         <div className="relative z-10">
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white group-hover:mb-15 mb-6 transition-all duration-500 leading-tight">
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white group-hover:mb-15 lg:mb-6 mb-10 transition-all duration-500 leading-tight">
                                 Lebih dari 10.000+ Mentor <br className="hidden md:block" />
                                 Bakal Ngajarin Kamu <br className="hidden md:block" />
                                 Mulai dari Nol!
@@ -353,6 +357,93 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Footer */}
+            <footer className="bg-blue-600 text-white pt-16 pb-8">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-16">
+                        {/* Column 1: Brand */}
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-2 text-2xl font-bold">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-blue-600">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </span>
+                                <span>SiMUG</span>
+                            </div>
+                            <p className="text-blue-100/90 leading-relaxed font-light">
+                                Satu Platform, Banyak <br />
+                                Cara Jadi Lebih Sehat.
+                            </p>
+
+                            <div className="space-y-4 pt-2">
+                                <h4 className="font-semibold text-lg">Social Media Kami</h4>
+                                <div className="flex gap-4">
+                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
+                                        <FaInstagram className="w-5 h-5" />
+                                    </a>
+                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
+                                        <FaYoutube className="w-5 h-5" />
+                                    </a>
+                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
+                                        <FaFacebook className="w-5 h-5" />
+                                    </a>
+                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
+                                        <FaXTwitter className="w-5 h-5" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Column 2: Quick Links */}
+                        <div className="lg:pl-8 lg:border-l-2 border-blue-400">
+                            <h4 className="font-bold text-xl mb-6">Quick Links</h4>
+                            <ul className="space-y-4 text-blue-100/90 font-light">
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Beranda</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Progres Tracker</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Daftar Kursus</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Limited Event</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Forum & Artikel</a></li>
+                            </ul>
+                        </div>
+
+                        {/* Column 3: Layanan Kami */}
+                        <div className="lg:pl-8 lg:border-l-2 border-blue-400">
+                            <h4 className="font-bold text-xl mb-6">Layanan Kami</h4>
+                            <ul className="space-y-4 text-blue-100/90 font-light">
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Kursus Kesehatan</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Asisten AI</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Chart Progres</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Komunitas</a></li>
+                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Gamifikasi</a></li>
+                            </ul>
+                        </div>
+
+                        {/* Column 4: Hubungi Kami */}
+                        <div className="lg:pl-8 lg:border-l-2 border-blue-400">
+                            <h4 className="font-bold text-xl mb-6">Hubungi Kami</h4>
+                            <ul className="space-y-4 text-blue-100/90 font-light">
+                                <li>
+                                    <a href="#" className="hover:text-white block transition-colors">+62 890-2456-7891</a>
+                                </li>
+                                <li>
+                                    <a href="#" className="hover:text-white block transition-colors">simugfit@gmail.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Bottom Bar */}
+                    <div className="pt-8 border-t-2 border-blue-400 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-100/80 text-sm">
+                        <p>Copyright 2026 SiMug. All Right Reserved.</p>
+                        <div className="flex gap-8">
+                            <a href="#" className="hover:text-white transition-colors underline decoration-transparent hover:decoration-white">User Terms & Agreements</a>
+                            <a href="#" className="hover:text-white transition-colors underline decoration-transparent hover:decoration-white">Privacy & Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }
