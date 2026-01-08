@@ -81,7 +81,7 @@ export default function LandingPage() {
             </nav>
 
             {/* Hero Section */}
-            <main className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40 pb-20 lg:pb-0">
+            <main className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
                 <div className="flex flex-col lg:flex-col items-center justify-between">
                     {/* Main Heading */}
                     <div className="grid place-items-center lg:text-center space-y-6 lg:space-y-8">
@@ -261,6 +261,29 @@ export default function LandingPage() {
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Benefits Section */}
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* Title & Description Items */}
+                        <div className="flex flex-col h-full mr-10">
+                            <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight mb-3">
+                                Apa aja benefit yang <br className="hidden lg:block" />
+                                <span className="text-blue-600">SiMug</span> Tawarkan?
+                            </h2>
+                            <p className="text-gray-600 text-base lg:text-xl md:text-lg leading-relaxed">
+                                Semua fitur disusun secara progresif, bisa dimulai gratis, dan didampingi oleh mentor, komunitas, serta AI assistant.
+                            </p>
+                        </div>
+
+                        {/* Placeholder Cards */}
+                        {[1, 2, 3, 4, 5].map((item) => (
+                            <div key={item} className="bg-gray-400/80 rounded-2xl aspect-[14/5] w-full shadow-xl"></div>
+                        ))}
                     </div>
                 </div>
             </section>
