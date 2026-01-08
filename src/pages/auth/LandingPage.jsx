@@ -5,13 +5,11 @@ import ImageCard1 from "../../assets/images/fitness_training_card.png"
 import ImageCard2 from "../../assets/images/running_progress_card.png"
 import ImageCard3 from "../../assets/images/community_fitness_card.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
-import { HiLightningBolt } from "react-icons/hi"  // Assuming we might need an icon for the logo if text isn't enough, but user used just text in nav. In footer image there is a logo icon. I'll simulate it or use a similar icon.
-// Actually, looking at the image, there is a logo icon "lightning" inside a circle.
-// I will use simple text or an icon if available. I'll stick to text + simple styling or a generic icon.
-// Let's just update the fa6 import.
+import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -65,8 +63,8 @@ export default function LandingPage() {
                             </a>
                         </div>
 
-                        {/* Auth Buttons */}
-                        <div className="flex items-center space-x-3 lg:space-x-4">
+                        {/* Auth Buttons - Desktop */}
+                        <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
                             <Link
                                 to="/register"
                                 className="text-blue-600 hover:text-blue-700 font-semibold transition-colors px-4 py-2"
@@ -80,8 +78,58 @@ export default function LandingPage() {
                                 Sign In
                             </Link>
                         </div>
+
+                        {/* Mobile Menu Button */}
+                        <div className="md:hidden flex items-center">
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="text-gray-600 hover:text-blue-600 focus:outline-none"
+                            >
+                                {isMenuOpen ? (
+                                    <HiX className="h-8 w-8" />
+                                ) : (
+                                    <HiMenu className="h-8 w-8" />
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+                {/* Mobile Menu Dropdown */}
+                {isMenuOpen && (
+                    <div className="md:hidden bg-white/95 backdrop-blur-md absolute top-16 left-0 right-0 shadow-lg py-4 px-6 flex flex-col space-y-4 border-t border-gray-100 animate-fade-in-down">
+                        <a href="#tentang" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                            Tentang
+                        </a>
+                        <a href="#fitur" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                            Fitur Kami
+                        </a>
+                        <a href="#course" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                            Course Preview
+                        </a>
+                        <a href="#faq" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                            FAQ
+                        </a>
+
+                        {/* Mobile Auth Buttons */}
+                        <div className="flex flex-col gap-3 pt-2">
+                            <Link
+                                to="/register"
+                                className="text-center text-blue-600 font-semibold py-2 border border-blue-600 rounded-full hover:bg-blue-50 transition-colors"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Sign Up
+                            </Link>
+                            <Link
+                                to="/login"
+                                className="text-center bg-blue-600 text-white font-semibold py-2 rounded-full hover:bg-blue-700 transition-colors shadow-md"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Sign In
+                            </Link>
+                        </div>
+                    </div>
+                )}
             </nav>
 
             {/* Hero Section */}
@@ -323,7 +371,7 @@ export default function LandingPage() {
                     {/* CTA Button */}
                     <div className="flex justify-start">
                         <button className="flex group items-center gap-2 hover:gap-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold pl-4 pr-3 py-2.5 rounded-full transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1">
-                            Coba Fitur Sekarang!
+                            Cobain Sekarang!
                             <svg className="w-5 h-5 group-hover:rotate-90 ease-out transition-transform duration-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                             </svg>
@@ -337,9 +385,8 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     <div className='group relative bg-blue-600 hover:bg-blue-700 rounded-3xl overflow-hidden px-6 md:px-16 hover:md:py-15 py-10 lg:py-20 group transition-all duration-500 hover:shadow-2xl hover:scale-[1.009]'>
                         {/* Background Decorations */}
-                        <div className="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 rounded-full border-[30px] lg:border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:rotate-12"></div>
-
-                        <div className="absolute -bottom-24 -left-24 w-64 h-64 md:w-80 md:h-80 rounded-full border-[30px] lg:border-[50px] border-white/10 transition-transform duration-700 ease-out group-hover:scale-125 group-hover:-rotate-12"></div>
+                        <div className="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 rounded-full border-[30px] lg:border-[50px] group-hover:border-[30px] border-white/10 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12"></div>
+                        <div className="absolute -bottom-24 -left-24 w-64 h-64 md:w-80 md:h-80 rounded-full border-[30px] lg:border-[50px] group-hover:border-[30px] border-white/10 transition-all duration-500 ease-out group-hover:scale-125 group-hover:-rotate-12"></div>
 
                         {/* Content */}
                         <div className="relative z-10">
