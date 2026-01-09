@@ -1,6 +1,9 @@
-import Navbar from "../components/Navbar"
-import PromoBanner from "../components/PromoBanner"
-import HeroSection from "../components/HeroSection"
+import Navbar from "../components/layout/Navbar"
+import PromoBanner from "../components/layout/PromoBanner"
+import HeroSection from "../components/home/HeroSection"
+import TopicsSection from "../components/home/TopicsSection"
+import PopularCoursesSection from "../components/home/PopularCoursesSection"
+import RecommendedCoursesSection from "../components/home/RecommendedCoursesSection"
 
 export default function HomePage() {
   return (
@@ -8,6 +11,9 @@ export default function HomePage() {
       <Navbar />
       <PromoBanner />
       <HeroSection userName="Rizki Fiko" />
+      <TopicsSection />
+      <PopularCoursesSection />
+      <RecommendedCoursesSection />
       
       {/* Additional sections can be added here */}
       {/* Example: Featured Courses, Recent Activities, etc. */}
