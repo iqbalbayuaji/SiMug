@@ -1,7 +1,6 @@
 import { useState } from "react"
 
 export default function PopularCoursesSection() {
-  const [activeCategory, setActiveCategory] = useState("Kebugaran")
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const categories = ["Kebugaran", "Nutrisi", "Diet & Bulk", "Sports", "Healthy Habits"]
@@ -138,9 +137,11 @@ export default function PopularCoursesSection() {
         {/* Header with Stats Cards */}
         <div className="relative mb-12 max-w-7xl mx-auto">
           {/* Left Card - Active Users */}
-          <div className="absolute left-0 top-0 bg-white border-2 border-[#4177FF] rounded-2xl px-6 py-4 shadow-lg transform -rotate-3">
-            <p className="text-3xl font-bold text-[#4177FF]">12.593+ <span className="text-lg font-normal">user</span></p>
-            <p className="text-sm text-gray-600">Aktif mengikuti course</p>
+          <div className="absolute left-0 top-0 bg-gradient-to-tr from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform -rotate-3">
+            <div className="bg-white rounded-2xl px-6 py-4">
+              <p className="text-3xl font-bold text-[#4177FF] opacity-70">12.593+ <span className="text-lg font-normal">user</span></p>
+              <p className="text-sm text-[#4177FF] opacity-60">Aktif mengikuti course</p>
+            </div>
           </div>
 
           {/* Center - Title & Tagline */}
@@ -155,30 +156,27 @@ export default function PopularCoursesSection() {
             {/* Categories */}
             <div className="flex justify-center gap-3 flex-wrap">
               {categories.map((category) => (
-                <button
+                <div
                   key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                    activeCategory === category
-                      ? "bg-[#4177FF] text-white"
-                      : "bg-[#E5ECFF] text-[#4177FF] hover:bg-[#D0DFFF]"
-                  }`}
+                  className="px-6 py-2 rounded-full text-sm font-medium bg-[#E5ECFF] text-[#4177FF]"
                 >
                   {category}
-                </button>
+                </div>
               ))}
             </div>
           </div>
 
           {/* Right Card - Helped Users */}
-          <div className="absolute right-0 top-0 bg-white border-2 border-[#4177FF] rounded-2xl px-6 py-4 shadow-lg transform rotate-3">
-            <p className="text-3xl font-bold text-[#4177FF]">11.294+ <span className="text-lg font-normal">user</span></p>
-            <p className="text-sm text-gray-600">Merasa terbantu oleh SiMug</p>
+          <div className="absolute right-0 top-0 bg-gradient-to-l from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform rotate-3">
+            <div className="bg-white rounded-2xl px-6 py-4">
+              <p className="text-3xl font-bold text-[#4177FF] opacity-70">11.294+ <span className="text-lg font-normal">user</span></p>
+              <p className="text-sm text-[#4177FF] opacity-60">Merasa terbantu oleh SiMug</p>
+            </div>
           </div>
         </div>
 
         {/* Course Cards with Navigation */}
-        <div className="relative mt-32 max-w-[1500px] mx-auto">
+        <div className="relative mt-32 max-w-[1400px] mx-auto">
           {/* Previous Button */}
           <button
             onClick={prevSlide}

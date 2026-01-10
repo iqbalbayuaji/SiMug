@@ -64,7 +64,7 @@ export default function TopicsSection() {
                 className={`bg-gradient-to-br ${topic.gradient} rounded-3xl p-6 text-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1`}
               >
                 {/* Icon Circle */}
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
+                <div className="w-12 h-12 bg-[#305AC4] rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                   <img src={topic.icon} alt={topic.title} className="w-6 h-6" />
                 </div>
                 
