@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import gridHiasan from "../../assets/images/grid-hiasan.png"
-import ImageCard1 from "../../assets/images/fitness_training_card.png"
-import ImageCard2 from "../../assets/images/running_progress_card.png"
-import ImageCard3 from "../../assets/images/community_fitness_card.png"
+import gridHiasan from "../assets/images/grid-hiasan.png"
+import ImageCard1 from "../assets/images/fitness_training_card.png"
+import ImageCard2 from "../assets/images/running_progress_card.png"
+import ImageCard3 from "../assets/images/community_fitness_card.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
+import Footer from '../components/layout/Footer'
 
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
@@ -405,92 +406,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-blue-600 text-white pt-16 pb-8">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-16">
-                        {/* Column 1: Brand */}
-                        <div className="space-y-6">
-                            <div className="flex items-center gap-2 text-2xl font-bold">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-blue-600">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                </span>
-                                <span>SiMUG</span>
-                            </div>
-                            <p className="text-blue-100/90 leading-relaxed font-light">
-                                Satu Platform, Banyak <br />
-                                Cara Jadi Lebih Sehat.
-                            </p>
-
-                            <div className="space-y-4 pt-2">
-                                <h4 className="font-semibold text-lg">Social Media Kami</h4>
-                                <div className="flex gap-4">
-                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
-                                        <FaInstagram className="w-5 h-5" />
-                                    </a>
-                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
-                                        <FaYoutube className="w-5 h-5" />
-                                    </a>
-                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
-                                        <FaFacebook className="w-5 h-5" />
-                                    </a>
-                                    <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition-all duration-300">
-                                        <FaXTwitter className="w-5 h-5" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Column 2: Quick Links */}
-                        <div className="lg:pl-8 lg:border-l-2 border-blue-400">
-                            <h4 className="font-bold text-xl mb-6">Quick Links</h4>
-                            <ul className="space-y-4 text-blue-100/90 font-light">
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Beranda</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Progres Tracker</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Daftar Kursus</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Limited Event</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Forum & Artikel</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 3: Layanan Kami */}
-                        <div className="lg:pl-8 lg:border-l-2 border-blue-400">
-                            <h4 className="font-bold text-xl mb-6">Layanan Kami</h4>
-                            <ul className="space-y-4 text-blue-100/90 font-light">
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Kursus Kesehatan</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Asisten AI</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Chart Progres</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Komunitas</a></li>
-                                <li><a href="#" className="hover:text-white hover:translate-x-1 block transition-all">Gamifikasi</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 4: Hubungi Kami */}
-                        <div className="lg:pl-8 lg:border-l-2 border-blue-400">
-                            <h4 className="font-bold text-xl mb-6">Hubungi Kami</h4>
-                            <ul className="space-y-4 text-blue-100/90 font-light">
-                                <li>
-                                    <a href="#" className="hover:text-white block transition-colors">+62 890-2456-7891</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="hover:text-white block transition-colors">simugfit@gmail.com</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Bottom Bar */}
-                    <div className="pt-8 border-t-2 border-blue-400 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-100/80 text-sm">
-                        <p>Copyright 2026 SiMug. All Right Reserved.</p>
-                        <div className="flex gap-8">
-                            <a href="#" className="hover:text-white transition-colors underline decoration-transparent hover:decoration-white">User Terms & Agreements</a>
-                            <a href="#" className="hover:text-white transition-colors underline decoration-transparent hover:decoration-white">Privacy & Policy</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }
