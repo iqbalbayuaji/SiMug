@@ -129,7 +129,7 @@ export default function RecommendedCoursesSection() {
         </div>
 
         {/* Course Cards with Navigation */}
-        <div className="relative max-w-[1500px] mx-auto">
+        <div className="relative max-w-[1400px] mx-auto">
           {/* Previous Button */}
           <button
             onClick={prevSlide}
