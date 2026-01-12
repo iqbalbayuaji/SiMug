@@ -111,8 +111,19 @@ export default function Navbar() {
                 className="relative"
                 onMouseEnter={() => {
                   setHoveredMenu(item.name)
-                  if (item.name === "Course") setShowCourseDropdown(true)
-                  if (item.name === "Events") setShowEventsDropdown(true)
+                  if (item.name === "Course") {
+                    setShowCourseDropdown(true)
+                    setShowEventsDropdown(false)
+                  }
+                  if (item.name === "Events") {
+                    setShowEventsDropdown(true)
+                    setShowCourseDropdown(false)
+                  }
+                  // Close all dropdowns when hovering other menu items
+                  if (item.name !== "Course" && item.name !== "Events") {
+                    setShowCourseDropdown(false)
+                    setShowEventsDropdown(false)
+                  }
                 }}
               >
                 <Link
