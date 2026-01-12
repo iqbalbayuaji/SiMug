@@ -200,9 +200,9 @@ export default function PopularCoursesSection() {
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
                       .map((course) => (
                         <div key={course.id} className="w-full">
-                          <div className="bg-white rounded-3xl border border-[#DBDBDB] shadow-lg overflow-hidden hover:shadow-xl transition-shadow h-full">
+                          <div className="h-full border border-[#DBDBDB] rounded-2xl p-4">
                             {/* Course Image */}
-                            <div className="relative h-54 bg-gray-800 m-4 rounded-2xl overflow-hidden">
+                            <div className="relative h-52 bg-gray-800 rounded-2xl overflow-hidden mb-4">
                               <img
                                 src={course.image}
                                 alt={course.title}
@@ -212,14 +212,14 @@ export default function PopularCoursesSection() {
                                 }}
                               />
                               {/* Free Trial Badge */}
-                              <div className="absolute top-4 right-4 bg-white px-5 py-2 rounded-full text-sm font-semibold shadow-md">
+                              <div className="absolute top-4 right-4 bg-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
                                 {course.badge}
                               </div>
                             </div>
 
                             {/* Course Info */}
-                            <div className="px-6 pb-6">
-                              <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 min-h-[56px]">
+                            <div>
+                              <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 mb-2">
                                 {course.title}
                               </h3>
 
@@ -228,7 +228,7 @@ export default function PopularCoursesSection() {
                               </p>
 
                               {/* Stats - Simple Pill Style */}
-                              <div className="flex flex-wrap gap-2 mb-4">
+                              <div className="flex flex-wrap gap-2 mb-3">
                                 <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-700">
                                   <span className="text-yellow-400">⭐</span>
                                   <span className="font-semibold">{course.rating}</span>
