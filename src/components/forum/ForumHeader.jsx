@@ -1,0 +1,38 @@
+import React from 'react';
+
+export default function ForumHeader() {
+    return (
+        <div className="bg-white border-b border-gray-100 py-4 px-6 sticky top-0 z-40">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                {/* Left Side: Page Title */}
+                <div className="flex-1">
+                    <h1 className="text-2xl font-bold text-gray-800">Artikel Trend Minggu Ini</h1>
+                    <p className="text-gray-500 text-sm mt-1">Berikut artikel yang trending minggu ini</p>
+                </div>
+
+                <div className="flex items-center gap-3 w-full md:w-auto">
+                    <div className="relative flex-1 md:w-96">
+                        <input
+                            type="text"
+                            placeholder="Telusuri artikel, threads, atau forum..."
+                            className="w-full pl-10 pr-16 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                        />
+                        <svg className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <button className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-full transition-colors">
+                            Cari
+                        </button>
+                    </div>
+
+                    <button className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm rounded-lg shadow-sm shadow-blue-500/30 transition-all hover:translate-y-[-1px]">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        Gabung Forum
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
