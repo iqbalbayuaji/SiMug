@@ -46,18 +46,33 @@ export default function ChatAnimations() {
 
             .animate-fadeIn {
                 animation: fadeIn 0.6s ease-out forwards;
+                animation-fill-mode: both;
             }
 
             .animate-slideUp {
                 animation: slideUp 0.6s ease-out forwards;
+                animation-fill-mode: both;
             }
 
             .animate-slideDown {
                 animation: slideDown 0.6s ease-out forwards;
+                animation-fill-mode: both;
             }
 
             .animate-blob {
                 animation: blob 7s infinite;
+            }
+
+            .fade-transition {
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .fade-enter {
+                opacity: 0;
+            }
+
+            .fade-enter-active {
+                opacity: 1;
             }
 
             .animation-delay-200 {

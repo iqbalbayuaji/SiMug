@@ -4,3 +4,7 @@ export { default as TopicCard } from './TopicCard';
 export { default as TopicSelector } from './TopicSelector';
 export { default as ChatInput } from './ChatInput';
 export { default as ChatAnimations } from './ChatAnimations';
+export { default as ChatMessage } from './ChatMessage';
+export { default as ChatConversation } from './ChatConversation';
+export { default as TypingIndicator } from './TypingIndicator';
+export { default as ChatBackButton } from './ChatBackButton';
