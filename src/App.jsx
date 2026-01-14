@@ -3,7 +3,7 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import HomePage from './pages/HomePage'
-import ChatbotPage from './pages/ChatbotPage'
+import ChatbotPage from './pages/chatbot/ChatbotPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'

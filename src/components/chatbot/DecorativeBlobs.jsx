@@ -1,9 +1,34 @@
 export default function DecorativeBlobs() {
     return (
         <>
-            <div className="absolute top-60 left-20 lg:top-25 lg:left-270 w-10 h-10 lg:w-32 lg:h-32 w-20 h-20 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div className="absolute top-30 left-20 lg:top-40 lg:right-10 w-10 h-10 lg:w-27 lg:h-27 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-            <div className="absolute top-60 left-90 lg:top-80 lg:left-40 w-10 h-10 lg:w-36 lg:h-36 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+            <style>{`
+                @keyframes glowPulse {
+                    0%, 100% {
+                        opacity: 0.3;
+                        transform: scale(1);
+                        filter: blur(24px);
+                    }
+                    50% {
+                        opacity: 1;
+                        transform: scale(1.15);
+                        filter: blur(12px);
+                    }
+                }
+                .blob-glow {
+                    animation: glowPulse 3s ease-in-out infinite;
+                }
+                .blob-glow-delay-1 {
+                    animation: glowPulse 3s ease-in-out infinite;
+                    animation-delay: 1s;
+                }
+                .blob-glow-delay-2 {
+                    animation: glowPulse 3s ease-in-out infinite;
+                    animation-delay: 2s;
+                }
+            `}</style>
+            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply blob-glow"></div>
+            <div className="absolute top-40 right-20 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply blob-glow-delay-1"></div>
+            <div className="absolute top-60 left-1/5 w-36 h-36 bg-blue-200 rounded-full mix-blend-multiply blob-glow-delay-2"></div>
         </>
     );
 }
