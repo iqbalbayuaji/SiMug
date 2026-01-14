@@ -5,6 +5,9 @@ import RegisterPage from './pages/auth/RegisterPage'
 import HomePage from './pages/HomePage'
 import ChatbotPage from './pages/chatbot/ChatbotPage'
 
+import ForumIntroPage from './pages/ForumIntroPage'
+import Forum from './pages/ForumPage'
+
 function App() {
   return (
     <Router>
@@ -15,6 +18,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/chatbot" element={<ChatbotPage />} />
+        <Route path="/forum-intro" element={<ForumIntroPage />} />
+        <Route path="/forum" element={<Forum />} />
       </Routes>
     </Router>
   )

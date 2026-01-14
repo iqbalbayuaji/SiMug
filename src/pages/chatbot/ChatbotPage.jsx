@@ -10,7 +10,10 @@ import {
     ChatHeader,
     TopicSelector,
     ChatInput,
-    ChatAnimations
+    ChatAnimations,
+    ChatConversation,
+    TypingIndicator,
+    ChatBackButton
 } from '../../components/chatbot';
 
 
@@ -18,6 +21,8 @@ export default function ChatbotPage() {
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [message, setMessage] = useState('');
     const [inputMode, setInputMode] = useState('Auto');
+    const [messages, setMessages] = useState([]);
+    const [isTyping, setIsTyping] = useState(false);
 
     const topics = [
         {
@@ -45,6 +50,43 @@ export default function ChatbotPage() {
         setSelectedTopic(prevTopic => prevTopic === topicId ? null : topicId);
     };
 
+    const handleSendMessage = () => {
+        if (!message.trim()) return;
+
+        // Add user message
+        const userMessage = {
+            text: message,
+            isUser: true,
+            timestamp: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
+        };
+
+        setMessages(prev => [...prev, userMessage]);
+        setMessage('');
+
+        // Simulate bot typing
+        setIsTyping(true);
+
+        // Simulate bot response after 1.5 seconds
+        setTimeout(() => {
+            const botMessage = {
+                text: `Terima kasih atas pertanyaan Anda tentang ${selectedTopic || 'kesehatan'}! Saya akan membantu Anda dengan informasi yang relevan.`,
+                isUser: false,
+                timestamp: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
+            };
+            setMessages(prev => [...prev, botMessage]);
+            setIsTyping(false);
+        }, 1500);
+    };
+
+    const handleReset = () => {
+        setMessages([]);
+        setMessage('');
+        setSelectedTopic(null);
+        setIsTyping(false);
+    };
+
+    const isConversationActive = messages.length > 0;
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
             <Navbar />
@@ -53,19 +95,40 @@ export default function ChatbotPage() {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
                 <DecorativeBlobs />
 
-                <ChatHeader userName="Rizki Fiko" />
+                {/* Show Header and Topics only when no conversation */}
+                {!isConversationActive && (
+                    <div key="topic-view" className="fade-transition">
+                        <ChatHeader userName="Rizki Fiko" />
 
-                <TopicSelector
-                    topics={topics}
-                    selectedTopic={selectedTopic}
-                    onTopicClick={handleTopicClick}
-                />
+                        <TopicSelector
+                            topics={topics}
+                            selectedTopic={selectedTopic}
+                            onTopicClick={handleTopicClick}
+                        />
+                    </div>
+                )}
+
+                {/* Show Back Button when conversation is active */}
+                {isConversationActive && (
+                    <div key="conversation-view" className="fade-transition">
+                        <ChatBackButton onReset={handleReset} />
+                    </div>
+                )}
+
+                {/* Chat Conversation Area */}
+                {messages.length > 0 && (
+                    <ChatConversation messages={messages} />
+                )}
+
+                {/* Typing Indicator */}
+                {isTyping && <TypingIndicator />}
 
                 <ChatInput
                     message={message}
                     setMessage={setMessage}
                     inputMode={inputMode}
                     setInputMode={setInputMode}
+                    onSend={handleSendMessage}
                 />
             </div>
 
