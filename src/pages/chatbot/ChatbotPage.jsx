@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Navbar from "../components/layout/Navbar";
+import Navbar from "../../components/layout/Navbar";
 
-import miIcon from '../assets/icon/mi.png';
-import basketmiIcon from '../assets/icon/basket.png';
-import dumbleIcon from '../assets/icon/dumble.png';
+import miIcon from '../../assets/icon/mi.png';
+import basketmiIcon from '../../assets/icon/basket.png';
+import dumbleIcon from '../../assets/icon/dumble.png';
 
 import {
     DecorativeBlobs,
@@ -11,7 +11,7 @@ import {
     TopicSelector,
     ChatInput,
     ChatAnimations
-} from '../components/chatbot';
+} from '../../components/chatbot';
 
 
 export default function ChatbotPage() {

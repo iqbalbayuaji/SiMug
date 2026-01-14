@@ -23,7 +23,7 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
             <p className="text-gray-600 text-sm mb-4">{currentDate}</p>
             
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Hi, {userName}!
+              Hi, <span className="text-[#4177FF]">{userName}!</span>
               <br />
               Hari ini mau belajar apa?
             </h1>
