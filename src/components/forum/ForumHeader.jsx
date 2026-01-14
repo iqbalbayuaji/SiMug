@@ -1,12 +1,13 @@
 import React from 'react';
+import iconOrang from '../../assets/icon/orang.png';
 
 export default function ForumHeader() {
     return (
-        <div className="bg-white border-b border-gray-100 py-4 px-6 sticky top-0 z-40">
+        <div className="bg-white py-3 px-6 sticky top-0 z-40">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 {/* Left Side: Page Title */}
                 <div className="flex-1">
-                    <h1 className="text-2xl font-bold text-gray-800">Artikel Trend Minggu Ini</h1>
+                    <h1 className="text-2xl font-semibold text-gray-800">Artikel Trend Minggu Ini</h1>
                     <p className="text-gray-500 text-sm mt-1">Berikut artikel yang trending minggu ini</p>
                 </div>
 
@@ -25,11 +26,13 @@ export default function ForumHeader() {
                         </button>
                     </div>
 
-                    <button className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm rounded-lg shadow-sm shadow-blue-500/30 transition-all hover:translate-y-[-1px]">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                        Gabung Forum
+                    <button className="relative overflow-hidden flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-bold text-sm rounded-xl shadow-sm shadow-blue-500/30 transition-all hover:translate-y-[-1px]">
+                        <div className="absolute -right-3 -bottom-6 w-10 h-10 bg-white/20 rounded-full pointer-events-none"></div>
+                        <div className="absolute -right-4 bottom-6 w-10 h-10 bg-white/20 rounded-full pointer-events-none"></div>
+                        <div className="relative flex items-center gap-2 font-medium">
+                            <img src={iconOrang} alt="Gabung" className="w-5 h-4 brightness-0 invert" />
+                            Gabung Forum
+                        </div>
                     </button>
                 </div>
             </div>

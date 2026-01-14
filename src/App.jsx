@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage'
 import ChatbotPage from './pages/ChatbotPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
-import Forum from './pages/Forum'
+import Forum from './pages/ForumPage'
 
 function App() {
   return (

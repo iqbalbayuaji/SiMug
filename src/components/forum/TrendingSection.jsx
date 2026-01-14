@@ -29,7 +29,7 @@ const trendingArticles = [
 
 export default function TrendingSection() {
     return (
-        <section className="mb-8 mt-2">
+        <section className="mb-1 mt-2">
             <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x">
                 {trendingArticles.map((article) => (
                     <div
@@ -44,7 +44,7 @@ export default function TrendingSection() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
                         <div className="absolute top-3 left-3">
-                            <span className="px-2 py-1 bg-white/20 backdrop-blur-md text-white text-xs rounded-md border border-white/30">
+                            <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs rounded-full">
                                 {article.category}
                             </span>
                         </div>

@@ -38,36 +38,42 @@ const threads = [
 
 const ThreadItem = ({ thread }) => {
     return (
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-6 last:mb-0 relative">
-            <div className="flex items-start gap-4">
-                {/* Timeline Line */}
-                <div className="absolute left-[39px] top-16 bottom-0 w-[2px] bg-gray-100 last:hidden"></div>
-
-                <div className={`w-10 h-10 ${thread.avatarColor} rounded-full flex-shrink-0`}></div>
-                <div className="flex-1">
+        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-6 last:mb-0">
+            <div className="grid grid-cols-[40px_1fr] gap-x-4">
+                {/* Row 1: Avatar & Header */}
+                <div className={`w-10 h-10 ${thread.avatarColor} rounded-full`}></div>
+                <div className="mb-4">
                     <div className="flex items-baseline gap-2 mb-1">
                         <h3 className="font-bold text-gray-800">{thread.author}</h3>
+                        •
                         <span className="text-blue-500 text-sm font-medium cursor-pointer hover:underline">Ikuti</span>
                     </div>
-                    <div className="text-gray-400 text-xs mb-4">
+                    <div className="text-gray-400 text-xs">
                         <span>{thread.username}</span> • <span>{thread.time}</span>
                     </div>
+                </div>
 
-                    {/* Original Question Card */}
-                    <div className="bg-blue-50/50 rounded-lg p-4 mb-4 border border-blue-100">
-                        <div className="text-xs text-gray-500 font-semibold mb-1">
-                            Pertanyaan oleh <span className="text-gray-700">{thread.originalQuestion.author}</span>:
-                        </div>
-                        <h4 className="font-bold text-gray-800 mb-1 leading-snug">
-                            {thread.originalQuestion.content}
-                        </h4>
-                        <div className="text-xs text-gray-400">Pertanyaan {thread.originalQuestion.time}</div>
+                {/* Row 2: Connecting Line & Question */}
+                <div className="relative flex justify-center">
+                    <div className="w-[2px] bg-gray-100 h-full"></div>
+                </div>
+                <div className="bg-blue-100 rounded-lg p-4 mb-4">
+                    <div className="text-xs text-gray-500 font-semibold mb-1">
+                        Pertanyaan oleh <span className="text-gray-700">{thread.originalQuestion.author}</span>:
                     </div>
+                    <h4 className="font-semibold text-gray-800 mb-1 leading-snug">
+                        {thread.originalQuestion.content}
+                    </h4>
+                    <div className="text-xs text-gray-400">Pertanyaan {thread.originalQuestion.time}</div>
+                </div>
 
-                    {/* Answer Content */}
-                    <div className="prose prose-sm text-gray-600 max-w-none">
-                        <p className="whitespace-pre-line">{thread.answer}</p>
-                    </div>
+                {/* Row 3: Curve & Answer */}
+                <div className="relative flex justify-center">
+                    <div className="w-[2px] h-6 bg-gray-100 absolute top-0 left-1/2 -translate-x-1/2 hidden"></div> {/* Optional extension if needed */}
+                    <div className="w-5 h-8 border-l-[2px] border-b-[2px] border-gray-100 rounded-bl-xl absolute top-0 left-1/2 -ml-[1px]"></div>
+                </div>
+                <div className="prose prose-sm text-gray-600 max-w-none pt-2">
+                    <p className="whitespace-pre-line">{thread.answer}</p>
                 </div>
             </div>
         </div>
