@@ -1,5 +1,5 @@
-  import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from "../../assets/images/logo.png"
 import vegan from "../../assets/images/vegan.png"
 
@@ -30,6 +30,13 @@ export default function Navbar() {
   // Update active menu based on current path
   useEffect(() => {
     const currentPath = location.pathname
+    
+    // Check if on courses pages
+    if (currentPath.startsWith('/courses')) {
+      setActiveMenu('Course')
+      return
+    }
+    
     const activeItem = menuItems.find(item => item.path === currentPath)
     if (activeItem) {
       setActiveMenu(activeItem.name)
@@ -169,12 +176,13 @@ export default function Navbar() {
                             <h3 className="font-bold text-gray-900 mb-4">{category.title}</h3>
                             <div className="space-y-3">
                               {category.items.map((course, courseIdx) => (
-                                <a
+                                <Link
                                   key={courseIdx}
-                                  href="#"
+                                  to="/courses"
+                                  onClick={() => setShowCourseDropdown(false)}
                                   className="flex items-start gap-3 p-3 rounded-2xl hover:bg-[#EAF0FF] transition-colors group"
                                 >
-                                  <div className="w-12 h-12 bg-[#C5D9FF] rounded-full flex items-center justify-center flex-shrink-0">
+                                  <div className="w-12 h-12 bg-[#C5D9FF] rounded-full flex items-center justify-center shrink-0">
                                     <img src={course.icon} alt={course.name} className="w-6 h-6" />
                                   </div>
                                   <div className="flex-1 min-w-0">
@@ -190,7 +198,7 @@ export default function Navbar() {
                                     </div>
                                     <p className="text-sm text-gray-600 mt-1">{course.desc}</p>
                                   </div>
-                                </a>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -199,9 +207,9 @@ export default function Navbar() {
                       <div className="mt-6 pt-6 border-t border-[#4177FF] opacity-40 text-left"/>      
                         <p className="text-sm text-gray-600">
                           Tidak menemukan course yang dicari?{" "}
-                          <a href="#" className="text-[#4177FF] font-semibold hover:underline">
+                          <Link to="/courses" onClick={() => setShowCourseDropdown(false)} className="text-[#4177FF] font-semibold hover:underline">
                             Eksplorasi lebih banyak
-                          </a>
+                          </Link>
                         </p>
                     </div>
                   </div>

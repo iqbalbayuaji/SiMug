@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+import { FaStar } from "react-icons/fa"
 
 export default function RecommendedCoursesSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -119,12 +121,12 @@ export default function RecommendedCoursesSection() {
                 </p>
               </div>
             </div>
-            <button className="text-[#4177FF] font-semibold flex items-center gap-2 px-6 py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors">
+            <Link to="/courses" className="text-[#4177FF] font-semibold flex items-center gap-2 px-6 py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors">
               Telusuri Lebih banyak
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -153,7 +155,7 @@ export default function RecommendedCoursesSection() {
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
                       .map((course) => (
                         <div key={course.id} className="w-full">
-                          <div className="h-full border border-[#DBDBDB] rounded-2xl p-4">
+                          <Link to="/courses" className="block h-full border border-[#DBDBDB] rounded-2xl p-4 hover:border-blue-300 hover:shadow-lg transition-all">
                             {/* Course Image */}
                             <div className="relative h-52 bg-gray-800 rounded-2xl overflow-hidden mb-4">
                               <img
@@ -183,7 +185,7 @@ export default function RecommendedCoursesSection() {
                               {/* Stats - Simple Pill Style */}
                               <div className="flex flex-wrap gap-2 mb-3">
                                 <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-700">
-                                  <span className="text-yellow-400">⭐</span>
+                                  <FaStar className="text-yellow-400" />
                                   <span className="font-semibold">{course.rating}</span>
                                 </div>
                                 <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
@@ -204,15 +206,15 @@ export default function RecommendedCoursesSection() {
                               {/* Price & CTA */}
                               <div className="flex items-center justify-between gap-2">
                                 <p className="text-2xl font-bold text-[#4177FF]">{course.price}</p>
-                                <button className="bg-[#E5ECFF] text-[#4177FF] px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#D0DFFF] transition-colors flex items-center gap-1 whitespace-nowrap">
+                                <span className="bg-[#E5ECFF] text-[#4177FF] px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-1 whitespace-nowrap">
                                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                   </svg>
                                   Mulai Belajar
-                                </button>
+                                </span>
                               </div>
                             </div>
-                          </div>
+                          </Link>
                         </div>
                       ))}
                   </div>
