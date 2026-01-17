@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import Carousel from "../../../components/Carousel"
+import StackedCarousel from "../../../components/StackedCarousel"
+import logo from "../../../assets/images/logo.png"
 
 export default function Step1({
   formData,
@@ -14,10 +15,10 @@ export default function Step1({
   return (
     <>
       {/* Step 1 - Section Kiri - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-6 md:py-8 lg:py-10 overflow-y-auto">
+      <div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-4 md:py-6 lg:py-8 overflow-y-auto">
         {/* Step Indicator */}
-        <div className="mb-6 md:mb-8">
-          <div className="flex justify-between items-center mb-3">
+        <div className="mb-4 md:mb-6">
+          <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-[#4177FF]">
               Langkah {currentStep} dari {totalSteps}
             </span>
@@ -26,22 +27,45 @@ export default function Step1({
             </span>
           </div>
           {/* Progress Bar */}
-          <div className="flex gap-2">
+          <div className="flex gap-1 items-center">
             {[...Array(totalSteps)].map((_, index) => (
-              <div
-                key={index}
-                className={`flex-1 h-1.5 rounded-full transition-all duration-300 ${index < currentStep
-                  ? "bg-[#4177FF]"
-                  : "bg-gray-200"
+              <div key={index} className="flex items-center flex-1">
+                {/* Starting Dot */}
+                <div
+                  className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
+                    index === 0 && currentStep >= 1
+                      ? "bg-[#4177FF]"
+                      : index > 0 && index < currentStep
+                      ? "bg-[#4177FF]"
+                      : "bg-white border-3 border-[#4177FF]"
                   }`}
-              />
+                />
+                {/* Progress Line */}
+                <div
+                  className={`flex-1 h-1.5 mx-1 rounded-full transition-all duration-300 ${
+                    index < currentStep
+                      ? "bg-[#4177FF]"
+                      : "bg-gray-200"
+                  }`}
+                />
+                {/* Ending Dot (only for last step) */}
+                {index === totalSteps - 1 && (
+                  <div
+                    className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
+                      currentStep > totalSteps
+                        ? "bg-[#4177FF]"
+                        : "bg-white border-3 border-[#4177FF]"
+                    }`}
+                  />
+                )}
+              </div>
             ))}
           </div>
         </div>
 
         {/* Title */}
-        <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">
+        <div className="mb-4 md:mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-900 leading-tight mb-2">
             Hi, Selamat Bergabung,
             <br />
             Buruan <span className="text-gray-900">Daftarin Akunmu!</span>
@@ -66,7 +90,7 @@ export default function Step1({
               value={formData.namaLengkap}
               onChange={handleInputChange}
               placeholder="Masukkan Nama Lengkap"
-              className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
+              className="w-full px-4 py-2.5 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
             />
           </div>
 
@@ -81,7 +105,7 @@ export default function Step1({
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Masukkan Email"
-              className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
+              className="w-full px-4 py-2.5 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
             />
           </div>
 
@@ -96,12 +120,12 @@ export default function Step1({
               value={formData.noTelp}
               onChange={handleInputChange}
               placeholder="Masukkan No. Telepon"
-              className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
+              className="w-full px-4 py-2.5 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
             />
           </div>
 
           {/* Password & Konfirmasi Password */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="relative">
               <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
                 Password
@@ -112,7 +136,7 @@ export default function Step1({
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Masukkan Password"
-                className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
+                className="w-full px-4 py-2.5 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
               />
             </div>
             <div className="relative">
@@ -125,13 +149,13 @@ export default function Step1({
                 value={formData.konfirmasiPassword}
                 onChange={handleInputChange}
                 placeholder="Masukkan Password"
-                className="w-full px-4 py-3 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
+                className="w-full px-4 py-2.5 text-sm md:text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
               />
             </div>
           </div>
 
           {/* Terms Checkbox */}
-          <div className="flex items-center gap-2 text-sm mt-4">
+          <div className="flex items-center gap-2 text-sm mt-3">
             <input
               type="checkbox"
               id="terms"
@@ -155,13 +179,13 @@ export default function Step1({
           <button
             type="button"
             onClick={handleNextStep}
-            className="w-full py-3 md:py-4 text-sm md:text-base rounded-full bg-[#4177FF] text-white font-semibold hover:bg-[#3461D9] transition-all duration-300 shadow-lg hover:shadow-xl mt-4"
+            className="w-full py-2.5 md:py-3 text-sm md:text-base rounded-full bg-[#4177FF] text-white font-semibold hover:bg-[#3461D9] transition-all duration-300 shadow-lg hover:shadow-xl mt-3"
           >
             Verifikasi Identitas
           </button>
 
           {/* Footer Text */}
-          <p className="text-xs text-gray-500 text-center mt-4">
+          <p className="text-xs text-gray-500 text-center mt-3">
             Dengan melanjutkan ini, Saya telah menyetujui
             <br />
             <span className="font-semibold text-gray-700">kebijakan pengguna</span> dan{" "}
@@ -192,27 +216,14 @@ export default function Step1({
             Kembali
           </Link>
           <div className="flex items-center gap-2 text-white font-semibold text-lg">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
+            <img src={logo} alt="SiMug" className="h-6 w-6" />
             SiMug
           </div>
         </div>
 
         {/* Carousel */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-4/5">
-          <Carousel
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[92%] max-w-3xl">
+          <StackedCarousel
             slides={[
               {
                 title: "Mulai Perjalanan Sehatmu",
@@ -229,7 +240,6 @@ export default function Step1({
             ]}
             autoPlayInterval={4000}
             showDots={true}
-            showArrows={false}
           />
         </div>
       </div>
@@ -254,20 +264,7 @@ export default function Step1({
           Kembali
         </Link>
         <div className="flex items-center gap-2 text-white font-semibold">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 10V3L4 14h7v7l9-11h-7z"
-            />
-          </svg>
+          <img src={logo} alt="SiMug" className="h-5 w-5" />
           SiMug
         </div>
       </div>

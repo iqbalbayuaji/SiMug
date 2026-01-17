@@ -96,7 +96,10 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                 <img src={aiIcon} alt="AI" className="w-7 h-7" />
                 <span className="font-bold text-gray-900 text-lg">Tanya SiMug AI</span>
               </div>
-              <button className="bg-[#4177FF] text-white px-8 py-3 rounded-2xl text-base font-semibold hover:bg-[#3461D9] transition-colors w-full">
+              <button 
+                onClick={() => navigate('/chatbot')}
+                className="bg-[#4177FF] text-white px-8 py-3 rounded-2xl text-base font-semibold hover:bg-[#3461D9] transition-colors w-full"
+              >
                 Tanyakan apa saja!
               </button>
             </div>

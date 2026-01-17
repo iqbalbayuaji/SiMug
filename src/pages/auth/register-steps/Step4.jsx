@@ -167,16 +167,38 @@ export default function Step4({
             </span>
           </div>
           {/* Progress Bar */}
-          <div className="flex gap-2">
+          <div className="flex gap-1 items-center">
             {[...Array(totalSteps)].map((_, index) => (
-              <div
-                key={index}
-                className={`flex-1 h-1.5 rounded-full transition-all duration-300 ${
-                  index < currentStep
-                    ? "bg-[#4177FF]"
-                    : "bg-gray-200"
-                }`}
-              />
+              <div key={index} className="flex items-center flex-1">
+                {/* Starting Dot */}
+                <div
+                  className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
+                    index === 0 && currentStep >= 1
+                      ? "bg-[#4177FF]"
+                      : index > 0 && index < currentStep
+                      ? "bg-[#4177FF]"
+                      : "bg-white border-3 border-[#4177FF]"
+                  }`}
+                />
+                {/* Progress Line */}
+                <div
+                  className={`flex-1 h-1.5 mx-1 rounded-full transition-all duration-300 ${
+                    index < currentStep
+                      ? "bg-[#4177FF]"
+                      : "bg-gray-200"
+                  }`}
+                />
+                {/* Ending Dot (only for last step) */}
+                {index === totalSteps - 1 && (
+                  <div
+                    className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
+                      currentStep > totalSteps
+                        ? "bg-[#4177FF]"
+                        : "bg-white border-3 border-[#4177FF]"
+                    }`}
+                  />
+                )}
+              </div>
             ))}
           </div>
         </div>
