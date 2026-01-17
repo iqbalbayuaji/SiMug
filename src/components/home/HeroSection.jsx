@@ -1,6 +1,21 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import aiIcon from "../../assets/icon/ai.svg"
 
 export default function HeroSection({ userName = "Rizki Fiko" }) {
+  const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`)
+    }
+  }
+
+  const handleQuickTag = (tag) => {
+    navigate(`/search?q=${encodeURIComponent(tag)}`)
+  }
   const currentDate = new Date().toLocaleDateString('id-ID', { 
     weekday: 'long', 
     day: 'numeric', 
@@ -33,26 +48,40 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
             </p>
 
             {/* Search Bar */}
-            <div className="relative mb-6">
+            <form onSubmit={handleSearch} className="relative mb-6">
               <input
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Telusuri Course..."
                 className="w-full px-5 py-3 pr-24 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#4177FF] text-white px-6 py-2 rounded-full font-medium hover:bg-[#3461D9] transition-colors">
+              <button 
+                type="submit"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#4177FF] text-white px-6 py-2 rounded-full font-medium hover:bg-[#3461D9] transition-colors"
+              >
                 Cari
               </button>
-            </div>
+            </form>
 
             {/* Quick Tags */}
             <div className="flex flex-wrap gap-3 mb-6">
-              <button className="px-5 py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-sm font-medium hover:bg-[#4177FF]/20 transition-colors">
+              <button 
+                onClick={() => handleQuickTag("Binaraga dasar")}
+                className="px-5 py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
+              >
                 Binaraga dasar
               </button>
-              <button className="px-5 py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-sm font-medium hover:bg-[#4177FF]/20 transition-colors">
+              <button 
+                onClick={() => handleQuickTag("Renang pemula")}
+                className="px-5 py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
+              >
                 Renang pemula
               </button>
-              <button className="px-5 py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-sm font-medium hover:bg-[#4177FF]/20 transition-colors">
+              <button 
+                onClick={() => handleQuickTag("Boxing advance")}
+                className="px-5 py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
+              >
                 Boxing advance
               </button>
             </div>
