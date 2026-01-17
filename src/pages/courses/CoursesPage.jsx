@@ -94,9 +94,9 @@ export default function CoursesPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="sticky top-[73px] z-40 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
+      <section className="sticky top-[65px] md:top-[73px] z-40 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
+          <div className="flex items-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide pb-1">
             <button
               onClick={() => handleCategoryChange('all')}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${

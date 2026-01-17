@@ -104,26 +104,26 @@ export default function RecommendedCoursesSection() {
   }
 
   return (
-    <section className="relative bg-white py-20">
-      <div className="w-full px-6">
+    <section className="relative bg-white py-12 md:py-20">
+      <div className="w-full px-4 md:px-6">
         {/* Header */}
-        <div className="max-w-[1500px] mx-auto mb-12">
-          <div className="flex items-start justify-between">
+        <div className="max-w-[1500px] mx-auto mb-8 md:mb-12">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
             <div className="flex gap-3">
               {/* Blue Border Line */}
               <div className="w-1 bg-[#4177FF] rounded-full"></div>
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-3">
+                <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-3">
                   Kursus Rekomendasi
                 </h2>
-                <p className="text-gray-600 text-base">
+                <p className="text-gray-600 text-sm md:text-base">
                   Berikut ini adalah beberapa course yang direkomendasikan SiMug
                 </p>
               </div>
             </div>
-            <Link to="/courses" className="text-[#4177FF] font-semibold flex items-center gap-2 px-6 py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors">
+            <Link to="/courses" className="text-[#4177FF] font-semibold flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-sm md:text-base self-start">
               Telusuri Lebih banyak
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -132,10 +132,10 @@ export default function RecommendedCoursesSection() {
 
         {/* Course Cards with Navigation */}
         <div className="relative max-w-[1400px] mx-auto">
-          {/* Previous Button */}
+          {/* Previous Button - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -150,7 +150,7 @@ export default function RecommendedCoursesSection() {
             >
               {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {courses
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
                       .map((course) => (
@@ -223,10 +223,10 @@ export default function RecommendedCoursesSection() {
             </div>
           </div>
 
-          {/* Next Button */}
+          {/* Next Button - Hidden on mobile */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -26,6 +26,7 @@ export default function Navbar() {
   const [hoveredMenu, setHoveredMenu] = useState(null)
   const [showCourseDropdown, setShowCourseDropdown] = useState(false)
   const [showEventsDropdown, setShowEventsDropdown] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // Update active menu based on current path
   useEffect(() => {
@@ -285,7 +286,7 @@ export default function Navbar() {
           </div>
 
           {/* Right Side - Notification & Profile */}
-          <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4">
             {/* Notification Bell */}
             <button className="relative w-8 h-8 bg-[#D9E4FF] rounded-full flex items-center justify-center hover:bg-[#D0DFFF] transition-colors">
               <svg className="w-6 h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,8 +305,67 @@ export default function Navbar() {
               />
             </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className="px-4 py-3 space-y-1">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => {
+                  setActiveMenu(item.name)
+                  setIsMobileMenuOpen(false)
+                }}
+                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                  activeMenu === item.name
+                    ? "bg-[#E5ECFF] text-[#4177FF]"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile - Notification & Profile */}
+          <div className="px-4 py-3 border-t border-gray-100 flex items-center gap-3">
+            <button className="relative w-10 h-10 bg-[#D9E4FF] rounded-full flex items-center justify-center">
+              <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+            </button>
+            <button className="w-10 h-10 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]">
+              <img
+                src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </button>
+            <span className="text-sm font-medium text-gray-900">Rizki Fiko</span>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

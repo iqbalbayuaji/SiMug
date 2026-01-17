@@ -74,55 +74,55 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
           </div>
 
           {/* Right Content - 3D Card Illustration */}
-          <div className="relative h-[450px] md:h-[550px]">
+          <div className="relative h-[300px] md:h-[450px] lg:h-[550px] hidden md:block">
             {/* Floating Decorative Circles - Top Right */}
-            <div className="absolute top-0 right-8 w-24 h-24 bg-[#88AAFF] rounded-full"></div>
-            <div className="absolute top-12 right-0 w-16 h-16 bg-[#A8C5FF] rounded-full"></div>
+            <div className="absolute top-0 right-8 w-16 h-16 md:w-24 md:h-24 bg-[#88AAFF] rounded-full"></div>
+            <div className="absolute top-8 md:top-12 right-0 w-10 h-10 md:w-16 md:h-16 bg-[#A8C5FF] rounded-full"></div>
             
             {/* Floating Decorative Circles - Bottom Left */}
-            <div className="absolute bottom-4 left-0 w-14 h-14 bg-[#A8C5FF] rounded-full"></div>
-            <div className="absolute bottom-16 left-12 w-20 h-20 bg-[#88AAFF] rounded-full"></div>
+            <div className="absolute bottom-4 left-0 w-10 h-10 md:w-14 md:h-14 bg-[#A8C5FF] rounded-full"></div>
+            <div className="absolute bottom-12 md:bottom-16 left-8 md:left-12 w-14 h-14 md:w-20 md:h-20 bg-[#88AAFF] rounded-full"></div>
 
             {/* Main Card Container */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-full max-w-lg">
                 {/* Tab/Header at top left - White tabs outside the card */}
-                <div className="absolute top-6 -left-20 z-20 flex flex-col -gap-2">
-                  <div className="bg-white rounded-md w-32 h-8 shadow-lg"></div>
-                  <div className="bg-white/95 rounded-md w-40 h-10 shadow-2xl ml-6"></div>
+                <div className="absolute top-6 -left-12 md:-left-20 z-20 flex flex-col -gap-2">
+                  <div className="bg-white rounded-md w-24 md:w-32 h-6 md:h-8 shadow-lg"></div>
+                  <div className="bg-white/95 rounded-md w-32 md:w-40 h-8 md:h-10 shadow-2xl ml-4 md:ml-6"></div>
                 </div>
 
                 {/* Left Side Decorative Element - Oval shape */}
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/3 z-10">
-                  <div className="w-36 h-12 bg-[#4177FF]/60 rounded-full"></div>
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 md:-translate-x-1/3 z-10">
+                  <div className="w-24 h-8 md:w-36 md:h-12 bg-[#4177FF]/60 rounded-full"></div>
                 </div>
 
                 {/* Main 3D Card */}
                 <div className="relative transform -rotate-6">
                   {/* Card Shadow/Depth Layer */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#4177FF]/40 to-[#10348F]/40 rounded-[3rem] transform -translate-x-4 translate-y-4 blur-xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#4177FF]/40 to-[#10348F]/40 rounded-[2rem] md:rounded-[3rem] transform -translate-x-4 translate-y-4 blur-xl"></div>
                   
                   {/* Third Layer - Lightest (Paling belakang, paling kiri) */}
-                  <div className="absolute inset-0 bg-[#C5D6FF] rounded-[3rem] transform -translate-x-6 translate-y-6"></div>
+                  <div className="absolute inset-0 bg-[#C5D6FF] rounded-[2rem] md:rounded-[3rem] transform -translate-x-6 translate-y-6"></div>
                   
                   {/* Second Layer - Medium */}
-                  <div className="absolute inset-0 bg-[#88AAFF] rounded-[3rem] transform -translate-x-3 translate-y-3"></div>
+                  <div className="absolute inset-0 bg-[#88AAFF] rounded-[2rem] md:rounded-[3rem] transform -translate-x-3 translate-y-3"></div>
                   
                   {/* First Layer - Main Card with Gradient */}
-                  <div className="relative bg-gradient-to-br from-[#4177FF] to-[#10348F] rounded-[3rem] p-10 shadow-2xl overflow-hidden">
+                  <div className="relative bg-gradient-to-br from-[#4177FF] to-[#10348F] rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl overflow-hidden">
                     {/* Subtle overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
                     
                     {/* Card Content Area */}
-                    <div className="relative z-10 h-96">
+                    <div className="relative z-10 h-64 md:h-96">
                       {/* Content placeholder - empty for clean look like the image */}
                     </div>
                   </div>
                 </div>
 
                 {/* Right Bottom Decorative Element - Rounded Rectangle */}
-                <div className="absolute right-0 bottom-12 translate-x-1/4 z-10">
-                  <div className="w-40 h-20 bg-[#4177FF]/50 rounded-lg"></div>
+                <div className="absolute right-0 bottom-8 md:bottom-12 translate-x-1/4 z-10">
+                  <div className="w-28 h-14 md:w-40 md:h-20 bg-[#4177FF]/50 rounded-lg"></div>
                 </div>
               </div>
             </div>

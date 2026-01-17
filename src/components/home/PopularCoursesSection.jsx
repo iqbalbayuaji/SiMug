@@ -134,12 +134,12 @@ export default function PopularCoursesSection() {
   }
 
   return (
-    <section className="relative bg-white py-20">
-      <div className="w-full px-6">
+    <section className="relative bg-white py-12 md:py-20">
+      <div className="w-full px-4 md:px-6">
         {/* Header with Stats Cards */}
-        <div className="relative mb-12 max-w-7xl mx-auto">
-          {/* Left Card - Active Users */}
-          <div className="absolute left-0 top-0 bg-gradient-to-tr from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform -rotate-3">
+        <div className="relative mb-8 md:mb-12 max-w-7xl mx-auto">
+          {/* Left Card - Active Users - Hidden on mobile */}
+          <div className="hidden lg:block absolute left-0 top-0 bg-gradient-to-tr from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform -rotate-3">
             <div className="bg-white rounded-2xl px-6 py-4">
               <p className="text-3xl font-bold text-[#4177FF] opacity-70">12.593+ <span className="text-lg font-normal">user</span></p>
               <p className="text-sm text-[#4177FF] opacity-60">Aktif mengikuti course</p>
@@ -147,11 +147,11 @@ export default function PopularCoursesSection() {
           </div>
 
           {/* Center - Title & Tagline */}
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-3">
+          <div className="text-center pt-0 lg:pt-0">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
               Kursus Terpopuler
             </h2>
-            <p className="text-gray-600 text-base mb-8">
+            <p className="text-gray-600 text-sm md:text-base mb-6 md:mb-8">
               Jelajahi berbagai macam course terpopuler versi SiMug.
             </p>
 
@@ -168,8 +168,8 @@ export default function PopularCoursesSection() {
             </div>
           </div>
 
-          {/* Right Card - Helped Users */}
-          <div className="absolute right-0 top-0 bg-gradient-to-l from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform rotate-3">
+          {/* Right Card - Helped Users - Hidden on mobile */}
+          <div className="hidden lg:block absolute right-0 top-0 bg-gradient-to-l from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform rotate-3">
             <div className="bg-white rounded-2xl px-6 py-4">
               <p className="text-3xl font-bold text-[#4177FF] opacity-70">11.294+ <span className="text-lg font-normal">user</span></p>
               <p className="text-sm text-[#4177FF] opacity-60">Merasa terbantu oleh SiMug</p>
@@ -178,11 +178,11 @@ export default function PopularCoursesSection() {
         </div>
 
         {/* Course Cards with Navigation */}
-        <div className="relative mt-32 max-w-[1400px] mx-auto">
-          {/* Previous Button */}
+        <div className="relative mt-8 lg:mt-32 max-w-[1400px] mx-auto">
+          {/* Previous Button - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -197,7 +197,7 @@ export default function PopularCoursesSection() {
             >
               {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {courses
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
                       .map((course) => (
@@ -270,10 +270,10 @@ export default function PopularCoursesSection() {
             </div>
           </div>
 
-          {/* Next Button */}
+          {/* Next Button - Hidden on mobile */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -80,7 +80,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -120,4 +121,143 @@ body {
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+/* ===== PROFESSIONAL MASCOT ANIMATIONS ===== */
+
+/* Floating animation with 3D feel */
+@keyframes mascot-float-1 {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-15px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-8px) translateX(-3px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(2px);
+  }
+}
+
+@keyframes mascot-float-2 {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-12px) translateX(-8px);
+  }
+  66% {
+    transform: translateY(-18px) translateX(4px);
+  }
+}
+
+@keyframes mascot-float-3 {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  20% {
+    transform: translateY(-10px) translateX(6px);
+  }
+  40% {
+    transform: translateY(-16px) translateX(-2px);
+  }
+  60% {
+    transform: translateY(-8px) translateX(4px);
+  }
+  80% {
+    transform: translateY(-14px) translateX(-4px);
+  }
+}
+
+@keyframes mascot-float-4 {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-22px) translateX(-6px);
+  }
+}
+
+/* Glow pulse animation */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 80px rgba(59, 130, 246, 0.9))
+      drop-shadow(0 0 120px rgba(59, 130, 246, 0.4));
+  }
+}
+
+@keyframes glow-pulse-center {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 60px rgba(59, 130, 246, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 100px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 150px rgba(59, 130, 246, 0.5));
+  }
+}
+
+/* Scale breathing effect */
+@keyframes mascot-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Apply animations */
+.animate-mascot-float-1 {
+  animation:
+    mascot-float-1 4s ease-in-out infinite,
+    glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-mascot-float-2 {
+  animation:
+    mascot-float-2 5s ease-in-out infinite,
+    glow-pulse 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-mascot-float-3 {
+  animation:
+    mascot-float-3 6s ease-in-out infinite,
+    glow-pulse 3.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-mascot-float-4 {
+  animation:
+    mascot-float-4 4.5s ease-in-out infinite,
+    glow-pulse 4.5s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.animate-mascot-center {
+  animation:
+    mascot-breathe 3s ease-in-out infinite,
+    glow-pulse-center 2.5s ease-in-out infinite;
+}
+
+/* Hover enhancement */
+.mascot-hover-effect {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mascot-hover-effect:hover {
+  transform: scale(1.15) translateY(-10px);
+  filter: drop-shadow(0 0 100px rgba(59, 130, 246, 1)) brightness(1.1);
 }
