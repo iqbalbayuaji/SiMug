@@ -178,10 +178,10 @@ export default function CourseDetailPage() {
       </section>
 
       {/* Main Content */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid lg:grid-cols-3 gap-8">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Left Content - Tabs */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 order-2 lg:order-1">
             {/* Tabs Navigation */}
             <div className="flex gap-1 bg-white p-1 rounded-2xl shadow-sm border border-gray-100 mb-8 overflow-x-auto">
               {tabs.map((tab) => (
@@ -452,8 +452,8 @@ export default function CourseDetailPage() {
           </div>
 
           {/* Right Sidebar - Course Info Card */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-[140px]">
+          <div className="lg:col-span-1 order-1 lg:order-2">
+            <div className="lg:sticky lg:top-[100px]">
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                 {/* Video Preview */}
                 <div className="relative aspect-video bg-gray-900">
