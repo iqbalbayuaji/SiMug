@@ -35,7 +35,7 @@ const ForumSuggestions = () => {
         <div className="bg-white rounded-xl shadow-sm border-1 border-gray-100 ">
             <div className="flex justify-between items-center border-b-1 px-5 py-3 border-gray-100">
                 <h3 className="font-semibold text-gray-800 text-base">Saran Forum</h3>
-                <button className="text-blue-500 text-xs font-medium hover:underline">Segarkan ↻</button>
+                <button className="text-blue-500 cursor-pointer text-xs font-medium hover:underline">Segarkan ↻</button>
             </div>
             <div className="space-y-2 px-3 py-2">
                 {suggestions.map((item) => (
@@ -57,7 +57,7 @@ const RelatedTopics = () => {
         <div className="bg-white rounded-xl shadow-sm border-1 border-gray-100">
             <div className="flex justify-between items-center border-b-1 px-5 py-3 border-gray-100">
                 <h3 className="font-semibold text-gray-800 text-base">Topik Relate</h3>
-                <button className="text-blue-500 text-xs font-medium hover:underline">Segarkan ↻</button>
+                <button className="text-blue-500 cursor-pointer text-xs font-medium hover:underline">Segarkan ↻</button>
             </div>
             <div className="space-y-2 px-3 py-4">
                 {topics.map((topic) => (

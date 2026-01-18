@@ -10,7 +10,7 @@ export default function TopicCard({ topic, isSelected, onClick, index }) {
             }}
         >
             <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-2 sm:mb-3 transform transition-transform duration-300 group-hover:rotate-12 ${isSelected ? 'bg-white border-blue-500 shadow-lg' : 'bg-blue-200 border-gray-200'}`}>
-                {typeof topic.icon === 'string' && topic.icon.endsWith('.png') ? (
+                {(typeof topic.icon === 'string' && (topic.icon.includes('/') || topic.icon.includes('.'))) ? (
                     <img src={topic.icon} alt={topic.title} className="w-6 h-6 sm:w-8 sm:h-8 object-contain" />
                 ) : (
                     <span className="text-xl sm:text-2xl">{topic.icon}</span>

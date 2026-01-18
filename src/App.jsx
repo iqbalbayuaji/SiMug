@@ -10,7 +10,9 @@ import CourseDetailPage from './pages/courses/CourseDetailPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'
+
 import ArtikelPage from './pages/ArtikelPage'
+import ForumSearchPage from './pages/ForumSearchPage'
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         <Route path="/courses/:slug" element={<CourseDetailPage />} />
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
+        <Route path="/forum/search" element={<ForumSearchPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
       </Routes>

@@ -42,7 +42,7 @@ export default function ArtikelSidebar() {
     ];
 
     return (
-        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
             {/* Header */}
             <div className="p-4 border-b border-gray-100">
                 <div className="flex items-start justify-between">
