@@ -5,39 +5,39 @@ export default function ArtikelSidebar() {
     const relatedArticles = [
         {
             id: 1,
-            title: "Kenapa Banyak Orang Gagal Konsisten Belajar Bahasa, pa...",
+            title: "Mengapa Banyak Orang Gagal Konsisten Berolahraga, Padahal...",
             author: "Ronald Reynold",
             timeAgo: "2 hari lalu",
             views: "1.5K",
             bookmarks: "5.5K",
-            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=300&fit=crop"
         },
         {
             id: 2,
-            title: "Kenapa Banyak Orang Gagal Konsisten Belajar Bahasa, pa...",
+            title: "Tips Memulai Olahraga untuk Pemula yang Mudah Diterapkan",
             author: "Ronald Reynold",
             timeAgo: "2 hari lalu",
             views: "1.5K",
             bookmarks: "5.5K",
-            image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400&h=300&fit=crop"
+            image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop"
         },
         {
             id: 3,
-            title: "Kenapa Banyak Orang Gagal Konsisten Belajar Bahasa, pa...",
+            title: "Manfaat Olahraga Rutin untuk Kesehatan Mental dan Fisik",
             author: "Ronald Reynold",
             timeAgo: "2 hari lalu",
             views: "1.5K",
             bookmarks: "5.5K",
-            image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop"
+            image: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400&h=300&fit=crop"
         },
         {
             id: 4,
-            title: "Kenapa Banyak Orang Gagal Konsisten Belajar Bahasa, pa...",
+            title: "Cara Membuat Jadwal Olahraga yang Efektif dan Berkelanjutan",
             author: "Ronald Reynold",
             timeAgo: "2 hari lalu",
             views: "1.5K",
             bookmarks: "5.5K",
-            image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&h=300&fit=crop"
+            image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=400&h=300&fit=crop"
         }
     ];
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const threads = [
     {
@@ -81,6 +81,9 @@ const ThreadItem = ({ thread }) => {
 };
 
 export default function ThreadFeed() {
+    const [activeTab, setActiveTab] = useState('Rekomendasi');
+    const tabs = ['Rekomendasi', 'Populer', 'Terbaru'];
+
     return (
         <section>
             <div className="mb-6 flex justify-between items-end">
@@ -89,9 +92,18 @@ export default function ThreadFeed() {
                     <p className="text-gray-500 text-sm">Pantau terus setiap update dari threads</p>
                 </div>
                 <div className="flex bg-gray-100 rounded-full p-1 gap-1">
-                    <button className="px-3 py-1 bg-blue-500 text-white text-xs font-medium rounded-full shadow-sm">Rekomendasi</button>
-                    <button className="px-3 py-1 text-gray-500 hover:text-gray-700 text-xs font-medium rounded-full">Populer</button>
-                    <button className="px-3 py-1 text-gray-500 hover:text-gray-700 text-xs font-medium rounded-full">Terbaru</button>
+                    {tabs.map((tab) => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={`px-3 py-1 text-xs font-medium rounded-full transition-all duration-200 ${activeTab === tab
+                                    ? 'bg-blue-500 text-white shadow-sm'
+                                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200'
+                                }`}
+                        >
+                            {tab}
+                        </button>
+                    ))}
                 </div>
             </div>
 
