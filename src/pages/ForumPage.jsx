@@ -13,13 +13,13 @@ export default function Forum() {
             <Navbar />
 
             {/* 2. Forum Header */}
-            <ForumHeader />
+            <ForumHeader className="animate-slideInLeft" />
 
             {/* 3. Main Content Container */}
             <div className="w-full max-w-7xl mx-auto mt-2">
                 <div className="flex gap-3">
                     {/* Left Column */}
-                    <main className="flex-1 pr-6">
+                    <main className="flex-1 pr-6 animate-slideUp" style={{ animationDelay: '200ms' }}>
                         <TrendingSection />
                         <ActionCards />
                         <ThreadFeed />
@@ -28,7 +28,7 @@ export default function Forum() {
                     </main>
 
                     {/* Right Column */}
-                    <aside className="hidden lg:block flex-shrink-0 w-80">
+                    <aside className="hidden lg:block flex-shrink-0 w-80 animate-slideUp" style={{ animationDelay: '400ms' }}>
                         <ForumSidebar />
                     </aside>
                 </div>

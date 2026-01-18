@@ -11,7 +11,7 @@ export default function ActionCards() {
                     <div className="absolute right-63 top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:-translate-x-4 group-hover:translate-y-2 group-hover:scale-105"></div>
                     <div className="relative z-10 flex flex-row justify-between h-full">
                         <h3 className="font-bold text-lg leading-tight self-center">Tambah<br />Pertanyaan</h3>
-                        <button className="px-4 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-sm font-medium transition-colors shrink-0 self-end">
+                        <button className="cursor-pointer px-4 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-sm font-medium transition-colors shrink-0 self-end">
                             Buat
                         </button>
                     </div>
@@ -27,7 +27,7 @@ export default function ActionCards() {
                     </div>
                     <div className="relative z-10 flex flex-row justify-between h-full">
                         <h3 className="font-bold text-lg leading-tight self-center">Jawab<br />Pertanyaan</h3>
-                        <button className="px-4 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-sm font-medium transition-colors shrink-0 self-end">
+                        <button className="cursor-pointer px-4 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-sm font-medium transition-colors shrink-0 self-end">
                             Jawab
                         </button>
                     </div>
@@ -39,7 +39,7 @@ export default function ActionCards() {
                     <div className="absolute -right-11 top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:translate-x-4 group-hover:translate-y-3 group-hover:scale-105"></div>
                     <div className="relative z-10 flex flex-row justify-between h-full">
                         <h3 className="font-bold text-lg leading-tight self-center">Daftar Tanya<br />dan Jawab</h3>
-                        <button className="px-4 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-sm font-medium transition-colors shrink-0 self-end">
+                        <button className="cursor-pointer px-4 py-1.5 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full text-sm font-medium transition-colors shrink-0 self-end">
                             Lihat
                         </button>
                     </div>

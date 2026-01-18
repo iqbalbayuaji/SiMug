@@ -68,7 +68,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                             <div className="relative" ref={attachDropdownRef}>
                                 <button
                                     onClick={() => setIsAttachDropdownOpen(!isAttachDropdownOpen)}
-                                    className="p-2 bg-white hover:bg-gray-200 border-2 border-gray-200 rounded-full transition-colors duration-200 group"
+                                    className="cursor-pointer p-2 bg-white hover:bg-gray-200 border-2 border-gray-200 rounded-full transition-colors duration-200 group"
                                 >
                                     <svg className="w-5 h-5 text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -82,7 +82,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                                             <button
                                                 key={option.id}
                                                 onClick={() => handleAttachOption(option.id)}
-                                                className="w-full text-left px-4 py-2.5 text-sm transition-colors duration-150 text-gray-700 hover:bg-gray-50 flex items-center space-x-3"
+                                                className="cursor-pointer w-full text-left px-4 py-2.5 text-sm transition-colors duration-150 text-gray-700 hover:bg-gray-50 flex items-center space-x-3"
                                             >
                                                 <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={option.icon} />
@@ -98,7 +98,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                             <div className="relative" ref={dropdownRef}>
                                 <button
                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                    className="flex items-center space-x-3 px-3 py-1.5 bg-white hover:bg-gray-200 rounded-full border border-gray-300 transition-colors duration-200"
+                                    className="cursor-pointer flex items-center space-x-3 px-3 py-1.5 bg-white hover:bg-gray-200 rounded-full border border-gray-300 transition-colors duration-200"
                                 >
                                     <span className="text-sm font-medium text-blue-600">{inputMode}</span>
                                     <svg
@@ -118,7 +118,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                                             <button
                                                 key={mode}
                                                 onClick={() => handleModeSelect(mode)}
-                                                className={`w-full text-left px-4 py-2 text-sm transition-colors duration-150 ${inputMode === mode
+                                                className={`cursor-pointer w-full text-left px-4 py-2 text-sm transition-colors duration-150 ${inputMode === mode
                                                     ? 'bg-blue-50 text-blue-600 font-medium'
                                                     : 'text-gray-700 hover:bg-gray-50'
                                                     }`}
@@ -134,7 +134,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                         {/* Send Button */}
                         <button
                             onClick={onSend}
-                            className="p-3 bg-gradient-to-r from-sky-600 from-0% via-blue-400 via- to-blue-200 to- rounded-full transition-all duration-300 transform hover:scale-110 shadow-md hover:shadow-lg group"
+                            className="cursor-pointer p-3 bg-gradient-to-r from-sky-600 from-0% via-blue-400 via- to-blue-200 to- rounded-full transition-all duration-300 transform hover:scale-110 shadow-md hover:shadow-lg group"
                         >
                             <svg className="w-5 h-5 text-white rotate-90" fill="white" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
