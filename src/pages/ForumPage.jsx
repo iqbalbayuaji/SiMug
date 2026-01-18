@@ -16,8 +16,8 @@ export default function Forum() {
             <ForumHeader className="animate-slideInLeft" />
 
             {/* 3. Main Content Container */}
-            <div className="w-full max-w-7xl mx-auto mt-2">
-                <div className="flex gap-3">
+            <div className="w-full max-w-7xl mx-auto mt-2 px-4 lg:px-0">
+                <div className="flex flex-col lg:flex-row gap-3">
                     {/* Left Column */}
                     <main className="flex-1 pr-6 animate-slideUp" style={{ animationDelay: '200ms' }}>
                         <TrendingSection />

@@ -47,7 +47,41 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
 
     return (
         <div className="max-w-screen max-h-[80px] lg:max-h-screen animate-slideUp animation-delay-1200">
-            <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-4 sm:p-6 transform transition-all duration-300 hover:shadow-xl">
+            {/* Chat container with animated shadow */}
+            <div 
+                className="chat-shadow-container bg-white rounded-3xl p-4 sm:p-6 transform transition-all duration-300"
+            >
+                <style>{`
+                    @keyframes movingShadow {
+                        0% {
+                            box-shadow: 
+                                -12px -8px 20px rgba(61, 107, 245, 0.4),
+                                12px 0px 20px rgba(82, 210, 232, 0.4),
+                                0px 12px 20px rgba(134, 86, 237, 0.4);
+                        }
+                        33% {
+                            box-shadow: 
+                                12px -8px 20px rgba(61, 107, 245, 0.4),
+                                0px 12px 20px rgba(82, 210, 232, 0.4),
+                                -12px 0px 20px rgba(134, 86, 237, 0.4);
+                        }
+                        66% {
+                            box-shadow: 
+                                0px 12px 20px rgba(61, 107, 245, 0.4),
+                                -12px 0px 20px rgba(82, 210, 232, 0.4),
+                                12px -8px 20px rgba(134, 86, 237, 0.4);
+                        }
+                        100% {
+                            box-shadow: 
+                                -12px -8px 20px rgba(61, 107, 245, 0.4),
+                                12px 0px 20px rgba(82, 210, 232, 0.4),
+                                0px 12px 20px rgba(134, 86, 237, 0.4);
+                        }
+                    }
+                    .chat-shadow-container {
+                        animation: movingShadow 4s ease-in-out infinite;
+                    }
+                `}</style>
                 <div className="flex flex-col space-y-4">
                     {/* Input Area */}
                     <div className="flex-1">

@@ -26,37 +26,37 @@ export default function ForumIntroPage() {
             {/* Orbit Animations Container */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
                 {/* Orbit 1 (Smallest) */}
-                <div className="absolute w-[650px] h-[650px] border-[1.5px] border-blue-200 rounded-full animate-spin-slow drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
-                    <div className="absolute top-1/7 left-[8%] w-10 h-10 bg-blue-500 rounded-xl shadow-lg shadow-blue-500/30 flex items-center justify-center animate-reverse-spin transform -rotate-45">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute w-[320px] h-[320px] md:w-[650px] md:h-[650px] border-[1.5px] border-blue-200 rounded-full animate-spin-slow drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
+                    <div className="absolute top-1/7 left-[8%] w-7 h-7 md:w-10 md:h-10 bg-blue-500 rounded-xl shadow-lg shadow-blue-500/30 flex items-center justify-center animate-reverse-spin transform -rotate-45">
+                        <svg className="w-3 h-3 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
                     </div>
                 </div>
 
                 {/* Orbit 2 */}
-                <div className="absolute w-[950px] h-[950px] border-[1.5px] border-blue-200/80 rounded-full animate-spin-slower drop-shadow-[0_0_10px_rgba(59,130,246,0.4)]">
-                    <div className="absolute top-[10%] right-[18%] w-5 h-5 bg-blue-400 rounded-full animate-pulse shadow-md"></div>
-                    <div className="absolute bottom-[16%] left-[10%] w-6 h-6 bg-indigo-300 rounded-full opacity-80"></div>
+                <div className="absolute w-[480px] h-[480px] md:w-[950px] md:h-[950px] border-[1.5px] border-blue-200/80 rounded-full animate-spin-slower drop-shadow-[0_0_10px_rgba(59,130,246,0.4)]">
+                    <div className="absolute top-[10%] right-[18%] w-3 h-3 md:w-5 md:h-5 bg-blue-400 rounded-full animate-pulse shadow-md"></div>
+                    <div className="absolute bottom-[16%] left-[10%] w-4 h-4 md:w-6 md:h-6 bg-indigo-300 rounded-full opacity-80"></div>
                     {/* New Object with Orang Icon */}
-                    <div className="absolute top-[40%] text-transparent right-[-2.5%] w-12 h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-xl shadow-lg flex items-center justify-center animate-reverse-spin-slower">
-                        <img src={iconOrang} alt="User" className="w-7 h-7 object-contain brightness-0 invert" />
+                    <div className="absolute top-[40%] text-transparent right-[-2.5%] w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-xl shadow-lg flex items-center justify-center animate-reverse-spin-slower">
+                        <img src={iconOrang} alt="User" className="w-5 h-5 md:w-7 md:h-7 object-contain brightness-0 invert" />
                     </div>
                 </div>
 
                 {/* Orbit 3 (Largest) */}
-                <div className="absolute w-[1250px] h-[1250px] border-[1.5px] border-blue-200/60 rounded-full animate-spin-slowest drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                    <div className="absolute top-[19%] right-[8%] w-10 h-10 bg-white/60 backdrop-blur-md border-[2px] border-blue-200/80 rounded-full flex items-center justify-center animate-reverse-spin-slowest shadow-sm">
-                        <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full shadow-lg"></div>
+                <div className="absolute w-[600px] h-[600px] md:w-[1250px] md:h-[1250px] border-[1.5px] border-blue-200/60 rounded-full animate-spin-slowest drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                    <div className="absolute top-[19%] right-[8%] w-7 h-7 md:w-10 md:h-10 bg-white/60 backdrop-blur-md border-[2px] border-blue-200/80 rounded-full flex items-center justify-center animate-reverse-spin-slowest shadow-sm">
+                        <div className="w-5 h-5 md:w-8 md:h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full shadow-lg"></div>
                     </div>
                     {/* New Object with Chat Icon */}
-                    <div className="absolute bottom-[10%] right-[15%] w-12 h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-full shadow-lg flex items-center justify-center animate-reverse-spin-slowest">
-                        <img src={iconChat} alt="Chat" className="w-6 h-6 object-contain brightness-0 invert" />
+                    <div className="absolute bottom-[10%] right-[15%] w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-full shadow-lg flex items-center justify-center animate-reverse-spin-slowest">
+                        <img src={iconChat} alt="Chat" className="w-4 h-4 md:w-6 md:h-6 object-contain brightness-0 invert" />
                     </div>
                 </div>
 
                 {/* Additional Floating Elements */}
-                <div className="absolute bottom-40 right-[20%] w-16 h-16 bg-blue-100 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute bottom-40 right-[20%] w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full blur-xl animate-pulse"></div>
             </div>
 
             {/* Main Content */}

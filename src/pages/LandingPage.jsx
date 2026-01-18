@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import gridHiasan from "../assets/images/grid-hiasan.png"
 import ImageCard1 from "../assets/images/fitness_training_card.png"
 import ImageCard2 from "../assets/images/running_progress_card.png"
@@ -8,9 +8,18 @@ import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
 
+// Mascot imports
+import Mascot1 from "../assets/maskot/Gemini_Generated_Image_gl519vgl519vgl51-Photoroom.png"
+import Mascot2 from "../assets/maskot/Gemini_Generated_Image_r5b00gr5b00gr5b0-Photoroom.png"
+import Mascot3 from "../assets/maskot/Gemini_Generated_Image_s8ec4rs8ec4rs8ec-Photoroom.png"
+import Mascot4 from "../assets/maskot/Gemini_Generated_Image_v8wgpqv8wgpqv8wg-Photoroom.png"
+import Mascot5 from "../assets/maskot/Gemini_Generated_Image_vu11m5vu11m5vu11-Photoroom.png"
+
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [mascotScattered, setMascotScattered] = useState(false)
+    const mascotSectionRef = useRef(null)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,23 +29,48 @@ export default function LandingPage() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Intersection Observer for mascot scatter animation (reversible)
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // Set scattered true when entering, false when leaving
+                    setMascotScattered(entry.isIntersecting)
+                })
+            },
+            { threshold: 0.3 }
+        )
+
+        if (mascotSectionRef.current) {
+            observer.observe(mascotSectionRef.current)
+        }
+
+        return () => {
+            if (mascotSectionRef.current) {
+                observer.unobserve(mascotSectionRef.current)
+            }
+        }
+    }, [])
+
     return (
         <div className="min-h-screen relative overflow-hidden ">
-            <div className='absolute opacity-50 h-20 w-20 left-30 top-50 lg:h-40 lg:w-40 lg:left-110 lg:top-50'>
+            {/* Decorative Grid Patterns - Hidden on small mobile */}
+            <div className='hidden sm:block absolute opacity-50 h-20 w-20 left-30 top-50 lg:h-40 lg:w-40 lg:left-110 lg:top-50'>
                 <img src={gridHiasan} alt="" />
             </div>
 
-            <div className='absolute opacity-50 h-30 w-30 -right-20 top-15 lg:h-40 lg:w-40 lg:-right-20 lg:top-30'>
+            <div className='hidden sm:block absolute opacity-50 h-30 w-30 -right-20 top-15 lg:h-40 lg:w-40 lg:-right-20 lg:top-30'>
                 <img src={gridHiasan} alt="" />
             </div>
 
-            <div className="absolute lg:-left-48 lg:top-210 lg:-translate-y-50 -left-48 top-100 translate-y-50 w-70 h-30 lg:w-110 lg:h-100 rounded-full bg-blue-500 blur-3xl lg:blur-3xl lg:opacity-100 opacity-70" />
-            <div className="absolute lg:-left-48 lg:top-220 lg:-translate-y-50 -left-48 top-100 translate-y-50 w-70 h-50 lg:w-100 lg:h-80 rounded-full bg-blue-500 blur-xl lg:blur-xl lg:opacity-70 opacity-50" />
+            {/* Decorative Blobs - More subtle and comfortable */}
+            <div className="hidden md:block absolute lg:-left-32 lg:top-[750px] -left-24 top-[500px] w-40 h-40 lg:w-80 lg:h-80 rounded-full bg-blue-400/40 blur-[100px]" />
+            <div className="hidden md:block absolute lg:-left-20 lg:top-[800px] -left-16 top-[550px] w-32 h-32 lg:w-60 lg:h-60 rounded-full bg-blue-300/30 blur-[80px]" />
 
-            <div className="absolute lg:top-170 top-170 left-1/2 -translate-x-1/2 w-380 h-70 rounded-full bg-blue-500 blur-3xl opacity-40" />
+            <div className="hidden lg:block absolute top-[850px] left-1/2 -translate-x-1/2 w-[500px] h-32 rounded-full bg-blue-300/25 blur-[120px]" />
 
-            <div className="absolute lg:-right-48 lg:top-210 lg:-translate-y-50 -right-48 top-100 translate-y-50 w-70 h-30 lg:w-110 lg:h-100 rounded-full bg-blue-500 blur-3xl lg:blur-3xl lg:opacity-100 opacity-70" />
-            <div className="absolute lg:-right-48 lg:top-220 lg:-translate-y-50 -right-48 top-100 translate-y-50 w-70 h-50 lg:w-100 lg:h-80 rounded-full bg-blue-500 blur-xl lg:blur-xl lg:opacity-70 opacity-50" />
+            <div className="hidden md:block absolute lg:-right-32 lg:top-[750px] -right-24 top-[500px] w-40 h-40 lg:w-80 lg:h-80 rounded-full bg-blue-400/40 blur-[100px]" />
+            <div className="hidden md:block absolute lg:-right-20 lg:top-[800px] -right-16 top-[550px] w-32 h-32 lg:w-60 lg:h-60 rounded-full bg-blue-300/30 blur-[80px]" />
 
             {/* Navigation Bar */}
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'
@@ -163,7 +197,7 @@ export default function LandingPage() {
                         </p>
 
                         {/* CTA Button */}
-                        <div className="pt-15 pb-20">
+                        <div className="pt-15 pb-10">
                             <Link
                                 to="/register"
                                 className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
@@ -175,9 +209,89 @@ export default function LandingPage() {
                             </Link>
                         </div>
 
+                        {/* Mascot Section with Scatter Animation */}
+                        <div 
+                            ref={mascotSectionRef}
+                            className="relative h-[350px] md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
+                        >
+                            {/* Mascot 1 - Center (main character with breathing effect) */}
+                            <div 
+                                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                    transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                                    ${mascotScattered ? 'scale-125' : 'scale-100'}`}
+                            >
+                                <img 
+                                    src={Mascot1} 
+                                    alt="Mascot Center" 
+                                    className={`w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain 
+                                        ${mascotScattered ? 'animate-mascot-center mascot-hover-effect' : 'drop-shadow-[0_0_60px_rgba(59,130,246,0.7)]'}`}
+                                />
+                            </div>
+
+                            {/* Mascot 2 - Top Left */}
+                            <div 
+                                className={`absolute transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                                    ${mascotScattered 
+                                        ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100' 
+                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                            >
+                                <img 
+                                    src={Mascot2} 
+                                    alt="Mascot Top Left" 
+                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                        ${mascotScattered ? 'animate-mascot-float-1 mascot-hover-effect' : ''}`}
+                                />
+                            </div>
+
+                            {/* Mascot 3 - Top Right */}
+                            <div 
+                                className={`absolute transition-all duration-900 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-75
+                                    ${mascotScattered 
+                                        ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100' 
+                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                            >
+                                <img 
+                                    src={Mascot3} 
+                                    alt="Mascot Top Right" 
+                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                        ${mascotScattered ? 'animate-mascot-float-2 mascot-hover-effect' : ''}`}
+                                />
+                            </div>
+
+                            {/* Mascot 4 - Bottom Left */}
+                            <div 
+                                className={`absolute transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-150
+                                    ${mascotScattered 
+                                        ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100' 
+                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                            >
+                                <img 
+                                    src={Mascot4} 
+                                    alt="Mascot Bottom Left" 
+                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                        ${mascotScattered ? 'animate-mascot-float-3 mascot-hover-effect' : ''}`}
+                                />
+                            </div>
+
+                            {/* Mascot 5 - Bottom Right */}
+                            <div 
+                                className={`absolute transition-all duration-1100 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-200
+                                    ${mascotScattered 
+                                        ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100' 
+                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                            >
+                                <img 
+                                    src={Mascot5} 
+                                    alt="Mascot Bottom Right" 
+                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                        ${mascotScattered ? 'animate-mascot-float-4 mascot-hover-effect' : ''}`}
+                                />
+                            </div>
+                        </div>
+
                         {/* Social Proof Stats */}
-                        <div className="mx-10">
-                            <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-8 lg:px-7 lg:py-5">
+                        <div className="mx-2 sm:mx-4 md:mx-10">
+                            <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
                                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 items-center h-full">
                                     {/* Title */}
                                     <div className="lg:col-span-1 text-left">
@@ -224,8 +338,8 @@ export default function LandingPage() {
                 </div>
             </main>
 
-            {/* Why Choose SiMug Section */}
-            <div className="relative h-35 bg-gradient-to-b from-blue-500/90 via-blue-300/50 to-white"></div>
+            {/* Why Choose SiMug Section - Smooth blue transition */}
+            <div className="relative -mt-36 mb-16 h-40 bg-gradient-to-b from-white via-blue-400/80 to-white"></div>
             <section className="relative bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Section Header */}

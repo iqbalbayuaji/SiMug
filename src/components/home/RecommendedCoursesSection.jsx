@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+import { FaStar } from "react-icons/fa"
 
 export default function RecommendedCoursesSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -90,7 +92,7 @@ export default function RecommendedCoursesSection() {
     }
   ]
 
-  const cardsPerSlide = 3
+  const cardsPerSlide = 4
   const totalSlides = Math.ceil(courses.length / cardsPerSlide)
 
   const nextSlide = () => {
@@ -102,38 +104,38 @@ export default function RecommendedCoursesSection() {
   }
 
   return (
-    <section className="relative bg-white py-20">
-      <div className="w-full px-6">
+    <section className="relative bg-white py-8 md:py-16">
+      <div className="w-full px-4 md:px-6">
         {/* Header */}
-        <div className="max-w-[1500px] mx-auto mb-12">
-          <div className="flex items-start justify-between">
+        <div className="max-w-[1500px] mx-auto mb-8 md:mb-12">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
             <div className="flex gap-3">
               {/* Blue Border Line */}
               <div className="w-1 bg-[#4177FF] rounded-full"></div>
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-3">
+                <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2 md:mb-3">
                   Kursus Rekomendasi
                 </h2>
-                <p className="text-gray-600 text-base">
+                <p className="text-gray-600 text-sm md:text-base">
                   Berikut ini adalah beberapa course yang direkomendasikan SiMug
                 </p>
               </div>
             </div>
-            <button className="text-[#4177FF] font-semibold flex items-center gap-2 px-6 py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors">
+            <Link to="/courses" className="text-[#4177FF] font-semibold flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-sm md:text-base self-start">
               Telusuri Lebih banyak
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Course Cards with Navigation */}
         <div className="relative max-w-[1400px] mx-auto">
-          {/* Previous Button */}
+          {/* Previous Button - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -148,14 +150,14 @@ export default function RecommendedCoursesSection() {
             >
               {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                 <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
                     {courses
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
                       .map((course) => (
                         <div key={course.id} className="w-full">
-                          <div className="bg-white rounded-3xl border border-[#DBDBDB] shadow-lg overflow-hidden hover:shadow-xl transition-shadow h-full">
+                          <Link to="/courses" className="block h-full border border-[#DBDBDB] rounded-2xl p-3 hover:border-blue-300 hover:shadow-lg transition-all">
                             {/* Course Image */}
-                            <div className="relative h-54 bg-gray-800 m-4 rounded-2xl overflow-hidden">
+                            <div className="relative h-40 bg-gray-800 rounded-xl overflow-hidden mb-3">
                               <img
                                 src={course.image}
                                 alt={course.title}
@@ -165,54 +167,54 @@ export default function RecommendedCoursesSection() {
                                 }}
                               />
                               {/* Free Trial Badge */}
-                              <div className="absolute top-4 right-4 bg-white px-5 py-2 rounded-full text-sm font-semibold shadow-md">
+                              <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
                                 {course.badge}
                               </div>
                             </div>
 
                             {/* Course Info */}
-                            <div className="px-6 pb-6">
-                              <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 min-h-[56px]">
+                            <div>
+                              <h3 className="font-bold text-base text-gray-900 leading-tight line-clamp-2 mb-2 min-h-[40px]">
                                 {course.title}
                               </h3>
 
-                              <p className="text-sm text-gray-400 mb-4">
+                              <p className="text-xs text-gray-400 mb-3">
                                 {course.instructor} • {course.duration}
                               </p>
 
                               {/* Stats - Simple Pill Style */}
-                              <div className="flex flex-wrap gap-2 mb-4">
-                                <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-700">
-                                  <span className="text-yellow-400">⭐</span>
+                              <div className="flex flex-wrap gap-1.5 mb-2">
+                                <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-700">
+                                  <FaStar className="text-yellow-400 text-xs" />
                                   <span className="font-semibold">{course.rating}</span>
                                 </div>
-                                <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
+                                <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
                                   {course.totalRatings}
                                 </div>
-                                <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
+                                <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
                                   {course.materials}
                                 </div>
-                                <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
+                                <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
                                   {course.time}
                                 </div>
                               </div>
 
-                              <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-4">
+                              <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-3">
                                 {course.category}
                               </div>
 
                               {/* Price & CTA */}
                               <div className="flex items-center justify-between gap-2">
                                 <p className="text-2xl font-bold text-[#4177FF]">{course.price}</p>
-                                <button className="bg-[#E5ECFF] text-[#4177FF] px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#D0DFFF] transition-colors flex items-center gap-1 whitespace-nowrap">
-                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <span className="bg-[#E5ECFF] text-[#4177FF] px-3 py-1.5 rounded-sm text-base font-semibold flex items-center gap-1 whitespace-nowrap">
+                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                   </svg>
                                   Mulai Belajar
-                                </button>
+                                </span>
                               </div>
                             </div>
-                          </div>
+                          </Link>
                         </div>
                       ))}
                   </div>
@@ -221,10 +223,10 @@ export default function RecommendedCoursesSection() {
             </div>
           </div>
 
-          {/* Next Button */}
+          {/* Next Button - Hidden on mobile */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
