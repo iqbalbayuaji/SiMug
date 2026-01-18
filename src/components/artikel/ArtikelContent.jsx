@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ArtikelContent() {
+    const [isLiked, setIsLiked] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
+
     return (
         <article className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
             {/* Featured Image with Padding */}
             <div className="p-5">
-                <div className="relative w-full h-96 bg-gradient-to-br from-amber-100 to-amber-200 overflow-hidden rounded-xl group">
+                <div className="relative w-full h-96 bg-gradient-to-br from-blue-100 to-blue-200 overflow-hidden rounded-xl group">
                     <img
-                        src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=400&fit=crop"
+                        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=400&fit=crop"
                         alt="Featured Article"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -34,7 +37,7 @@ export default function ArtikelContent() {
             <div className="px-8 pb-8">
                 {/* Title */}
                 <h1 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
-                    Belajar Bahasa itu "Bukan Sekadar Hafalan" aja, tapi juga Proses Bertumbuh.
+                    Olahraga itu "Bukan Sekadar Aktivitas Fisik" aja, tapi juga Proses Bertumbuh.
                 </h1>
 
                 {/* Author & Meta Info */}
@@ -47,20 +50,32 @@ export default function ArtikelContent() {
                         />
                         <div>
                             <p className="text-sm font-semibold text-gray-900">Imam Hambali</p>
-                            <p className="text-xs text-gray-500">2 mingu lalu</p>
+                            <p className="text-xs text-gray-500">2 minggu lalu</p>
                         </div>
                     </div>
 
                     {/* Action Buttons */}
                     <div className="ml-auto flex items-center gap-2">
-                        <button className="px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button
+                            onClick={() => setIsLiked(!isLiked)}
+                            className={`px-4 py-2 border rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${isLiked
+                                ? 'border-red-500 bg-red-50 text-red-600'
+                                : 'border-gray-200 text-gray-700 hover:bg-gray-50'
+                                }`}
+                        >
+                            <svg className="w-4 h-4" fill={isLiked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                             Suka
                         </button>
-                        <button className="px-4 py-2 border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button
+                            onClick={() => setIsSaved(!isSaved)}
+                            className={`px-4 py-2 border rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${isSaved
+                                    ? 'border-blue-500 bg-blue-50 text-blue-600'
+                                    : 'border-gray-200 text-gray-700 hover:bg-gray-50'
+                                }`}
+                        >
+                            <svg className="w-4 h-4" fill={isSaved ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
                             </svg>
                             Simpan
@@ -76,32 +91,32 @@ export default function ArtikelContent() {
                 {/* Article Body */}
                 <div className="prose prose-lg max-w-none">
                     <p className="text-gray-700 leading-relaxed mb-4">
-                        Belajar bahasa sering kali dianggap sebagai <em className="italic font-medium">proses yang rumit dan melelahkan</em>. Banyak orang memulainya dengan semangat tinggi, namun berhenti di tengah jalan karena merasa <strong className="font-semibold">tidak berkembang</strong>. Padahal, inti dari belajar bahasa bukanlah seberapa banyak kosakata yang dihafal, melainkan bagaimana <strong className="font-semibold">proses belajar justru menjadi terhambat</strong>.
+                        Berolahraga sering kali dianggap sebagai <em className="italic font-medium">aktivitas yang melelahkan dan membosankan</em>. Banyak orang memulainya dengan semangat tinggi, namun berhenti di tengah jalan karena merasa <strong className="font-semibold">tidak ada perubahan signifikan</strong>. Padahal, inti dari berolahraga bukanlah seberapa berat latihan yang dilakukan, melainkan bagaimana <strong className="font-semibold">konsistensi dalam prosesnya</strong>.
                     </p>
 
                     <p className="text-gray-700 leading-relaxed mb-4">
-                        Kesalahan itu bagian alami dari pembelajaran bahasa. <em className="italic">Semakin sering salah</em>, semakin terbentuk pula intuisi berbahasa yang kuat.
+                        Kelelahan dan rasa sakit otot adalah bagian alami dari proses latihan. <em className="italic">Semakin konsisten berlatih</em>, semakin kuat pula tubuh dan mental kita terbentuk.
                     </p>
 
                     <p className="text-gray-700 leading-relaxed mb-6">
-                        Bahasa adalah alat komunikasi, bukan kumpulan rumus. Ketika seseorang terlalu fokus pada kesempurnaan—takut salah grammar, takut pengucapan keliru—proses belajar justru menjadi terhambat. Kesalahan itu bagian alami dari pembelajaran bahasa. <em className="italic font-medium">Semakin sering salah</em>, semakin terbentuk pula intuisi berbahasa yang kuat.
+                        Olahraga adalah investasi untuk kesehatan, bukan sekadar rutinitas. Ketika seseorang terlalu fokus pada hasil instan—takut tidak langsung kurus, takut tidak langsung berotot—proses latihan justru menjadi terhambat. Kelelahan dan tantangan adalah bagian alami dari olahraga. <em className="italic font-medium">Semakin konsisten berlatih</em>, semakin kuat pula tubuh dan mental kita terbentuk.
                     </p>
 
                     {/* Quote/Highlight */}
                     <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-[#4177FF] p-6 rounded-r-xl my-6">
                         <p className="text-lg font-medium text-gray-800 italic">
-                            "Bahasa adalah alat komunikasi, bukan kumpulan rumus. Ketika seseorang terlalu fokus pada kesempurnaan—takut salah grammar, takut pengucapan keliru—proses belajar justru menjadi terhambat. Kesalahan itu bagian alami dari pembelajaran bahasa."
+                            "Olahraga adalah investasi untuk kesehatan, bukan sekadar rutinitas. Ketika seseorang terlalu fokus pada hasil instan—takut tidak langsung kurus, takut tidak langsung berotot—proses latihan justru menjadi terhambat. Konsistensi adalah kunci dari segala pencapaian."
                         </p>
                     </div>
 
-                    <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Mengapa Proses Lebih Penting?</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Mengapa Konsistensi Lebih Penting?</h2>
 
                     <p className="text-gray-700 leading-relaxed mb-4">
-                        Belajar bahasa bukan hanya tentang menghafal kata-kata atau aturan tata bahasa. Ini adalah perjalanan yang melibatkan pemahaman budaya, konteks, dan cara berpikir yang berbeda. Setiap kesalahan yang kita buat adalah kesempatan untuk belajar dan tumbuh.
+                        Berolahraga bukan hanya tentang membakar kalori atau membentuk otot. Ini adalah perjalanan yang melibatkan disiplin, kesabaran, dan komitmen jangka panjang. Setiap sesi latihan yang kita lakukan adalah investasi untuk kesehatan masa depan.
                     </p>
 
                     <p className="text-gray-700 leading-relaxed">
-                        Jadi, jangan takut untuk mencoba dan membuat kesalahan. Nikmati prosesnya, dan Anda akan menemukan bahwa belajar bahasa bisa menjadi pengalaman yang menyenangkan dan memuaskan.
+                        Jadi, jangan takut untuk memulai dan menghadapi tantangan. Nikmati prosesnya, dan Anda akan menemukan bahwa berolahraga bisa menjadi pengalaman yang menyenangkan dan memuaskan.
                     </p>
                 </div>
             </div>

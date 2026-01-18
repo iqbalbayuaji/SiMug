@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const trendingArticles = [
     {
@@ -32,8 +33,9 @@ export default function TrendingSection() {
         <section className="mb-1 mt-2">
             <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x">
                 {trendingArticles.map((article) => (
-                    <div
+                    <Link
                         key={article.id}
+                        to="/artikel"
                         className="flex-shrink-0 w-[300px] h-[200px] relative rounded-xl overflow-hidden shadow-md cursor-pointer group snap-center"
                     >
                         <img
@@ -59,7 +61,7 @@ export default function TrendingSection() {
                                 <span>{article.time}</span>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </section>
