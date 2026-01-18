@@ -7,6 +7,7 @@ import ChatbotPage from './pages/ChatbotPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'
+import ArtikelPage from './pages/ArtikelPage'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/chatbot" element={<ChatbotPage />} />
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
+        <Route path="/artikel" element={<ArtikelPage />} />
+        <Route path="/artikel/:id" element={<ArtikelPage />} />
       </Routes>
     </Router>
   )

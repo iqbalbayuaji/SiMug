@@ -1,14 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import iconOrang from '../../assets/icon/orang.png';
 
-export default function ForumHeader() {
+export default function ForumHeader({
+    showBackButton = false,
+    backTo = "/forum",
+    title = "Artikel Trend Minggu Ini",
+    subtitle = "Berikut artikel yang trending minggu ini"
+}) {
     return (
         <div className="bg-white py-3 px-6 sticky top-0 z-40">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                {/* Left Side: Page Title */}
+                {/* Left Side: Page Title or Back Button */}
                 <div className="flex-1">
-                    <h1 className="text-2xl font-semibold text-gray-800">Artikel Trend Minggu Ini</h1>
-                    <p className="text-gray-500 text-sm mt-1">Berikut artikel yang trending minggu ini</p>
+                    {showBackButton ? (
+                        <Link
+                            to={backTo}
+                            className="inline-flex items-center gap-2 text-[#4177FF] hover:text-[#5B8FFF] transition-colors font-medium text-base"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Kembali
+                        </Link>
+                    ) : (
+                        <>
+                            <h1 className="text-2xl font-semibold text-gray-800">{title}</h1>
+                            <p className="text-gray-500 text-sm mt-1">{subtitle}</p>
+                        </>
+                    )}
                 </div>
 
                 <div className="flex items-center gap-3 w-full md:w-auto">
