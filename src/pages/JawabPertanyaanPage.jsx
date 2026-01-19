@@ -122,7 +122,7 @@ const questionTypes = [
 ];
 
 const relevantTopics = [
-    'Bahasa', 'Percakapan', 'Ngobrol', 'Inggris', 'IELTS', 'TOEFL', 'Jepang', 'Korea', 'Mandarin', 'Grammar', 'Vocabulary'
+    'Lari Pagi', 'Gym', 'Calisthenics', 'Diet Sehat', 'Kardio', 'Yoga', 'Renang', 'Sepeda', 'Marathon', 'Otot', 'Nutrisi'
 ];
 
 export default function JawabPertanyaanPage() {
