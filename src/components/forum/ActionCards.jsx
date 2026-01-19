@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ActionCards() {
+    const navigate = useNavigate();
     return (
         <section className="mb-5">
             <h2 className="text-xl font-bold text-gray-800 mb-4">Tambah atau Jawab Diskusi</h2>
@@ -18,7 +20,10 @@ export default function ActionCards() {
                 </div>
 
                 {/* Jawab Pertanyaan */}
-                <div className="h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#4F86F7] to-[#4578E6] text-white shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
+                <div
+                    onClick={() => navigate('/jawab-pertanyaan')}
+                    className="h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#4F86F7] to-[#4578E6] text-white shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1"
+                >
                     <div className="absolute -left-10 bottom-12 w-24 h-24 border-10 border-white/13 rounded-full pointer-events-none flex items-center justify-center transition-all duration-500 ease-out group-hover:-translate-x-2 group-hover:translate-y-3 group-hover:scale-110">
                         <div className="w-15 h-15 border-10 border-white/20 rounded-full transition-all duration-500 ease-out group-hover:rotate-90"></div>
                     </div>
