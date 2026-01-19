@@ -5,6 +5,8 @@ import ProgressHeader from "../components/progress/ProgressHeader"
 import StatsCards from "../components/progress/StatsCards"
 import MainContent from "../components/progress/MainContent"
 import CalendarSection from "../components/progress/CalendarSection"
+import KursusTab from "../components/progress/KursusTab"
+import SertifikatTab from "../components/progress/SertifikatTab"
 
 export default function ProgressPage() {
   const [activeTab, setActiveTab] = useState("beranda")
@@ -65,20 +67,28 @@ export default function ProgressPage() {
           setActiveTab={setActiveTab}
         />
 
-        <StatsCards />
+        {activeTab === "beranda" && (
+          <>
+            <StatsCards />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <MainContent recentLearning={recentLearning} />
-          
-          <CalendarSection 
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-            daysInMonth={daysInMonth}
-            startDay={startDay}
-            currentDay={currentDay}
-            getDayClass={getDayClass}
-          />
-        </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <MainContent recentLearning={recentLearning} />
+              
+              <CalendarSection 
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                daysInMonth={daysInMonth}
+                startDay={startDay}
+                currentDay={currentDay}
+                getDayClass={getDayClass}
+              />
+            </div>
+          </>
+        )}
+
+        {activeTab === "kursus" && <KursusTab />}
+
+        {activeTab === "sertifikat" && <SertifikatTab />}
       </div>
 
       <Footer />
