@@ -14,6 +14,7 @@ import Forum from './pages/ForumPage'
 
 import ArtikelPage from './pages/ArtikelPage'
 import ForumSearchPage from './pages/ForumSearchPage'
+import JawabPertanyaanPage from './pages/JawabPertanyaanPage'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/forum/search" element={<ForumSearchPage />} />
+        <Route path="/jawab-pertanyaan" element={<JawabPertanyaanPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
       </Routes>
