@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 export default function ActionCards() {
     const navigate = useNavigate();
     return (
-        <section className="mb-5">
-            <h2 className="text-lg lg:text-xl font-bold text-gray-800 lg:mb-4 mb-2 mt-2">Tambah atau Jawab Diskusi</h2>
+        <section className="lg:mb-5">
+            <h2 className="text-lg lg:text-xl font-bold text-gray-800 lg:mb-4 mb-3.5 ">Tambah atau Jawab Diskusi</h2>
             <div className="flex overflow-x-auto pb-4 gap-4 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0">
                 {/* Tambah Artikel */}
-                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
+                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-md lg:shadow-lg shadow-cyan-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
                     <div className="absolute -left-10 -top-10 w-20 h-20 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:scale-110"></div>
                     <div className="absolute -right-8 bottom-8 w-20 h-20 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:translate-y-3 group-hover:scale-105"></div>
                     <div className="relative z-10 flex flex-row justify-between h-full">
@@ -19,7 +19,7 @@ export default function ActionCards() {
                     </div>
                 </div>
                 {/* Tambah Pertanyaan */}
-                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
+                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-md lg:shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
                     <div className="absolute -right-11 -top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:-translate-y-3 group-hover:scale-110"></div>
                     <div className="absolute right-45 top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:-translate-x-4 group-hover:translate-y-2 group-hover:scale-105"></div>
                     <div className="relative z-10 flex flex-row justify-between h-full">
@@ -33,7 +33,7 @@ export default function ActionCards() {
                 {/* Jawab Pertanyaan */}
                 <div
                     onClick={() => navigate('/jawab-pertanyaan')}
-                    className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#4F86F7] to-[#4578E6] text-white shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1"
+                    className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#4F86F7] to-[#4578E6] text-white shadow-md lg:shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1"
                 >
                     <div className="absolute -left-10 bottom-12 w-24 h-24 border-10 border-white/13 rounded-full pointer-events-none flex items-center justify-center transition-all duration-500 ease-out group-hover:-translate-x-2 group-hover:translate-y-3 group-hover:scale-110">
                         <div className="w-15 h-15 border-10 border-white/20 rounded-full transition-all duration-500 ease-out group-hover:rotate-90"></div>
@@ -50,7 +50,7 @@ export default function ActionCards() {
                 </div>
 
                 {/* Daftar Tanya Jawab */}
-                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#7AA0FA] to-[#688DEB] text-white shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
+                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#7AA0FA] to-[#688DEB] text-white shadow-md lg:shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
                     <div className="absolute right-45 -top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:-translate-x-3 group-hover:-translate-y-2 group-hover:scale-110"></div>
                     <div className="absolute -right-11 top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:translate-x-4 group-hover:translate-y-3 group-hover:scale-105"></div>
                     <div className="relative z-10 flex flex-row justify-between h-full">

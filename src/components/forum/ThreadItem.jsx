@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 
-const ThreadItem = ({ thread }) => {
+const ThreadItem = ({ thread, isFirst = false }) => {
     const [activeTab, setActiveTab] = useState('Rekomendasi');
     const tabs = ['Rekomendasi', 'Populer', 'Terbaru'];
 
     return (
         <div className="bg-white rounded-xl lg:p-6 p-4 shadow-sm border border-gray-100 mb-6 last:mb-0">
-            <div className="flex justify-end lg:hidden mb-3">
-                <div className="relative">
-                    <span className="text-blue-600 text-sm font-semibold flex items-center gap-1.5 bg-blue-50/50 px-3 py-1.5 rounded-full">
-                        {activeTab}
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                    <select
-                        value={activeTab}
-                        onChange={(e) => setActiveTab(e.target.value)}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    >
-                        {tabs.map((tab) => (
-                            <option key={tab} value={tab}>{tab}</option>
-                        ))}
-                    </select>
+            {isFirst && (
+                <div className="flex justify-end lg:hidden mb-3">
+                    <div className="relative">
+                        <span className="text-blue-600 text-sm font-semibold flex items-center gap-1.5 bg-blue-50/50 px-3 py-1.5 rounded-full">
+                            {activeTab}
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </span>
+                        <select
+                            value={activeTab}
+                            onChange={(e) => setActiveTab(e.target.value)}
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        >
+                            {tabs.map((tab) => (
+                                <option key={tab} value={tab}>{tab}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-            </div>
+            )}
             <div className="grid grid-cols-[40px_1fr] gap-x-4">
                 {/* Row 1: Avatar & Header */}
                 <div className={`w-10 h-10 ${thread.avatarColor} rounded-full`}></div>
@@ -66,7 +68,7 @@ const ThreadItem = ({ thread }) => {
             <div className="flex items-center gap-4 mt-4 ml-[56px] text-xs font-medium text-gray-500">
 
                 {/* Placeholder buttons based on design, can be dynamic later */}
-                <div className="flex items-center gap-4 pr-2">
+                <div className="flex items-center lg:gap-4 gap-2 pr-2">
                     <button className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
                         {thread.answerCount || '1 Jawaban'}
                     </button>

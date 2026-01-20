@@ -45,7 +45,7 @@ export default function ThreadFeed() {
     return (
         <section>
             <div className="mb-4 lg:mb-6 flex flex-col sm:flex-row justify-between sm:items-end gap-4 sm:gap-0">
-                <div className="">
+                <div className="lg:mb-0 mb-1.5">
                     <h2 className="text-lg lg:text-xl font-bold text-gray-800">Threads dan Diskusi Harian</h2>
                     <p className="text-gray-500 text-xs lg:text-sm">Pantau terus setiap update dari threads</p>
                 </div>
@@ -66,8 +66,8 @@ export default function ThreadFeed() {
             </div>
 
             <div>
-                {threads.map(thread => (
-                    <ThreadItem key={thread.id} thread={thread} />
+                {threads.map((thread, index) => (
+                    <ThreadItem key={thread.id} thread={thread} isFirst={index === 0} />
                 ))}
             </div>
         </section>

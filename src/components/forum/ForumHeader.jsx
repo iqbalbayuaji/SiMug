@@ -40,7 +40,7 @@ export default function ForumHeader({
                         </Link>
                     ) : (
                         <>
-                            <h1 className="hidden lg:block text-2xl font-semibold text-gray-800">{title}</h1>
+                            <h1 className="hidden lg:block text-2xl font-bold text-gray-800">{title}</h1>
                             <p className="hidden lg:block text-gray-500 text-sm mt-1">{subtitle}</p>
                         </>
                     )}
