@@ -49,7 +49,7 @@ export default function Navbar() {
   const menuItems = [
     { name: "Home", path: "/home" },
     { name: "Progres", path: "/progress" },
-    { name: "Course", path: "/course", hasDropdown: true },
+    { name: "Course", path: "/courses", hasDropdown: true },
     { name: "Events", path: "/events", hasDropdown: true },
     { name: "Forum", path: "/forum" },
     { name: "SiMug AI", path: "/chatbot" }

@@ -1,8 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { FaStar, FaLock, FaPlay, FaCertificate, FaUsers, FaClock, FaCheckCircle, FaBookOpen, FaLaptop, FaInfinity, FaDownload, FaHeart, FaRegHeart, FaChevronDown, FaChevronRight, FaQuoteLeft, FaGraduationCap, FaRocket, FaBriefcase, FaCode } from 'react-icons/fa'
+import { FaStar, FaPlay, FaCertificate, FaUsers, FaClock, FaCheckCircle, FaBookOpen, FaLaptop, FaInfinity, FaDownload, FaHeart, FaRegHeart, FaChevronRight, FaRocket } from 'react-icons/fa'
 import { HiSparkles, HiAcademicCap, HiLightningBolt, HiShieldCheck } from 'react-icons/hi'
 import Navbar from '../../components/layout/Navbar'
+import Footer from '../../components/layout/Footer'
+import OverviewTab from '../../components/courses/OverviewTab'
+import CurriculumTab from '../../components/courses/CurriculumTab'
+import InstructorTab from '../../components/courses/InstructorTab'
+import ReviewsTab from '../../components/courses/ReviewsTab'
 import { getCourseBySlug, getRelatedCourses, formatPrice } from '../../constants/coursesData'
 
 export default function CourseDetailPage() {
@@ -14,7 +19,6 @@ export default function CourseDetailPage() {
   const [relatedCourses, setRelatedCourses] = useState([])
   const [isWishlisted, setIsWishlisted] = useState(false)
   const [showVideoModal, setShowVideoModal] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const contentRef = useRef(null)
 
   useEffect(() => {
@@ -26,16 +30,6 @@ export default function CourseDetailPage() {
       navigate('/courses')
     }
   }, [slug, navigate])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
-      setScrollProgress((scrolled / maxScroll) * 100)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const toggleModule = (moduleId) => {
     setExpandedModules(prev =>
@@ -63,37 +57,20 @@ export default function CourseDetailPage() {
     { id: 'reviews', label: 'Reviews', icon: FaStar },
   ]
 
-  // Calculate rating breakdown
-  const ratingBreakdown = {
-    5: 75,
-    4: 15,
-    3: 7,
-    2: 2,
-    1: 1,
-  }
-
-  // Target audience data
-  const targetAudience = [
-    { icon: FaGraduationCap, text: 'Mahasiswa yang ingin mendalami skill baru' },
-    { icon: FaRocket, text: 'Fresh graduate yang ingin meningkatkan daya saing' },
-    { icon: FaBriefcase, text: 'Profesional yang ingin career switch' },
-    { icon: FaCode, text: 'Developer yang ingin upgrade skill' },
-  ]
-
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
       <Navbar />
       
       {/* Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-white/20 backdrop-blur-sm">
+      {/* <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-white/20 backdrop-blur-sm">
         <div 
           className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
-      </div>
+      </div> */}
 
       {/* Hero Section - Modern Glassmorphism */}
-      <section className="relative min-h-[60vh] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
+      <section className="relative min-h-[60vh] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden border-b-0">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-full">
@@ -267,7 +244,7 @@ export default function CourseDetailPage() {
       </section>
 
       {/* Main Content */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12" ref={contentRef}>
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 border-t-0" ref={contentRef}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Content - Tabs */}
           <div className="lg:col-span-2 order-2 lg:order-1">
@@ -293,357 +270,10 @@ export default function CourseDetailPage() {
 
             {/* Tab Content */}
             <div className="bg-white rounded-3xl shadow-xl shadow-gray-100/50 border border-gray-100 overflow-hidden">
-              {/* Overview Tab */}
-              {activeTab === 'overview' && (
-                <div className="p-8 md:p-10">
-                  {/* Description Section */}
-                  <div className="mb-12">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-                        <HiSparkles className="text-white text-xl" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Tentang Course Ini</h2>
-                    </div>
-                    <div className="prose prose-lg prose-gray max-w-none">
-                      {course.description.split('\n\n').map((paragraph, idx) => (
-                        <p key={idx} className="text-gray-600 leading-relaxed mb-4">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* What You'll Learn - Modern Cards */}
-                  <div className="mb-12">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
-                        <FaCheckCircle className="text-white text-xl" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Yang Akan Kamu Pelajari</h2>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {course.features.map((feature, idx) => (
-                        <div 
-                          key={idx} 
-                          className="group flex items-start gap-4 p-5 bg-gradient-to-r from-emerald-50 via-white to-teal-50 rounded-2xl border border-emerald-100/50 hover:shadow-lg hover:shadow-emerald-100/50 transition-all duration-300 hover:-translate-y-1"
-                        >
-                          <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </span>
-                          <span className="text-gray-700 font-medium">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Target Audience - New Section */}
-                  <div className="mb-12">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">
-                        <FaUsers className="text-white text-xl" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Untuk Siapa Course Ini?</h2>
-                    </div>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      {targetAudience.map((item, idx) => (
-                        <div 
-                          key={idx}
-                          className="flex items-center gap-4 p-5 bg-gradient-to-r from-purple-50 via-white to-violet-50 rounded-2xl border border-purple-100/50 hover:shadow-lg hover:shadow-purple-100/50 transition-all duration-300"
-                        >
-                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center shadow-md">
-                            <item.icon className="text-white text-lg" />
-                          </div>
-                          <span className="text-gray-700 font-medium">{item.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Requirements */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30">
-                        <HiLightningBolt className="text-white text-xl" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Prasyarat</h2>
-                    </div>
-                    <div className="bg-gradient-to-r from-orange-50 via-white to-amber-50 rounded-2xl border border-orange-100/50 p-6">
-                      <div className="space-y-4">
-                        {course.requirements.map((req, idx) => (
-                          <div key={idx} className="flex items-start gap-4">
-                            <span className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mt-2.5"></span>
-                            <span className="text-gray-600">{req}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Curriculum Tab */}
-              {activeTab === 'curriculum' && (
-                <div className="p-8 md:p-10">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-                        <FaBookOpen className="text-white text-xl" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Kurikulum Course</h2>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm text-gray-500 bg-gray-50 px-4 py-2 rounded-xl">
-                      <span className="font-semibold text-gray-900">{course.totalModules} modul</span>
-                      <span>•</span>
-                      <span className="font-semibold text-gray-900">{course.totalLessons} materi</span>
-                      <span>•</span>
-                      <span className="font-semibold text-gray-900">{course.duration}</span>
-                    </div>
-                  </div>
-
-                  {/* Progress Overview */}
-                  <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 rounded-2xl p-6 mb-8 border border-blue-100/50">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm font-medium text-gray-600">Progress Keseluruhan</span>
-                      <span className="text-sm font-bold text-blue-600">0%</span>
-                    </div>
-                    <div className="h-3 bg-white rounded-full overflow-hidden shadow-inner">
-                      <div className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full w-0 transition-all duration-500"></div>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">Mulai belajar untuk melacak progresmu</p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {course.curriculum.map((module, moduleIdx) => (
-                      <div 
-                        key={module.moduleId} 
-                        className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-gray-100/50 transition-all duration-300"
-                      >
-                        {/* Module Header */}
-                        <button
-                          onClick={() => toggleModule(module.moduleId)}
-                          className="w-full flex items-center justify-between p-5 bg-gradient-to-r from-gray-50 to-white hover:from-blue-50 hover:to-white transition-all group"
-                        >
-                          <div className="flex items-center gap-4">
-                            <span className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-xl flex items-center justify-center font-bold shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform">
-                              {String(module.moduleId).padStart(2, '0')}
-                            </span>
-                            <div className="text-left">
-                              <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{module.title}</h3>
-                              <p className="text-sm text-gray-500 flex items-center gap-2 mt-1">
-                                <FaBookOpen className="text-xs" />
-                                {module.lessons.length} materi
-                                <span>•</span>
-                                <FaClock className="text-xs" />
-                                {module.duration}
-                              </p>
-                            </div>
-                          </div>
-                          <FaChevronDown
-                            className={`text-gray-400 group-hover:text-blue-500 transition-all duration-300 ${expandedModules.includes(module.moduleId) ? 'rotate-180' : ''}`}
-                          />
-                        </button>
-
-                        {/* Module Lessons */}
-                        {expandedModules.includes(module.moduleId) && (
-                          <div className="divide-y divide-gray-50 bg-white">
-                            {module.lessons.map((lesson, lessonIdx) => (
-                              <div 
-                                key={lesson.id} 
-                                className="flex items-center justify-between p-4 hover:bg-blue-50/50 transition-colors group cursor-pointer"
-                              >
-                                <div className="flex items-center gap-4">
-                                  <span className="w-10 h-10 bg-gray-100 group-hover:bg-blue-100 rounded-xl flex items-center justify-center transition-colors">
-                                    {lesson.isPreview ? (
-                                      <FaPlay className="text-blue-600 text-sm" />
-                                    ) : (
-                                      <FaLock className="text-gray-400 text-sm" />
-                                    )}
-                                  </span>
-                                  <div>
-                                    <p className="text-gray-900 font-medium group-hover:text-blue-600 transition-colors">{lesson.title}</p>
-                                    <p className="text-sm text-gray-400 flex items-center gap-1">
-                                      <FaClock className="text-xs" />
-                                      {lesson.duration}
-                                    </p>
-                                  </div>
-                                </div>
-                                {lesson.isPreview && (
-                                  <span className="px-4 py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-bold rounded-full shadow-lg shadow-blue-500/25">
-                                    Preview
-                                  </span>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Instructor Tab */}
-              {activeTab === 'instructor' && (
-                <div className="p-8 md:p-10">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-                      <HiAcademicCap className="text-white text-xl" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-900">Tentang Instruktur</h2>
-                  </div>
-                  
-                  {/* Instructor Card */}
-                  <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl p-8 border border-blue-100/50">
-                    <div className="flex flex-col md:flex-row gap-8">
-                      <div className="flex-shrink-0 text-center md:text-left">
-                        <div className="relative inline-block">
-                          <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl blur-lg opacity-40"></div>
-                          <img
-                            src={course.instructor.avatar}
-                            alt={course.instructor.name}
-                            className="relative w-36 h-36 rounded-3xl object-cover border-4 border-white shadow-xl"
-                          />
-                          <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full border-4 border-white flex items-center justify-center">
-                            <FaCheckCircle className="text-white text-sm" />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-1">{course.instructor.name}</h3>
-                        <p className="text-blue-600 font-semibold mb-6">{course.instructor.title}</p>
-                        
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-3 gap-4 mb-6">
-                          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-                            <div className="flex items-center justify-center gap-1 text-yellow-500 mb-1">
-                              <FaStar />
-                              <span className="font-bold text-gray-900">{course.rating}</span>
-                            </div>
-                            <p className="text-xs text-gray-500">Rating</p>
-                          </div>
-                          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-                            <div className="flex items-center justify-center gap-1 text-blue-500 mb-1">
-                              <FaUsers />
-                              <span className="font-bold text-gray-900">{course.instructor.totalStudents.toLocaleString()}</span>
-                            </div>
-                            <p className="text-xs text-gray-500">Siswa</p>
-                          </div>
-                          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-                            <div className="flex items-center justify-center gap-1 text-indigo-500 mb-1">
-                              <FaBookOpen />
-                              <span className="font-bold text-gray-900">{course.instructor.totalCourses}</span>
-                            </div>
-                            <p className="text-xs text-gray-500">Courses</p>
-                          </div>
-                        </div>
-
-                        <p className="text-gray-600 leading-relaxed">{course.instructor.bio}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Reviews Tab */}
-              {activeTab === 'reviews' && (
-                <div className="p-8 md:p-10">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-500/30">
-                      <FaStar className="text-white text-xl" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-900">Rating & Reviews</h2>
-                  </div>
-
-                  {/* Rating Summary - Modern Card */}
-                  <div className="bg-gradient-to-br from-yellow-50 via-orange-50 to-amber-50 rounded-3xl p-8 mb-10 border border-yellow-100/50">
-                    <div className="flex flex-col md:flex-row gap-8">
-                      <div className="text-center md:text-left md:border-r md:border-yellow-200/50 md:pr-8">
-                        <div className="text-7xl font-black bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent mb-2">
-                          {course.rating}
-                        </div>
-                        <div className="flex items-center justify-center md:justify-start gap-1 mb-3">
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <FaStar
-                              key={star}
-                              className={`w-6 h-6 ${star <= Math.floor(course.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
-                            />
-                          ))}
-                        </div>
-                        <p className="text-gray-500 font-medium">{course.totalRatings.toLocaleString()} ulasan</p>
-                      </div>
-
-                      {/* Rating Bars */}
-                      <div className="flex-1 space-y-3">
-                        {[5, 4, 3, 2, 1].map((star) => (
-                          <div key={star} className="flex items-center gap-4">
-                            <span className="w-12 text-sm text-gray-600 flex items-center gap-1.5 font-medium">
-                              {star} <FaStar className="text-yellow-400 text-xs" />
-                            </span>
-                            <div className="flex-1 h-3 bg-white rounded-full overflow-hidden shadow-inner">
-                              <div
-                                className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full transition-all duration-700"
-                                style={{ width: `${ratingBreakdown[star]}%` }}
-                              ></div>
-                            </div>
-                            <span className="w-14 text-sm text-gray-500 text-right font-medium">{ratingBreakdown[star]}%</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Reviews List */}
-                  <div className="space-y-6">
-                    {course.reviews.map((review, idx) => (
-                      <div 
-                        key={review.id} 
-                        className="bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg hover:shadow-gray-100/50 transition-all duration-300"
-                      >
-                        <div className="flex items-start gap-4">
-                          <div className="relative">
-                            <img
-                              src={review.avatar}
-                              alt={review.user}
-                              className="w-14 h-14 rounded-2xl object-cover border-2 border-white shadow-md"
-                            />
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex flex-wrap items-center gap-3 mb-3">
-                              <h4 className="font-bold text-gray-900">{review.user}</h4>
-                              <div className="flex items-center gap-0.5">
-                                {[1, 2, 3, 4, 5].map((star) => (
-                                  <FaStar
-                                    key={star}
-                                    className={`w-4 h-4 ${star <= review.rating ? 'text-yellow-400' : 'text-gray-200'}`}
-                                  />
-                                ))}
-                              </div>
-                              <span className="text-sm text-gray-400 bg-gray-100 px-3 py-1 rounded-full">{review.date}</span>
-                            </div>
-                            <div className="relative">
-                              <FaQuoteLeft className="absolute -top-1 -left-1 text-blue-100 text-2xl" />
-                              <p className="text-gray-600 pl-6">{review.comment}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {course.reviews.length === 0 && (
-                    <div className="text-center py-16">
-                      <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <FaStar className="text-gray-300 text-3xl" />
-                      </div>
-                      <p className="text-gray-500 font-medium">Belum ada review untuk course ini.</p>
-                      <p className="text-gray-400 text-sm mt-1">Jadilah yang pertama memberikan review!</p>
-                    </div>
-                  )}
-                </div>
-              )}
+              {activeTab === 'overview' && <OverviewTab course={course} />}
+              {activeTab === 'curriculum' && <CurriculumTab course={course} expandedModules={expandedModules} toggleModule={toggleModule} />}
+              {activeTab === 'instructor' && <InstructorTab course={course} />}
+              {activeTab === 'reviews' && <ReviewsTab course={course} />}
             </div>
           </div>
 
@@ -844,70 +474,8 @@ export default function CourseDetailPage() {
         </section>
       )}
 
-      {/* Modern Footer */}
-      <footer className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white pt-16 pb-8 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]"></div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            {/* Brand */}
-            <div className="md:col-span-2">
-              <h3 className="text-2xl font-black mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                SiMug
-              </h3>
-              <p className="text-gray-400 leading-relaxed max-w-sm mb-6">
-                Platform belajar online terbaik untuk mengembangkan skill dan karir impianmu dengan materi berkualitas tinggi.
-              </p>
-              <div className="flex items-center gap-4">
-                {['facebook', 'twitter', 'instagram', 'youtube'].map((social) => (
-                  <a 
-                    key={social}
-                    href="#" 
-                    className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-blue-500 transition-colors"
-                  >
-                    <span className="text-sm capitalize">{social[0].toUpperCase()}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-            
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-bold mb-4 text-white">Quick Links</h4>
-              <ul className="space-y-3">
-                {['Tentang Kami', 'Courses', 'Instructor', 'Pricing'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Support */}
-            <div>
-              <h4 className="font-bold mb-4 text-white">Support</h4>
-              <ul className="space-y-3">
-                {['FAQ', 'Contact', 'Privacy Policy', 'Terms of Service'].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          {/* Bottom Bar */}
-          <div className="border-t border-white/10 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 SiMug. All rights reserved. Made with ❤️ in Indonesia
-            </p>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
 
       {/* Video Modal */}
       {showVideoModal && (
