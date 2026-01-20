@@ -21,7 +21,7 @@ const ThreadItem = ({ thread }) => {
                 <div className="relative flex justify-center">
                     <div className="w-[2px] bg-gray-100 h-full"></div>
                 </div>
-                <div className="bg-blue-100 rounded-lg p-4 mb-4">
+                <div className="bg-blue-50/50 rounded-lg p-4 mb-4">
                     <div className="text-xs text-gray-500 font-semibold mb-1">
                         Pertanyaan oleh <span className="text-gray-700">{thread.originalQuestion.author}</span>:
                     </div>
