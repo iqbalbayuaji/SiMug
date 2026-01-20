@@ -8,7 +8,6 @@ import SearchResultPage from './pages/SearchResultPage'
 import ChatbotPage from './pages/chatbot/ChatbotPage'
 import CoursesPage from './pages/courses/CoursesPage'
 import CourseDetailPage from './pages/courses/CourseDetailPage'
-import RoadmapPage from './pages/courses/RoadmapPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'
@@ -31,7 +30,6 @@ function App() {
         <Route path="/chatbot" element={<ChatbotPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/courses/:slug" element={<CourseDetailPage />} />
-        <Route path="/courses/:slug/roadmap" element={<RoadmapPage />} />
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/forum/search" element={<ForumSearchPage />} />
