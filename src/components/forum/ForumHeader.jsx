@@ -9,7 +9,8 @@ export default function ForumHeader({
     title = "Artikel Trend Minggu Ini",
     subtitle = "Berikut artikel yang trending minggu ini",
     className = "",
-    showJoinButton = true
+    showJoinButton = true,
+    searchButtonOutside = false
 }) {
 
     const navigate = useNavigate();
@@ -30,9 +31,9 @@ export default function ForumHeader({
                     {showBackButton ? (
                         <Link
                             to={backTo}
-                            className="inline-flex items-center gap-2 text-[#4177FF] hover:text-[#5B8FFF] transition-colors font-medium text-base"
+                            className="cursor-pointer flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors group"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
                             Kembali
@@ -46,20 +47,29 @@ export default function ForumHeader({
                 </div>
 
                 <div className="flex items-center gap-3 w-full md:w-auto">
-                    <form onSubmit={handleSearch} className="relative flex-1 md:w-96">
-                        <input
-                            type="text"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            placeholder="Telusuri pertanyaan..."
-                            className="w-full pl-10 pr-16 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
-                        />
-                        <svg className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                        <button type="submit" className="absolute cursor-pointer right-1.5 top-1.5 bottom-1.5 px-4 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-full transition-colors">
-                            Cari
-                        </button>
+                    <form onSubmit={handleSearch} className={`relative flex-1 ${searchButtonOutside ? 'md:w-80' : 'md:w-96'} ${searchButtonOutside ? 'flex gap-2' : ''}`}>
+                        <div className="relative flex-1">
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                placeholder="Telusuri pertanyaan..."
+                                className={`w-full pl-10 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all ${searchButtonOutside ? 'pr-4' : 'pr-16'}`}
+                            />
+                            <svg className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            {!searchButtonOutside && (
+                                <button type="submit" className="absolute cursor-pointer right-1.5 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-full transition-colors">
+                                    Cari
+                                </button>
+                            )}
+                        </div>
+                        {searchButtonOutside && (
+                            <button type="submit" className="cursor-pointer px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-colors shadow-sm shadow-blue-500/30 whitespace-nowrap">
+                                Cari
+                            </button>
+                        )}
                     </form>
 
                     {showJoinButton && (

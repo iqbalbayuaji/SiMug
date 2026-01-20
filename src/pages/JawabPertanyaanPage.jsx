@@ -139,6 +139,7 @@ export default function JawabPertanyaanPage() {
                 title="Jawab Pertanyaan"
                 className="animate-slideInLeft"
                 showJoinButton={false}
+                searchButtonOutside={true}
             />
 
             <div className="max-w-7xl mx-auto pt-2 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_330px] gap-5 px-4 lg:px-0">
