@@ -16,10 +16,10 @@ export default function Forum() {
             <ForumHeader className="animate-slideInLeft" />
 
             {/* 3. Main Content Container */}
-            <div className="w-full max-w-7xl mx-auto mt-2 px-4 lg:px-0">
+            <div className="w-full max-w-7xl mx-auto lg:mt-2 px-4 lg:px-0">
                 <div className="flex flex-col lg:flex-row gap-3">
                     {/* Left Column */}
-                    <main className="flex-1 pr-3 animate-slideUp" style={{ animationDelay: '200ms' }}>
+                    <main className="flex-1 lg:pr-3 animate-slideUp" style={{ animationDelay: '200ms' }}>
                         <TrendingSection />
                         <ActionCards />
                         <ThreadFeed />

@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ThreadItem = ({ thread }) => {
+    const [activeTab, setActiveTab] = useState('Rekomendasi');
+    const tabs = ['Rekomendasi', 'Populer', 'Terbaru'];
+
     return (
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 mb-6 last:mb-0">
+        <div className="bg-white rounded-xl lg:p-6 p-4 shadow-sm border border-gray-100 mb-6 last:mb-0">
+            <div className="flex justify-end lg:hidden mb-3">
+                <div className="relative">
+                    <span className="text-blue-600 text-sm font-semibold flex items-center gap-1.5 bg-blue-50/50 px-3 py-1.5 rounded-full">
+                        {activeTab}
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                    <select
+                        value={activeTab}
+                        onChange={(e) => setActiveTab(e.target.value)}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    >
+                        {tabs.map((tab) => (
+                            <option key={tab} value={tab}>{tab}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
             <div className="grid grid-cols-[40px_1fr] gap-x-4">
                 {/* Row 1: Avatar & Header */}
                 <div className={`w-10 h-10 ${thread.avatarColor} rounded-full`}></div>

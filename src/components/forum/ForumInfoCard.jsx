@@ -24,14 +24,15 @@ export default function ForumInfoCard({
             <div className="bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-3.5 text-white font-semibold relative overflow-hidden">
                 <div className="absolute top-1/2 right-5 -translate-y-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                 <span className="relative z-10">Informasi Tambahan</span>
+                <p className="text-sm font-normal text-gray-100 pt-1 leading-relaxed">
+                    Beberapa informasi terkait forum ini.
+                </p>
             </div>
 
             {/* Content */}
-            <div className="p-5 space-y-5">
+            <div className="px-5 py-3 space-y-5">
                 {/* Beberapa informasi terkait forum ini */}
-                <p className="text-sm text-gray-600 leading-relaxed">
-                    Beberapa informasi terkait forum ini.
-                </p>
+
 
                 {/* Pesan dari Admin */}
                 <div>

@@ -30,8 +30,9 @@ const trendingArticles = [
 
 export default function TrendingSection() {
     return (
-        <section className="mb-1 mt-2">
-            <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x">
+        <section className="mb-1 lg:mt-2">
+            <h2 className="block lg:hiddentext-lg font-bold text-gray-800 mb-2 mt-2">Artikel Populer</h2>
+            <div className="flex gap-4 overflow-x-auto pb-4 lg:custom-scrollbar snap-x">
                 {trendingArticles.map((article) => (
                     <Link
                         key={article.id}
@@ -52,7 +53,7 @@ export default function TrendingSection() {
                         </div>
 
                         <div className="absolute bottom-4 left-4 right-4">
-                            <h3 className="text-white font-bold text-lg leading-tight mb-1 line-clamp-2">
+                            <h3 className="text-white font-medium lg:font-bold text-base lg:text-lg leading-tight mb-1 line-clamp-2">
                                 {article.title}
                             </h3>
                             <div className="text-gray-300 text-xs flex gap-2">

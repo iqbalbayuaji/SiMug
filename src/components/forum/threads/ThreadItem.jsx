@@ -41,7 +41,7 @@ export default function ThreadItem({
             <div className="flex-1 pb-10">
                 {/* Header Info */}
                 <div className="flex items-center gap-2 mb-3 pt-1">
-                    <h3 className="font-bold text-gray-900 text-lg">{name}</h3>
+                    <h3 className="font-semibold text-gray-900 text-lg">{name}</h3>
                     {isFollowing && (
                         <button className="text-blue-600 text-sm font-bold cursor-pointer hover:underline">
                             • Ikuti
@@ -62,7 +62,7 @@ export default function ThreadItem({
                             <div className="text-sm text-gray-500 mb-1">
                                 Pertanyaan oleh <span className="font-medium text-gray-700">{question.author}:</span>
                             </div>
-                            <h4 className="font-bold text-gray-900 text-xl mb-2 leading-tight">
+                            <h4 className="font-semibold text-gray-900 text-xl mb-2 leading-tight">
                                 {question.text}
                             </h4>
                             <div className="text-xs text-gray-400 font-medium">

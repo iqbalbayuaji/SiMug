@@ -44,12 +44,12 @@ export default function ThreadFeed() {
 
     return (
         <section>
-            <div className="mb-6 flex justify-between items-end">
-                <div>
-                    <h2 className="text-xl font-bold text-gray-800">Threads dan Diskusi Harian</h2>
-                    <p className="text-gray-500 text-sm">Pantau terus setiap update dari threads</p>
+            <div className="mb-4 lg:mb-6 flex flex-col sm:flex-row justify-between sm:items-end gap-4 sm:gap-0">
+                <div className="">
+                    <h2 className="text-lg lg:text-xl font-bold text-gray-800">Threads dan Diskusi Harian</h2>
+                    <p className="text-gray-500 text-xs lg:text-sm">Pantau terus setiap update dari threads</p>
                 </div>
-                <div className="flex bg-gray-100 rounded-full p-1 gap-1">
+                <div className="lg:block hidden flex bg-gray-100 rounded-full p-1 gap-1 self-start sm:self-auto overflow-x-auto max-w-full">
                     {tabs.map((tab) => (
                         <button
                             key={tab}
