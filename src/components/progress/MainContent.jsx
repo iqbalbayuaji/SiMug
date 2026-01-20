@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom"
 import aiIcon from "../../assets/icon/mingcute_ai-fill.svg"
 import chatAiIcon from "../../assets/icon/mingcute_chat-1-ai-fill.svg"
 
 export default function MainContent({ recentLearning }) {
+  const navigate = useNavigate()
+
+  const handleCourseClick = (courseId) => {
+    navigate(`/courses/${courseId}/roadmap`)
+  }
   return (
     <div className="lg:col-span-2 space-y-6">
       {/* Jadwalkan Target Belajar */}
@@ -39,7 +45,11 @@ export default function MainContent({ recentLearning }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {recentLearning.map((course) => (
-            <div key={course.id} className="bg-white rounded-2xl p-1.5 shadow-sm hover:shadow-md transition-shadow border border-[#CACACA]">
+            <div 
+              key={course.id} 
+              onClick={() => handleCourseClick(course.id)}
+              className="bg-white rounded-2xl p-1.5 shadow-sm hover:shadow-md transition-shadow border border-[#CACACA] cursor-pointer"
+            >
               <div className="relative h-40 mb-3">
                 <img
                   src={course.image}

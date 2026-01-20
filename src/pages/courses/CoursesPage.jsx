@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { FaStar } from 'react-icons/fa'
 import Navbar from '../../components/layout/Navbar'
+import Footer from '../../components/layout/Footer'
 import { coursesData, courseCategories, formatPrice } from '../../constants/coursesData'
 
 export default function CoursesPage() {
@@ -266,11 +267,7 @@ export default function CoursesPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400">© 2025 SiMug. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
