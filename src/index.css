@@ -526,3 +526,37 @@ html {
 .modal-content {
   animation: modal-scale-in 0.3s ease-out;
 }
+
+/* ===== GLOWING BORDER ANIMATION ===== */
+
+/* Shimmer animation for glowing borders */
+@keyframes shimmer-horizontal {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer-vertical {
+  0% {
+    background-position: 0 -200%;
+  }
+  100% {
+    background-position: 0 200%;
+  }
+}
+
+/* Glowing border lines - only animation, no color override */
+.glow-border-top,
+.glow-border-bottom {
+  background-size: 200% 100% !important;
+  animation: shimmer-horizontal 2s linear infinite;
+}
+
+.glow-border-left,
+.glow-border-right {
+  background-size: 100% 200% !important;
+  animation: shimmer-vertical 2s linear infinite;
+}
