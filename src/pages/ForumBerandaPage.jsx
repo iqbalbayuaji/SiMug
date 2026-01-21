@@ -34,8 +34,8 @@ export default function ForumBerandaPage() {
             <div className="mt-8">
                 {activeTab === 'Tentang' && (
                     <div className="max-w-7xl mx-auto px-4 lg:px-0 grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8">
-                        {/* Sidebar Kiri */}
-                        <div className="space-y-6">
+                        {/* Sidebar Kiri - Hidden on mobile, visible on desktop */}
+                        <div className="hidden lg:block space-y-6">
                             <ForumAboutCard
                                 createdDate="21 Desember 2022"
                                 location="Semarang, Jawa Tengah"

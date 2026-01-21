@@ -18,7 +18,7 @@ export default function ForumTabs({ activeTab, onTabChange }) {
     }, [activeTab]);
 
     return (
-        <div className="px-4 lg:px-0 mt-6">
+        <div className="px-4 lg:px-0 mt-1 lg:mt-6">
             <div className="border-y border-gray-200 px-10 pt-4 relative">
                 <div className="flex gap-8 relative">
                     {/* Animated Indicator */}
