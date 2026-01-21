@@ -23,7 +23,7 @@ export default function ForumInfoCard({
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-3.5 text-white font-semibold relative overflow-hidden">
                 <div className="absolute top-1/2 right-5 -translate-y-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                <span className="relative z-10">Informasi Tambahan</span>
+                <span className="relative z-10">Informasi Forum</span>
                 <p className="text-sm font-normal text-gray-100 pt-1 leading-relaxed">
                     Beberapa informasi terkait forum ini.
                 </p>

@@ -15,6 +15,7 @@ import ArtikelPage from './pages/ArtikelPage'
 import ForumSearchPage from './pages/ForumSearchPage'
 import JawabPertanyaanPage from './pages/JawabPertanyaanPage'
 import ForumBerandaPage from './pages/ForumBerandaPage'
+import ForumAboutPage from './pages/ForumAboutPage'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/forum" element={<Forum />} />
         <Route path="/forum/search" element={<ForumSearchPage />} />
         <Route path="/forum/beranda" element={<ForumBerandaPage />} />
+        <Route path="/forum/beranda/about" element={<ForumAboutPage />} />
         <Route path="/jawab-pertanyaan" element={<JawabPertanyaanPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
