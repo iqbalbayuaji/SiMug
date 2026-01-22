@@ -7,16 +7,16 @@ export default function ThreadItem({
     time = "Dijawab 1 hari lalu",
     question = {
         author: "@irullfattr",
-        text: "Berapa lama waktu ideal per hari supaya belajar bahasa tetap konsisten?",
+        text: "Berapa lama waktu ideal per hari supaya latihan tetap konsisten?",
         time: "Pertanyaan 2 hari lalu"
     },
     content = (
         <>
             <p className="mb-4">
-                Pertanyaan ini sangat umum, dan justru menandakan satu hal penting: <em className="italic">kamu peduli dengan proses belajar, bukan cuma hasilnya.</em> Banyak orang gagal belajar bahasa bukan karena kurang pintar, tapi karena salah memulai dan terlalu menuntut diri sendiri di awal.
+                Pertanyaan ini sangat bagus, dan justru menandakan satu hal penting: <em className="italic">kamu peduli dengan proses, bukan cuma hasilnya.</em> Banyak orang gagal dalam program latihan bukan karena kurang motivasi, tapi karena terlalu menuntut diri sendiri di awal.
             </p>
             <p>
-                Langkah pertama yang paling penting adalah menentukan tujuan yang realistis. Jangan langsung berpikir, "Aku mau lancar seperti native." Itu target jangka panjang. Untuk pemula, target yang jauh lebih sehat adalah: bisa memahami percakapan sederhana, berani berbicara meski masih salah, dan terbiasa dengan bahasa tersebut dalam kehidupan sehari-hari. Bahasa itu soal kebiasaan, bukan bakat.
+                Langkah pertama yang paling penting adalah menentukan durasi yang realistis. Jangan langsung berpikir, "Aku mau latihan 2 jam setiap hari." Itu target yang berat di awal. Untuk pemula, target yang jauh lebih sehat adalah: 30 menit per sesi, 3 kali seminggu. Olahraga itu soal konsistensi jangka panjang, bukan sekadar gaya hidup sesaat.
             </p>
         </>
     ),

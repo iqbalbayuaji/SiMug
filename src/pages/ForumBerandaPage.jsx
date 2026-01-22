@@ -21,9 +21,9 @@ export default function ForumBerandaPage() {
 
             <div className="-mt-12 bg-transparent relative z-20">
                 <ForumProfileSection
-                    title="Ngobrol Santai Pejuang LN"
-                    description="Di sini, kita belajar bahasa tanpa tekanan, berbagi pengalaman, latihan ngobrol santai, dan saling menguatkan sesama pejuang luar negeri."
-                    memberCount="10.5k member"
+                    title="Komunitas Kebugaran SiMug"
+                    description="Wadah berbagi tips kebugaran, pola makan sehat, dan motivasi olahraga harian untuk hidup yang lebih baik."
+                    memberCount="12.3k member"
                     avatarColor="bg-blue-500"
                 />
             </div>
@@ -37,29 +37,29 @@ export default function ForumBerandaPage() {
                         {/* Sidebar Kiri - Hidden on mobile, visible on desktop */}
                         <div className="hidden lg:block space-y-6">
                             <ForumAboutCard
-                                createdDate="21 Desember 2022"
-                                location="Semarang, Jawa Tengah"
-                                memberCount="10.521 user"
-                                founder="Moh. Nizam Surya"
+                                createdDate="12 Januari 2023"
+                                location="Jakarta, Indonesia"
+                                memberCount="12.345 user"
+                                founder="Budi Santoso"
                             />
                         </div>
 
                         {/* Content Kanan */}
                         <div className="space-y-6">
                             <ForumInfoCard
-                                adminMessage="Selamat datang di Ngobrol Santai Pejuang LN, tempat belajar bahasa tanpa takut salah, tanpa gengsi, dan tanpa drama. Di sini kita belajar bareng, berbagi tips, dan saling dukung dalam perjalanan menuju luar negeri."
+                                adminMessage="Selamat datang di Komunitas Kebugaran SiMug! Di sini kita saling berbagi tips latihan, resep sehat, dan saling memotivasi untuk mencapai target kesehatan masing-masing. Tanpa drama, fokus pada progres!"
                                 topics={[
                                     {
-                                        title: "Latihan Bahasa & Percakapan",
-                                        description: "Ruang aman untuk latihan bahasa saling secara santai."
+                                        title: "Program Latihan & Gym",
+                                        description: "Diskusi seputar program latihan beban, kalistenik, dan tips gym pemula hingga pro."
                                     },
                                     {
-                                        title: "Persiapan Studi & Kerja LN",
-                                        description: "Diskusi seputar beasiswa, kerja di luar negeri, CV & motivation letter."
+                                        title: "Nutrisi & Diet Sehat",
+                                        description: "Berbagi resep makanan sehat, panduan nutrisi, dan cara mengatur pola makan."
                                     },
                                     {
-                                        title: "Cerita, Tips, & Mental Pejuang",
-                                        description: "Tempat berbagi cerita perjuangan, culture shock, manajemen mental."
+                                        title: "Motivasi & Konsistensi",
+                                        description: "Tempat berbagi tips menjaga semangat latihan dan kesehatan mental."
                                     }
                                 ]}
                             />

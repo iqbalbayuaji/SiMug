@@ -1,29 +1,29 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const suggestions = [
-    { id: 1, name: 'Info Spot, Brother', members: '1.528', color: 'bg-blue-600' },
+    { id: 1, name: 'Calisthenics Indonesia', members: '1.528', color: 'bg-blue-600' },
     { id: 2, name: 'Pelari Kalcer Bandung', members: '2.128', color: 'bg-yellow-400' },
-    { id: 3, name: 'Ngopi Santai di LN', members: '1.028', color: 'bg-orange-500' },
+    { id: 3, name: 'Nutrisi Sehat SiMug', members: '1.028', color: 'bg-orange-500' },
 ];
 
 const topics = [
     {
         id: 1,
-        title: 'Tips belajar bahasa buat yang sibuk kerja/kuliah?',
+        title: 'Tips mulai workout di rumah buat yang sibuk kerja/kuliah?',
         author: '@zidanikeee',
         time: '2 minggu lalu',
         snippet: null
     },
     {
         id: 2,
-        title: 'Gimana cara nambah kosakata tanpa harus ngafalin?',
+        title: 'Gimana cara konsisten lari pagi tanpa harus merasa berat?',
         author: '@iannkriss',
         time: '1 minggu lalu',
         snippet: null
     },
     {
         id: 3,
-        title: 'Grammar salah dikit tapi masih dimengerti, itu gapapa nggak?',
+        title: 'Latihan beban tipis-tipis tapi rutin, itu gapapa nggak?',
         author: '@zidanikeee',
         time: '2 minggu lalu',
         snippet: null
@@ -39,13 +39,17 @@ const ForumSuggestions = () => {
             </div>
             <div className="space-y-2 px-3 py-2">
                 {suggestions.map((item) => (
-                    <div key={item.id} className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                    <Link
+                        key={item.id}
+                        to="/forum/beranda"
+                        className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                    >
                         <div className={`w-10 h-10 ${item.color} rounded-full flex-shrink-0`}></div>
                         <div>
                             <h4 className="font-bold text-gray-800 text-sm">{item.name}</h4>
                             <p className="text-gray-500 text-xs">{item.members} member</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

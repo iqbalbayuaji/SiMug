@@ -39,10 +39,10 @@ const SendIcon = () => (
 );
 
 const FORUM_LIST = [
-    { id: 1, name: "Speak Campuran!", color: "bg-blue-400" },
-    { id: 2, name: "English Only Club", color: "bg-purple-400" },
-    { id: 3, name: "Diskusi Santai", color: "bg-green-400" },
-    { id: 4, name: "Tanya Jawab Grammar", color: "bg-orange-400" },
+    { id: 1, name: "Kebugaran Umum", color: "bg-blue-400" },
+    { id: 2, name: "Komunitas Lari", color: "bg-purple-400" },
+    { id: 3, name: "Nutrisi & Diet", color: "bg-green-400" },
+    { id: 4, name: "Tanya Seputar Gym", color: "bg-orange-400" },
 ];
 
 export default function TambahPertanyaanModal({ isOpen, onClose, isMobilePage = false }) {
@@ -243,8 +243,8 @@ export default function TambahPertanyaanModal({ isOpen, onClose, isMobilePage = 
                     <button
                         onClick={handleSubmit}
                         className={`cursor-pointer lg:px-5 lg:py-2.5 px-4 py-2 rounded-full font-bold text-sm transition-all shadow-lg shadow-blue-500/30 flex items-center gap-2 hover:-translate-y-0.5 ${question.trim()
-                                ? 'bg-blue-600 text-white hover:bg-blue-700'
-                                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            ? 'bg-blue-600 text-white hover:bg-blue-700'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                             }`}
                         disabled={!question.trim()}
                     >

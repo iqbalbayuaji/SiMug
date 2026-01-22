@@ -4,7 +4,7 @@ export default function QuestionItem({
     avatarColor = "bg-emerald-500",
     author = "@hilmifayyaz",
     time = "1 hari lalu",
-    question = "Belajar bahasa asing mulai dari mana kalau masih benar-benar pemula?",
+    question = "Latihan beban mulai dari mana kalau masih benar-benar pemula?",
     answerCount = 3,
     likes = 203,
     views = 512,

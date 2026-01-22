@@ -2,19 +2,19 @@ import React from 'react';
 import ForumTopicCard from './ForumTopicCard';
 
 export default function ForumInfoCard({
-    adminMessage = "Selamat datang di Ngobrol Santai Pejuang LN, tempat belajar bahasa tanpa takut salah, tanpa gengsi, dan tanpa drama. Di sini kita belajar bareng, berbagi tips, dan saling dukung dalam perjalanan menuju luar negeri.",
+    adminMessage = "Selamat datang di Komunitas Kebugaran SiMug! Di sini kita saling berbagi tips latihan, resep sehat, dan saling memotivasi untuk mencapai target kesehatan masing-masing. Tanpa drama, fokus pada progres!",
     topics = [
         {
-            title: "Latihan Bahasa & Percakapan",
-            description: "Ruang aman untuk latihan bahasa saling secara santai."
+            title: "Program Latihan & Gym",
+            description: "Diskusi seputar program latihan beban, kalistenik, dan tips gym pemula hingga pro."
         },
         {
-            title: "Persiapan Studi & Kerja LN",
-            description: "Diskusi seputar beasiswa, kerja di luar negeri, CV & motivation letter."
+            title: "Nutrisi & Diet Sehat",
+            description: "Berbagi resep makanan sehat, panduan nutrisi, dan cara mengatur pola makan."
         },
         {
-            title: "Cerita, Tips, & Mental Pejuang",
-            description: "Tempat berbagi cerita perjuangan, culture shock, manajemen mental."
+            title: "Motivasi & Konsistensi",
+            description: "Tempat berbagi tips menjaga semangat latihan dan kesehatan mental."
         }
     ]
 }) {

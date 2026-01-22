@@ -32,8 +32,9 @@ export default function LandingPage() {
         {
             id: 1,
             image: CourseImg1,
-            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
-            instructor: "Moh. Hambali",
+            category: "sports",
+            title: "Panduan Lari Marathon untuk Pemula: Dari 0 ke 42K dalam 12 Minggu",
+            instructor: "Budi Santoso",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -45,8 +46,9 @@ export default function LandingPage() {
         {
             id: 2,
             image: CourseImg2,
-            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
-            instructor: "Moh. Hambali",
+            category: "kebugaran",
+            title: "Teknik Dasar Yoga untuk Fleksibilitas dan Ketenangan Mental",
+            instructor: "Sari Devi",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -58,8 +60,9 @@ export default function LandingPage() {
         {
             id: 3,
             image: CourseImg3,
-            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
-            instructor: "Moh. Hambali",
+            category: "kebugaran",
+            title: "Latihan Intensif HIIT: Bakar Kalori Maksimal dalam 30 Menit",
+            instructor: "Rian Wijaya",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -71,8 +74,9 @@ export default function LandingPage() {
         {
             id: 4,
             image: CourseImg4,
-            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
-            instructor: "Moh. Hambali",
+            category: "nutrisi",
+            title: "Nutrisi Olahraga: Atur Pola Makan untuk Performa Atletis",
+            instructor: "Dr. Andi Pratama",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -84,54 +88,58 @@ export default function LandingPage() {
         {
             id: 5,
             image: CourseImg1,
-            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
-            level: "Semua kalangan",
-            price: "Rp. 99.000"
+            category: "sports",
+            title: "Lari Jarak Jauh: Teknik dan Strategi untuk Atlet Menengah",
+            instructor: "Budi Santoso",
+            date: "1 bulan lalu",
+            rating: 4.9,
+            ratingCount: "1.2k rating",
+            materialsCount: "15 materi+",
+            duration: "8 jam",
+            level: "Menengah",
+            price: "Rp. 129.000"
         },
         {
             id: 6,
             image: CourseImg2,
-            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
+            category: "mental",
+            title: "Mindfulness Berbasis Olahraga: Kelola Stress dengan Aktivitas Fisik",
+            instructor: "Sari Devi",
+            date: "3 minggu lalu",
+            rating: 4.7,
+            ratingCount: "800 rating",
+            materialsCount: "12 materi+",
+            duration: "5 jam",
             level: "Semua kalangan",
-            price: "Rp. 59.000"
+            price: "Rp. 49.000"
         },
         {
             id: 7,
             image: CourseImg3,
-            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
+            category: "kebugaran",
+            title: "Calisthenics Fundamental: Kuasai Tubuhmu Tanpa Beban Luar",
+            instructor: "Rian Wijaya",
+            date: "1 bulan lalu",
             rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
+            ratingCount: "2.1k rating",
+            materialsCount: "25 materi+",
+            duration: "12 jam",
             level: "Semua kalangan",
-            price: "Rp. 79.000"
+            price: "Rp. 89.000"
         },
         {
             id: 8,
             image: CourseImg4,
-            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
+            category: "nutrisi",
+            title: "Meal Prep Sehat: Hemat Waktu dan Uang untuk Hidup Lebih Baik",
+            instructor: "Dr. Andi Pratama",
+            date: "2 minggu lalu",
+            rating: 4.9,
+            ratingCount: "3.5k rating",
+            materialsCount: "18 materi+",
+            duration: "6 jam",
             level: "Semua kalangan",
-            price: "Rp. 50.000"
+            price: "Rp. 75.000"
         }
     ]
 
@@ -561,10 +569,51 @@ export default function LandingPage() {
                             </p>
                         </div>
 
-                        {/* Placeholder Cards */}
-                        {[1, 2, 3, 4, 5].map((item) => (
-                            <div key={item} className="bg-gray-400/80 rounded-2xl aspect-[14/5] w-full shadow-xl"></div>
-                        ))}
+                        {/* Feature Cards Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {[
+                                {
+                                    icon: <HiLightningBolt className="w-6 h-6 text-blue-600" />,
+                                    title: "Update Materi Baru",
+                                    desc: "Materi dan video latihan baru diupdate setiap minggu untuk variasi latihanmu."
+                                },
+                                {
+                                    icon: (
+                                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    ),
+                                    title: "Komunitas Aktif",
+                                    desc: "Bergabung dengan ribuan pejuang sehat lainnya untuk saling berbagi motivasi."
+                                },
+                                {
+                                    icon: (
+                                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                        </svg>
+                                    ),
+                                    title: "Analisis Progres AI",
+                                    desc: "Dapatkan analisis mendalam dari AI tentang progres latihan dan nutrisimu."
+                                },
+                                {
+                                    icon: (
+                                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    ),
+                                    title: "Akses 24/7",
+                                    desc: "Akses semua materi dan forum kapan pun dan di mana pun kamu berada."
+                                }
+                            ].map((feature, idx) => (
+                                <div key={idx} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        {feature.icon}
+                                    </div>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -629,21 +678,29 @@ export default function LandingPage() {
 
                     {/* Course Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-                        {courses.map((course) => (
-                            <CourseCard
-                                key={course.id}
-                                image={course.image}
-                                title={course.title}
-                                instructor={course.instructor}
-                                date={course.date}
-                                rating={course.rating}
-                                ratingCount={course.ratingCount}
-                                materialsCount={course.materialsCount}
-                                duration={course.duration}
-                                level={course.level}
-                                price={course.price}
-                            />
-                        ))}
+                        {courses
+                            .filter(course => {
+                                if (activeCategory === 'Kebugaran') return course.category === 'kebugaran';
+                                if (activeCategory === 'Olahraga') return course.category === 'sports';
+                                if (activeCategory === 'Nutrisi') return course.category === 'nutrisi';
+                                if (activeCategory === 'Mental') return course.category === 'mental';
+                                return true;
+                            })
+                            .map((course) => (
+                                <CourseCard
+                                    key={course.id}
+                                    image={course.image}
+                                    title={course.title}
+                                    instructor={course.instructor}
+                                    date={course.date}
+                                    rating={course.rating}
+                                    ratingCount={course.ratingCount}
+                                    materialsCount={course.materialsCount}
+                                    duration={course.duration}
+                                    level={course.level}
+                                    price={course.price}
+                                />
+                            ))}
                     </div>
                 </div>
             </section>
@@ -663,17 +720,88 @@ export default function LandingPage() {
 
                     {/* Grid Layout */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                        {/* 1. Top Left Card */}
-                        <div className="bg-gray-400/80 rounded-2xl aspect-video w-full"></div>
+                        {/* 1. Top Left Card: AI Assistant */}
+                        <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 text-white flex flex-col justify-between shadow-xl transform hover:-translate-y-1 transition-all">
+                            <div>
+                                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3">SiMug AI Assistant</h3>
+                                <p className="text-blue-100 text-sm leading-relaxed">Asisten cerdas yang siap menjawab pertanyaan seputar fitness dan nutrisi 24/7.</p>
+                            </div>
+                            <div className="mt-8 flex -space-x-2">
+                                <div className="w-8 h-8 rounded-full border-2 border-blue-600 bg-white/30"></div>
+                                <div className="w-8 h-8 rounded-full border-2 border-blue-600 bg-white/40"></div>
+                                <div className="w-8 h-8 rounded-full border-2 border-blue-600 bg-white/50"></div>
+                            </div>
+                        </div>
 
-                        {/* 2. Top Middle Card */}
-                        <div className="bg-gray-400/80 rounded-2xl aspect-video w-full"></div>
+                        {/* 2. Top Middle Card: Community */}
+                        <div className="bg-white border border-gray-100 rounded-3xl p-8 flex flex-col justify-between shadow-xl transform hover:-translate-y-1 transition-all">
+                            <div>
+                                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-3">Community Hub</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">Ruang diskusi seru dengan topik yang relevan bagi pejuang hidup sehat.</p>
+                            </div>
+                            <div className="mt-8 bg-blue-50 rounded-xl p-3 flex items-center gap-3">
+                                <div className="w-8 h-8 bg-blue-600 rounded-lg"></div>
+                                <div className="h-2 w-24 bg-blue-200 rounded-full"></div>
+                            </div>
+                        </div>
 
-                        {/* 3. Right Tall Card (Spans 2 rows) */}
-                        <div className="bg-gray-400/80 rounded-2xl w-full md:row-span-2 md:h-full min-h-[300px]"></div>
+                        {/* 3. Right Tall Card: Personalized Roadmap */}
+                        <div className="bg-white border border-gray-100 rounded-3xl p-8 md:row-span-2 shadow-xl transform hover:-translate-y-1 transition-all flex flex-col">
+                            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A2 2 0 013 15.488V5.512a2 2 0 011.553-1.954L9 2l6 3 5.447-2.724A2 2 0 0121 4.227v9.976a2 2 0 01-1.553 1.954L15 19l-6 1z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-4">Personalized Roadmap</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed mb-8">Kurikulum yang disusun agar kamu tidak perlu bingung mulai dari mana. Ikuti jalurnya, capai targetnya!</p>
 
-                        {/* 4. Bottom Wide Card (Spans 2 columns) */}
-                        <div className="bg-gray-400/80 rounded-2xl w-full md:col-span-2 aspect-[2.1/0.7]"></div>
+                            <div className="flex-1 space-y-6 relative">
+                                <div className="absolute left-[23px] top-6 bottom-6 w-0.5 bg-blue-100"></div>
+                                {[
+                                    { step: 1, label: "Assessment Goals", active: true },
+                                    { step: 2, label: "Basic Training", active: false },
+                                    { step: 3, label: "Advanced Program", active: false },
+                                    { step: 4, label: "Consistency Phase", active: false }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-4 relative z-10">
+                                        <div className={`w-12 h-12 rounded-full border-4 border-white flex items-center justify-center text-sm font-bold shadow-sm ${item.active ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'}`}>
+                                            {item.step}
+                                        </div>
+                                        <span className={`text-sm font-semibold ${item.active ? 'text-gray-900' : 'text-gray-400'}`}>{item.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* 4. Bottom Wide Card: Expert Mentor */}
+                        <div className="bg-white border border-gray-100 rounded-3xl p-8 md:col-span-2 shadow-xl transform hover:-translate-y-1 transition-all flex flex-col md:flex-row items-center gap-10">
+                            <div className="flex-1">
+                                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-3">Expert Mentor Support</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">Belajar langsung dari mentor profesional yang sudah berpengalaman di bidangnya masing-masing.</p>
+                            </div>
+                            <div className="flex-1 w-full p-4 bg-blue-50 rounded-2xl flex items-center gap-4">
+                                <div className="w-16 h-16 bg-blue-200 rounded-full border-4 border-white shadow-sm"></div>
+                                <div>
+                                    <div className="h-3 w-32 bg-blue-600 rounded-full mb-2"></div>
+                                    <div className="h-2 w-20 bg-blue-300 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* CTA Button */}

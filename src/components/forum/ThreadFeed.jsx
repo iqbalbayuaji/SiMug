@@ -7,30 +7,29 @@ const threads = [
         username: '@affanhelmi10',
         avatarColor: 'bg-emerald-500',
         time: 'Dijawab 1 minggu lalu',
-        topic: 'Tips belajar bahasa buat yang sibuk kerja/kuliah?',
+        topic: 'Tips mulai lari pagi buat yang susah bangun tidur?',
         originalQuestion: {
             author: '@faeyzafattr',
-            content: 'Belajar bahasa asing mulai dari mana supaya nggak cepat nyerah dan benar-benar berkembang? Sejauh ini aku belajar bahasa asing ngerasa ga efektif banget',
+            content: 'Halo, ada tips nggak supaya bisa konsisten lari pagi? Aku selalu susah bangun tidur, padahal udah pasang alarm banyak-banyak.',
             time: '4 hari lalu'
         },
-        answer: 'Pertanyaan ini sangat umum, dan justru menandakan satu hal penting: kamu peduli dengan proses belajar, bukan cuma hasilnya. Banyak orang gagal belajar bahasa bukan karena kurang pintar, tapi karena salah memulai dan terlalu menuntut diri sendiri di awal. \n\nLangkah pertama yang paling penting adalah menentukan tujuan yang realistis. Jangan langsung berpikir "Aku mau lancar seperti native."',
+        answer: 'Kuncinya bukan di alarm, tapi di persiapan malam sebelumnya. Coba siapkan baju lari dan sepatu tepat di depan pintu kamar. Selain itu, tidurlah lebih awal dan jangan main HP sebelum tidur. Mulai dengan durasi singkat, misalnya 10-15 menit saja agar beban mentalnya tidak terlalu berat.',
         likes: 124,
         comments: 23,
     },
-    // Add more dummy data if needed
     {
         id: 2,
         author: 'Rizki Fiko',
         username: '@rizkifiko',
         avatarColor: 'bg-indigo-500',
         time: 'Dijawab 2 hari lalu',
-        topic: 'Gimana cara nambah kosakata tanpa harus ngafalin?',
+        topic: 'Berhenti minum manis bikin badan lebih enteng nggak sih?',
         originalQuestion: {
             author: '@iannkriss',
-            content: 'Ada tips gak buat nambah vocab tanpa harus buka kamus terus? Kayak bosen banget ngafalin satu-satu.',
+            content: 'Lagi coba diet no-sugar, tapi susah banget nahan godaan boba. Seberapa ngaruh sih kalau kita beneran stop minum manis?',
             time: '1 minggu lalu'
         },
-        answer: 'Coba baca buku atau nonton film dengan subtitle bahasa target, tapi jangan dipause tiap nemu kata baru. Coba tebak artinya dari konteks dulu.',
+        answer: 'Sangat berpengaruh! Dalam 2 minggu saja, biasanya kamu akan merasa kadar energi lebih stabil dan perut tidak mudah begah. Coba ganti minuman manis dengan infused water atau teh hijau tanpa gula. Kuncinya adalah substitusi, bukan sekadar menahan lapar.',
         likes: 85,
         comments: 12,
     }
