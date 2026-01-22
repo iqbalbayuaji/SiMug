@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import aiIcon from "../../assets/icon/ai.svg"
+import thumbnailLogin from "../../assets/maskot/mascot1.png"
 
 export default function HeroSection({ userName = "Rizki Fiko" }) {
   const navigate = useNavigate()
@@ -141,13 +142,13 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                   <div className="absolute inset-0 bg-[#88AAFF] rounded-[2rem] md:rounded-[3rem] transform -translate-x-3 translate-y-3"></div>
                   
                   {/* First Layer - Main Card with Gradient */}
-                  <div className="relative bg-gradient-to-br from-[#4177FF] to-[#10348F] rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl overflow-hidden">
+                  <div className="relative bg-gradient-to-br from-[#4177FF] to-[#10348F] rounded-[2rem] md:rounded-[3rem] p-6 md:p-9 shadow-2xl overflow-hidden">
                     {/* Subtle overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
                     
                     {/* Card Content Area */}
                     <div className="relative z-10 h-64 md:h-96">
-                      {/* Content placeholder - empty for clean look like the image */}
+                      <img src={thumbnailLogin} alt="Thumbnail" className="rounded-xl w-full h-full object-cover" />
                     </div>
                   </div>
                 </div>

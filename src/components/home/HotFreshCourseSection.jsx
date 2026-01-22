@@ -36,7 +36,7 @@ export default function HotFreshCourseSection() {
             {/* Decorative Parallelograms - Staircase Pattern */}
             <div className="absolute left-0 top-0 w-full h-full pointer-events-none">
               {/* Parallelogram 1 - Top Left */}
-              <div 
+              <div
                 className="absolute bg-[#628FFF] opacity-70 rounded-tl-xl rounded-br-xl"
                 style={{
                   width: '300px',
@@ -46,9 +46,9 @@ export default function HotFreshCourseSection() {
                   transform: 'skewX(40deg)',
                 }}
               ></div>
-              
+
               {/* Parallelogram 2 - Middle */}
-              <div 
+              <div
                 className="absolute bg-[#628FFF] opacity-70 rounded-tl-xl rounded-br-xl"
                 style={{
                   width: '300px',
@@ -58,9 +58,9 @@ export default function HotFreshCourseSection() {
                   transform: 'skewX(40deg)',
                 }}
               ></div>
-              
+
               {/* Parallelogram 3 - Bottom Right */}
-              <div 
+              <div
                 className="absolute bg-[#628FFF] opacity-70 rounded-tl-xl rounded-br-xl"
                 style={{
                   width: '300px',
@@ -79,7 +79,7 @@ export default function HotFreshCourseSection() {
                 <h2 className="text-4xl font-bold mb-3">
                   Hot & Fresh Course
                 </h2>
-                <p className="text-base mb-5 text-white/90 leading-relaxed">
+                <p className="text-medium mb-5 text-white/90 leading-relaxed">
                   Segera bergabung dengan<br />
                   course-course terbaru yang baru<br />
                   saja launching di SiMug.
@@ -102,10 +102,10 @@ export default function HotFreshCourseSection() {
                       alt={course.title}
                       className="w-full h-full object-cover"
                     />
-                    
+
                     {/* Dark Overlay */}
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>
-                    
+
                     {/* Content Overlay */}
                     <div className="absolute inset-0 p-4 flex flex-col justify-between">
                       {/* Top - Title and Instructor */}
@@ -117,7 +117,7 @@ export default function HotFreshCourseSection() {
                           {course.instructor}
                         </p>
                       </div>
-                      
+
                       {/* Bottom - Badge and Icon */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">

@@ -4,22 +4,136 @@ import gridHiasan from "../assets/images/grid-hiasan.png"
 import ImageCard1 from "../assets/images/fitness_training_card.png"
 import ImageCard2 from "../assets/images/running_progress_card.png"
 import ImageCard3 from "../assets/images/community_fitness_card.png"
+import CourseImg1 from "../assets/images/course_english_running.png"
+import CourseImg2 from "../assets/images/course_japanese_yoga.png"
+import CourseImg3 from "../assets/images/course_korean_basketball.png"
+import CourseImg4 from "../assets/images/course_german_nature.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
+import CourseCard from '../components/CourseCard'
 
 // Mascot imports
-import Mascot1 from "../assets/maskot/Gemini_Generated_Image_gl519vgl519vgl51-Photoroom.png"
-import Mascot2 from "../assets/maskot/Gemini_Generated_Image_r5b00gr5b00gr5b0-Photoroom.png"
-import Mascot3 from "../assets/maskot/Gemini_Generated_Image_s8ec4rs8ec4rs8ec-Photoroom.png"
-import Mascot4 from "../assets/maskot/Gemini_Generated_Image_v8wgpqv8wgpqv8wg-Photoroom.png"
-import Mascot5 from "../assets/maskot/Gemini_Generated_Image_vu11m5vu11m5vu11-Photoroom.png"
+import Mascot1 from "../assets/maskot/mascot1.png"
+import Mascot2 from "../assets/maskot/mascot2.png"
+import Mascot3 from "../assets/maskot/mascot3.png"
+import Mascot4 from "../assets/maskot/mascot4.png"
+import Mascot5 from "../assets/maskot/mascot5.png"
 
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mascotScattered, setMascotScattered] = useState(false)
+    const [activeCategory, setActiveCategory] = useState('Kebugaran')
     const mascotSectionRef = useRef(null)
+
+    // Course data
+    const courses = [
+        {
+            id: 1,
+            image: CourseImg1,
+            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 99.000"
+        },
+        {
+            id: 2,
+            image: CourseImg2,
+            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 59.000"
+        },
+        {
+            id: 3,
+            image: CourseImg3,
+            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 79.000"
+        },
+        {
+            id: 4,
+            image: CourseImg4,
+            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 50.000"
+        },
+        {
+            id: 5,
+            image: CourseImg1,
+            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 99.000"
+        },
+        {
+            id: 6,
+            image: CourseImg2,
+            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 59.000"
+        },
+        {
+            id: 7,
+            image: CourseImg3,
+            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 79.000"
+        },
+        {
+            id: 8,
+            image: CourseImg4,
+            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 50.000"
+        }
+    ]
 
     useEffect(() => {
         const handleScroll = () => {
@@ -210,79 +324,79 @@ export default function LandingPage() {
                         </div>
 
                         {/* Mascot Section with Scatter Animation */}
-                        <div 
+                        <div
                             ref={mascotSectionRef}
                             className="relative h-[350px] md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
                         >
                             {/* Mascot 1 - Center (main character with breathing effect) */}
-                            <div 
+                            <div
                                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                                     ${mascotScattered ? 'scale-125' : 'scale-100'}`}
                             >
-                                <img 
-                                    src={Mascot1} 
-                                    alt="Mascot Center" 
+                                <img
+                                    src={Mascot1}
+                                    alt="Mascot Center"
                                     className={`w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain 
                                         ${mascotScattered ? 'animate-mascot-center mascot-hover-effect' : 'drop-shadow-[0_0_60px_rgba(59,130,246,0.7)]'}`}
                                 />
                             </div>
 
                             {/* Mascot 2 - Top Left */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                                    ${mascotScattered 
-                                        ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot2} 
-                                    alt="Mascot Top Left" 
+                                <img
+                                    src={Mascot2}
+                                    alt="Mascot Top Left"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-1 mascot-hover-effect' : ''}`}
                                 />
                             </div>
 
                             {/* Mascot 3 - Top Right */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-900 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-75
-                                    ${mascotScattered 
-                                        ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot3} 
-                                    alt="Mascot Top Right" 
+                                <img
+                                    src={Mascot3}
+                                    alt="Mascot Top Right"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-2 mascot-hover-effect' : ''}`}
                                 />
                             </div>
 
                             {/* Mascot 4 - Bottom Left */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-150
-                                    ${mascotScattered 
-                                        ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot4} 
-                                    alt="Mascot Bottom Left" 
+                                <img
+                                    src={Mascot4}
+                                    alt="Mascot Bottom Left"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-3 mascot-hover-effect' : ''}`}
                                 />
                             </div>
 
                             {/* Mascot 5 - Bottom Right */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-1100 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-200
-                                    ${mascotScattered 
-                                        ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot5} 
-                                    alt="Mascot Bottom Right" 
+                                <img
+                                    src={Mascot5}
+                                    alt="Mascot Bottom Right"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-4 mascot-hover-effect' : ''}`}
                                 />
@@ -450,6 +564,85 @@ export default function LandingPage() {
                         {/* Placeholder Cards */}
                         {[1, 2, 3, 4, 5].map((item) => (
                             <div key={item} className="bg-gray-400/80 rounded-2xl aspect-[14/5] w-full shadow-xl"></div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Course Listing Section */}
+            <section className="py-10 lg:py-10 g-white relative overflow-hidden">
+                {/* Decorative Blue Circles */}
+                <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
+                <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
+                <div className="absolute top-40 right-1/3 w-18 h-18 bg-blue-300/30 rounded-2xl blur-xl"></div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                    {/* Section Header */}
+                    <div className="text-center mb-8 lg:mb-12">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+                            Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
+                        </h2>
+                        <p className="text-gray-600 text-base lg:text-lg">
+                            Kamu bisa lihat beberapa kursus relevan disini.
+                        </p>
+                    </div>
+
+                    {/* Category Tabs */}
+                    <div className="flex justify-center gap-4 lg:gap-6 mb-8 lg:mb-12 flex-wrap">
+                        <button
+                            onClick={() => setActiveCategory('Kebugaran')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Kebugaran'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Kebugaran
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Olahraga')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Olahraga'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Olahraga
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Nutrisi')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Nutrisi'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Nutrisi
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Mental')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Mental'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Mental
+                        </button>
+                    </div>
+
+                    {/* Course Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
+                        {courses.map((course) => (
+                            <CourseCard
+                                key={course.id}
+                                image={course.image}
+                                title={course.title}
+                                instructor={course.instructor}
+                                date={course.date}
+                                rating={course.rating}
+                                ratingCount={course.ratingCount}
+                                materialsCount={course.materialsCount}
+                                duration={course.duration}
+                                level={course.level}
+                                price={course.price}
+                            />
                         ))}
                     </div>
                 </div>
