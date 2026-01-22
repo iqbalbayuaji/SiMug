@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { FaPlay, FaStar, FaClock, FaBook, FaCheckCircle, FaChevronRight, FaSearch } from 'react-icons/fa'
+import logo from "../../assets/images/logo-simug.png"
 import Footer from '../../components/layout/Footer'
 
 export default function CourseProgressDetailPage() {
@@ -74,10 +75,10 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
       }
     ],
     allPhases: [
-      { id: 1, title: 'Fase 1 : Penguatan Otot Inti', materials: 2, tasks: 5, duration: '12 menit' },
-      { id: 2, title: 'Fase 2 : Latihan Dasar', materials: 0, tasks: 2, duration: '15 menit' },
-      { id: 3, title: 'Fase 3 : Full Body Workout', materials: 0, tasks: 2, duration: '15 menit' },
-      { id: 4, title: 'Fase 4 : Pendinginan', materials: 0, tasks: 2, duration: '8 menit' },
+      { id: 1, title: 'Fase 1 : Penguatan Otot Inti', materials: 4, tasks: 4, duration: '12 menit' },
+      { id: 2, title: 'Fase 2 : Latihan Dasar', materials: 5, tasks: 5, duration: '15 menit' },
+      { id: 3, title: 'Fase 3 : Full Body Workout', materials: 5, tasks: 5, duration: '15 menit' },
+      { id: 4, title: 'Fase 4 : Pendinginan', materials: 3, tasks: 3, duration: '8 menit' },
       { id: 5, title: 'Fase 5 : Penguatan Otot Inti', materials: 2, tasks: 5, duration: '12 menit' },
       { id: 6, title: 'Fase 6 : Latihan Dasar', materials: 0, tasks: 2, duration: '15 menit' },
       { id: 7, title: 'Fase 7 : Full Body Workout', materials: 0, tasks: 2, duration: '15 menit' },
@@ -90,13 +91,11 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
       {/* Simple Header - Logo Left, Back & Menu Right */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-8xl mx-auto px-8 py-4 flex items-center justify-between">
-          {/* Logo - Left */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#4177FF] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">S</span>
-            </div>
+          {/* Logo */}
+          <Link to="/home" className="flex items-center gap-2">
+            <img src={logo} alt="SiMUG Logo" className="w-16 h-16" />
             <span className="text-xl font-bold text-gray-900">SiMUG</span>
-          </div>
+          </Link>
 
           {/* Back Button & Hamburger Menu - Right */}
           <div className="flex items-center gap-3">

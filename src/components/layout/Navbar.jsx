@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo-simug.png"
 import vegan from "../../assets/images/vegan.png"
 import NotificationPopup from "./NotificationPopup"
 
@@ -23,6 +23,7 @@ import sixPack from "../../assets/icon/course/hugeicons_body-part-muscle.svg"
 
 export default function Navbar() {
   const location = useLocation()
+  const navigate = useNavigate()
   const [activeMenu, setActiveMenu] = useState("Home")
   const [hoveredMenu, setHoveredMenu] = useState(null)
   const [showCourseDropdown, setShowCourseDropdown] = useState(false)
@@ -50,7 +51,7 @@ export default function Navbar() {
     { name: "Home", path: "/home" },
     { name: "Progres", path: "/progress" },
     { name: "Course", path: "/courses", hasDropdown: true },
-    { name: "Events", path: "/events", hasDropdown: true },
+    { name: "Events", hasDropdown: true },
     { name: "Forum", path: "/forum" },
     { name: "SiMug AI", path: "/chatbot" }
   ]
@@ -109,7 +110,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/home" className="flex items-center gap-2">
-            <img src={logo} alt="SiMUG Logo" className="w-8 h-8" />
+            <img src={logo} alt="SiMUG Logo" className="w-16 h-16" />
             <span className="text-xl font-bold text-gray-900">SiMUG</span>
           </Link>
 
@@ -136,32 +137,62 @@ export default function Navbar() {
                   }
                 }}
               >
-                <Link
-                  to={item.path}
-                  onClick={() => setActiveMenu(item.name)}
-                  className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${
-                    activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
-                  }`}
-                >
-                  {item.name}
-                  {item.hasDropdown && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
-                    </svg>
-                  )}
-                  {/* Active/Hover Underline */}
-                  <span 
-                    className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
-                      activeMenu === item.name && hoveredMenu === null
-                        ? "w-full" 
-                        : activeMenu === item.name && hoveredMenu !== null && hoveredMenu !== item.name
-                        ? "w-0"
-                        : hoveredMenu === item.name
-                        ? "w-full"
-                        : "w-0"
+                {item.path ? (
+                  <Link
+                    to={item.path}
+                    onClick={(e) => {
+                      // If it has dropdown, prevent default and let hover handle it
+                      // But still allow navigation on click
+                      if (item.hasDropdown) {
+                        // Close dropdowns and navigate
+                        setShowCourseDropdown(false)
+                        setShowEventsDropdown(false)
+                      }
+                      setActiveMenu(item.name)
+                    }}
+                    className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${
+                      activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
                     }`}
-                  ></span>
-                </Link>
+                  >
+                    {item.name}
+                    {item.hasDropdown && (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    )}
+                    {/* Active/Hover Underline */}
+                    <span 
+                      className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
+                        activeMenu === item.name && hoveredMenu === null
+                          ? "w-full" 
+                          : activeMenu === item.name && hoveredMenu !== null && hoveredMenu !== item.name
+                          ? "w-0"
+                          : hoveredMenu === item.name
+                          ? "w-full"
+                          : "w-0"
+                      }`}
+                    ></span>
+                  </Link>
+                ) : (
+                  <button
+                    className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${
+                      activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
+                    }`}
+                  >
+                    {item.name}
+                    {item.hasDropdown && (
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    )}
+                    {/* Active/Hover Underline */}
+                    <span 
+                      className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
+                        hoveredMenu === item.name ? "w-full" : "w-0"
+                      }`}
+                    ></span>
+                  </button>
+                )}
 
                 {/* Course Dropdown */}
                 {item.name === "Course" && showCourseDropdown && (
@@ -310,7 +341,10 @@ export default function Navbar() {
             </div>
 
             {/* Profile Picture */}
-            <button className="w-12 h-12 rounded-full bg-white overflow-hidden border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all">
+            <button 
+              onClick={() => navigate('/profile')}
+              className="w-12 h-12 rounded-full bg-white overflow-hidden border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
+            >
               <img
                 src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
                 alt="Profile"
@@ -368,7 +402,13 @@ export default function Navbar() {
               </svg>
               <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
             </button>
-            <button className="w-10 h-10 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]">
+            <button 
+              onClick={() => {
+                navigate('/profile')
+                setIsMobileMenuOpen(false)
+              }}
+              className="w-10 h-10 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]"
+            >
               <img
                 src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
                 alt="Profile"

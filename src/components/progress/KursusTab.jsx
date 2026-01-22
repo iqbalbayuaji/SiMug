@@ -1,54 +1,23 @@
 import { useState } from "react"
+import { coursesData } from "../../constants/coursesData"
 
 export default function KursusTab() {
   const [searchQuery, setSearchQuery] = useState("")
   const [viewMode, setViewMode] = useState("grid") // grid or list
 
-  const courses = [
-    {
-      id: 1,
-      title: "Workout di Rumah aja Tanpa Alat untuk Menjaga Kebugaran",
-      instructor: "Moh. Iqbal",
-      duration: "1 bulan lalu",
-      completion: 35,
-      image: "/src/assets/images/course1.jpg",
-      lastActivity: "18:30 - 17 Jan"
-    },
-    {
-      id: 2,
-      title: "Panduan Meditasi yang Benar untuk Kesehatan Mental dan Fisik",
-      instructor: "Moh. Iqbal",
-      duration: "1 bulan lalu",
-      completion: 35,
-      image: "/src/assets/images/course2.jpg",
-      lastActivity: "18:30 - 17 Jan"
-    },
-    {
-      id: 3,
-      title: "Teknik Pernapasan yang Efektif Saat Lari untuk Meningkatkan Stamina",
-      instructor: "Moh. Iqbal",
-      duration: "1 bulan lalu",
-      completion: 35,
-      image: "/src/assets/images/course3.jpg",
-      lastActivity: "18:30 - 17 Jan"
-    },
-    {
-      id: 4,
-      title: "Belajar Bahasa German dari Nol Sampai Berani Ngomong",
-      instructor: "Moh. Iqbal",
-      duration: "1 bulan lalu",
-      completion: 35,
-      image: "/src/assets/images/course4.jpg",
-      lastActivity: "18:30 - 17 Jan"
-    }
-  ]
+  // Ambil 4 course pertama sebagai dummy data
+  const courses = coursesData.slice(0, 4).map((course, index) => ({
+    ...course,
+    completion: [35, 60, 45, 80][index], // Random completion percentage
+    lastActivity: ["18:30 - 17 Jan", "14:20 - 16 Jan", "09:15 - 15 Jan", "20:45 - 14 Jan"][index]
+  }))
 
   return (
     <div className="space-y-6">
       {/* Header with Search */}
       <div className="flex items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Daftar Kurus Kamu <span className="text-sm text-gray-500">{courses.length} total kursus</span></h2>
+          <h2 className="text-2xl font-bold text-gray-900">Daftar Kursus Kamu <span className="text-sm text-gray-500">{courses.length} total kursus</span></h2>
         </div>
         
         <div className="flex items-center gap-3">
@@ -109,7 +78,7 @@ export default function KursusTab() {
           <div key={course.id} className="bg-white rounded-2xl p-1.5 shadow-sm hover:shadow-md transition-shadow border border-[#CACACA]">
             <div className="relative h-40 mb-3">
               <img
-                src={course.image}
+                src={course.thumbnail}
                 alt={course.title}
                 className="w-full h-full object-cover rounded-xl"
               />
@@ -124,7 +93,7 @@ export default function KursusTab() {
                 {course.title}
               </h3>
               <p className="text-sm text-gray-400 mb-3">
-                {course.instructor} • {course.duration}
+                {course.instructor.name} • {course.duration}
               </p>
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
