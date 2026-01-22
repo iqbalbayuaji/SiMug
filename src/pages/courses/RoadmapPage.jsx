@@ -155,263 +155,184 @@ export default function RoadmapPage() {
           </div>
 
           {/* Roadmap Container */}
-          <div className="max-w-7xl mx-auto relative bg-gradient-to-b from-[#F8FBFF] to-white rounded-3xl border border-gray-200 overflow-x-auto overflow-y-hidden shadow-sm" style={{ height: '680px' }}>
+          <div className="max-w-7xl mx-auto relative bg-gradient-to-b from-[#F8FBFF] to-white rounded-3xl border border-gray-200 overflow-x-auto overflow-y-hidden shadow-sm" style={{ height: '560px' }}>
             {/* Horizontal scroll container */}
-            <div className="relative h-full" style={{ minWidth: '1100px', padding: '40px 60px' }}>
-              {/* SVG for connecting lines with progress visualization */}
+            <div className="relative h-full" style={{ minWidth: '1100px', padding: '40px 80px' }}>
+              
+              {/* SVG for connecting lines - Zig-zag pattern with center horizontal line */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
                 {/* 
-                  Progress Logic:
-                  - 0-25%: Fase 5 sedang berlangsung
-                  - 25-50%: Dari Fase 5 ke Extra Reward lalu ke Phase 7
-                  - 50-75%: Dari Phase 7 ke Phase 6
-                  - 75-100%: Dari Phase 6 ke Phase 8
+                  Perhitungan posisi yang tepat:
+                  Container padding: 40px top, 80px left/right
+                  Card width: 240px (w-60)
                   
-                  Card positions (left, top):
-                  - Phase 5: (0, 0) → w-72 = 288px
-                  - Extra Reward: (340, 40) → w-44 = 176px
-                  - Phase 7: (560, 0) → w-72 = 288px
-                  - Phase 6: (100, 340 + 20 untuk label) → w-72 = 288px
-                  - Phase 8: (520, 340 + 20 untuk label) → w-72 = 288px
+                  Card positions:
+                  - Phase 5 (TOP): left=0, top=0 → center X = 80 + 0 + 120 = 200
+                  - Phase 6 (BOTTOM): left=260, top=290 → center X = 80 + 260 + 120 = 460
+                  - Phase 7 (TOP): left=520, top=0 → center X = 80 + 520 + 120 = 720  
+                  - Phase 8 (BOTTOM): left=780, top=290 → center X = 80 + 780 + 120 = 980
+                  
+                  Vertical positions (with padding 40px):
+                  - TOP cards: card height ~170px + XP label ~25px = 195px → bottom Y = 40 + 195 = 235
+                  - BOTTOM cards: XP label ~25px + card start at 290 → top Y = 40 + 290 = 330
+                  - Center line Y = (235 + 330) / 2 ≈ 280
+                  - Vertical line length = 45px each direction
                 */}
-
-                {/* === SEGMENT 1: Phase 5 → Extra Reward (0-25%) === */}
-                {/* Garis dari Phase 5 (kanan card) ke Extra Reward (kiri) */}
+                
+                {/* Main horizontal center line (gray background) */}
                 <line 
-                  x1="348" y1="120" x2="400" y2="120" 
-                  stroke={progress >= 25 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 25 ? "0" : "8,8"}
+                  x1="200" y1="280" x2="980" y2="280" 
+                  stroke="#E2E8F0" 
+                  strokeWidth="4"
                 />
                 
-                {/* Dot connector di ujung Phase 5 */}
-                <circle cx="348" cy="120" r="6" fill={progress >= 0 ? "#4177FF" : "#CBD5E0"} />
-
-                {/* === SEGMENT 2: Extra Reward → Phase 7 (25-50%) === */}
-                {/* Garis dari Extra Reward (kanan) ke Phase 7 (kiri) */}
+                {/* Colored progress line overlay based on current phase */}
                 <line 
-                  x1="576" y1="120" x2="620" y2="120" 
-                  stroke={progress >= 50 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 50 ? "0" : "8,8"}
+                  x1="200" y1="280" 
+                  x2={phases[1].status === 'current' ? "460" : phases[2].status === 'current' ? "720" : phases[3].status === 'current' ? "980" : "980"} 
+                  y2="280" 
+                  stroke="#4177FF" 
+                  strokeWidth="4"
                 />
                 
-                {/* Dot connector di ujung Extra Reward */}
-                <circle cx="576" cy="120" r="6" fill={progress >= 25 ? "#4177FF" : "#CBD5E0"} />
-
-                {/* === SEGMENT 3: Phase 7 → Phase 6 (50-75%) === */}
-                {/* Garis vertikal turun dari Phase 7 */}
+                {/* Phase 5 - TOP - vertical line going UP (45px) */}
                 <line 
-                  x1="700" y1="240" x2="700" y2="290" 
-                  stroke={progress >= 50 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 75 ? "0" : "8,8"}
+                  x1="200" y1="280" x2="200" y2="235" 
+                  stroke={phases[0].status === 'completed' || phases[0].status === 'current' ? "#4177FF" : "#E2E8F0"} 
+                  strokeWidth="4"
                 />
+                <circle cx="200" cy="280" r="10" fill={phases[0].status === 'completed' || phases[0].status === 'current' ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="4" />
                 
-                {/* Garis horizontal ke kiri menuju Phase 6 */}
+                {/* Phase 6 - BOTTOM - vertical line going DOWN (50px) */}
                 <line 
-                  x1="700" y1="290" x2="450" y2="290" 
-                  stroke={progress >= 50 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 75 ? "0" : "8,8"}
+                  x1="460" y1="280" x2="460" y2="330" 
+                  stroke={phases[1].status === 'completed' || phases[1].status === 'current' ? "#4177FF" : "#E2E8F0"} 
+                  strokeWidth="4"
                 />
+                <circle cx="460" cy="280" r="10" fill={phases[1].status === 'completed' || phases[1].status === 'current' ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="4" />
                 
-                {/* Garis vertikal turun ke Phase 6 */}
+                {/* Phase 7 - TOP - vertical line going UP (45px) */}
                 <line 
-                  x1="450" y1="290" x2="450" y2="420" 
-                  stroke={progress >= 50 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 75 ? "0" : "8,8"}
+                  x1="720" y1="280" x2="720" y2="235" 
+                  stroke={phases[2].status === 'completed' || phases[2].status === 'current' ? "#4177FF" : "#E2E8F0"} 
+                  strokeWidth="4"
                 />
+                <circle cx="720" cy="280" r="10" fill={phases[2].status === 'completed' || phases[2].status === 'current' ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="4" />
                 
-                {/* Garis horizontal ke Phase 6 card */}
+                {/* Phase 8 - BOTTOM - vertical line going DOWN (50px) */}
                 <line 
-                  x1="450" y1="420" x2="448" y2="420" 
-                  stroke={progress >= 50 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 75 ? "0" : "8,8"}
+                  x1="980" y1="280" x2="980" y2="330" 
+                  stroke={phases[3].status === 'completed' || phases[3].status === 'current' ? "#4177FF" : "#E2E8F0"} 
+                  strokeWidth="4"
                 />
-                
-                {/* Dot connector di bawah Phase 7 */}
-                <circle cx="700" cy="240" r="6" fill={progress >= 50 ? "#4177FF" : "#CBD5E0"} />
-
-                {/* === SEGMENT 4: Phase 6 → Phase 8 (75-100%) === */}
-                {/* Garis horizontal dari Phase 6 ke kanan */}
-                <line 
-                  x1="448" y1="520" x2="580" y2="520" 
-                  stroke={progress >= 75 ? "#4177FF" : "#CBD5E0"} 
-                  strokeWidth="3" 
-                  strokeDasharray={progress >= 100 ? "0" : "8,8"}
-                />
-
-                {/* Dot connector di ujung Phase 6 */}
-                <circle cx="448" cy="520" r="6" fill={progress >= 75 ? "#4177FF" : "#CBD5E0"} />
-                
-                {/* Dot connector di Phase 8 */}
-                <circle cx="580" cy="520" r="6" fill={progress >= 100 ? "#4177FF" : "#CBD5E0"} />
-
-                {/* Progress indicator dots on each phase */}
-                <circle cx="60" cy="120" r="10" fill="#4177FF" stroke="white" strokeWidth="3" /> {/* Phase 5 - completed */}
-                <circle cx="428" cy="130" r="10" fill={progress >= 25 ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="3" /> {/* Extra Reward */}
-                <circle cx="848" cy="120" r="10" fill={progress >= 50 ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="3" /> {/* Phase 7 */}
-                <circle cx="160" cy="420" r="10" fill={progress >= 75 ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="3" /> {/* Phase 6 */}
-                <circle cx="808" cy="520" r="10" fill={progress >= 100 ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="3" /> {/* Phase 8 */}
+                <circle cx="980" cy="280" r="10" fill={phases[3].status === 'completed' || phases[3].status === 'current' ? "#4177FF" : "#E2E8F0"} stroke="white" strokeWidth="4" />
               </svg>
 
-              {/* Phase Cards */}
+              {/* Phase Cards - Zig-zag layout */}
               <div className="relative" style={{ zIndex: 1 }}>
-                {/* Phase 5 - Top Left */}
+                
+                {/* Phase 5 - TOP position 1 */}
                 <div className="absolute" style={{ left: '0px', top: '0px' }}>
-                  <button 
-                    onClick={() => navigate('/course-progress/5')}
-                    className="bg-white rounded-2xl p-3 shadow-lg border-2 border-[#4177FF] w-72 relative hover:shadow-xl transition-all text-left"
-                  >
-                    <button className="absolute top-2 right-2 w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 z-10">
-                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg>
-                    </button>
-                    <img src={phases[0].image} alt={phases[0].title} className="w-full h-32 object-cover rounded-xl mb-2" />
+                  <div className={`bg-white rounded-2xl p-3 shadow-lg border-2 ${phases[0].status === 'current' ? 'border-[#4177FF]' : phases[0].status === 'completed' ? 'border-green-400' : 'border-gray-200'} w-60 relative`}>
+                    {phases[0].status === 'completed' && (
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                    <img src={phases[0].image} alt={phases[0].title} className="w-full h-24 object-cover rounded-xl mb-2" />
                     <h3 className="font-bold text-gray-900 text-sm mb-1">{phases[0].title}</h3>
-                    <div className="flex items-center gap-3 text-xs text-gray-600">
+                    <div className="flex items-center gap-2 text-xs text-gray-600">
                       <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                         </svg>
                         {phases[0].duration}
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                          <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                        </svg>
-                        {phases[0].tasks}
-                      </span>
-                    </div>
-                  </button>
-                  {/* XP Label */}
-                  <div className="text-[#4177FF] font-semibold text-sm mt-3 ml-2">+ 80 XP</div>
-                </div>
-
-                {/* Extra Reward Badge - Center Top */}
-                <div className="absolute" style={{ left: '340px', top: '40px' }}>
-                  <div className="bg-[#4177FF] rounded-2xl p-3 shadow-lg w-44">
-                    <div className="text-white text-center mb-2 font-semibold text-sm flex items-center justify-center gap-1">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      Extra Reward
-                    </div>
-                    <div className="space-y-2">
-                      <div className="bg-[#5686FF] rounded-lg px-3 py-2 flex items-center gap-2 text-white text-xs">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        +100 XP
-                      </div>
-                      <div className="bg-[#5686FF] rounded-lg px-3 py-2 flex items-center gap-2 text-white text-xs">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clipRule="evenodd" />
-                        </svg>
-                        +200 MP
-                      </div>
+                      <span>{phases[0].tasks}</span>
                     </div>
                   </div>
+                  <div className={`font-semibold text-sm mt-2 text-left ${phases[0].status === 'completed' ? 'text-green-500' : 'text-[#4177FF]'}`}>+ {phases[0].xpReward} XP</div>
                 </div>
 
-                {/* Phase 7 - Top Right */}
-                <div className="absolute" style={{ left: '560px', top: '0px' }}>
-                  <div className="bg-white rounded-2xl p-3 shadow-lg border-2 border-gray-200 w-72 relative">
-                    <button className="absolute top-2 right-2 w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 z-10">
-                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg>
-                    </button>
-                    <img src={phases[2].image} alt={phases[2].title} className="w-full h-32 object-cover rounded-xl mb-2" />
-                    <h3 className="font-bold text-gray-900 text-sm mb-1">{phases[2].title}</h3>
-                    <div className="flex items-center gap-3 text-xs text-[#4177FF]">
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                        </svg>
-                        {phases[2].duration}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                          <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                        </svg>
-                        {phases[2].tasks}
-                      </span>
-                    </div>
-                  </div>
-                  {/* XP Label */}
-                  <div className="text-gray-400 font-semibold text-sm mt-3 ml-2">+ 90 XP</div>
-                </div>
-
-                {/* Phase 6 - Bottom Left */}
-                <div className="absolute" style={{ left: '100px', top: '340px' }}>
-                  {/* XP Label above */}
-                  <div className="text-gray-400 font-semibold text-sm mb-3 ml-2">+ 85 XP</div>
-                  <div className="bg-white rounded-2xl p-3 shadow-lg border-2 border-[#4177FF] w-72 relative">
-                    <button className="absolute top-2 right-2 w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 z-10">
-                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg>
-                    </button>
-                    <img src={phases[1].image} alt={phases[1].title} className="w-full h-32 object-cover rounded-xl mb-2" />
+                {/* Phase 6 - BOTTOM position 2 */}
+                <div className="absolute" style={{ left: '260px', top: '290px' }}>
+                  <div className={`font-semibold text-sm mb-2 text-right ${phases[1].status === 'current' ? 'text-[#4177FF]' : 'text-gray-400'}`}>+ {phases[1].xpReward} XP</div>
+                  <div className={`bg-white rounded-2xl p-3 shadow-lg border-2 ${phases[1].status === 'current' ? 'border-[#4177FF]' : phases[1].status === 'completed' ? 'border-green-400' : 'border-gray-200'} w-60 relative`}>
+                    {phases[1].status === 'current' && (
+                      <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-[#4177FF] rounded-full text-white text-xs font-medium">
+                        Aktif
+                      </div>
+                    )}
+                    <img src={phases[1].image} alt={phases[1].title} className="w-full h-24 object-cover rounded-xl mb-2" />
                     <h3 className="font-bold text-gray-900 text-sm mb-1">{phases[1].title}</h3>
-                    <div className="flex items-center gap-3 text-xs text-gray-600">
+                    <div className="flex items-center gap-2 text-xs text-gray-600">
                       <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                         </svg>
                         {phases[1].duration}
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                          <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                        </svg>
-                        {phases[1].tasks}
-                      </span>
+                      <span>{phases[1].tasks}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Phase 8 - Bottom Right */}
-                <div className="absolute" style={{ left: '520px', top: '340px' }}>
-                  {/* XP Label above */}
-                  <div className="text-gray-400 font-semibold text-sm mb-3 ml-2">+ 95 XP</div>
-                  <div className="bg-white rounded-2xl p-3 shadow-lg border-2 border-gray-200 w-72 relative">
-                    <button className="absolute top-2 right-2 w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 z-10">
-                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg>
-                    </button>
-                    <img src={phases[3].image} alt={phases[3].title} className="w-full h-32 object-cover rounded-xl mb-2" />
-                    <h3 className="font-bold text-gray-900 text-sm mb-1">{phases[3].title}</h3>
-                    <div className="flex items-center gap-3 text-xs text-[#4177FF]">
+                {/* Phase 7 - TOP position 3 */}
+                <div className="absolute" style={{ left: '520px', top: '0px' }}>
+                  <div className={`bg-white rounded-2xl p-3 shadow-lg border-2 ${phases[2].status === 'current' ? 'border-[#4177FF]' : phases[2].status === 'completed' ? 'border-green-400' : 'border-gray-200'} w-60 relative ${phases[2].status === 'locked' ? 'opacity-60' : ''}`}>
+                    {phases[2].status === 'locked' && (
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                    <img src={phases[2].image} alt={phases[2].title} className="w-full h-24 object-cover rounded-xl mb-2" />
+                    <h3 className="font-bold text-gray-900 text-sm mb-1">{phases[2].title}</h3>
+                    <div className="flex items-center gap-2 text-xs text-gray-600">
                       <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                        </svg>
+                        {phases[2].duration}
+                      </span>
+                      <span>•</span>
+                      <span>{phases[2].tasks}</span>
+                    </div>
+                  </div>
+                  <div className="text-gray-400 font-semibold text-sm mt-2 text-left">+ {phases[2].xpReward} XP</div>
+                </div>
+
+                {/* Phase 8 - BOTTOM position 4 */}
+                <div className="absolute" style={{ left: '780px', top: '290px' }}>
+                  <div className="text-gray-400 font-semibold text-sm mb-2 text-right">+ {phases[3].xpReward} XP</div>
+                  <div className={`bg-white rounded-2xl p-3 shadow-lg border-2 ${phases[3].status === 'current' ? 'border-[#4177FF]' : phases[3].status === 'completed' ? 'border-green-400' : 'border-gray-200'} w-60 relative ${phases[3].status === 'locked' ? 'opacity-60' : ''}`}>
+                    {phases[3].status === 'locked' && (
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                    <img src={phases[3].image} alt={phases[3].title} className="w-full h-24 object-cover rounded-xl mb-2" />
+                    <h3 className="font-bold text-gray-900 text-sm mb-1">{phases[3].title}</h3>
+                    <div className="flex items-center gap-2 text-xs text-gray-600">
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                         </svg>
                         {phases[3].duration}
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                          <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                        </svg>
-                        {phases[3].tasks}
-                      </span>
+                      <span>{phases[3].tasks}</span>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
