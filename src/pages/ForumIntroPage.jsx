@@ -81,7 +81,7 @@ export default function ForumIntroPage() {
 
                 <button
                     onClick={() => navigate('/forum')}
-                    className="group relative inline-flex items-center gap-2.5 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-base transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/40"
+                    className="cursor-pointer group relative inline-flex items-center gap-2.5 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-base transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/40"
                     aria-label="Lanjut ke Forum"
                 >
                     Selanjutnya
