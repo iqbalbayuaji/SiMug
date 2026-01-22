@@ -1,126 +1,28 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { FaStar } from "react-icons/fa"
+import { coursesData, formatPrice } from "../../constants/coursesData"
 
 export default function PopularCoursesSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const categories = ["Kebugaran", "Nutrisi", "Diet & Bulk", "Sports", "Healthy Habits"]
 
-  const courses = [
-    {
-      id: 1,
-      image: "/course-image.jpg",
-      title: "Seni membentuk badan hanya dalam 30 hari",
-      instructor: "Khabib Nurmagomedov",
-      duration: "7 bulan lalu",
-      rating: 4.8,
-      totalRatings: "9.5k rating",
-      materials: "20 materi+",
-      time: "10 jam",
-      category: "Semua kalangan",
-      price: "Rp. 99.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 2,
-      image: "/course-image.jpg",
-      title: "Panduan lengkap diet sehat untuk pemula",
-      instructor: "Dr. Sarah Johnson",
-      duration: "5 bulan lalu",
-      rating: 4.9,
-      totalRatings: "12k rating",
-      materials: "25 materi+",
-      time: "8 jam",
-      category: "Semua kalangan",
-      price: "Rp. 149.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 3,
-      image: "/course-image.jpg",
-      title: "Yoga untuk kesehatan mental dan fisik",
-      instructor: "Amanda Wijaya",
-      duration: "3 bulan lalu",
-      rating: 4.7,
-      totalRatings: "8.2k rating",
-      materials: "18 materi+",
-      time: "12 jam",
-      category: "Semua kalangan",
-      price: "Rp. 129.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 4,
-      image: "/course-image.jpg",
-      title: "Boxing fundamental untuk pemula",
-      instructor: "Mike Tyson Jr",
-      duration: "6 bulan lalu",
-      rating: 4.8,
-      totalRatings: "10k rating",
-      materials: "22 materi+",
-      time: "15 jam",
-      category: "Semua kalangan",
-      price: "Rp. 179.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 5,
-      image: "/course-image.jpg",
-      title: "Nutrisi optimal untuk atlet",
-      instructor: "Prof. Ahmad Nutritionist",
-      duration: "4 bulan lalu",
-      rating: 4.9,
-      totalRatings: "11k rating",
-      materials: "30 materi+",
-      time: "20 jam",
-      category: "Semua kalangan",
-      price: "Rp. 199.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 6,
-      image: "/course-image.jpg",
-      title: "Cardio training untuk pembakar lemak",
-      instructor: "Fitri Trainer",
-      duration: "2 bulan lalu",
-      rating: 4.6,
-      totalRatings: "7.5k rating",
-      materials: "15 materi+",
-      time: "9 jam",
-      category: "Semua kalangan",
-      price: "Rp. 89.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 7,
-      image: "/course-image.jpg",
-      title: "Strength training untuk massa otot",
-      instructor: "Arnold Fitness",
-      duration: "8 bulan lalu",
-      rating: 4.8,
-      totalRatings: "9.8k rating",
-      materials: "28 materi+",
-      time: "18 jam",
-      category: "Semua kalangan",
-      price: "Rp. 169.000",
-      badge: "Free Trial"
-    },
-    {
-      id: 8,
-      image: "/course-image.jpg",
-      title: "Meditasi dan mindfulness harian",
-      instructor: "Zen Master Lee",
-      duration: "1 bulan lalu",
-      rating: 4.9,
-      totalRatings: "13k rating",
-      materials: "12 materi+",
-      time: "6 jam",
-      category: "Semua kalangan",
-      price: "Rp. 79.000",
-      badge: "Free Trial"
-    }
-  ]
+  // Ambil 6 course pertama dari coursesData
+  const courses = coursesData.slice(0, 6).map(course => ({
+    id: course.id,
+    image: course.thumbnail,
+    title: course.title,
+    instructor: course.instructor.name,
+    duration: course.duration,
+    rating: course.rating,
+    totalRatings: `${(course.totalRatings / 1000).toFixed(1)}k rating`,
+    materials: `${course.totalLessons} materi+`,
+    time: course.duration,
+    category: course.level,
+    price: formatPrice(course.discountPrice || course.price),
+    badge: "Free Trial"
+  }))
 
   const cardsPerSlide = 4
   const totalSlides = Math.ceil(courses.length / cardsPerSlide)

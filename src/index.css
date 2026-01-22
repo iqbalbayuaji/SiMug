@@ -560,3 +560,16 @@ html {
   background-size: 100% 200% !important;
   animation: shimmer-vertical 2s linear infinite;
 }
+
+@keyframes scroll-categories {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.animate-scroll-categories {
+  animation: scroll-categories 40s linear infinite;
+}
