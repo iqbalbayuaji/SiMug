@@ -1,11 +1,12 @@
 import { useState, useCallback } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import Navbar from "../../components/layout/Navbar"
 import Footer from "../../components/layout/Footer"
 
 
 export default function RoadmapPage() {
   const { courseId } = useParams()
+  const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState(0)
   
   // Progress dalam persen (0-100)
@@ -261,7 +262,10 @@ export default function RoadmapPage() {
               <div className="relative" style={{ zIndex: 1 }}>
                 {/* Phase 5 - Top Left */}
                 <div className="absolute" style={{ left: '0px', top: '0px' }}>
-                  <div className="bg-white rounded-2xl p-3 shadow-lg border-2 border-[#4177FF] w-72 relative">
+                  <button 
+                    onClick={() => navigate('/course-progress/5')}
+                    className="bg-white rounded-2xl p-3 shadow-lg border-2 border-[#4177FF] w-72 relative hover:shadow-xl transition-all text-left"
+                  >
                     <button className="absolute top-2 right-2 w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 z-10">
                       <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -285,7 +289,7 @@ export default function RoadmapPage() {
                         {phases[0].tasks}
                       </span>
                     </div>
-                  </div>
+                  </button>
                   {/* XP Label */}
                   <div className="text-[#4177FF] font-semibold text-sm mt-3 ml-2">+ 80 XP</div>
                 </div>
