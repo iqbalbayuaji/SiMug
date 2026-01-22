@@ -34,13 +34,13 @@ export default function Navbar() {
   // Update active menu based on current path
   useEffect(() => {
     const currentPath = location.pathname
-    
+
     // Check if on courses pages
     if (currentPath.startsWith('/courses')) {
       setActiveMenu('Course')
       return
     }
-    
+
     const activeItem = menuItems.find(item => item.path === currentPath)
     if (activeItem) {
       setActiveMenu(activeItem.name)
@@ -50,9 +50,9 @@ export default function Navbar() {
   const menuItems = [
     { name: "Home", path: "/home" },
     { name: "Progres", path: "/progress" },
-    { name: "Course", path: "/courses", hasDropdown: true },
-    { name: "Events", hasDropdown: true },
-    { name: "Forum", path: "/forum" },
+    { name: "Course", path: "/course", hasDropdown: true },
+    { name: "Events", path: "/events", hasDropdown: true },
+    { name: "Forum", path: "/forum-intro" },
     { name: "SiMug AI", path: "/chatbot" }
   ]
 
@@ -196,7 +196,7 @@ export default function Navbar() {
 
                 {/* Course Dropdown */}
                 {item.name === "Course" && showCourseDropdown && (
-                  <div 
+                  <div
                     className="fixed left-0 right-0 top-[73px] bg-white shadow-2xl border-t border-gray-100 z-50"
                     onMouseLeave={() => {
                       setShowCourseDropdown(false)
@@ -238,20 +238,20 @@ export default function Navbar() {
                           </div>
                         ))}
                       </div>
-                      <div className="mt-6 pt-6 border-t border-[#4177FF] opacity-40 text-left"/>      
-                        <p className="text-sm text-gray-600">
-                          Tidak menemukan course yang dicari?{" "}
-                          <Link to="/courses" onClick={() => setShowCourseDropdown(false)} className="text-[#4177FF] font-semibold hover:underline">
-                            Eksplorasi lebih banyak
-                          </Link>
-                        </p>
+                      <div className="mt-6 pt-6 border-t border-[#4177FF] opacity-40 text-left" />
+                      <p className="text-sm text-gray-600">
+                        Tidak menemukan course yang dicari?{" "}
+                        <Link to="/courses" onClick={() => setShowCourseDropdown(false)} className="text-[#4177FF] font-semibold hover:underline">
+                          Eksplorasi lebih banyak
+                        </Link>
+                      </p>
                     </div>
                   </div>
                 )}
 
                 {/* Events Dropdown */}
                 {item.name === "Events" && showEventsDropdown && (
-                  <div 
+                  <div
                     className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[900px] bg-white shadow-2xl rounded-3xl border border-gray-100 z-50"
                     onMouseLeave={() => {
                       setShowEventsDropdown(false)
@@ -283,8 +283,8 @@ export default function Navbar() {
                         {/* Right Column - Promo Card */}
                         <div className="bg-gradient-to-br from-[#E5ECFF] to-[#F0F5FF] rounded-2xl p-4 flex flex-col">
                           <div className="relative mb-3 rounded-xl overflow-hidden bg-gray-200 h-32">
-                            <img 
-                              src={vegan} 
+                            <img
+                              src={vegan}
                               alt="Event Promo"
                               className="w-full h-full object-cover"
                             />
@@ -292,7 +292,7 @@ export default function Navbar() {
                             <div className="absolute inset-0 flex items-center justify-center">
                               <button className="w-12 h-12 bg-[#000000] opacity-70 rounded-full flex items-center justify-center transition-colors shadow-lg">
                                 <svg className="w-6 h-6 text-[#FFFFFF] ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z"/>
+                                  <path d="M8 5v14l11-7z" />
                                 </svg>
                               </button>
                             </div>
@@ -306,7 +306,7 @@ export default function Navbar() {
                           <button className="bg-[#4177FF] text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-[#3666E5] transition-colors w-full flex items-center justify-center gap-2">
                             Kunjungi
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                           </button>
                         </div>
@@ -322,7 +322,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             {/* Notification Bell */}
             <div className="relative">
-              <button 
+              <button
                 onClick={() => setShowNotifications(!showNotifications)}
                 className="relative w-8 h-8 bg-[#D9E4FF] rounded-full flex items-center justify-center hover:bg-[#D0DFFF] transition-colors"
               >
@@ -332,11 +332,11 @@ export default function Navbar() {
                 {/* Notification Badge */}
                 <span className="absolute bottom-5 left-6 w-3.5 h-3.5 bg-[#4177FF] rounded-full border-2 border-white"></span>
               </button>
-              
+
               {/* Notification Popup */}
-              <NotificationPopup 
-                isOpen={showNotifications} 
-                onClose={() => setShowNotifications(false)} 
+              <NotificationPopup
+                isOpen={showNotifications}
+                onClose={() => setShowNotifications(false)}
               />
             </div>
 
@@ -383,11 +383,10 @@ export default function Navbar() {
                   setActiveMenu(item.name)
                   setIsMobileMenuOpen(false)
                 }}
-                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                  activeMenu === item.name
-                    ? "bg-[#E5ECFF] text-[#4177FF]"
-                    : "text-gray-700 hover:bg-gray-50"
-                }`}
+                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${activeMenu === item.name
+                  ? "bg-[#E5ECFF] text-[#4177FF]"
+                  : "text-gray-700 hover:bg-gray-50"
+                  }`}
               >
                 {item.name}
               </Link>

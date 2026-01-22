@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ForumProfileSection({
-    title = "Ngobrol Santai Pejuang LN",
-    description = "Di sini, kita belajar bahasa tanpa tekanan, berbagi pengalaman, latihan ngobrol santai, dan saling menguatkan sesama pejuang luar negeri.",
-    memberCount = "10.5k member",
+    title = "Komunitas Kebugaran SiMug",
+    description = "Wadah berbagi tips kebugaran, pola makan sehat, dan motivasi olahraga harian untuk hidup yang lebih baik.",
+    memberCount = "12.3k member",
     avatarColor = "bg-blue-500"
 }) {
     const navigate = useNavigate();

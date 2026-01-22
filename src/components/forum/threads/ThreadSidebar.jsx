@@ -3,27 +3,27 @@ import React from 'react';
 export default function ThreadSidebar() {
     const questions = [
         {
-            title: "Bahasa apa yang paling realistis untuk dipelajari dalam 6 bulan?",
+            title: "Olahraga apa yang paling efektif untuk bakar lemak perut dalam 3 bulan?",
             author: "@zidanikeee",
             time: "2 jam lalu"
         },
         {
-            title: "Bagian tersulit saat latihan speaking itu apa?",
+            title: "Bagian tersulit saat mulai rutin lari pagi itu apa?",
             author: "@zidanikeee",
             time: "10 menit lalu"
         },
         {
-            title: "Metode belajar bahasa apa yang sudah kamu coba dan efektif?",
+            title: "Metode latihan HIIT apa yang sudah kamu coba dan efektif?",
             author: "@zidanikeee",
             time: "3 menit lalu"
         },
         {
-            title: "Target LN-mu (studi/kerja), dan level bahasa sekarang?",
+            title: "Target berat badanmu, dan kondisi sekarang? (Pemula/Pro)",
             author: "@zidanikeee",
             time: "1 menit lalu"
         },
         {
-            title: "Kalau harus latihan ngobrol rutin, kamu lebih pilih partner native atau sesama learner?",
+            title: "Kalau harus latihan rutin, kamu lebih pilih partner pro atau sesama pemula?",
             author: "@zidanikeee",
             time: "2 detik lalu"
         }

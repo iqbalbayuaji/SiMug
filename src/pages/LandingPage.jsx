@@ -32,8 +32,9 @@ export default function LandingPage() {
         {
             id: 1,
             image: CourseImg1,
-            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
-            instructor: "Moh. Hambali",
+            category: "sports",
+            title: "Panduan Lari Marathon untuk Pemula: Dari 0 ke 42K dalam 12 Minggu",
+            instructor: "Budi Santoso",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -45,8 +46,9 @@ export default function LandingPage() {
         {
             id: 2,
             image: CourseImg2,
-            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
-            instructor: "Moh. Hambali",
+            category: "kebugaran",
+            title: "Teknik Dasar Yoga untuk Fleksibilitas dan Ketenangan Mental",
+            instructor: "Sari Devi",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -58,8 +60,9 @@ export default function LandingPage() {
         {
             id: 3,
             image: CourseImg3,
-            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
-            instructor: "Moh. Hambali",
+            category: "kebugaran",
+            title: "Latihan Intensif HIIT: Bakar Kalori Maksimal dalam 30 Menit",
+            instructor: "Rian Wijaya",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -71,8 +74,9 @@ export default function LandingPage() {
         {
             id: 4,
             image: CourseImg4,
-            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
-            instructor: "Moh. Hambali",
+            category: "nutrisi",
+            title: "Nutrisi Olahraga: Atur Pola Makan untuk Performa Atletis",
+            instructor: "Dr. Andi Pratama",
             date: "2 bulan lalu",
             rating: 4.8,
             ratingCount: "9.5k rating",
@@ -84,54 +88,58 @@ export default function LandingPage() {
         {
             id: 5,
             image: CourseImg1,
-            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
-            level: "Semua kalangan",
-            price: "Rp. 99.000"
+            category: "sports",
+            title: "Lari Jarak Jauh: Teknik dan Strategi untuk Atlet Menengah",
+            instructor: "Budi Santoso",
+            date: "1 bulan lalu",
+            rating: 4.9,
+            ratingCount: "1.2k rating",
+            materialsCount: "15 materi+",
+            duration: "8 jam",
+            level: "Menengah",
+            price: "Rp. 129.000"
         },
         {
             id: 6,
             image: CourseImg2,
-            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
+            category: "mental",
+            title: "Mindfulness Berbasis Olahraga: Kelola Stress dengan Aktivitas Fisik",
+            instructor: "Sari Devi",
+            date: "3 minggu lalu",
+            rating: 4.7,
+            ratingCount: "800 rating",
+            materialsCount: "12 materi+",
+            duration: "5 jam",
             level: "Semua kalangan",
-            price: "Rp. 59.000"
+            price: "Rp. 49.000"
         },
         {
             id: 7,
             image: CourseImg3,
-            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
+            category: "kebugaran",
+            title: "Calisthenics Fundamental: Kuasai Tubuhmu Tanpa Beban Luar",
+            instructor: "Rian Wijaya",
+            date: "1 bulan lalu",
             rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
+            ratingCount: "2.1k rating",
+            materialsCount: "25 materi+",
+            duration: "12 jam",
             level: "Semua kalangan",
-            price: "Rp. 79.000"
+            price: "Rp. 89.000"
         },
         {
             id: 8,
             image: CourseImg4,
-            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
-            instructor: "Moh. Hambali",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
+            category: "nutrisi",
+            title: "Meal Prep Sehat: Hemat Waktu dan Uang untuk Hidup Lebih Baik",
+            instructor: "Dr. Andi Pratama",
+            date: "2 minggu lalu",
+            rating: 4.9,
+            ratingCount: "3.5k rating",
+            materialsCount: "18 materi+",
+            duration: "6 jam",
             level: "Semua kalangan",
-            price: "Rp. 50.000"
+            price: "Rp. 75.000"
         }
     ]
 
@@ -825,21 +833,29 @@ export default function LandingPage() {
 
                     {/* Course Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-                        {courses.map((course) => (
-                            <CourseCard
-                                key={course.id}
-                                image={course.image}
-                                title={course.title}
-                                instructor={course.instructor}
-                                date={course.date}
-                                rating={course.rating}
-                                ratingCount={course.ratingCount}
-                                materialsCount={course.materialsCount}
-                                duration={course.duration}
-                                level={course.level}
-                                price={course.price}
-                            />
-                        ))}
+                        {courses
+                            .filter(course => {
+                                if (activeCategory === 'Kebugaran') return course.category === 'kebugaran';
+                                if (activeCategory === 'Olahraga') return course.category === 'sports';
+                                if (activeCategory === 'Nutrisi') return course.category === 'nutrisi';
+                                if (activeCategory === 'Mental') return course.category === 'mental';
+                                return true;
+                            })
+                            .map((course) => (
+                                <CourseCard
+                                    key={course.id}
+                                    image={course.image}
+                                    title={course.title}
+                                    instructor={course.instructor}
+                                    date={course.date}
+                                    rating={course.rating}
+                                    ratingCount={course.ratingCount}
+                                    materialsCount={course.materialsCount}
+                                    duration={course.duration}
+                                    level={course.level}
+                                    price={course.price}
+                                />
+                            ))}
                     </div>
                 </div>
             </section>
