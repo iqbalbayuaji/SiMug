@@ -569,50 +569,205 @@ export default function LandingPage() {
                             </p>
                         </div>
 
-                        {/* Feature Cards Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {[
-                                {
-                                    icon: <HiLightningBolt className="w-6 h-6 text-blue-600" />,
-                                    title: "Update Materi Baru",
-                                    desc: "Materi dan video latihan baru diupdate setiap minggu untuk variasi latihanmu."
-                                },
-                                {
-                                    icon: (
-                                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                        </svg>
-                                    ),
-                                    title: "Komunitas Aktif",
-                                    desc: "Bergabung dengan ribuan pejuang sehat lainnya untuk saling berbagi motivasi."
-                                },
-                                {
-                                    icon: (
-                                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                        </svg>
-                                    ),
-                                    title: "Analisis Progres AI",
-                                    desc: "Dapatkan analisis mendalam dari AI tentang progres latihan dan nutrisimu."
-                                },
-                                {
-                                    icon: (
-                                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    ),
-                                    title: "Akses 24/7",
-                                    desc: "Akses semua materi dan forum kapan pun dan di mana pun kamu berada."
-                                }
-                            ].map((feature, idx) => (
-                                <div key={idx} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group">
-                                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                        {feature.icon}
-                                    </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                                    <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
+                        {/* Benefit Card 1 - AI Health Companion */}
+                        <div className="group relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 hover:scale-[1.02] border border-blue-400/20">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-300 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-300 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Animated Circuit Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500" preserveAspectRatio="none">
+                                <defs>
+                                    <pattern id="circuit1" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                                        <path d="M30 0 L30 20 M30 40 L30 60 M0 30 L20 30 M40 30 L60 30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none"/>
+                                        <circle cx="30" cy="30" r="4" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1"/>
+                                        <circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#circuit1)"/>
+                            </svg>
+                            {/* Animated Glow Line */}
+                            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
+                            <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl group-hover:scale-150 group-hover:bg-blue-300/30 transition-all duration-700"></div>
+                            {/* Floating Particles */}
+                            <div className="absolute top-4 right-10 w-2 h-2 bg-blue-300/60 rounded-full group-hover:animate-ping"></div>
+                            <div className="absolute bottom-6 right-20 w-1.5 h-1.5 bg-blue-200/50 rounded-full group-hover:animate-ping" style={{animationDelay: '0.5s'}}></div>
+                            <div className="relative z-10 flex items-center gap-5 h-full">
+                                <div className="flex-shrink-0 w-14 h-14 bg-blue-500/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-300/30 group-hover:border-blue-200/50 group-hover:bg-blue-400/40 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                    <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
                                 </div>
-                            ))}
+                                <div>
+                                    <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-100 transition-colors">AI-Powered Health Companion</h3>
+                                    <p className="text-blue-200 text-sm leading-relaxed">Asisten AI cerdas yang siap membantu 24/7 menjawab pertanyaan kesehatan dan memberikan rekomendasi personal.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Benefit Card 2 - Personalized Learning Path */}
+                        <div className="group relative bg-gradient-to-br from-blue-700 to-blue-800 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-600/40 transition-all duration-500 hover:scale-[1.02] border border-blue-500/20">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-300 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-300 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Hexagon Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-15 group-hover:opacity-30 transition-opacity duration-500" preserveAspectRatio="none">
+                                <defs>
+                                    <pattern id="hexagon2" x="0" y="0" width="50" height="43.4" patternUnits="userSpaceOnUse">
+                                        <polygon points="25,0 50,12.5 50,37.5 25,50 0,37.5 0,12.5" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="0.8" transform="translate(0,-3)"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#hexagon2)"/>
+                            </svg>
+                            {/* Diagonal Lines */}
+                            <div className="absolute inset-0 overflow-hidden">
+                                <div className="absolute -top-10 -right-10 w-40 h-[1px] bg-gradient-to-r from-blue-300/50 to-transparent rotate-45 group-hover:translate-x-20 group-hover:translate-y-20 transition-transform duration-1000"></div>
+                                <div className="absolute -top-5 -right-5 w-32 h-[1px] bg-gradient-to-r from-blue-400/30 to-transparent rotate-45 group-hover:translate-x-16 group-hover:translate-y-16 transition-transform duration-700 delay-100"></div>
+                            </div>
+                            <div className="absolute top-0 left-1/3 w-24 h-24 bg-blue-500/15 rounded-full blur-2xl group-hover:scale-200 transition-transform duration-1000"></div>
+                            <div className="absolute top-2 left-8 w-1 h-8 bg-gradient-to-b from-blue-300/50 to-transparent group-hover:h-12 transition-all duration-500"></div>
+                            <div className="relative z-10 flex items-center gap-5 h-full">
+                                <div className="flex-shrink-0 w-14 h-14 bg-blue-600/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-400/30 group-hover:border-blue-300/50 group-hover:bg-blue-500/40 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                    <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-100 transition-colors">Personalized Learning Path</h3>
+                                    <p className="text-blue-200 text-sm leading-relaxed">Jalur belajar yang disesuaikan dengan level dan goalmu. Dari pemula sampai advanced, semua terstruktur rapi.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Benefit Card 3 - Expert Mentorship */}
+                        <div className="group relative bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-400/40 transition-all duration-500 hover:scale-[1.02] border border-blue-300/20">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-200 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-200 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-200 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-200 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Network Node Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-35 transition-opacity duration-500" preserveAspectRatio="none">
+                                <defs>
+                                    <pattern id="nodes3" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                                        <circle cx="10" cy="10" r="3" fill="rgba(255,255,255,0.5)"/>
+                                        <circle cx="70" cy="30" r="2" fill="rgba(255,255,255,0.4)"/>
+                                        <circle cx="40" cy="70" r="2.5" fill="rgba(255,255,255,0.45)"/>
+                                        <line x1="10" y1="10" x2="70" y2="30" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5"/>
+                                        <line x1="70" y1="30" x2="40" y2="70" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5"/>
+                                        <line x1="40" y1="70" x2="10" y2="10" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#nodes3)"/>
+                            </svg>
+                            {/* Corner Accent */}
+                            <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-blue-300/30 rounded-tr-2xl group-hover:w-24 group-hover:h-24 group-hover:border-blue-200/50 transition-all duration-500"></div>
+                            <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-blue-300/20 rounded-bl-2xl group-hover:w-20 group-hover:h-20 group-hover:border-blue-200/40 transition-all duration-500"></div>
+                            <div className="absolute top-1/2 right-0 w-40 h-40 bg-blue-300/15 rounded-full blur-3xl -translate-y-1/2 translate-x-10 group-hover:scale-125 transition-transform duration-700"></div>
+                            <div className="relative z-10 flex items-center gap-5 h-full">
+                                <div className="flex-shrink-0 w-14 h-14 bg-blue-400/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-200/30 group-hover:border-blue-100/50 group-hover:bg-blue-300/40 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                    <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-50 transition-colors">Expert Mentorship Network</h3>
+                                    <p className="text-blue-100 text-sm leading-relaxed">200+ mentor berpengalaman siap membimbing perjalanan sehatmu dengan konsultasi langsung dan feedback personal.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Benefit Card 4 - Active Community */}
+                        <div className="group relative bg-gradient-to-br from-blue-800 to-blue-900 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-700/40 transition-all duration-500 hover:scale-[1.02] border border-blue-600/20">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-400 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-400 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-400 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-400 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Grid Pattern with Dots */}
+                            <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-35 transition-opacity duration-500">
+                                <defs>
+                                    <pattern id="grid4" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+                                        <circle cx="15" cy="15" r="1" fill="rgba(147,197,253,0.6)"/>
+                                        <line x1="0" y1="15" x2="30" y2="15" stroke="rgba(147,197,253,0.15)" strokeWidth="0.5"/>
+                                        <line x1="15" y1="0" x2="15" y2="30" stroke="rgba(147,197,253,0.15)" strokeWidth="0.5"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grid4)"/>
+                            </svg>
+                            {/* Animated Wave Line */}
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent group-hover:via-blue-300/70 transition-all duration-500"></div>
+                            {/* Orbiting Dots */}
+                            <div className="absolute top-6 right-16 w-3 h-3 bg-blue-400/40 rounded-full group-hover:animate-bounce"></div>
+                            <div className="absolute top-10 right-8 w-2 h-2 bg-blue-300/50 rounded-full group-hover:animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                            <div className="absolute bottom-8 right-12 w-2.5 h-2.5 bg-blue-500/30 rounded-full group-hover:animate-bounce" style={{animationDelay: '0.4s'}}></div>
+                            <div className="absolute top-0 left-1/2 w-48 h-32 bg-blue-600/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000"></div>
+                            <div className="relative z-10 flex items-center gap-5 h-full">
+                                <div className="flex-shrink-0 w-14 h-14 bg-blue-700/40 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-500/30 group-hover:border-blue-400/50 group-hover:bg-blue-600/50 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                    <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-100 transition-colors">Active Community Hub</h3>
+                                    <p className="text-blue-200 text-sm leading-relaxed">Bergabung dengan 10.000+ member aktif. Sharing, diskusi, dan support system yang bikin kamu tetap semangat!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Benefit Card 5 - Gamified Progress */}
+                        <div className="group relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 hover:scale-[1.02] border border-blue-400/20">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-300 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-300 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Progress Bars Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-15 group-hover:opacity-30 transition-opacity duration-500">
+                                <defs>
+                                    <pattern id="bars5" x="0" y="0" width="40" height="60" patternUnits="userSpaceOnUse">
+                                        <rect x="5" y="40" width="6" height="20" rx="2" fill="rgba(255,255,255,0.3)"/>
+                                        <rect x="17" y="25" width="6" height="35" rx="2" fill="rgba(255,255,255,0.4)"/>
+                                        <rect x="29" y="10" width="6" height="50" rx="2" fill="rgba(255,255,255,0.5)"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#bars5)"/>
+                            </svg>
+                            {/* Rising Lines Animation */}
+                            <div className="absolute bottom-0 right-20 w-[2px] h-12 bg-gradient-to-t from-blue-400/50 to-transparent group-hover:h-16 transition-all duration-500"></div>
+                            <div className="absolute bottom-0 right-28 w-[2px] h-8 bg-gradient-to-t from-blue-300/40 to-transparent group-hover:h-14 transition-all duration-500 delay-100"></div>
+                            <div className="absolute bottom-0 right-36 w-[2px] h-16 bg-gradient-to-t from-blue-500/60 to-transparent group-hover:h-20 transition-all duration-500 delay-200"></div>
+                            {/* Achievement Star */}
+                            <div className="absolute top-4 right-6 opacity-30 group-hover:opacity-60 group-hover:rotate-180 transition-all duration-700">
+                                <svg className="w-8 h-8 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div className="absolute bottom-0 left-1/4 w-48 h-24 bg-blue-500/15 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
+                            <div className="relative z-10 flex items-center gap-5 h-full">
+                                <div className="flex-shrink-0 w-14 h-14 bg-blue-500/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-300/30 group-hover:border-blue-200/50 group-hover:bg-blue-400/40 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                    <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-100 transition-colors">Gamified Progress System</h3>
+                                    <p className="text-blue-200 text-sm leading-relaxed">Level up, kumpulkan badge, dan unlock achievement! Buat perjalanan sehatmu jadi seru kayak main game.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -720,85 +875,292 @@ export default function LandingPage() {
 
                     {/* Grid Layout */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                        {/* 1. Top Left Card: AI Assistant */}
-                        <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 text-white flex flex-col justify-between shadow-xl transform hover:-translate-y-1 transition-all">
-                            <div>
-                                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-6">
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-2xl font-bold mb-3">SiMug AI Assistant</h3>
-                                <p className="text-blue-100 text-sm leading-relaxed">Asisten cerdas yang siap menjawab pertanyaan seputar fitness dan nutrisi 24/7.</p>
+                        {/* 1. Top Left Card - Progressive Learning */}
+                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
                             </div>
-                            <div className="mt-8 flex -space-x-2">
-                                <div className="w-8 h-8 rounded-full border-2 border-blue-600 bg-white/30"></div>
-                                <div className="w-8 h-8 rounded-full border-2 border-blue-600 bg-white/40"></div>
-                                <div className="w-8 h-8 rounded-full border-2 border-blue-600 bg-white/50"></div>
-                            </div>
-                        </div>
-
-                        {/* 2. Top Middle Card: Community */}
-                        <div className="bg-white border border-gray-100 rounded-3xl p-8 flex flex-col justify-between shadow-xl transform hover:-translate-y-1 transition-all">
-                            <div>
-                                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3">Community Hub</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">Ruang diskusi seru dengan topik yang relevan bagi pejuang hidup sehat.</p>
-                            </div>
-                            <div className="mt-8 bg-blue-50 rounded-xl p-3 flex items-center gap-3">
-                                <div className="w-8 h-8 bg-blue-600 rounded-lg"></div>
-                                <div className="h-2 w-24 bg-blue-200 rounded-full"></div>
-                            </div>
-                        </div>
-
-                        {/* 3. Right Tall Card: Personalized Roadmap */}
-                        <div className="bg-white border border-gray-100 rounded-3xl p-8 md:row-span-2 shadow-xl transform hover:-translate-y-1 transition-all flex flex-col">
-                            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A2 2 0 013 15.488V5.512a2 2 0 011.553-1.954L9 2l6 3 5.447-2.724A2 2 0 0121 4.227v9.976a2 2 0 01-1.553 1.954L15 19l-6 1z" />
+                            {/* Background Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0">
+                                <defs>
+                                    <pattern id="feat1-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M0 20 L40 20 M20 0 L20 40" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#feat1-grid)"/>
+                            </svg>
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-transparent to-transparent z-0"></div>
+                            {/* Animated Glow */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-150 group-hover:bg-blue-400/30 transition-all duration-700 z-0"></div>
+                            
+                            {/* Illustration - Learning Path */}
+                            <div className="absolute top-4 right-4 w-24 h-24 md:w-32 md:h-32 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 z-10">
+                                <svg viewBox="0 0 120 120" className="w-full h-full">
+                                    {/* Steps */}
+                                    <rect x="15" y="70" width="25" height="35" rx="4" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors duration-300"/>
+                                    <rect x="48" y="50" width="25" height="55" rx="4" className="fill-blue-500/60 group-hover:fill-blue-600/80 transition-colors duration-300"/>
+                                    <rect x="81" y="25" width="25" height="80" rx="4" className="fill-blue-600/70 group-hover:fill-blue-700/90 transition-colors duration-300"/>
+                                    {/* Progress Line */}
+                                    <path d="M27 65 L60 45 L93 20" stroke="rgba(37,99,235,0.6)" strokeWidth="2" fill="none" strokeDasharray="5,3" className="group-hover:stroke-blue-600 transition-colors duration-300"/>
+                                    {/* Star */}
+                                    <circle cx="93" cy="15" r="8" className="fill-yellow-400 group-hover:animate-pulse"/>
                                 </svg>
                             </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">Personalized Roadmap</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-8">Kurikulum yang disusun agar kamu tidak perlu bingung mulai dari mana. Ikuti jalurnya, capai targetnya!</p>
-
-                            <div className="flex-1 space-y-6 relative">
-                                <div className="absolute left-[23px] top-6 bottom-6 w-0.5 bg-blue-100"></div>
-                                {[
-                                    { step: 1, label: "Assessment Goals", active: true },
-                                    { step: 2, label: "Basic Training", active: false },
-                                    { step: 3, label: "Advanced Program", active: false },
-                                    { step: 4, label: "Consistency Phase", active: false }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4 relative z-10">
-                                        <div className={`w-12 h-12 rounded-full border-4 border-white flex items-center justify-center text-sm font-bold shadow-sm ${item.active ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'}`}>
-                                            {item.step}
-                                        </div>
-                                        <span className={`text-sm font-semibold ${item.active ? 'text-gray-900' : 'text-gray-400'}`}>{item.label}</span>
+                            
+                            {/* Content */}
+                            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
+                                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                        </svg>
                                     </div>
-                                ))}
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">Progressive</span>
+                                </div>
+                                <h3 className="text-gray-900 font-semibold text-lg mb-1 group-hover:text-blue-700 transition-colors">Pembelajaran Bertahap</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">Mulai dari level dasar hingga mahir dengan kurikulum terstruktur.</p>
+                            </div>
+                            
+                            {/* Corner Accents */}
+                            <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-blue-400/40 rounded-tl-2xl group-hover:w-16 group-hover:h-16 group-hover:border-blue-500/60 transition-all duration-500 z-10"></div>
+                        </div>
+
+                        {/* 2. Top Middle Card - AI Assistant */}
+                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Animated Dots Background */}
+                            <svg className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-500 z-0">
+                                <defs>
+                                    <pattern id="feat2-dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+                                        <circle cx="15" cy="15" r="2" fill="rgba(59,130,246,0.3)"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#feat2-dots)"/>
+                            </svg>
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-transparent to-transparent z-0"></div>
+                            
+                            {/* Animated Particles */}
+                            <div className="absolute top-8 right-12 w-2 h-2 bg-blue-500/50 rounded-full group-hover:animate-ping z-10"></div>
+                            <div className="absolute top-16 right-6 w-1.5 h-1.5 bg-blue-400/40 rounded-full group-hover:animate-ping z-10" style={{animationDelay: '0.3s'}}></div>
+                            
+                            {/* Illustration - AI Brain */}
+                            <div className="absolute top-3 right-3 w-28 h-28 md:w-36 md:h-36 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 z-10">
+                                <svg viewBox="0 0 120 120" className="w-full h-full">
+                                    {/* Brain outline */}
+                                    <ellipse cx="60" cy="55" rx="35" ry="30" className="fill-none stroke-blue-400 group-hover:stroke-blue-500 transition-colors" strokeWidth="2"/>
+                                    {/* Neural connections */}
+                                    <circle cx="45" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
+                                    <circle cx="75" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
+                                    <circle cx="60" cy="65" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
+                                    <circle cx="50" cy="58" r="4" className="fill-blue-400/50"/>
+                                    <circle cx="70" cy="58" r="4" className="fill-blue-400/50"/>
+                                    {/* Connections */}
+                                    <line x1="45" y1="45" x2="75" y2="45" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
+                                    <line x1="45" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
+                                    <line x1="75" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
+                                    {/* Pulse rings */}
+                                    <circle cx="60" cy="55" r="20" className="fill-none stroke-blue-400/40 group-hover:animate-ping" strokeWidth="1"/>
+                                    {/* Chat bubbles */}
+                                    <rect x="85" y="70" width="25" height="18" rx="4" className="fill-blue-400/50"/>
+                                    <circle cx="90" cy="88" r="3" className="fill-blue-400/50"/>
+                                </svg>
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40 group-hover:animate-pulse">
+                                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">AI-Powered</span>
+                                </div>
+                                <h3 className="text-gray-900 font-semibold text-lg mb-1 group-hover:text-blue-700 transition-colors">AI Chatbot Assistant</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">Tanya apa saja tentang kesehatan, dijawab AI 24/7.</p>
                             </div>
                         </div>
 
-                        {/* 4. Bottom Wide Card: Expert Mentor */}
-                        <div className="bg-white border border-gray-100 rounded-3xl p-8 md:col-span-2 shadow-xl transform hover:-translate-y-1 transition-all flex flex-col md:flex-row items-center gap-10">
-                            <div className="flex-1">
-                                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3">Expert Mentor Support</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">Belajar langsung dari mentor profesional yang sudah berpengalaman di bidangnya masing-masing.</p>
+                        {/* 3. Right Tall Card - Mentorship (Spans 2 rows) */}
+                        <div className="group relative bg-gradient-to-b from-white via-blue-50 to-blue-100/80 rounded-2xl w-full md:row-span-2 md:h-full min-h-[300px] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
                             </div>
-                            <div className="flex-1 w-full p-4 bg-blue-50 rounded-2xl flex items-center gap-4">
-                                <div className="w-16 h-16 bg-blue-200 rounded-full border-4 border-white shadow-sm"></div>
-                                <div>
-                                    <div className="h-3 w-32 bg-blue-600 rounded-full mb-2"></div>
-                                    <div className="h-2 w-20 bg-blue-300 rounded-full"></div>
+                            {/* Hexagon Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0">
+                                <defs>
+                                    <pattern id="feat3-hex" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+                                        <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="0.5" transform="translate(0,-4) scale(0.9)"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#feat3-hex)"/>
+                            </svg>
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-white/30 to-transparent z-0"></div>
+                            
+                            {/* Floating Gradient Orbs */}
+                            <div className="absolute top-10 right-10 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
+                            <div className="absolute bottom-20 left-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+                            
+                            {/* Illustration - Mentorship Network */}
+                            <div className="absolute top-8 left-1/2 -translate-x-1/2 w-48 h-48 md:w-56 md:h-56 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                <svg viewBox="0 0 200 200" className="w-full h-full">
+                                    {/* Central Mentor */}
+                                    <circle cx="100" cy="80" r="25" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors"/>
+                                    <circle cx="100" cy="70" r="12" className="fill-blue-500/70"/>
+                                    <ellipse cx="100" cy="95" rx="15" ry="8" className="fill-blue-500/60"/>
+                                    
+                                    {/* Students around */}
+                                    <g className="group-hover:animate-pulse">
+                                        <circle cx="45" cy="140" r="18" className="fill-blue-400/40"/>
+                                        <circle cx="45" cy="132" r="8" className="fill-blue-500/60"/>
+                                        <ellipse cx="45" cy="148" rx="10" ry="5" className="fill-blue-500/50"/>
+                                    </g>
+                                    <g className="group-hover:animate-pulse" style={{animationDelay: '0.2s'}}>
+                                        <circle cx="100" cy="160" r="18" className="fill-blue-400/40"/>
+                                        <circle cx="100" cy="152" r="8" className="fill-blue-500/60"/>
+                                        <ellipse cx="100" cy="168" rx="10" ry="5" className="fill-blue-500/50"/>
+                                    </g>
+                                    <g className="group-hover:animate-pulse" style={{animationDelay: '0.4s'}}>
+                                        <circle cx="155" cy="140" r="18" className="fill-blue-400/40"/>
+                                        <circle cx="155" cy="132" r="8" className="fill-blue-500/60"/>
+                                        <ellipse cx="155" cy="148" rx="10" ry="5" className="fill-blue-500/50"/>
+                                    </g>
+                                    
+                                    {/* Connection Lines */}
+                                    <line x1="100" y1="105" x2="55" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
+                                    <line x1="100" y1="105" x2="100" y2="140" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
+                                    <line x1="100" y1="105" x2="145" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
+                                    
+                                    {/* Sparkles */}
+                                    <circle cx="70" cy="60" r="3" className="fill-blue-500/80 group-hover:animate-ping"/>
+                                    <circle cx="130" cy="55" r="2" className="fill-blue-500/70 group-hover:animate-ping" style={{animationDelay: '0.5s'}}/>
+                                </svg>
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
+                                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">Expert Network</span>
+                                </div>
+                                <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-blue-700 transition-colors">Jaringan Mentor Profesional</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed mb-4">Terhubung langsung dengan 200+ ahli kesehatan bersertifikat. Konsultasi langsung, feedback personal, dan bimbingan karir di bidang kesehatan.</p>
+                                
+                                {/* Stats */}
+                                <div className="flex gap-4">
+                                    <div className="text-center">
+                                        <div className="text-2xl font-bold text-blue-600">200+</div>
+                                        <div className="text-xs text-gray-500">Mentor</div>
+                                    </div>
+                                    <div className="w-[1px] bg-blue-300/50"></div>
+                                    <div className="text-center">
+                                        <div className="text-2xl font-bold text-blue-600">50+</div>
+                                        <div className="text-xs text-gray-500">Spesialisasi</div>
+                                    </div>
+                                    <div className="w-[1px] bg-blue-300/50"></div>
+                                    <div className="text-center">
+                                        <div className="text-2xl font-bold text-blue-600">24/7</div>
+                                        <div className="text-xs text-gray-500">Support</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 4. Bottom Wide Card - Community (Spans 2 columns) */}
+                        <div className="group relative bg-gradient-to-r from-white via-blue-50 to-blue-100/80 rounded-2xl w-full md:col-span-2 aspect-[2.1/0.7] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
+                            {/* Animated Glowing Border */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
+                            </div>
+                            {/* Wave Pattern */}
+                            <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0" preserveAspectRatio="none">
+                                <defs>
+                                    <pattern id="feat4-wave" x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M0 10 Q25 0, 50 10 T100 10" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#feat4-wave)"/>
+                            </svg>
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-transparent to-white/50 z-0"></div>
+                            
+                            {/* Floating Orbs */}
+                            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-48 h-48 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
+                            <div className="absolute right-10 top-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                            
+                            {/* Illustration - Community */}
+                            <div className="absolute right-6 top-1/2 -translate-y-1/2 w-40 h-32 md:w-56 md:h-44 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                <svg viewBox="0 0 220 150" className="w-full h-full">
+                                    {/* Chat bubbles */}
+                                    <rect x="10" y="20" width="70" height="45" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
+                                    <polygon points="25,65 35,65 30,75" className="fill-blue-400/40 group-hover:fill-blue-500/60"/>
+                                    <rect x="20" y="32" width="50" height="4" rx="2" className="fill-blue-500/50"/>
+                                    <rect x="20" y="42" width="35" height="4" rx="2" className="fill-blue-500/40"/>
+                                    
+                                    <rect x="100" y="40" width="80" height="50" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
+                                    <polygon points="165,90 175,90 170,100" className="fill-blue-400/40 group-hover:fill-blue-500/60"/>
+                                    <rect x="110" y="55" width="60" height="4" rx="2" className="fill-blue-500/50"/>
+                                    <rect x="110" y="65" width="45" height="4" rx="2" className="fill-blue-500/40"/>
+                                    <rect x="110" y="75" width="30" height="4" rx="2" className="fill-blue-500/30"/>
+                                    
+                                    {/* User avatars */}
+                                    <circle cx="30" cy="110" r="18" className="fill-blue-400/50"/>
+                                    <circle cx="30" cy="105" r="7" className="fill-blue-500/70"/>
+                                    <ellipse cx="30" cy="120" rx="10" ry="5" className="fill-blue-500/60"/>
+                                    
+                                    <circle cx="80" cy="120" r="15" className="fill-blue-400/50"/>
+                                    <circle cx="80" cy="116" r="6" className="fill-blue-500/70"/>
+                                    <ellipse cx="80" cy="128" rx="8" ry="4" className="fill-blue-500/60"/>
+                                    
+                                    <circle cx="130" cy="125" r="18" className="fill-blue-400/50"/>
+                                    <circle cx="130" cy="120" r="7" className="fill-blue-500/70"/>
+                                    <ellipse cx="130" cy="135" rx="10" ry="5" className="fill-blue-500/60"/>
+                                    
+                                    {/* Activity dots */}
+                                    <circle cx="55" cy="15" r="4" className="fill-green-500/80 group-hover:animate-ping"/>
+                                    <circle cx="195" cy="50" r="3" className="fill-green-500/70 group-hover:animate-ping" style={{animationDelay: '0.3s'}}/>
+                                    <circle cx="175" cy="115" r="3" className="fill-green-500/60 group-hover:animate-ping" style={{animationDelay: '0.6s'}}/>
+                                </svg>
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="absolute left-0 top-0 bottom-0 p-6 flex flex-col justify-center max-w-[55%] z-10">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
+                                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">Community Hub</span>
+                                </div>
+                                <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-blue-700 transition-colors">Forum Komunitas Aktif</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">Diskusi, sharing pengalaman, dan support system dari 10.000+ member aktif. Berbagi tips kesehatan, challenge bersama, dan motivasi harian!</p>
+                                
+                                {/* Live indicator */}
+                                <div className="flex items-center gap-2 mt-4">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                    <span className="text-green-600 text-xs font-medium">1,234 online sekarang</span>
                                 </div>
                             </div>
                         </div>

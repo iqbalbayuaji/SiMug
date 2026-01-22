@@ -1,7 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { FaStar, FaLock } from 'react-icons/fa'
+import { FaStar, FaPlay, FaCertificate, FaUsers, FaClock, FaCheckCircle, FaBookOpen, FaLaptop, FaInfinity, FaDownload, FaHeart, FaRegHeart, FaChevronRight, FaRocket } from 'react-icons/fa'
+import { HiSparkles, HiAcademicCap, HiLightningBolt, HiShieldCheck } from 'react-icons/hi'
 import Navbar from '../../components/layout/Navbar'
+import Footer from '../../components/layout/Footer'
+import OverviewTab from '../../components/courses/OverviewTab'
+import CurriculumTab from '../../components/courses/CurriculumTab'
+import InstructorTab from '../../components/courses/InstructorTab'
+import ReviewsTab from '../../components/courses/ReviewsTab'
 import { getCourseBySlug, getRelatedCourses, formatPrice } from '../../constants/coursesData'
 
 export default function CourseDetailPage() {
@@ -11,6 +17,9 @@ export default function CourseDetailPage() {
   const [expandedModules, setExpandedModules] = useState([1])
   const [course, setCourse] = useState(null)
   const [relatedCourses, setRelatedCourses] = useState([])
+  const [isWishlisted, setIsWishlisted] = useState(false)
+  const [showVideoModal, setShowVideoModal] = useState(false)
+  const contentRef = useRef(null)
 
   useEffect(() => {
     const foundCourse = getCourseBySlug(slug)
@@ -32,445 +41,283 @@ export default function CourseDetailPage() {
 
   if (!course) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <div className="relative">
+          <div className="w-20 h-20 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
+          <div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-r-cyan-400 rounded-full animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div>
+        </div>
       </div>
     )
   }
 
   const tabs = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'curriculum', label: 'Kurikulum' },
-    { id: 'instructor', label: 'Instruktur' },
-    { id: 'reviews', label: 'Reviews' },
+    { id: 'overview', label: 'Overview', icon: HiSparkles },
+    { id: 'curriculum', label: 'Kurikulum', icon: FaBookOpen },
+    { id: 'instructor', label: 'Instruktur', icon: HiAcademicCap },
+    { id: 'reviews', label: 'Reviews', icon: FaStar },
   ]
-
-  // Calculate rating breakdown
-  const ratingBreakdown = {
-    5: 75,
-    4: 15,
-    3: 7,
-    2: 2,
-    1: 1,
-  }
 
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
       <Navbar />
+      
+      {/* Progress Bar */}
+      {/* <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-white/20 backdrop-blur-sm">
+        <div 
+          className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div> */}
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-        {/* Background Image with Overlay */}
+      {/* Hero Section - Modern Glassmorphism */}
+      <section className="relative min-h-[60vh] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden border-b-0">
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <img
-            src={course.thumbnail}
-            alt=""
-            className="w-full h-full object-cover opacity-20 blur-sm"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/95 to-gray-900/80"></div>
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-cyan-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+          </div>
+          
+          {/* Grid Pattern Overlay */}
+          <div className="absolute inset-0 opacity-10" style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}></div>
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/50"></div>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 py-12 md:py-20">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Left Content */}
-            <div className="lg:col-span-2">
-              {/* Breadcrumb */}
-              <nav className="flex items-center gap-2 text-sm text-gray-400 mb-6">
-                <Link to="/courses" className="hover:text-white transition-colors">Courses</Link>
-                <span>›</span>
-                <Link to={`/courses?category=${course.category}`} className="hover:text-white transition-colors">
+        <div className="relative max-w-7xl mx-auto px-6 py-16 md:py-24">
+          <div className="grid lg:grid-cols-5 gap-12 items-center">
+            {/* Left Content - 3 cols */}
+            <div className="lg:col-span-3">
+              {/* Breadcrumb with Glassmorphism */}
+              <nav className="inline-flex items-center gap-2 text-sm bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8">
+                <Link to="/courses" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                  <span>Courses</span>
+                </Link>
+                <FaChevronRight className="text-gray-600 text-xs" />
+                <Link to={`/courses?category=${course.category}`} className="text-gray-400 hover:text-white transition-colors">
                   {course.categoryLabel}
                 </Link>
-                <span>›</span>
-                <span className="text-gray-500 truncate max-w-[200px]">{course.title}</span>
               </nav>
 
-              {/* Badge */}
+              {/* Badge with Animation */}
               {course.badge && (
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 ${
-                  course.badge === 'Bestseller' ? 'bg-yellow-400 text-yellow-900' :
-                  course.badge === 'New' ? 'bg-green-500 text-white' :
-                  'bg-blue-500 text-white'
-                }`}>
-                  {course.badge}
-                </span>
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm ${
+                    course.badge === 'Bestseller' 
+                      ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-orange-500/30' 
+                      : course.badge === 'New' 
+                        ? 'bg-gradient-to-r from-emerald-400 to-green-500 text-white shadow-lg shadow-green-500/30'
+                        : 'bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-lg shadow-blue-500/30'
+                  }`}>
+                    <HiSparkles className="text-lg" />
+                    {course.badge}
+                  </span>
+                </div>
               )}
 
-              {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                {course.title}
+              {/* Title with Gradient */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+                  {course.title}
+                </span>
               </h1>
 
               {/* Short Description */}
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
                 {course.shortDescription}
               </p>
 
-              {/* Stats Row */}
-              <div className="flex flex-wrap items-center gap-6 mb-8">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1 bg-yellow-400/20 px-3 py-1 rounded-full">
-                    <FaStar className="text-yellow-400 text-lg" />
-                    <span className="font-bold text-yellow-400">{course.rating}</span>
+              {/* Stats Row with Glassmorphism Cards */}
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/10">
+                  <div className="flex items-center gap-1.5">
+                    <div className="p-1.5 bg-yellow-400/20 rounded-lg">
+                      <FaStar className="text-yellow-400" />
+                    </div>
+                    <span className="font-bold text-yellow-400 text-lg">{course.rating}</span>
                   </div>
-                  <span className="text-gray-400">({course.totalRatings.toLocaleString()} rating)</span>
+                  <span className="text-gray-400 text-sm">({course.totalRatings.toLocaleString()} ulasan)</span>
                 </div>
-                <span className="text-gray-600">|</span>
-                <span className="text-gray-300">
-                  <span className="font-semibold text-white">{course.totalStudents.toLocaleString()}</span> siswa terdaftar
-                </span>
+                
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/10">
+                  <div className="p-1.5 bg-blue-400/20 rounded-lg">
+                    <FaUsers className="text-blue-400" />
+                  </div>
+                  <span className="text-white font-semibold">{course.totalStudents.toLocaleString()}</span>
+                  <span className="text-gray-400 text-sm">siswa</span>
+                </div>
+
+                <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/10">
+                  <div className="p-1.5 bg-green-400/20 rounded-lg">
+                    <FaClock className="text-green-400" />
+                  </div>
+                  <span className="text-white font-semibold">{course.duration}</span>
+                </div>
               </div>
 
-              {/* Instructor */}
-              <div className="flex items-center gap-4 mb-8">
-                <img
-                  src={course.instructor.avatar}
-                  alt={course.instructor.name}
-                  className="w-12 h-12 rounded-full border-2 border-blue-500"
-                />
+              {/* Instructor with Hover Effect */}
+              <div className="flex items-center gap-4 group cursor-pointer">
+                <div className="relative">
+                  <img
+                    src={course.instructor.avatar}
+                    alt={course.instructor.name}
+                    className="w-14 h-14 rounded-2xl object-cover border-2 border-blue-500/50 group-hover:border-blue-400 transition-all group-hover:scale-105"
+                  />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-slate-900 flex items-center justify-center">
+                    <FaCheckCircle className="text-white text-xs" />
+                  </div>
+                </div>
                 <div>
                   <p className="text-sm text-gray-400">Dibuat oleh</p>
-                  <p className="font-semibold text-white">{course.instructor.name}</p>
+                  <p className="font-semibold text-white group-hover:text-blue-400 transition-colors">{course.instructor.name}</p>
+                  <p className="text-xs text-gray-500">{course.instructor.title}</p>
                 </div>
               </div>
 
-              {/* Meta Info */}
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400">
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {course.duration} total
-                </span>
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                  {course.totalLessons} materi
-                </span>
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
-                  {course.level}
-                </span>
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
-                  Update {course.updatedAt}
-                </span>
+              {/* Meta Info Tags */}
+              <div className="flex flex-wrap items-center gap-3 mt-8">
+                {[
+                  { icon: FaClock, text: course.duration },
+                  { icon: FaBookOpen, text: `${course.totalLessons} materi` },
+                  { icon: HiShieldCheck, text: course.level },
+                  { icon: HiLightningBolt, text: `Update ${course.updatedAt}` },
+                ].map((item, idx) => (
+                  <span key={idx} className="flex items-center gap-2 text-sm text-gray-400 bg-white/5 px-3 py-1.5 rounded-full">
+                    <item.icon className="text-blue-400" />
+                    {item.text}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Right - Preview Video (Desktop) */}
-            <div className="hidden lg:block">
-              {/* Video Preview Card - will be positioned absolutely on desktop */}
+            {/* Right - Video Preview Card (Desktop) - 2 cols */}
+            <div className="lg:col-span-2 hidden lg:block">
+              <div className="relative">
+                {/* Glow Effect */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-60"></div>
+                
+                {/* Video Card */}
+                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
+                  <div className="relative aspect-video group cursor-pointer" onClick={() => setShowVideoModal(true)}>
+                    <img
+                      src={course.thumbnail}
+                      alt={course.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all"></div>
+                    
+                    {/* Play Button */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-white/30 rounded-full blur-xl group-hover:blur-2xl transition-all animate-pulse"></div>
+                        <button className="relative w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all">
+                          <FaPlay className="text-blue-600 text-2xl ml-1" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Preview Label */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/50 backdrop-blur-md text-white text-sm rounded-full border border-white/20">
+                        <FaPlay className="text-xs" />
+                        Preview Gratis
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Wave Separator */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F8FAFF"/>
+          </svg>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 border-t-0" ref={contentRef}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Content - Tabs */}
           <div className="lg:col-span-2 order-2 lg:order-1">
-            {/* Tabs Navigation */}
-            <div className="flex gap-1 bg-white p-1 rounded-2xl shadow-sm border border-gray-100 mb-8 overflow-x-auto">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 px-6 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${
-                    activeTab === tab.id
-                      ? 'bg-[#4177FF] text-white shadow-lg shadow-blue-500/25'
-                      : 'text-gray-600 hover:bg-gray-50'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            {/* Tabs Navigation - Modern Style */}
+            <div className="sticky top-4 z-40 mb-8">
+              <div className="flex gap-1 bg-white/80 backdrop-blur-xl p-2 rounded-2xl shadow-lg shadow-blue-500/5 border border-gray-100/50">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                      activeTab === tab.id
+                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                        : 'text-gray-600 hover:bg-gray-100'
+                    }`}
+                  >
+                    <tab.icon className={activeTab === tab.id ? 'text-white' : 'text-gray-400'} />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Tab Content */}
-            <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-              {/* Overview Tab */}
-              {activeTab === 'overview' && (
-                <div className="p-8">
-                  {/* Description */}
-                  <div className="mb-10">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Tentang Course Ini</h2>
-                    <div className="prose prose-gray max-w-none">
-                      {course.description.split('\n\n').map((paragraph, idx) => (
-                        <p key={idx} className="text-gray-600 leading-relaxed mb-4">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* What You'll Learn */}
-                  <div className="mb-10">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Yang Akan Kamu Pelajari</h2>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {course.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start gap-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
-                          <span className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </span>
-                          <span className="text-gray-700">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Requirements */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Prasyarat</h2>
-                    <div className="space-y-3">
-                      {course.requirements.map((req, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
-                          <span className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></span>
-                          <span className="text-gray-600">{req}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Curriculum Tab */}
-              {activeTab === 'curriculum' && (
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900">Kurikulum Course</h2>
-                    <p className="text-gray-500">
-                      {course.totalModules} modul • {course.totalLessons} materi • {course.duration}
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {course.curriculum.map((module) => (
-                      <div key={module.moduleId} className="border border-gray-200 rounded-2xl overflow-hidden">
-                        {/* Module Header */}
-                        <button
-                          onClick={() => toggleModule(module.moduleId)}
-                          className="w-full flex items-center justify-between p-5 bg-gray-50 hover:bg-gray-100 transition-colors"
-                        >
-                          <div className="flex items-center gap-4">
-                            <span className="w-10 h-10 bg-[#4177FF] text-white rounded-xl flex items-center justify-center font-bold">
-                              {module.moduleId}
-                            </span>
-                            <div className="text-left">
-                              <h3 className="font-semibold text-gray-900">{module.title}</h3>
-                              <p className="text-sm text-gray-500">{module.lessons.length} materi • {module.duration}</p>
-                            </div>
-                          </div>
-                          <svg
-                            className={`w-5 h-5 text-gray-400 transition-transform ${expandedModules.includes(module.moduleId) ? 'rotate-180' : ''}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
-
-                        {/* Module Lessons */}
-                        {expandedModules.includes(module.moduleId) && (
-                          <div className="divide-y divide-gray-100">
-                            {module.lessons.map((lesson) => (
-                              <div key={lesson.id} className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
-                                <div className="flex items-center gap-4">
-                                  <span className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-                                    {lesson.isPreview ? (
-                                      <svg className="w-4 h-4 text-[#4177FF]" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z" />
-                                      </svg>
-                                    ) : (
-                                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                      </svg>
-                                    )}
-                                  </span>
-                                  <div>
-                                    <p className="text-gray-900">{lesson.title}</p>
-                                    <p className="text-sm text-gray-400">{lesson.duration}</p>
-                                  </div>
-                                </div>
-                                {lesson.isPreview && (
-                                  <span className="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-medium rounded-full">
-                                    Preview
-                                  </span>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Instructor Tab */}
-              {activeTab === 'instructor' && (
-                <div className="p-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-8">Tentang Instruktur</h2>
-                  
-                  <div className="flex flex-col md:flex-row gap-8">
-                    <div className="flex-shrink-0">
-                      <img
-                        src={course.instructor.avatar}
-                        alt={course.instructor.name}
-                        className="w-32 h-32 rounded-2xl object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">{course.instructor.name}</h3>
-                      <p className="text-[#4177FF] font-medium mb-4">{course.instructor.title}</p>
-                      
-                      <div className="flex flex-wrap gap-6 mb-6">
-                        <div className="flex items-center gap-2">
-                          <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                          <span className="text-gray-600">{course.rating} Rating Instruktur</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                          </svg>
-                          <span className="text-gray-600">{course.instructor.totalStudents.toLocaleString()} siswa</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                          </svg>
-                          <span className="text-gray-600">{course.instructor.totalCourses} courses</span>
-                        </div>
-                      </div>
-
-                      <p className="text-gray-600 leading-relaxed">{course.instructor.bio}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Reviews Tab */}
-              {activeTab === 'reviews' && (
-                <div className="p-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-8">Rating & Reviews</h2>
-
-                  {/* Rating Summary */}
-                  <div className="flex flex-col md:flex-row gap-8 mb-10 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl">
-                    <div className="text-center md:text-left">
-                      <div className="text-6xl font-bold text-gray-900 mb-2">{course.rating}</div>
-                      <div className="flex items-center justify-center md:justify-start gap-1 mb-2">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <svg
-                            key={star}
-                            className={`w-6 h-6 ${star <= Math.floor(course.rating) ? 'text-yellow-400' : 'text-gray-300'}`}
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <p className="text-gray-500">{course.totalRatings.toLocaleString()} rating</p>
-                    </div>
-
-                    {/* Rating Bars */}
-                    <div className="flex-1 space-y-2">
-                      {[5, 4, 3, 2, 1].map((star) => (
-                        <div key={star} className="flex items-center gap-3">
-                          <span className="w-8 text-sm text-gray-600 flex items-center gap-1">{star} <FaStar className="text-yellow-400 text-xs" /></span>
-                          <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-yellow-400 rounded-full"
-                              style={{ width: `${ratingBreakdown[star]}%` }}
-                            ></div>
-                          </div>
-                          <span className="w-12 text-sm text-gray-500 text-right">{ratingBreakdown[star]}%</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Reviews List */}
-                  <div className="space-y-6">
-                    {course.reviews.map((review) => (
-                      <div key={review.id} className="border-b border-gray-100 pb-6">
-                        <div className="flex items-start gap-4">
-                          <img
-                            src={review.avatar}
-                            alt={review.user}
-                            className="w-12 h-12 rounded-full"
-                          />
-                          <div className="flex-1">
-                            <div className="flex items-center gap-3 mb-2">
-                              <h4 className="font-semibold text-gray-900">{review.user}</h4>
-                              <div className="flex items-center gap-1">
-                                {[1, 2, 3, 4, 5].map((star) => (
-                                  <svg
-                                    key={star}
-                                    className={`w-4 h-4 ${star <= review.rating ? 'text-yellow-400' : 'text-gray-300'}`}
-                                    fill="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                  </svg>
-                                ))}
-                              </div>
-                              <span className="text-sm text-gray-400">{review.date}</span>
-                            </div>
-                            <p className="text-gray-600">{review.comment}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {course.reviews.length === 0 && (
-                    <div className="text-center py-12">
-                      <p className="text-gray-500">Belum ada review untuk course ini.</p>
-                    </div>
-                  )}
-                </div>
-              )}
+            <div className="bg-white rounded-3xl shadow-xl shadow-gray-100/50 border border-gray-100 overflow-hidden">
+              {activeTab === 'overview' && <OverviewTab course={course} />}
+              {activeTab === 'curriculum' && <CurriculumTab course={course} expandedModules={expandedModules} toggleModule={toggleModule} />}
+              {activeTab === 'instructor' && <InstructorTab course={course} />}
+              {activeTab === 'reviews' && <ReviewsTab course={course} />}
             </div>
           </div>
 
-          {/* Right Sidebar - Course Info Card */}
+          {/* Right Sidebar - Course Card */}
           <div className="lg:col-span-1 order-1 lg:order-2">
-            <div className="lg:sticky lg:top-[100px]">
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-                {/* Video Preview */}
-                <div className="relative aspect-video bg-gray-900">
+            <div className="lg:sticky lg:top-24">
+              {/* Mobile Video Preview */}
+              <div className="lg:hidden relative mb-6">
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl group cursor-pointer" onClick={() => setShowVideoModal(true)}>
                   <img
                     src={course.thumbnail}
                     alt={course.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                    <button className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-2xl group">
-                      <svg className="w-7 h-7 text-[#4177FF] ml-1 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all">
+                      <FaPlay className="text-blue-600 text-xl ml-1" />
                     </button>
                   </div>
-                  <span className="absolute bottom-3 left-3 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full">
-                    Preview Course
+                </div>
+              </div>
+
+              {/* Price Card */}
+              <div className="bg-white rounded-3xl shadow-xl shadow-gray-100/50 border border-gray-100 overflow-hidden">
+                {/* Desktop Video Preview */}
+                <div className="hidden lg:block relative aspect-video group cursor-pointer" onClick={() => setShowVideoModal(true)}>
+                  <img
+                    src={course.thumbnail}
+                    alt={course.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-white/30 rounded-full blur-xl group-hover:blur-2xl transition-all animate-pulse"></div>
+                      <button className="relative w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all">
+                        <FaPlay className="text-blue-600 text-xl ml-1" />
+                      </button>
+                    </div>
+                  </div>
+                  <span className="absolute bottom-3 left-3 px-3 py-1.5 bg-black/50 backdrop-blur-md text-white text-sm rounded-full border border-white/20 flex items-center gap-2">
+                    <FaPlay className="text-xs" />
+                    Preview Gratis
                   </span>
                 </div>
 
@@ -478,7 +325,7 @@ export default function CourseDetailPage() {
                 <div className="p-6">
                   <div className="mb-6">
                     <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-3xl font-bold text-gray-900">
+                      <span className="text-4xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                         {formatPrice(course.discountPrice)}
                       </span>
                       {course.discountPrice < course.price && (
@@ -486,74 +333,63 @@ export default function CourseDetailPage() {
                           <span className="text-lg text-gray-400 line-through">
                             {formatPrice(course.price)}
                           </span>
-                          <span className="px-2 py-1 bg-red-100 text-red-600 text-sm font-semibold rounded-lg">
+                          <span className="px-3 py-1 bg-gradient-to-r from-red-500 to-rose-600 text-white text-sm font-bold rounded-full shadow-lg shadow-red-500/25">
                             {Math.round((1 - course.discountPrice / course.price) * 100)}% OFF
                           </span>
                         </>
                       )}
                     </div>
-                    <p className="text-sm text-red-500 flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Harga promo berakhir dalam 2 hari!
-                    </p>
+                    <div className="flex items-center gap-2 text-sm text-red-500 bg-red-50 px-3 py-2 rounded-xl">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                      <span className="font-medium">Harga promo berakhir dalam 2 hari!</span>
+                    </div>
                   </div>
 
-                  <button className="w-full py-4 bg-gradient-to-r from-[#4177FF] to-[#5B8FFF] text-white font-bold rounded-2xl hover:shadow-lg hover:shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 mb-3">
+                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1 mb-3 flex items-center justify-center gap-2">
+                    <FaRocket />
                     Mulai Belajar Sekarang
                   </button>
 
-                  <button className="w-full py-4 border-2 border-[#4177FF] text-[#4177FF] font-bold rounded-2xl hover:bg-blue-50 transition-colors mb-6">
-                    Tambah ke Wishlist
+                  <button 
+                    onClick={() => setIsWishlisted(!isWishlisted)}
+                    className={`w-full py-4 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 ${
+                      isWishlisted 
+                        ? 'bg-pink-50 text-pink-600 border-2 border-pink-200' 
+                        : 'border-2 border-gray-200 text-gray-700 hover:border-pink-200 hover:text-pink-600 hover:bg-pink-50'
+                    }`}
+                  >
+                    {isWishlisted ? <FaHeart className="text-pink-500" /> : <FaRegHeart />}
+                    {isWishlisted ? 'Tersimpan di Wishlist' : 'Tambah ke Wishlist'}
                   </button>
 
                   {/* Guarantee */}
-                  <p className="text-center text-sm text-gray-500 mb-6 flex items-center justify-center gap-1">
-                    <FaLock className="text-gray-400" /> 30 Hari Garansi Uang Kembali
-                  </p>
+                  <div className="flex items-center justify-center gap-2 text-sm text-gray-500 my-6 py-4 border-y border-gray-100">
+                    <HiShieldCheck className="text-green-500 text-lg" />
+                    <span>30 Hari Garansi Uang Kembali</span>
+                  </div>
 
                   {/* Course Includes */}
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-4">Course ini mencakup:</h4>
+                    <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <HiSparkles className="text-blue-500" />
+                      Course ini mencakup:
+                    </h4>
                     <div className="space-y-3">
-                      <div className="flex items-center gap-3 text-gray-600">
-                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{course.duration} video on-demand</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-gray-600">
-                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <span>{course.totalLessons} materi pembelajaran</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-gray-600">
-                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        <span>Resources & templates</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-gray-600">
-                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                        </svg>
-                        <span>Akses selamanya</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-gray-600">
-                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                        <span>Akses di mobile & desktop</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-gray-600">
-                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                        </svg>
-                        <span>Sertifikat penyelesaian</span>
-                      </div>
+                      {[
+                        { icon: FaPlay, text: `${course.duration} video on-demand`, color: 'text-blue-500' },
+                        { icon: FaBookOpen, text: `${course.totalLessons} materi pembelajaran`, color: 'text-indigo-500' },
+                        { icon: FaDownload, text: 'Resources & templates', color: 'text-purple-500' },
+                        { icon: FaInfinity, text: 'Akses selamanya', color: 'text-green-500' },
+                        { icon: FaLaptop, text: 'Akses di semua device', color: 'text-orange-500' },
+                        { icon: FaCertificate, text: 'Sertifikat penyelesaian', color: 'text-yellow-600' },
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-3 text-gray-600 group">
+                          <div className={`w-8 h-8 rounded-xl bg-gray-50 flex items-center justify-center group-hover:scale-110 transition-transform ${item.color}`}>
+                            <item.icon className="text-sm" />
+                          </div>
+                          <span className="text-sm">{item.text}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -563,35 +399,74 @@ export default function CourseDetailPage() {
         </div>
       </section>
 
-      {/* Related Courses */}
+      {/* Related Courses - Modern Grid */}
       {relatedCourses.length > 0 && (
-        <section className="max-w-7xl mx-auto px-6 py-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Course Serupa</h2>
+        <section className="max-w-7xl mx-auto px-6 py-16">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-3xl font-black text-gray-900 mb-2">Course Serupa</h2>
+              <p className="text-gray-500">Eksplorasi course lainnya yang mungkin kamu suka</p>
+            </div>
+            <Link 
+              to="/courses" 
+              className="hidden md:flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+            >
+              Lihat Semua
+              <FaChevronRight className="text-sm" />
+            </Link>
+          </div>
+          
           <div className="grid md:grid-cols-3 gap-6">
-            {relatedCourses.map((relatedCourse) => (
+            {relatedCourses.map((relatedCourse, idx) => (
               <Link
                 key={relatedCourse.id}
                 to={`/courses/${relatedCourse.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all"
+                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 hover:-translate-y-2"
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={relatedCourse.thumbnail}
                     alt={relatedCourse.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  
+                  {relatedCourse.badge && (
+                    <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold ${
+                      relatedCourse.badge === 'Bestseller' ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white' :
+                      relatedCourse.badge === 'New' ? 'bg-gradient-to-r from-emerald-400 to-green-500 text-white' :
+                      'bg-gradient-to-r from-blue-400 to-blue-600 text-white'
+                    }`}>
+                      {relatedCourse.badge}
+                    </span>
+                  )}
                 </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-gray-900 line-clamp-2 mb-2 group-hover:text-[#4177FF] transition-colors">
+                
+                <div className="p-6">
+                  <h3 className="font-bold text-gray-900 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors text-lg">
                     {relatedCourse.title}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-3">{relatedCourse.instructor.name}</p>
-                  <div className="flex items-center gap-2 mb-3">
-                    <FaStar className="text-yellow-400" />
-                    <span className="font-semibold">{relatedCourse.rating}</span>
-                    <span className="text-gray-400 text-sm">({relatedCourse.totalRatings.toLocaleString()})</span>
+                  <p className="text-sm text-gray-500 mb-4">{relatedCourse.instructor.name}</p>
+                  
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-1.5 bg-yellow-50 px-2.5 py-1 rounded-lg">
+                      <FaStar className="text-yellow-400" />
+                      <span className="font-bold text-gray-900">{relatedCourse.rating}</span>
+                    </div>
+                    <span className="text-gray-400 text-sm">({relatedCourse.totalRatings.toLocaleString()} ulasan)</span>
                   </div>
-                  <p className="font-bold text-[#4177FF]">{formatPrice(relatedCourse.discountPrice)}</p>
+                  
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <span className="text-2xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                      {formatPrice(relatedCourse.discountPrice)}
+                    </span>
+                    {relatedCourse.discountPrice < relatedCourse.price && (
+                      <span className="text-sm text-gray-400 line-through">
+                        {formatPrice(relatedCourse.price)}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </Link>
             ))}
@@ -600,11 +475,34 @@ export default function CourseDetailPage() {
       )}
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400">© 2025 SiMug. All rights reserved.</p>
+      <Footer />
+
+      {/* Video Modal */}
+      {showVideoModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setShowVideoModal(false)}
+        >
+          <div 
+            className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setShowVideoModal(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+            >
+              ✕
+            </button>
+            <div className="w-full h-full flex items-center justify-center text-white">
+              <div className="text-center">
+                <FaPlay className="text-6xl mb-4 mx-auto opacity-50" />
+                <p className="text-lg">Video Preview</p>
+                <p className="text-sm text-gray-400 mt-2">Integrasi video akan ditambahkan</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
+      )}
     </div>
   )
 }
