@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ForumProfileSection({
     title = "Ngobrol Santai Pejuang LN",
@@ -6,31 +7,40 @@ export default function ForumProfileSection({
     memberCount = "10.5k member",
     avatarColor = "bg-blue-500"
 }) {
+    const navigate = useNavigate();
+
+    const handleMobileClick = () => {
+        // Only navigate on mobile (viewport < 1024px)
+        if (window.innerWidth < 1024) {
+            navigate('/forum/beranda/about');
+        }
+    };
     return (
-        <div className="relative max-w-7xl mx-auto px-4 lg:px-0">
-            <div className="flex flex-col md:flex-row justify-between items-end -mt-12 mb-6 gap-6">
+        <div className="relative max-w-7xl mx-auto px-5 lg:px-0">
+            <div className="flex flex-col md:flex-row justify-between items-end -mt-12 mb-3 lg:mb-6 gap-6 lg:gap-6">
 
                 {/* Left Side: Vertical Stack (Avatar -> Info) */}
                 <div className="flex flex-col items-start">
                     {/* Avatar - Overlapping Banner */}
-                    <div className={`relative z-10 w-36 h-36 ${avatarColor} rounded-full flex-shrink-0 border-4 border-white shadow-md`}></div>
+                    <div className={`relative z-10 lg:w-36 lg:h-36 w-26 h-26 ${avatarColor} rounded-full flex-shrink-0 border-4 border-white shadow-md`}></div>
 
                     {/* Info Stacked Below Avatar */}
-                    <div className="mt-4 max-w-2xl">
-                        <h1 className="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-7">
+                    <div className="mt-4 max-w-2xl items-center">
+                        <h1
+                            onClick={handleMobileClick}
+                            className="text-2xl font-semibold lg:font-bold text-gray-900 mb-2 flex items-center gap-2 cursor-pointer lg:cursor-default"
+                        >
+                            {title}
+                            <svg className="block lg:hidden w-5 h-5 mt-1 transition-transform hover:translate-x-1 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </h1>
+                        <p className="text-gray-600 text-xs lg:text-sm leading-relaxed mb-5 lg:mb-7">
                             {description}
                         </p>
 
                         {/* Stats and Button Row */}
                         <div className="flex flex-wrap items-center gap-3">
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-blue-100 text-blue-600 rounded-full text-sm font-medium shadow-sm h-9">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                {memberCount}
-                            </span>
-
                             <button className=" cursor-pointer inline-flex items-center gap-2 px-6 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-sm font-bold transition-colors h-9">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
@@ -42,7 +52,7 @@ export default function ForumProfileSection({
                 </div>
 
                 {/* Right Side: Social Actions */}
-                <div className="flex gap-2 mb-1">
+                <div className="flex gap-2 mb-0 lg:mb-1">
                     <button className="cursor-pointer w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center transition-colors text-gray-600" title="Copy Link">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />

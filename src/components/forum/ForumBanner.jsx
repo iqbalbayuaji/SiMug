@@ -13,7 +13,7 @@ export default function ForumBanner({ onBack }) {
     };
 
     return (
-        <div className="relative bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 h-55 overflow-hidden">
+        <div className="relative bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 h-36 lg:h-55 overflow-hidden">
             {/* Decorative Circles */}
             <div className="absolute top-10 left-20 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
             <div className="absolute bottom-5 right-32 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>

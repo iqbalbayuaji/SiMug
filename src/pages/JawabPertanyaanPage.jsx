@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import ForumHeader from '../components/forum/ForumHeader';
+import Mailbox from '../assets/icon/mailbox.png';
 import { useSearchParams } from 'react-router-dom';
 
 // Mock data (Duplicated from ForumSearchPage as requested)
@@ -129,6 +130,7 @@ export default function JawabPertanyaanPage() {
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState('Belum Terjawab');
     const [activeQuestionType, setActiveQuestionType] = useState(questionTypes[0]);
+    const [hasSelectedTopics, setHasSelectedTopics] = useState(false);
     const tabs = ['Belum Terjawab', 'Harian', 'Mingguan', 'Populer', 'Relate'];
 
     return (
@@ -283,31 +285,82 @@ export default function JawabPertanyaanPage() {
                         </div>
 
                         {/* Topik Relevan */}
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group">
-                            <div className="bg-blue-600 px-5 py-3.5 text-white font-medium flex justify-between items-center relative overflow-hidden">
-                                <div className="absolute top-16 -right-9 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
-                                <div className="absolute -top-4 -left-10 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
-                                <span className="relative z-10">Topik Relevan</span>
-                                <span className="relative z-10 text-blue-100 bg-white/20 px-2 py-0.5 rounded-full text-xs">11</span>
-                            </div>
-                            <div className="p-3">
-                                <div className="flex flex-wrap gap-2">
-                                    {relevantTopics.map((topic, index) => (
+                        {/* Topik Relevan Container */}
+                        {/* Logic: Show Blue Card (Version 2) if no topics selected, otherwise show List (Version 1) */}
+                        {!hasSelectedTopics ? (
+                            /* Version 2: Empty State / Promo Card */
+                            <div className="bg-blue-600 rounded-xl shadow-sm overflow-hidden relative group p-6 text-white min-h-[340px] flex flex-col justify-between">
+                                {/* Decorative Circles (Background) - Animated Half Circles */}
+                                <div className="group-hover:scale-200 group-hover:bg-white/40 animation-duration-1000 transition-all absolute top-0 left-0 w-16 h-16 bg-white/30 rounded-br-full animate-pulse z-0"></div>
+                                <div className="group-hover:scale-200 group-hover:bg-white/40 animation-duration-1000 transition-all absolute bottom-0 right-0 w-16 h-16 bg-white/30 rounded-tl-full animate-pulse z-0" style={{ animationDelay: '1s' }}></div>
+
+                                {/* Content Wrapper */}
+                                <div className="relative z-10 flex flex-col h-full flex-1">
+                                    {/* Header: Top Left */}
+                                    <h3 className="text-xl font-semibold text-left w-full">Topik Relevan</h3>
+
+                                    {/* Centered Image and Text */}
+                                    <div className="flex-1 flex flex-col items-center justify-center py-4">
+                                        <div className="relative mb-4">
+                                            <img src={Mailbox} alt="Mailbox" className="w-40 h-auto object-contain relative z-10" />
+                                        </div>
+
+                                        <p className="text-blue-100 text-sm leading-relaxed px-2 text-center">
+                                            Dapatkan pertanyaan yang lebih<br />
+                                            <span className="font-semibold text-white">"relate"</span> sesuai topik favoritmu!
+                                        </p>
+                                    </div>
+
+                                    {/* Button: Bottom Center */}
+                                    <div className="group flex justify-center mt-auto">
                                         <button
-                                            key={index}
-                                            className="cursor-pointer px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm rounded-full transition-colors font-medium border border-gray-200"
+                                            onClick={() => setHasSelectedTopics(true)}
+                                            className="bg-blue-800 hover:bg-blue-900 text-white text-sm font-semibold py-2.5 px-6 rounded-full inline-flex items-center gap-2 transition-all shadow-lg hover:shadow-blue-900/30 active:scale-95 cursor-pointer"
                                         >
-                                            {topic}
+                                            Pilih topik
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                                            </svg>
                                         </button>
-                                    ))}
-                                </div>
-                                <div className="mt-4 pt-4 border-t border-gray-100">
-                                    <button className="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline">
-                                        Tambah Topik Lain
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        ) : (
+                            /* Version 1: List State (Existing) */
+                            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group">
+                                <div className="bg-blue-600 px-5 py-3.5 text-white font-medium flex justify-between items-center relative overflow-hidden">
+                                    <div className="absolute top-16 -right-9 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
+                                    <div className="absolute -top-4 -left-10 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
+                                    <span className="relative z-10">Topik Relevan</span>
+                                    <span className="relative z-10 text-blue-100 bg-white/20 px-2 py-0.5 rounded-full text-xs">11</span>
+                                </div>
+                                <div className="p-3">
+                                    <div className="flex flex-wrap gap-2">
+                                        {relevantTopics.map((topic, index) => (
+                                            <button
+                                                key={index}
+                                                className="cursor-pointer px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm rounded-full transition-colors font-medium border border-gray-200"
+                                            >
+                                                {topic}
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+                                        <button className="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline">
+                                            Tambah Topik Lain
+                                        </button>
+                                        {/* Helper to reset state for demo */}
+                                        <button
+                                            onClick={() => setHasSelectedTopics(false)}
+                                            className="text-xs text-gray-400 hover:text-gray-600 underline"
+                                            title="Reset to Empty State (Demo)"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
                     </div>
                 </aside>

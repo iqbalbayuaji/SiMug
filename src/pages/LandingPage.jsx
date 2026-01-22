@@ -4,22 +4,136 @@ import gridHiasan from "../assets/images/grid-hiasan.png"
 import ImageCard1 from "../assets/images/fitness_training_card.png"
 import ImageCard2 from "../assets/images/running_progress_card.png"
 import ImageCard3 from "../assets/images/community_fitness_card.png"
+import CourseImg1 from "../assets/images/course_english_running.png"
+import CourseImg2 from "../assets/images/course_japanese_yoga.png"
+import CourseImg3 from "../assets/images/course_korean_basketball.png"
+import CourseImg4 from "../assets/images/course_german_nature.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
+import CourseCard from '../components/CourseCard'
 
 // Mascot imports
-import Mascot1 from "../assets/maskot/Gemini_Generated_Image_gl519vgl519vgl51-Photoroom.png"
-import Mascot2 from "../assets/maskot/Gemini_Generated_Image_r5b00gr5b00gr5b0-Photoroom.png"
-import Mascot3 from "../assets/maskot/Gemini_Generated_Image_s8ec4rs8ec4rs8ec-Photoroom.png"
-import Mascot4 from "../assets/maskot/Gemini_Generated_Image_v8wgpqv8wgpqv8wg-Photoroom.png"
-import Mascot5 from "../assets/maskot/Gemini_Generated_Image_vu11m5vu11m5vu11-Photoroom.png"
+import Mascot1 from "../assets/maskot/mascot1.png"
+import Mascot2 from "../assets/maskot/mascot2.png"
+import Mascot3 from "../assets/maskot/mascot3.png"
+import Mascot4 from "../assets/maskot/mascot4.png"
+import Mascot5 from "../assets/maskot/mascot5.png"
 
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mascotScattered, setMascotScattered] = useState(false)
+    const [activeCategory, setActiveCategory] = useState('Kebugaran')
     const mascotSectionRef = useRef(null)
+
+    // Course data
+    const courses = [
+        {
+            id: 1,
+            image: CourseImg1,
+            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 99.000"
+        },
+        {
+            id: 2,
+            image: CourseImg2,
+            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 59.000"
+        },
+        {
+            id: 3,
+            image: CourseImg3,
+            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 79.000"
+        },
+        {
+            id: 4,
+            image: CourseImg4,
+            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 50.000"
+        },
+        {
+            id: 5,
+            image: CourseImg1,
+            title: "Lancar Berbahasa Inggris dalam 30 Hari dengan Metode Praktik...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 99.000"
+        },
+        {
+            id: 6,
+            image: CourseImg2,
+            title: "Bahasa Jepang untuk Pemula: Hiragana, Katakana, dan Percak...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 59.000"
+        },
+        {
+            id: 7,
+            image: CourseImg3,
+            title: "Kursus Intensif Bahasa Korea untuk Komunikasi Sehari-hari...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 79.000"
+        },
+        {
+            id: 8,
+            image: CourseImg4,
+            title: "Belajar Bahasa Jerman dari Nol untuk Percakapan Dasar dan Ke...",
+            instructor: "Moh. Hambali",
+            date: "2 bulan lalu",
+            rating: 4.8,
+            ratingCount: "9.5k rating",
+            materialsCount: "20 materi+",
+            duration: "10 jam",
+            level: "Semua kalangan",
+            price: "Rp. 50.000"
+        }
+    ]
 
     useEffect(() => {
         const handleScroll = () => {
@@ -210,79 +324,79 @@ export default function LandingPage() {
                         </div>
 
                         {/* Mascot Section with Scatter Animation */}
-                        <div 
+                        <div
                             ref={mascotSectionRef}
                             className="relative h-[350px] md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
                         >
                             {/* Mascot 1 - Center (main character with breathing effect) */}
-                            <div 
+                            <div
                                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                                     ${mascotScattered ? 'scale-125' : 'scale-100'}`}
                             >
-                                <img 
-                                    src={Mascot1} 
-                                    alt="Mascot Center" 
+                                <img
+                                    src={Mascot1}
+                                    alt="Mascot Center"
                                     className={`w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain 
                                         ${mascotScattered ? 'animate-mascot-center mascot-hover-effect' : 'drop-shadow-[0_0_60px_rgba(59,130,246,0.7)]'}`}
                                 />
                             </div>
 
                             {/* Mascot 2 - Top Left */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                                    ${mascotScattered 
-                                        ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot2} 
-                                    alt="Mascot Top Left" 
+                                <img
+                                    src={Mascot2}
+                                    alt="Mascot Top Left"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-1 mascot-hover-effect' : ''}`}
                                 />
                             </div>
 
                             {/* Mascot 3 - Top Right */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-900 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-75
-                                    ${mascotScattered 
-                                        ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot3} 
-                                    alt="Mascot Top Right" 
+                                <img
+                                    src={Mascot3}
+                                    alt="Mascot Top Right"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-2 mascot-hover-effect' : ''}`}
                                 />
                             </div>
 
                             {/* Mascot 4 - Bottom Left */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-150
-                                    ${mascotScattered 
-                                        ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot4} 
-                                    alt="Mascot Bottom Left" 
+                                <img
+                                    src={Mascot4}
+                                    alt="Mascot Bottom Left"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-3 mascot-hover-effect' : ''}`}
                                 />
                             </div>
 
                             {/* Mascot 5 - Bottom Right */}
-                            <div 
+                            <div
                                 className={`absolute transition-all duration-1100 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-200
-                                    ${mascotScattered 
-                                        ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100' 
+                                    ${mascotScattered
+                                        ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100'
                                         : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
                             >
-                                <img 
-                                    src={Mascot5} 
-                                    alt="Mascot Bottom Right" 
+                                <img
+                                    src={Mascot5}
+                                    alt="Mascot Bottom Right"
                                     className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-4 mascot-hover-effect' : ''}`}
                                 />
@@ -651,6 +765,85 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Course Listing Section */}
+            <section className="py-10 lg:py-10 g-white relative overflow-hidden">
+                {/* Decorative Blue Circles */}
+                <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
+                <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
+                <div className="absolute top-40 right-1/3 w-18 h-18 bg-blue-300/30 rounded-2xl blur-xl"></div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                    {/* Section Header */}
+                    <div className="text-center mb-8 lg:mb-12">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+                            Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
+                        </h2>
+                        <p className="text-gray-600 text-base lg:text-lg">
+                            Kamu bisa lihat beberapa kursus relevan disini.
+                        </p>
+                    </div>
+
+                    {/* Category Tabs */}
+                    <div className="flex justify-center gap-4 lg:gap-6 mb-8 lg:mb-12 flex-wrap">
+                        <button
+                            onClick={() => setActiveCategory('Kebugaran')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Kebugaran'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Kebugaran
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Olahraga')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Olahraga'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Olahraga
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Nutrisi')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Nutrisi'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Nutrisi
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Mental')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Mental'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            Mental
+                        </button>
+                    </div>
+
+                    {/* Course Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
+                        {courses.map((course) => (
+                            <CourseCard
+                                key={course.id}
+                                image={course.image}
+                                title={course.title}
+                                instructor={course.instructor}
+                                date={course.date}
+                                rating={course.rating}
+                                ratingCount={course.ratingCount}
+                                materialsCount={course.materialsCount}
+                                duration={course.duration}
+                                level={course.level}
+                                price={course.price}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Features Grid Section */}
             <section className="py-5 lg:py-10 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -722,81 +915,81 @@ export default function LandingPage() {
                         </div>
 
                         {/* 2. Top Middle Card - AI Assistant */}
-                        <div className="group relative bg-gradient-to-br from-white via-indigo-50 to-indigo-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-indigo-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-300/50 hover:scale-[1.02]">
+                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent glow-border-top"></div>
-                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent glow-border-bottom"></div>
-                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-indigo-500 to-transparent glow-border-left"></div>
-                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-indigo-500 to-transparent glow-border-right"></div>
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
                             </div>
                             {/* Animated Dots Background */}
                             <svg className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-500 z-0">
                                 <defs>
                                     <pattern id="feat2-dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                                        <circle cx="15" cy="15" r="2" fill="rgba(99,102,241,0.3)"/>
+                                        <circle cx="15" cy="15" r="2" fill="rgba(59,130,246,0.3)"/>
                                     </pattern>
                                 </defs>
                                 <rect width="100%" height="100%" fill="url(#feat2-dots)"/>
                             </svg>
-                            <div className="absolute inset-0 bg-gradient-to-t from-indigo-100/80 via-transparent to-transparent z-0"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-transparent to-transparent z-0"></div>
                             
                             {/* Animated Particles */}
-                            <div className="absolute top-8 right-12 w-2 h-2 bg-indigo-500/50 rounded-full group-hover:animate-ping z-10"></div>
-                            <div className="absolute top-16 right-6 w-1.5 h-1.5 bg-purple-400/40 rounded-full group-hover:animate-ping z-10" style={{animationDelay: '0.3s'}}></div>
+                            <div className="absolute top-8 right-12 w-2 h-2 bg-blue-500/50 rounded-full group-hover:animate-ping z-10"></div>
+                            <div className="absolute top-16 right-6 w-1.5 h-1.5 bg-blue-400/40 rounded-full group-hover:animate-ping z-10" style={{animationDelay: '0.3s'}}></div>
                             
                             {/* Illustration - AI Brain */}
                             <div className="absolute top-3 right-3 w-28 h-28 md:w-36 md:h-36 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 z-10">
                                 <svg viewBox="0 0 120 120" className="w-full h-full">
                                     {/* Brain outline */}
-                                    <ellipse cx="60" cy="55" rx="35" ry="30" className="fill-none stroke-indigo-400 group-hover:stroke-indigo-500 transition-colors" strokeWidth="2"/>
+                                    <ellipse cx="60" cy="55" rx="35" ry="30" className="fill-none stroke-blue-400 group-hover:stroke-blue-500 transition-colors" strokeWidth="2"/>
                                     {/* Neural connections */}
-                                    <circle cx="45" cy="45" r="6" className="fill-indigo-400/60 group-hover:fill-indigo-500/80"/>
-                                    <circle cx="75" cy="45" r="6" className="fill-indigo-400/60 group-hover:fill-indigo-500/80"/>
-                                    <circle cx="60" cy="65" r="6" className="fill-indigo-400/60 group-hover:fill-indigo-500/80"/>
-                                    <circle cx="50" cy="58" r="4" className="fill-purple-400/50"/>
-                                    <circle cx="70" cy="58" r="4" className="fill-purple-400/50"/>
+                                    <circle cx="45" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
+                                    <circle cx="75" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
+                                    <circle cx="60" cy="65" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
+                                    <circle cx="50" cy="58" r="4" className="fill-blue-400/50"/>
+                                    <circle cx="70" cy="58" r="4" className="fill-blue-400/50"/>
                                     {/* Connections */}
-                                    <line x1="45" y1="45" x2="75" y2="45" stroke="rgba(99,102,241,0.5)" strokeWidth="1.5"/>
-                                    <line x1="45" y1="45" x2="60" y2="65" stroke="rgba(99,102,241,0.5)" strokeWidth="1.5"/>
-                                    <line x1="75" y1="45" x2="60" y2="65" stroke="rgba(99,102,241,0.5)" strokeWidth="1.5"/>
+                                    <line x1="45" y1="45" x2="75" y2="45" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
+                                    <line x1="45" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
+                                    <line x1="75" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
                                     {/* Pulse rings */}
-                                    <circle cx="60" cy="55" r="20" className="fill-none stroke-indigo-400/40 group-hover:animate-ping" strokeWidth="1"/>
+                                    <circle cx="60" cy="55" r="20" className="fill-none stroke-blue-400/40 group-hover:animate-ping" strokeWidth="1"/>
                                     {/* Chat bubbles */}
-                                    <rect x="85" y="70" width="25" height="18" rx="4" className="fill-indigo-400/50"/>
-                                    <circle cx="90" cy="88" r="3" className="fill-indigo-400/50"/>
+                                    <rect x="85" y="70" width="25" height="18" rx="4" className="fill-blue-400/50"/>
+                                    <circle cx="90" cy="88" r="3" className="fill-blue-400/50"/>
                                 </svg>
                             </div>
                             
                             {/* Content */}
                             <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-8 h-8 bg-indigo-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-indigo-400/40 group-hover:animate-pulse">
-                                        <svg className="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40 group-hover:animate-pulse">
+                                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                         </svg>
                                     </div>
-                                    <span className="text-indigo-600 text-xs font-medium uppercase tracking-wider">AI-Powered</span>
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">AI-Powered</span>
                                 </div>
-                                <h3 className="text-gray-900 font-semibold text-lg mb-1 group-hover:text-indigo-700 transition-colors">AI Chatbot Assistant</h3>
+                                <h3 className="text-gray-900 font-semibold text-lg mb-1 group-hover:text-blue-700 transition-colors">AI Chatbot Assistant</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed">Tanya apa saja tentang kesehatan, dijawab AI 24/7.</p>
                             </div>
                         </div>
 
                         {/* 3. Right Tall Card - Mentorship (Spans 2 rows) */}
-                        <div className="group relative bg-gradient-to-b from-white via-cyan-50 to-blue-100/80 rounded-2xl w-full md:row-span-2 md:h-full min-h-[300px] overflow-hidden border border-cyan-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-300/50 hover:scale-[1.01]">
+                        <div className="group relative bg-gradient-to-b from-white via-blue-50 to-blue-100/80 rounded-2xl w-full md:row-span-2 md:h-full min-h-[300px] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent glow-border-top"></div>
-                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent glow-border-bottom"></div>
-                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-cyan-500 to-transparent glow-border-left"></div>
-                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-cyan-500 to-transparent glow-border-right"></div>
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
                             </div>
                             {/* Hexagon Pattern */}
                             <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0">
                                 <defs>
                                     <pattern id="feat3-hex" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
-                                        <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="none" stroke="rgba(6,182,212,0.3)" strokeWidth="0.5" transform="translate(0,-4) scale(0.9)"/>
+                                        <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="0.5" transform="translate(0,-4) scale(0.9)"/>
                                     </pattern>
                                 </defs>
                                 <rect width="100%" height="100%" fill="url(#feat3-hex)"/>
@@ -804,16 +997,16 @@ export default function LandingPage() {
                             <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-white/30 to-transparent z-0"></div>
                             
                             {/* Floating Gradient Orbs */}
-                            <div className="absolute top-10 right-10 w-40 h-40 bg-cyan-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
+                            <div className="absolute top-10 right-10 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
                             <div className="absolute bottom-20 left-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
                             
                             {/* Illustration - Mentorship Network */}
                             <div className="absolute top-8 left-1/2 -translate-x-1/2 w-48 h-48 md:w-56 md:h-56 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <svg viewBox="0 0 200 200" className="w-full h-full">
                                     {/* Central Mentor */}
-                                    <circle cx="100" cy="80" r="25" className="fill-cyan-400/50 group-hover:fill-cyan-500/70 transition-colors"/>
-                                    <circle cx="100" cy="70" r="12" className="fill-cyan-500/70"/>
-                                    <ellipse cx="100" cy="95" rx="15" ry="8" className="fill-cyan-500/60"/>
+                                    <circle cx="100" cy="80" r="25" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors"/>
+                                    <circle cx="100" cy="70" r="12" className="fill-blue-500/70"/>
+                                    <ellipse cx="100" cy="95" rx="15" ry="8" className="fill-blue-500/60"/>
                                     
                                     {/* Students around */}
                                     <g className="group-hover:animate-pulse">
@@ -822,9 +1015,9 @@ export default function LandingPage() {
                                         <ellipse cx="45" cy="148" rx="10" ry="5" className="fill-blue-500/50"/>
                                     </g>
                                     <g className="group-hover:animate-pulse" style={{animationDelay: '0.2s'}}>
-                                        <circle cx="100" cy="160" r="18" className="fill-cyan-400/40"/>
-                                        <circle cx="100" cy="152" r="8" className="fill-cyan-500/60"/>
-                                        <ellipse cx="100" cy="168" rx="10" ry="5" className="fill-cyan-500/50"/>
+                                        <circle cx="100" cy="160" r="18" className="fill-blue-400/40"/>
+                                        <circle cx="100" cy="152" r="8" className="fill-blue-500/60"/>
+                                        <ellipse cx="100" cy="168" rx="10" ry="5" className="fill-blue-500/50"/>
                                     </g>
                                     <g className="group-hover:animate-pulse" style={{animationDelay: '0.4s'}}>
                                         <circle cx="155" cy="140" r="18" className="fill-blue-400/40"/>
@@ -833,12 +1026,12 @@ export default function LandingPage() {
                                     </g>
                                     
                                     {/* Connection Lines */}
-                                    <line x1="100" y1="105" x2="55" y2="125" stroke="rgba(6,182,212,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
-                                    <line x1="100" y1="105" x2="100" y2="140" stroke="rgba(6,182,212,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
-                                    <line x1="100" y1="105" x2="145" y2="125" stroke="rgba(6,182,212,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
+                                    <line x1="100" y1="105" x2="55" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
+                                    <line x1="100" y1="105" x2="100" y2="140" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
+                                    <line x1="100" y1="105" x2="145" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
                                     
                                     {/* Sparkles */}
-                                    <circle cx="70" cy="60" r="3" className="fill-cyan-500/80 group-hover:animate-ping"/>
+                                    <circle cx="70" cy="60" r="3" className="fill-blue-500/80 group-hover:animate-ping"/>
                                     <circle cx="130" cy="55" r="2" className="fill-blue-500/70 group-hover:animate-ping" style={{animationDelay: '0.5s'}}/>
                                 </svg>
                             </div>
@@ -846,30 +1039,30 @@ export default function LandingPage() {
                             {/* Content */}
                             <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                                 <div className="flex items-center gap-2 mb-3">
-                                    <div className="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-cyan-400/40">
-                                        <svg className="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
+                                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                     </div>
-                                    <span className="text-cyan-600 text-xs font-medium uppercase tracking-wider">Expert Network</span>
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">Expert Network</span>
                                 </div>
-                                <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-cyan-700 transition-colors">Jaringan Mentor Profesional</h3>
+                                <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-blue-700 transition-colors">Jaringan Mentor Profesional</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed mb-4">Terhubung langsung dengan 200+ ahli kesehatan bersertifikat. Konsultasi langsung, feedback personal, dan bimbingan karir di bidang kesehatan.</p>
                                 
                                 {/* Stats */}
                                 <div className="flex gap-4">
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold text-cyan-600">200+</div>
+                                        <div className="text-2xl font-bold text-blue-600">200+</div>
                                         <div className="text-xs text-gray-500">Mentor</div>
                                     </div>
-                                    <div className="w-[1px] bg-cyan-300/50"></div>
+                                    <div className="w-[1px] bg-blue-300/50"></div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold text-cyan-600">50+</div>
+                                        <div className="text-2xl font-bold text-blue-600">50+</div>
                                         <div className="text-xs text-gray-500">Spesialisasi</div>
                                     </div>
-                                    <div className="w-[1px] bg-cyan-300/50"></div>
+                                    <div className="w-[1px] bg-blue-300/50"></div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold text-cyan-600">24/7</div>
+                                        <div className="text-2xl font-bold text-blue-600">24/7</div>
                                         <div className="text-xs text-gray-500">Support</div>
                                     </div>
                                 </div>
@@ -877,19 +1070,19 @@ export default function LandingPage() {
                         </div>
 
                         {/* 4. Bottom Wide Card - Community (Spans 2 columns) */}
-                        <div className="group relative bg-gradient-to-r from-white via-violet-50 to-purple-100/80 rounded-2xl w-full md:col-span-2 aspect-[2.1/0.7] overflow-hidden border border-violet-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-violet-300/50 hover:scale-[1.01]">
+                        <div className="group relative bg-gradient-to-r from-white via-blue-50 to-blue-100/80 rounded-2xl w-full md:col-span-2 aspect-[2.1/0.7] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-violet-500 to-transparent glow-border-top"></div>
-                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-violet-500 to-transparent glow-border-bottom"></div>
-                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-violet-500 to-transparent glow-border-left"></div>
-                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-violet-500 to-transparent glow-border-right"></div>
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
+                                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-bottom"></div>
+                                <div className="absolute top-0 left-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-left"></div>
+                                <div className="absolute top-0 right-0 h-full w-[3px] bg-gradient-to-b from-transparent via-blue-500 to-transparent glow-border-right"></div>
                             </div>
                             {/* Wave Pattern */}
                             <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0" preserveAspectRatio="none">
                                 <defs>
                                     <pattern id="feat4-wave" x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse">
-                                        <path d="M0 10 Q25 0, 50 10 T100 10" stroke="rgba(139,92,246,0.3)" strokeWidth="1" fill="none"/>
+                                        <path d="M0 10 Q25 0, 50 10 T100 10" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none"/>
                                     </pattern>
                                 </defs>
                                 <rect width="100%" height="100%" fill="url(#feat4-wave)"/>
@@ -897,36 +1090,36 @@ export default function LandingPage() {
                             <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-transparent to-white/50 z-0"></div>
                             
                             {/* Floating Orbs */}
-                            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-48 h-48 bg-violet-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
-                            <div className="absolute right-10 top-5 w-32 h-32 bg-purple-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-48 h-48 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
+                            <div className="absolute right-10 top-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                             
                             {/* Illustration - Community */}
                             <div className="absolute right-6 top-1/2 -translate-y-1/2 w-40 h-32 md:w-56 md:h-44 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <svg viewBox="0 0 220 150" className="w-full h-full">
                                     {/* Chat bubbles */}
-                                    <rect x="10" y="20" width="70" height="45" rx="8" className="fill-violet-400/40 group-hover:fill-violet-500/60 transition-colors"/>
-                                    <polygon points="25,65 35,65 30,75" className="fill-violet-400/40 group-hover:fill-violet-500/60"/>
-                                    <rect x="20" y="32" width="50" height="4" rx="2" className="fill-violet-500/50"/>
-                                    <rect x="20" y="42" width="35" height="4" rx="2" className="fill-violet-500/40"/>
+                                    <rect x="10" y="20" width="70" height="45" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
+                                    <polygon points="25,65 35,65 30,75" className="fill-blue-400/40 group-hover:fill-blue-500/60"/>
+                                    <rect x="20" y="32" width="50" height="4" rx="2" className="fill-blue-500/50"/>
+                                    <rect x="20" y="42" width="35" height="4" rx="2" className="fill-blue-500/40"/>
                                     
-                                    <rect x="100" y="40" width="80" height="50" rx="8" className="fill-purple-400/40 group-hover:fill-purple-500/60 transition-colors"/>
-                                    <polygon points="165,90 175,90 170,100" className="fill-purple-400/40 group-hover:fill-purple-500/60"/>
-                                    <rect x="110" y="55" width="60" height="4" rx="2" className="fill-purple-500/50"/>
-                                    <rect x="110" y="65" width="45" height="4" rx="2" className="fill-purple-500/40"/>
-                                    <rect x="110" y="75" width="30" height="4" rx="2" className="fill-purple-500/30"/>
+                                    <rect x="100" y="40" width="80" height="50" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
+                                    <polygon points="165,90 175,90 170,100" className="fill-blue-400/40 group-hover:fill-blue-500/60"/>
+                                    <rect x="110" y="55" width="60" height="4" rx="2" className="fill-blue-500/50"/>
+                                    <rect x="110" y="65" width="45" height="4" rx="2" className="fill-blue-500/40"/>
+                                    <rect x="110" y="75" width="30" height="4" rx="2" className="fill-blue-500/30"/>
                                     
                                     {/* User avatars */}
-                                    <circle cx="30" cy="110" r="18" className="fill-violet-400/50"/>
-                                    <circle cx="30" cy="105" r="7" className="fill-violet-500/70"/>
-                                    <ellipse cx="30" cy="120" rx="10" ry="5" className="fill-violet-500/60"/>
+                                    <circle cx="30" cy="110" r="18" className="fill-blue-400/50"/>
+                                    <circle cx="30" cy="105" r="7" className="fill-blue-500/70"/>
+                                    <ellipse cx="30" cy="120" rx="10" ry="5" className="fill-blue-500/60"/>
                                     
-                                    <circle cx="80" cy="120" r="15" className="fill-purple-400/50"/>
-                                    <circle cx="80" cy="116" r="6" className="fill-purple-500/70"/>
-                                    <ellipse cx="80" cy="128" rx="8" ry="4" className="fill-purple-500/60"/>
+                                    <circle cx="80" cy="120" r="15" className="fill-blue-400/50"/>
+                                    <circle cx="80" cy="116" r="6" className="fill-blue-500/70"/>
+                                    <ellipse cx="80" cy="128" rx="8" ry="4" className="fill-blue-500/60"/>
                                     
-                                    <circle cx="130" cy="125" r="18" className="fill-indigo-400/50"/>
-                                    <circle cx="130" cy="120" r="7" className="fill-indigo-500/70"/>
-                                    <ellipse cx="130" cy="135" rx="10" ry="5" className="fill-indigo-500/60"/>
+                                    <circle cx="130" cy="125" r="18" className="fill-blue-400/50"/>
+                                    <circle cx="130" cy="120" r="7" className="fill-blue-500/70"/>
+                                    <ellipse cx="130" cy="135" rx="10" ry="5" className="fill-blue-500/60"/>
                                     
                                     {/* Activity dots */}
                                     <circle cx="55" cy="15" r="4" className="fill-green-500/80 group-hover:animate-ping"/>
@@ -938,14 +1131,14 @@ export default function LandingPage() {
                             {/* Content */}
                             <div className="absolute left-0 top-0 bottom-0 p-6 flex flex-col justify-center max-w-[55%] z-10">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <div className="w-8 h-8 bg-violet-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-violet-400/40">
-                                        <svg className="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
+                                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                                         </svg>
                                     </div>
-                                    <span className="text-violet-600 text-xs font-medium uppercase tracking-wider">Community Hub</span>
+                                    <span className="text-blue-600 text-xs font-medium uppercase tracking-wider">Community Hub</span>
                                 </div>
-                                <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-violet-700 transition-colors">Forum Komunitas Aktif</h3>
+                                <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-blue-700 transition-colors">Forum Komunitas Aktif</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed">Diskusi, sharing pengalaman, dan support system dari 10.000+ member aktif. Berbagi tips kesehatan, challenge bersama, dan motivasi harian!</p>
                                 
                                 {/* Live indicator */}

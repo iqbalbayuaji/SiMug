@@ -1,11 +1,12 @@
 import { useState, useCallback } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import Navbar from "../../components/layout/Navbar"
 import Footer from "../../components/layout/Footer"
 
 
 export default function RoadmapPage() {
   const { courseId } = useParams()
+  const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState(0)
   
   // Progress dalam persen (0-100)
