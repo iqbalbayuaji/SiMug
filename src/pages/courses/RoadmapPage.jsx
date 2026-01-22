@@ -232,8 +232,8 @@ export default function RoadmapPage() {
               <div className="relative" style={{ zIndex: 1 }}>
                 
                 {/* Phase 5 - TOP position 1 */}
-                <div className="absolute" style={{ left: '0px', top: '0px' }}>
-                  <div className={`bg-white rounded-2xl p-3 shadow-lg border-2 ${phases[0].status === 'current' ? 'border-[#4177FF]' : phases[0].status === 'completed' ? 'border-green-400' : 'border-gray-200'} w-60 relative`}>
+                <div className="absolute cursor-pointer" style={{ left: '0px', top: '0px' }} onClick={() => navigate('/course-progress/5')}>
+                  <div className={`bg-white rounded-2xl p-3 shadow-lg border-2 ${phases[0].status === 'current' ? 'border-[#4177FF]' : phases[0].status === 'completed' ? 'border-green-400' : 'border-gray-200'} w-60 relative hover:shadow-xl transition-shadow`}>
                     {phases[0].status === 'completed' && (
                       <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                         <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
