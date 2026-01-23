@@ -30,6 +30,19 @@ export default function Navbar() {
   const [showEventsDropdown, setShowEventsDropdown] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showProfileDropdown && !event.target.closest('.profile-dropdown-container')) {
+        setShowProfileDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showProfileDropdown])
 
   // Update active menu based on current path
   useEffect(() => {
@@ -341,16 +354,123 @@ export default function Navbar() {
             </div>
 
             {/* Profile Picture */}
-            <button 
-              onClick={() => navigate('/profile')}
-              className="w-12 h-12 rounded-full bg-white overflow-hidden border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
-            >
-              <img
-                src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </button>
+            <div className="relative profile-dropdown-container">
+              <button 
+                onClick={() => setShowProfileDropdown(!showProfileDropdown)}
+                className="w-12 h-12 rounded-full bg-white overflow-hidden border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
+              >
+                <img
+                  src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </button>
+
+              {/* Profile Dropdown */}
+              {showProfileDropdown && (
+                <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 animate-fade-in-down">
+                  {/* Header */}
+                  <div className="px-5 py-3 border-b border-gray-300">
+                    <h3 className="text-xl font-bold text-gray-900">Informasi Profil</h3>
+                  </div>
+
+                  {/* Menu Items */}
+                  <div className="py-1">
+                    {/* Edit Profil */}
+                    <button
+                      onClick={() => {
+                        navigate('/profile')
+                        setShowProfileDropdown(false)
+                      }}
+                      className="w-full px-5 py-2.5 flex items-center gap-3 hover:bg-blue-50 transition-colors group"
+                    >
+                      <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                        <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-semibold text-gray-700 group-hover:text-gray-900">Edit Profil</span>
+                    </button>
+
+                    {/* SiMug Plus */}
+                    <button
+                      onClick={() => {
+                        navigate('/profile/simug-plus')
+                        setShowProfileDropdown(false)
+                      }}
+                      className="w-full px-5 py-2.5 flex items-center gap-3 hover:bg-blue-50 transition-colors group"
+                    >
+                      <div className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                        <svg className="w-5 h-5 text-gray-600 group-hover:text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900">SiMug Plus</span>
+                    </button>
+
+                    {/* Pengaturan */}
+                    <button
+                      onClick={() => {
+                        navigate('/profile/atur-simug')
+                        setShowProfileDropdown(false)
+                      }}
+                      className="w-full px-5 py-2.5 flex items-center gap-3 hover:bg-blue-50 transition-colors group"
+                    >
+                      <div className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                        <svg className="w-5 h-5 text-gray-600 group-hover:text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900">Pengaturan</span>
+                    </button>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="border-t border-gray-100"></div>
+
+                  {/* Bottom Items */}
+                  <div className="py-1">
+                    {/* Pusat Bantuan */}
+                    <button
+                      onClick={() => {
+                        navigate('/profile/pusat-bantuan')
+                        setShowProfileDropdown(false)
+                      }}
+                      className="w-full px-5 py-2.5 flex items-center gap-3 hover:bg-blue-50 transition-colors group"
+                    >
+                      <div className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                        <svg className="w-5 h-5 text-gray-600 group-hover:text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900">Pusat Bantuan</span>
+                    </button>
+
+                    {/* Log Out */}
+                    <button
+                      onClick={() => {
+                        navigate('/login')
+                        setShowProfileDropdown(false)
+                      }}
+                      className="w-full px-5 py-2.5 flex items-center gap-3 hover:bg-blue-50 transition-colors group"
+                    >
+                      <div className="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                        <svg className="w-5 h-5 text-gray-600 group-hover:text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                      </div>
+                      <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900">Log Out</span>
+                    </button>
+                  </div>
+
+                  {/* Version */}
+                  <div className="px-5 py-2 border-t border-gray-300">
+                    <p className="text-xs text-gray-400">V. 1.0.1</p>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

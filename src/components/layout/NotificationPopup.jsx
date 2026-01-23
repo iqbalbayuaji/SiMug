@@ -34,7 +34,7 @@ export default function NotificationPopup({ isOpen, onClose }) {
       />
       
       {/* Popup */}
-      <div className="absolute right-0 top-full mt-2 w-[400px] h-[350px] bg-white rounded-[10px] shadow-2xl z-50 flex flex-col">
+      <div className="absolute right-0 top-full mt-2 w-[400px] h-[350px] bg-white rounded-[10px] shadow-2xl z-50 flex flex-col animate-fade-in-down">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4">
           <h3 className="text-xl font-bold text-gray-900">Notifikasi</h3>
