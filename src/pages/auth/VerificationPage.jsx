@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import mascotGif from "../../assets/video/Desain tanpa judul.gif"
 import loadingSound from "../../assets/audio/0107.MP3"
 
 export default function VerificationPage() {
@@ -165,7 +164,7 @@ export default function VerificationPage() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTip((prev) => (prev + 1) % tips.length)
-    }, 4000)
+    }, 5000)
     return () => clearInterval(timer)
   }, [tips.length])
 
@@ -346,82 +345,6 @@ export default function VerificationPage() {
               }}
             ></div>
             
-            {/* Running Mascot Container */}
-            <div className="relative mb-4">
-              <div 
-                className="absolute transition-all duration-300 ease-out"
-                style={{
-                  left: `calc(${progress}% - 40px)`,
-                  bottom: '-40px',
-                  transform: progress >= 100 ? 'scaleX(1)' : 'scaleX(1)'
-                }}
-              >
-                {/* Blue Flame Effect Container - Fades when complete */}
-                <div 
-                  className="transition-opacity duration-1000 ease-out"
-                  style={{
-                    opacity: progress >= 100 ? 0 : 1
-                  }}
-                >
-                  {/* Main Flame - Center */}
-                  <div 
-                    className="absolute left-1/2 -translate-x-1/2 bottom-0 w-28 h-36 blur-md"
-                    style={{
-                      background: 'linear-gradient(to top, #0039C9 0%, #4177FF 30%, #60A5FA 60%, transparent 100%)',
-                      borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-                      animation: 'flame1 0.8s ease-in-out infinite',
-                      transformOrigin: 'bottom center'
-                    }}
-                  ></div>
-                  {/* Left Flame */}
-                  <div 
-                    className="absolute left-1/2 -translate-x-[70%] bottom-0 w-20 h-28 blur-md"
-                    style={{
-                      background: 'linear-gradient(to top, #0039C9 0%, #4177FF 40%, #93C5FD 70%, transparent 100%)',
-                      borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-                      animation: 'flame2 1s ease-in-out infinite',
-                      transformOrigin: 'bottom center'
-                    }}
-                  ></div>
-                  {/* Right Flame */}
-                  <div 
-                    className="absolute left-1/2 -translate-x-[30%] bottom-0 w-20 h-28 blur-md"
-                    style={{
-                      background: 'linear-gradient(to top, #0039C9 0%, #4177FF 40%, #93C5FD 70%, transparent 100%)',
-                      borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-                      animation: 'flame3 0.9s ease-in-out infinite',
-                      transformOrigin: 'bottom center'
-                    }}
-                  ></div>
-                  {/* Inner Core - Brighter */}
-                  <div 
-                    className="absolute left-1/2 -translate-x-1/2 bottom-2 w-16 h-24 blur-sm"
-                    style={{
-                      background: 'linear-gradient(to top, #60A5FA 0%, #93C5FD 40%, #BFDBFE 70%, transparent 100%)',
-                      borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-                      animation: 'flame1 0.6s ease-in-out infinite',
-                      transformOrigin: 'bottom center'
-                    }}
-                  ></div>
-                  {/* Outer Glow */}
-                  <div 
-                    className="absolute left-1/2 -translate-x-1/2 bottom-0 w-40 h-40 blur-2xl opacity-50"
-                    style={{
-                      background: 'radial-gradient(ellipse at bottom, #4177FF 0%, transparent 70%)',
-                      animation: 'flicker 0.5s ease-in-out infinite'
-                    }}
-                  ></div>
-                </div>
-                {/* Mascot Image */}
-                <img 
-                  src={mascotGif}
-                  alt="Mascot berlari"
-                  className="w-40 h-40 object-contain relative z-10"
-                />
-              </div>
-              {/* Spacer for mascot height */}
-              <div className="h-20"></div>
-            </div>
             
             {/* Progress Bar Container */}
             <div className="relative flex items-center gap-4">
