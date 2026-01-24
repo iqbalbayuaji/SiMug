@@ -80,20 +80,20 @@ export default function ProfilePage() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         {/* Header with Edit Banner Button */}
-        <div className="flex items-start justify-between mb-8 pt-6">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-6 sm:mb-8 pt-4 sm:pt-6 gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Profil Pengguna</h1>
-            <p className="text-gray-600">Kustomisasi profil kamu dan atur beberapa hal.</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Profil Pengguna</h1>
+            <p className="text-sm sm:text-base text-gray-600">Kustomisasi profil kamu dan atur beberapa hal.</p>
           </div>
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 border border-[#4177FF] text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button className="flex items-center gap-2 px-3 sm:px-4 py-2 border border-[#4177FF] text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
               <FaCog className="text-blue-500" />
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-[#4177FF] text-[#4177FF] rounded-lg hover:bg-blue-50 transition-colors" onClick={() => setShowBannerModal(true)}>
+            <button className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-[#4177FF] text-[#4177FF] rounded-lg hover:bg-blue-50 transition-colors" onClick={() => setShowBannerModal(true)}>
               <FaEdit />
-              <span className="text-sm font-semibold">Edit Banner</span>
+              <span className="text-xs sm:text-sm font-semibold hidden sm:inline">Edit Banner</span>
             </button>
           </div>
         </div>
@@ -216,13 +216,13 @@ export default function ProfilePage() {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200">
               {/* Tabs */}
-              <div className="border-b border-gray-200 px-6">
-                <div className="flex gap-6 overflow-x-auto">
+              <div className="border-b border-gray-200 px-3 sm:px-6">
+                <div className="flex gap-3 sm:gap-6 overflow-x-auto scrollbar-hide">
                   {tabs.map((tab) => (
                     <button
                       key={tab.id}
                       onClick={() => navigate(tab.path)}
-                      className={`py-4 font-semibold whitespace-nowrap transition-colors relative ${
+                      className={`py-3 sm:py-4 text-sm sm:text-base font-semibold whitespace-nowrap transition-colors relative ${
                         isActiveTab(tab.path)
                           ? 'text-[#4177FF]'
                           : 'text-gray-400 hover:text-gray-600'

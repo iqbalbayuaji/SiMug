@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo-simugbgwhite.png"
 
 export default function Footer() {
   const quickLinks = [
@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Branding Section */}
           <div className="lg:col-span-2 lg:pr-8 lg:border-r border-white/50">
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="SiMUG Logo" className="w-10 h-10" />
+              <img src={logo} alt="SiMUG Logo" className="w-15 h-15" />
               <span className="text-4xl font-bold">SiMUG</span>
             </div>
             <h3 className="text-lg font-semibold mb-2">

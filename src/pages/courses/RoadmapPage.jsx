@@ -69,9 +69,9 @@ export default function RoadmapPage() {
       <Navbar />
       
       {/* Header Section */}
-      <section className="bg-[#F0F4FF] py-12 relative overflow-hidden">
-        {/* Decorative Lines - Left Side */}
-        <div className="absolute left-0 bottom-0 w-80 h-32 opacity-40">
+      <section className="bg-[#F0F4FF] py-8 sm:py-12 relative overflow-hidden">
+        {/* Decorative Lines - Left Side - Hidden on mobile */}
+        <div className="hidden md:block absolute left-0 bottom-0 w-80 h-32 opacity-40">
           <svg className="w-full h-full" viewBox="0 0 320 128" preserveAspectRatio="none">
             {/* Main horizontal line at bottom */}
             <line x1="0" y1="64" x2="320" y2="64" stroke="#5988FF" strokeWidth="2" />
@@ -101,8 +101,8 @@ export default function RoadmapPage() {
           </svg>
         </div>
 
-        {/* Decorative Lines - Right Side */}
-        <div className="absolute right-0 top-0 bottom-0 w-64 opacity-30">
+        {/* Decorative Lines - Right Side - Hidden on mobile */}
+        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-64 opacity-30">
           <svg className="w-full h-full" viewBox="0 0 250 120" preserveAspectRatio="none">
             {/* Horizontal lines with dots */}
             <line x1="120" y1="25" x2="230" y2="25" stroke="#4177FF" strokeWidth="2" />
@@ -126,10 +126,10 @@ export default function RoadmapPage() {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-[#4177FF] mb-3">Roadmap Kursus</h1>
-            <p className="text-gray-600 text-lg">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#4177FF] mb-2 sm:mb-3">Roadmap Kursus</h1>
+            <p className="text-sm sm:text-base text-gray-600 lg:text-lg px-4">
               Roadmap membantu kamu memahami apa yang harus dilakukan pada step selanjutnya.
             </p>
 
@@ -138,26 +138,35 @@ export default function RoadmapPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className="flex-1 bg-white py-8">
-        <div className="w-full px-6">
+      <section className="flex-1 bg-white py-6 sm:py-8">
+        <div className="w-full px-4 sm:px-6">
           {/* Section Header */}
-          <div className="max-w-7xl mx-auto flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-[#4177FF] rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-              </svg>
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center gap-3 mb-4 sm:mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-8 sm:w-10 h-8 sm:h-10 bg-[#4177FF] rounded-xl flex items-center justify-center shrink-0">
+                <svg className="w-5 sm:w-6 h-5 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Capaian Terakhir Kamu</h2>
+                <p className="text-sm sm:text-base text-gray-600">Lanjutkan kursus terakhir yang dikunjungi</p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">Capaian Terakhir Kamu</h2>
-              <p className="text-gray-600">Lanjutkan kursus terakhir yang dikunjungi</p>
+            {/* Mobile scroll indicator */}
+            <div className="sm:hidden flex items-center gap-2 text-xs text-gray-500 mt-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+              <span>Geser ke kanan untuk melihat lebih banyak</span>
             </div>
           </div>
 
           {/* Roadmap Container */}
-          <div className="max-w-7xl mx-auto relative bg-gradient-to-b from-[#F8FBFF] to-white rounded-3xl border border-gray-200 overflow-x-auto overflow-y-hidden shadow-sm" style={{ height: '560px' }}>
+          <div className="max-w-7xl mx-auto relative bg-gradient-to-b from-[#F8FBFF] to-white rounded-2xl sm:rounded-3xl border border-gray-200 overflow-x-auto overflow-y-hidden shadow-sm scrollbar-hide" style={{ height: '480px' }}>
             {/* Horizontal scroll container */}
-            <div className="relative h-full" style={{ minWidth: '1100px', padding: '40px 80px' }}>
+            <div className="relative h-full" style={{ minWidth: '1000px', padding: '30px 60px' }}>
               
               {/* SVG for connecting lines - Zig-zag pattern with center horizontal line */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
