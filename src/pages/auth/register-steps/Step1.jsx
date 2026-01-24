@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import StackedCarousel from "../../../components/StackedCarousel"
-import logo from "../../../assets/images/logo.png"
+import logo from "../../../assets/images/logo-simug.png"
 
 export default function Step1({
   formData,

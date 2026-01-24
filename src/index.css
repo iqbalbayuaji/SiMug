@@ -11,6 +11,24 @@ body,
 body {
   margin: 0;
   background-color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Apply Poppins to all elements */
+*,
+*::before,
+*::after {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes fade-in-down {
@@ -298,7 +316,8 @@ body {
 
 /* Gradient text animation */
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -325,7 +344,8 @@ body {
 
 /* Subtle scale animation for icons and buttons */
 @keyframes subtle-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -360,7 +380,8 @@ body {
 
 /* Glow effect for highlighted elements */
 @keyframes soft-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(65, 119, 255, 0.3);
   }
   50% {
@@ -389,11 +410,21 @@ body {
 }
 
 /* Stagger animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
 
 /* Smooth scroll behavior */
 html {
@@ -450,13 +481,13 @@ html {
 }
 
 .tab-indicator-active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #4177FF, #5B8FFF);
+  background: linear-gradient(90deg, #4177ff, #5b8fff);
   border-radius: 3px 3px 0 0;
   animation: tab-indicator 0.3s ease-out;
 }
@@ -480,7 +511,8 @@ html {
 
 /* Wishlist heart animation */
 @keyframes heart-beat {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   25% {

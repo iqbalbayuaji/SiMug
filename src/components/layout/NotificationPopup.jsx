@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo.png"
+import logo from "../../assets/images/logo-simug.png"
 
 export default function NotificationPopup({ isOpen, onClose }) {
   if (!isOpen) return null
