@@ -17,14 +17,133 @@ export default function CalendarSection({
     endDate: '',
     duration: ''
   })
+  const [modalCalendarDate, setModalCalendarDate] = useState({
+    year: 2026,
+    month: 0 // January (0-indexed)
+  })
+  const [dateRangeSelection, setDateRangeSelection] = useState({
+    start: null,
+    end: null,
+    selecting: false
+  })
+
+  // Get days in month for modal calendar
+  const getModalDaysInMonth = () => {
+    return new Date(modalCalendarDate.year, modalCalendarDate.month + 1, 0).getDate()
+  }
+
+  // Get start day of month (0 = Sunday, 1 = Monday, etc.)
+  const getModalStartDay = () => {
+    const firstDay = new Date(modalCalendarDate.year, modalCalendarDate.month, 1).getDay()
+    return firstDay === 0 ? 6 : firstDay - 1 // Convert to Monday = 0
+  }
+
+  // Format date to YYYY-MM-DD for input
+  const formatDateForInput = (year, month, day) => {
+    const m = String(month + 1).padStart(2, '0')
+    const d = String(day).padStart(2, '0')
+    return `${year}-${m}-${d}`
+  }
+
+  // Handle calendar day click in modal
+  const handleModalDayClick = (day) => {
+    const clickedDate = formatDateForInput(modalCalendarDate.year, modalCalendarDate.month, day)
+    
+    if (!dateRangeSelection.start || dateRangeSelection.end) {
+      // Start new selection
+      setDateRangeSelection({
+        start: clickedDate,
+        end: null,
+        selecting: true
+      })
+      setFormData({ ...formData, startDate: clickedDate, endDate: '' })
+    } else {
+      // Complete selection
+      const startDate = new Date(dateRangeSelection.start)
+      const endDate = new Date(clickedDate)
+      
+      if (endDate >= startDate) {
+        setDateRangeSelection({
+          start: dateRangeSelection.start,
+          end: clickedDate,
+          selecting: false
+        })
+        setFormData({ ...formData, endDate: clickedDate })
+      } else {
+        // If clicked date is before start, swap them
+        setDateRangeSelection({
+          start: clickedDate,
+          end: dateRangeSelection.start,
+          selecting: false
+        })
+        setFormData({ ...formData, startDate: clickedDate, endDate: dateRangeSelection.start })
+      }
+    }
+  }
+
+  // Check if day is in selected range
+  const isInModalRange = (day) => {
+    if (!dateRangeSelection.start) return false
+    
+    const currentDate = formatDateForInput(modalCalendarDate.year, modalCalendarDate.month, day)
+    const start = new Date(dateRangeSelection.start)
+    const current = new Date(currentDate)
+    
+    if (dateRangeSelection.end) {
+      const end = new Date(dateRangeSelection.end)
+      return current >= start && current <= end
+    }
+    
+    // If only start is selected, only highlight that day
+    return currentDate === dateRangeSelection.start
+  }
+
+  // Check if day is range start
+  const isModalRangeStart = (day) => {
+    if (!dateRangeSelection.start) return false
+    const currentDate = formatDateForInput(modalCalendarDate.year, modalCalendarDate.month, day)
+    return currentDate === dateRangeSelection.start
+  }
+
+  // Check if day is range end
+  const isModalRangeEnd = (day) => {
+    if (!dateRangeSelection.end) return false
+    const currentDate = formatDateForInput(modalCalendarDate.year, modalCalendarDate.month, day)
+    return currentDate === dateRangeSelection.end
+  }
+
+  // Navigate months
+  const navigateMonth = (direction) => {
+    setModalCalendarDate(prev => {
+      let newMonth = prev.month + direction
+      let newYear = prev.year
+      
+      if (newMonth > 11) {
+        newMonth = 0
+        newYear++
+      } else if (newMonth < 0) {
+        newMonth = 11
+        newYear--
+      }
+      
+      return { year: newYear, month: newMonth }
+    })
+  }
+
+  // Get month name
+  const getMonthName = () => {
+    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+    return `${months[modalCalendarDate.month]} ${modalCalendarDate.year}`
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     // Handle form submission here
     console.log('Form submitted:', formData)
     setShowModal(false)
-    // Reset form
+    // Reset form and selection
     setFormData({ startDate: '', endDate: '', duration: '' })
+    setDateRangeSelection({ start: null, end: null, selecting: false })
   }
 
   return (
@@ -178,14 +297,22 @@ export default function CalendarSection({
                 {/* Left Side - Calendar */}
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <h4 className="text-2xl font-bold text-gray-900">Januari 2026</h4>
+                    <h4 className="text-2xl font-bold text-gray-900">{getMonthName()}</h4>
                     <div className="flex gap-2">
-                      <button className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors border border-gray-200">
+                      <button 
+                        type="button"
+                        onClick={() => navigateMonth(-1)}
+                        className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors border border-gray-200"
+                      >
                         <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
-                      <button className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors border border-gray-200">
+                      <button 
+                        type="button"
+                        onClick={() => navigateMonth(1)}
+                        className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors border border-gray-200"
+                      >
                         <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -201,12 +328,54 @@ export default function CalendarSection({
                     ))}
                   </div>
 
-                  <div className="grid grid-cols-7 gap-3">
-                    {[...Array(31)].map((_, i) => {
+                  <div className="grid grid-cols-7">
+                    {/* Empty cells for days before month starts */}
+                    {[...Array(getModalStartDay())].map((_, i) => (
+                      <div key={`empty-${i}`} className="p-1.5" />
+                    ))}
+                    
+                    {/* Days of month */}
+                    {[...Array(getModalDaysInMonth())].map((_, i) => {
                       const day = i + 1
+                      const isInRange = isInModalRange(day)
+                      const isRangeStart = isModalRangeStart(day)
+                      const isRangeEnd = isModalRangeEnd(day)
+                      const isMiddleRange = isInRange && !isRangeStart && !isRangeEnd
+                      
                       return (
-                        <div key={day} className="aspect-square flex items-center justify-center text-base font-semibold text-gray-700 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer">
-                          {day}
+                        <div key={day} className="relative p-1.5">
+                          {/* Background bar for range - extends beyond cell */}
+                          {isInRange && (
+                            <div 
+                              className={`absolute bg-[#E5EDFF] ${
+                                isRangeStart ? 'rounded-l-full' : ''
+                              } ${
+                                isRangeEnd ? 'rounded-r-full' : ''
+                              }`}
+                              style={{
+                                left: isRangeStart ? '20%' : '-6px',
+                                right: isRangeEnd ? '20%' : '-6px',
+                                top: '12%',
+                                bottom: '12%',
+                                zIndex: 0
+                              }}
+                            />
+                          )}
+                          
+                          <button
+                            type="button"
+                            onClick={() => handleModalDayClick(day)}
+                            className={`relative w-full aspect-square flex items-center justify-center text-base font-semibold transition-all ${
+                              isRangeStart || isRangeEnd
+                                ? "bg-[#4177FF] text-white hover:bg-[#3461D9] rounded-full"
+                                : isMiddleRange
+                                ? "text-[#4177FF] hover:bg-[#D0DFFF] rounded-full"
+                                : "text-gray-700 hover:bg-gray-100 rounded-full"
+                            }`}
+                            style={{ zIndex: 10 }}
+                          >
+                            {day}
+                          </button>
                         </div>
                       )
                     })}
@@ -223,11 +392,11 @@ export default function CalendarSection({
                           Jadwal Mulai:
                         </label>
                         <input
-                          type="text"
-                          placeholder="DD/MM/YY"
+                          type="date"
                           value={formData.startDate}
                           onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#4177FF] focus:outline-none transition-colors text-gray-700 placeholder:text-gray-400"
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#4177FF] focus:outline-none transition-colors text-gray-700"
+                          required
                         />
                       </div>
 
@@ -236,11 +405,12 @@ export default function CalendarSection({
                           Jadwal Berakhir:
                         </label>
                         <input
-                          type="text"
-                          placeholder="DD/MM/YY"
+                          type="date"
                           value={formData.endDate}
                           onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#4177FF] focus:outline-none transition-colors text-gray-700 placeholder:text-gray-400"
+                          min={formData.startDate}
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#4177FF] focus:outline-none transition-colors text-gray-700"
+                          required
                         />
                       </div>
                     </div>
@@ -250,13 +420,20 @@ export default function CalendarSection({
                       <label className="block text-base font-semibold text-gray-900 mb-3">
                         Durasi Belajar per Hari:
                       </label>
-                      <input
-                        type="text"
-                        placeholder="Tulis durasi (min. 10 menit)"
-                        value={formData.duration}
-                        onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#4177FF] focus:outline-none transition-colors text-gray-700 placeholder:text-gray-400"
-                      />
+                      <div className="relative">
+                        <input
+                          type="number"
+                          min="10"
+                          placeholder="Tulis durasi (min. 10 menit)"
+                          value={formData.duration}
+                          onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                          className="w-full px-4 py-3 pr-20 border-2 border-gray-200 rounded-xl focus:border-[#4177FF] focus:outline-none transition-colors text-gray-700 placeholder:text-gray-400 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                          required
+                        />
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">
+                          menit
+                        </span>
+                      </div>
                     </div>
 
                     {/* Info Text */}

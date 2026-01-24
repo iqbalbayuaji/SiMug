@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useSearchParams, useNavigate } from "react-router-dom"
 import Navbar from "../components/layout/Navbar"
 import Footer from "../components/layout/Footer"
+import { coursesData } from "../constants/coursesData"
 import filterIcon from "../assets/icon/mage_filter.svg"
 import decoLeft from "../assets/icon/deco-search-results/comp 3.svg"
 import decoRight from "../assets/icon/deco-search-results/comp 4.svg"
@@ -23,21 +24,29 @@ export default function SearchResultPage() {
     }
   }
 
-  // Mock data - replace with actual API call
-  const courses = Array.from({ length: 24 }, (_, i) => ({
-    id: i + 1,
-    title: "Gym dari Nol: Panduan Lengkap Buat Pemula Sampai Mahir",
-    instructor: "Muhammad Ali",
-    duration: "2 bulan lalu",
-    image: "https://via.placeholder.com/400x300/cccccc/666666?text=Course+Image",
-    badge: "Free Trial",
-    rating: 4.8,
-    totalRatings: "4.5k review",
-    materials: "12 materi",
-    time: "7 jam",
-    category: "Semua kalangan",
-    price: "Rp. 99.000"
-  }))
+  // Filter courses based on search query
+  const filteredCourses = coursesData.filter(course => 
+    course.title.toLowerCase().includes(query.toLowerCase()) ||
+    course.shortDescription.toLowerCase().includes(query.toLowerCase()) ||
+    course.categoryLabel.toLowerCase().includes(query.toLowerCase())
+  )
+
+  // Sort based on active tab
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    if (activeTab === "Populer") {
+      return b.totalStudents - a.totalStudents
+    } else if (activeTab === "Terbaru") {
+      return new Date(b.updatedAt) - new Date(a.updatedAt)
+    }
+    // Rekomendasi (default) - by rating
+    return b.rating - a.rating
+  })
+
+  // Pagination
+  const coursesPerPage = 12
+  const totalPages = Math.ceil(sortedCourses.length / coursesPerPage)
+  const startIndex = (currentPage - 1) * coursesPerPage
+  const paginatedCourses = sortedCourses.slice(startIndex, startIndex + coursesPerPage)
 
   return (
     <div className="min-h-screen bg-white">
@@ -124,7 +133,7 @@ export default function SearchResultPage() {
             <h1 className="text-2xl font-bold text-gray-900 mb-1">
               Hasil untuk "<span className="text-[#4177FF]">{query}</span>"
             </h1>
-            <p className="text-gray-500 text-sm">Menampilkan 32 hasil pencarian...</p>
+            <p className="text-gray-500 text-sm">Menampilkan {sortedCourses.length} hasil pencarian...</p>
           </div>
 
           {/* Tab Filters */}
@@ -147,19 +156,25 @@ export default function SearchResultPage() {
 
         {/* Course Grid */}
         <div className="grid grid-cols-4 gap-6">
-          {courses.map((course) => (
-            <div key={course.id} className="bg-white rounded-3xl border border-[#DBDBDB] shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          {paginatedCourses.map((course) => (
+            <div 
+              key={course.id} 
+              onClick={() => navigate(`/courses/${course.slug}`)}
+              className="bg-white rounded-3xl border border-[#DBDBDB] shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+            >
               {/* Course Image */}
               <div className="relative h-48 bg-gray-200 m-4 rounded-2xl overflow-hidden">
                 <img
-                  src={course.image}
+                  src={course.thumbnail}
                   alt={course.title}
                   className="w-full h-full object-cover"
                 />
-                {/* Free Trial Badge */}
-                <div className="absolute top-3 right-3 bg-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-md">
-                  {course.badge}
-                </div>
+                {/* Badge */}
+                {course.badge && (
+                  <div className="absolute top-3 right-3 bg-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-md">
+                    {course.badge}
+                  </div>
+                )}
               </div>
 
               {/* Course Info */}
@@ -168,7 +183,7 @@ export default function SearchResultPage() {
                   {course.title}
                 </h3>
                 <p className="text-xs text-gray-400 mb-3">
-                  {course.instructor} • {course.duration}
+                  {course.instructor.name} • {course.updatedAt}
                 </p>
 
                 {/* Stats */}
@@ -178,23 +193,32 @@ export default function SearchResultPage() {
                     <span className="font-semibold">{course.rating}</span>
                   </div>
                   <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
-                    {course.totalRatings}
+                    {course.totalRatings} review
                   </div>
                   <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
-                    {course.materials}
+                    {course.totalLessons} materi
                   </div>
                   <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
-                    {course.time}
+                    {course.duration}
                   </div>
                 </div>
 
                 <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-3">
-                  {course.category}
+                  {course.level}
                 </div>
 
                 {/* Price & CTA */}
                 <div className="flex items-center justify-between gap-2">
-                  <p className="text-2xl font-bold text-[#4177FF]">{course.price}</p>
+                  <div>
+                    {course.discountPrice ? (
+                      <>
+                        <p className="text-xs text-gray-400 line-through">Rp {course.price.toLocaleString('id-ID')}</p>
+                        <p className="text-2xl font-bold text-[#4177FF]">Rp {course.discountPrice.toLocaleString('id-ID')}</p>
+                      </>
+                    ) : (
+                      <p className="text-2xl font-bold text-[#4177FF]">Rp {course.price.toLocaleString('id-ID')}</p>
+                    )}
+                  </div>
                   <button className="bg-[#E3EBFF] text-[#4177FF] px-3 py-1.5 rounded-md text-md font-semibold hover:bg-[#D0DFFF] transition-colors flex items-center gap-1">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -240,7 +264,7 @@ export default function SearchResultPage() {
           </button>
 
           {/* Page Numbers */}
-          {[1, 2, 3, 4, 5, 6, 7].map((page) => (
+          {Array.from({ length: Math.min(7, totalPages) }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
@@ -255,26 +279,28 @@ export default function SearchResultPage() {
           ))}
 
           {/* Ellipsis */}
-          <span className="text-gray-400 px-2">...</span>
+          {totalPages > 7 && <span className="text-gray-400 px-2">...</span>}
 
           {/* Last Page */}
-          <button
-            onClick={() => setCurrentPage(10)}
-            className={`w-10 h-10 rounded-full font-semibold transition-colors ${
-              currentPage === 10
-                ? "bg-[#4177FF] text-white"
-                : "bg-transparent text-gray-400 hover:bg-[#C5D9FF] hover:text-[#4177FF]"
-            }`}
-          >
-            10
-          </button>
+          {totalPages > 7 && (
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              className={`w-10 h-10 rounded-full font-semibold transition-colors ${
+                currentPage === totalPages
+                  ? "bg-[#4177FF] text-white"
+                  : "bg-transparent text-gray-400 hover:bg-[#C5D9FF] hover:text-[#4177FF]"
+              }`}
+            >
+              {totalPages}
+            </button>
+          )}
 
           {/* Next Button */}
           <button 
-            onClick={() => setCurrentPage(prev => Math.min(10, prev + 1))}
-            disabled={currentPage === 10}
+            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+            disabled={currentPage === totalPages}
             className={`w-10 h-10 rounded-full bg-white border border-[#DBDBDB] text-[#4177FF] flex items-center justify-center transition-colors ${
-              currentPage === 10
+              currentPage === totalPages
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:border-[#4177FF]"
             }`}
@@ -286,10 +312,10 @@ export default function SearchResultPage() {
 
           {/* Last Page Button */}
           <button 
-            onClick={() => setCurrentPage(10)}
-            disabled={currentPage === 10}
+            onClick={() => setCurrentPage(totalPages)}
+            disabled={currentPage === totalPages}
             className={`w-10 h-10 rounded-full bg-[#4177FF] text-white flex items-center justify-center transition-colors ${
-              currentPage === 10
+              currentPage === totalPages
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-[#3461D9]"
             }`}

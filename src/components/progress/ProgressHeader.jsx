@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import calendarIcon from "../../assets/icon/calendar.svg"
 
 export default function ProgressHeader({ userName, activeTab, setActiveTab }) {
+  const navigate = useNavigate()
+
   return (
     <>
       {/* Header Section */}
@@ -13,7 +16,10 @@ export default function ProgressHeader({ userName, activeTab, setActiveTab }) {
             Hari ini mau melanjutkan kursus apa?
           </p>
         </div>
-        <button className="relative overflow-hidden text-white px-6 py-2 rounded-xl font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+        <button 
+          onClick={() => navigate('/courses')}
+          className="relative overflow-hidden text-white px-6 py-2 rounded-xl font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 cursor-pointer"
+        >
           {/* Two-tone background */}
           <div className="absolute inset-0 bg-[#4177FF]"></div>
           <div className="absolute top-0 right-0 bottom-0 w-1/2 bg-[#5686FF] rounded-tl-[3rem]"></div>

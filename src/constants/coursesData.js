@@ -1,5 +1,5 @@
-// Data dummy untuk courses
-// Kategori: Kebugaran dan Fisik, Sports & Skill Training, Nutrisi & Gaya Hidup
+// Data dummy untuk courses (1 file)
+// Kategori: Kebugaran dan Fisik, Sports & Skill Training, Nutrisi & Gaya Hidup, dll
 
 export const courseCategories = [
   { id: 'kebugaran', name: 'Kebugaran dan Fisik', icon: 'gymIcon' },
@@ -8,15 +8,19 @@ export const courseCategories = [
   { id: 'yoga', name: 'Yoga & Mindfulness', icon: 'yogaIcon' },
   { id: 'martial-arts', name: 'Martial Arts', icon: 'martialIcon' },
   { id: 'cardio', name: 'Cardio & Endurance', icon: 'runIcon' },
+  { id: 'bodybuilding', name: 'Bodybuilding & Muscle', icon: 'muscleIcon' },
+  { id: 'recovery', name: 'Recovery & Mobility', icon: 'recoveryIcon' },
+  { id: 'mental-wellness', name: 'Mental Wellness', icon: 'brainIcon' },
 ]
 
-export const coursesData = [
+const baseCoursesData = [
   // ============ KEBUGARAN DAN FISIK ============
   {
     id: 1,
     slug: 'fitness-fundamental-pemula',
     title: 'Fitness Fundamental untuk Pemula',
-    shortDescription: 'Pelajari dasar-dasar fitness dan bangun fondasi kuat untuk perjalanan kebugaranmu.',
+    shortDescription:
+      'Pelajari dasar-dasar fitness dan bangun fondasi kuat untuk perjalanan kebugaranmu.',
     description: `Course ini dirancang khusus untuk kamu yang baru memulai perjalanan fitness. Kamu akan mempelajari teknik dasar yang benar, cara menggunakan peralatan gym dengan aman, dan bagaimana menyusun program latihan yang efektif.
 
 Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip progressive overload, dan pentingnya recovery. Course ini cocok untuk siapa saja yang ingin memulai gaya hidup sehat tanpa risiko cedera.`,
@@ -31,11 +35,13 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
     rating: 4.8,
     totalRatings: 2453,
     totalStudents: 12500,
-    thumbnail: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Coach Andi Pratama',
-      avatar: 'https://ui-avatars.com/api/?name=Andi+Pratama&background=4177FF&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Andi+Pratama&background=4177FF&color=fff&size=200',
       title: 'Certified Personal Trainer',
       bio: 'Personal trainer bersertifikat dengan pengalaman 8+ tahun. Telah membantu lebih dari 500 klien mencapai goals fitness mereka.',
       totalCourses: 5,
@@ -60,11 +66,31 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         title: 'Pengantar Fitness',
         duration: '45 menit',
         lessons: [
-          { id: 1, title: 'Apa itu Fitness dan Mengapa Penting?', duration: '10:00', isPreview: true },
-          { id: 2, title: 'Mengenal Jenis-jenis Latihan', duration: '15:00', isPreview: true },
-          { id: 3, title: 'Goal Setting yang Realistis', duration: '12:00', isPreview: false },
-          { id: 4, title: 'Mindset untuk Sukses', duration: '8:00', isPreview: false },
-        ]
+          {
+            id: 1,
+            title: 'Apa itu Fitness dan Mengapa Penting?',
+            duration: '10:00',
+            isPreview: true,
+          },
+          {
+            id: 2,
+            title: 'Mengenal Jenis-jenis Latihan',
+            duration: '15:00',
+            isPreview: true,
+          },
+          {
+            id: 3,
+            title: 'Goal Setting yang Realistis',
+            duration: '12:00',
+            isPreview: false,
+          },
+          {
+            id: 4,
+            title: 'Mindset untuk Sukses',
+            duration: '8:00',
+            isPreview: false,
+          },
+        ],
       },
       {
         moduleId: 2,
@@ -73,9 +99,19 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         lessons: [
           { id: 5, title: 'Kelompok Otot Utama', duration: '15:00', isPreview: false },
           { id: 6, title: 'Cara Kerja Otot', duration: '12:00', isPreview: false },
-          { id: 7, title: 'Prinsip Progressive Overload', duration: '18:00', isPreview: false },
-          { id: 8, title: 'Pentingnya Form yang Benar', duration: '15:00', isPreview: false },
-        ]
+          {
+            id: 7,
+            title: 'Prinsip Progressive Overload',
+            duration: '18:00',
+            isPreview: false,
+          },
+          {
+            id: 8,
+            title: 'Pentingnya Form yang Benar',
+            duration: '15:00',
+            isPreview: false,
+          },
+        ],
       },
       {
         moduleId: 3,
@@ -83,22 +119,47 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         duration: '1.5 jam',
         lessons: [
           { id: 9, title: 'Squat: Teknik & Variasi', duration: '20:00', isPreview: false },
-          { id: 10, title: 'Deadlift: Langkah demi Langkah', duration: '22:00', isPreview: false },
-          { id: 11, title: 'Bench Press: Panduan Lengkap', duration: '18:00', isPreview: false },
-          { id: 12, title: 'Overhead Press: Tips & Tricks', duration: '15:00', isPreview: false },
+          {
+            id: 10,
+            title: 'Deadlift: Langkah demi Langkah',
+            duration: '22:00',
+            isPreview: false,
+          },
+          {
+            id: 11,
+            title: 'Bench Press: Panduan Lengkap',
+            duration: '18:00',
+            isPreview: false,
+          },
+          {
+            id: 12,
+            title: 'Overhead Press: Tips & Tricks',
+            duration: '15:00',
+            isPreview: false,
+          },
           { id: 13, title: 'Rowing Movements', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 4,
         title: 'Gerakan Isolation',
         duration: '1 jam',
         lessons: [
-          { id: 14, title: 'Bicep & Tricep Exercises', duration: '15:00', isPreview: false },
+          {
+            id: 14,
+            title: 'Bicep & Tricep Exercises',
+            duration: '15:00',
+            isPreview: false,
+          },
           { id: 15, title: 'Shoulder Isolation', duration: '12:00', isPreview: false },
           { id: 16, title: 'Core & Abs Training', duration: '18:00', isPreview: false },
-          { id: 17, title: 'Leg Isolation Movements', duration: '15:00', isPreview: false },
-        ]
+          {
+            id: 17,
+            title: 'Leg Isolation Movements',
+            duration: '15:00',
+            isPreview: false,
+          },
+        ],
       },
       {
         moduleId: 5,
@@ -106,10 +167,20 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         duration: '1 jam',
         lessons: [
           { id: 18, title: 'Menyusun Split Training', duration: '20:00', isPreview: false },
-          { id: 19, title: 'Full Body vs Split Routine', duration: '15:00', isPreview: false },
+          {
+            id: 19,
+            title: 'Full Body vs Split Routine',
+            duration: '15:00',
+            isPreview: false,
+          },
           { id: 20, title: 'Periodisasi untuk Pemula', duration: '15:00', isPreview: false },
-          { id: 21, title: 'Template Program Siap Pakai', duration: '10:00', isPreview: false },
-        ]
+          {
+            id: 21,
+            title: 'Template Program Siap Pakai',
+            duration: '10:00',
+            isPreview: false,
+          },
+        ],
       },
       {
         moduleId: 6,
@@ -118,8 +189,13 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         lessons: [
           { id: 22, title: 'Pentingnya Istirahat', duration: '12:00', isPreview: false },
           { id: 23, title: 'Sleep Optimization', duration: '15:00', isPreview: false },
-          { id: 24, title: 'Nutrisi Dasar untuk Recovery', duration: '18:00', isPreview: false },
-        ]
+          {
+            id: 24,
+            title: 'Nutrisi Dasar untuk Recovery',
+            duration: '18:00',
+            isPreview: false,
+          },
+        ],
       },
     ],
     reviews: [
@@ -129,7 +205,8 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         avatar: 'https://ui-avatars.com/api/?name=Budi+Santoso&background=random',
         rating: 5,
         date: '2 minggu lalu',
-        comment: 'Course yang sangat lengkap! Sebagai pemula, saya jadi paham teknik yang benar. Coach Andi menjelaskan dengan sangat detail.',
+        comment:
+          'Course yang sangat lengkap! Sebagai pemula, saya jadi paham teknik yang benar. Coach Andi menjelaskan dengan sangat detail.',
       },
       {
         id: 2,
@@ -137,7 +214,8 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
         avatar: 'https://ui-avatars.com/api/?name=Dewi+Lestari&background=random',
         rating: 5,
         date: '1 bulan lalu',
-        comment: 'Recommended banget! Video berkualitas tinggi dan materi mudah dipahami. Sekarang saya sudah PD ke gym sendiri.',
+        comment:
+          'Recommended banget! Video berkualitas tinggi dan materi mudah dipahami. Sekarang saya sudah PD ke gym sendiri.',
       },
       {
         id: 3,
@@ -151,6 +229,7 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
     badge: 'Bestseller',
     updatedAt: 'November 2024',
   },
+
   {
     id: 2,
     slug: 'bodyweight-training-rumah',
@@ -170,11 +249,13 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
     rating: 4.7,
     totalRatings: 1876,
     totalStudents: 9800,
-    thumbnail: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Maya Sari',
-      avatar: 'https://ui-avatars.com/api/?name=Maya+Sari&background=FF6B6B&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Maya+Sari&background=FF6B6B&color=fff&size=200',
       title: 'Calisthenics Coach',
       bio: 'Atlet calisthenics nasional dan coach dengan 5+ tahun pengalaman. Spesialisasi dalam bodyweight training dan mobility.',
       totalCourses: 3,
@@ -187,11 +268,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
       'Mobility dan flexibility routine',
       'Workout plans untuk berbagai goals',
     ],
-    requirements: [
-      'Tidak memerlukan peralatan',
-      'Ruang minimal 2x2 meter',
-      'Matras yoga (opsional)',
-    ],
+    requirements: ['Tidak memerlukan peralatan', 'Ruang minimal 2x2 meter', 'Matras yoga (opsional)'],
     curriculum: [
       {
         moduleId: 1,
@@ -202,7 +279,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
           { id: 2, title: 'Squat Variations', duration: '15:00', isPreview: true },
           { id: 3, title: 'Pull-up Progression', duration: '18:00', isPreview: false },
           { id: 4, title: 'Core Fundamentals', duration: '12:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -213,7 +290,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
           { id: 6, title: 'Dips & Variations', duration: '18:00', isPreview: false },
           { id: 7, title: 'Handstand Progression', duration: '25:00', isPreview: false },
           { id: 8, title: 'Shoulder Strength', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 3,
@@ -224,7 +301,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
           { id: 10, title: 'Lunges & Split Squats', duration: '15:00', isPreview: false },
           { id: 11, title: 'Glute Activation', duration: '12:00', isPreview: false },
           { id: 12, title: 'Calf & Ankle Work', duration: '13:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 4,
@@ -235,7 +312,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
           { id: 14, title: 'L-Sit Progression', duration: '18:00', isPreview: false },
           { id: 15, title: 'Leg Raises & Variations', duration: '15:00', isPreview: false },
           { id: 16, title: 'Plank Mastery', duration: '12:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 5,
@@ -245,7 +322,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
           { id: 17, title: 'Beginner Full Body Routine', duration: '10:00', isPreview: false },
           { id: 18, title: 'Intermediate Split', duration: '10:00', isPreview: false },
           { id: 19, title: 'Advanced Challenge', duration: '10:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -269,6 +346,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
     badge: 'Popular',
     updatedAt: 'Desember 2024',
   },
+
   {
     id: 3,
     slug: 'fat-loss-program',
@@ -288,11 +366,13 @@ Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, da
     rating: 4.9,
     totalRatings: 3210,
     totalStudents: 18500,
-    thumbnail: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Dr. Fajar Nutritionist',
-      avatar: 'https://ui-avatars.com/api/?name=Dr+Fajar&background=22C55E&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dr+Fajar&background=22C55E&color=fff&size=200',
       title: 'Sports Nutritionist & Trainer',
       bio: 'Dokter olahraga dengan spesialisasi nutrisi. Lulusan UI dengan sertifikasi internasional dari ISSN.',
       totalCourses: 4,
@@ -321,7 +401,7 @@ Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, da
           { id: 2, title: 'Metabolisme & TDEE', duration: '20:00', isPreview: true },
           { id: 3, title: 'Mitos vs Fakta Fat Loss', duration: '15:00', isPreview: false },
           { id: 4, title: 'Setting Realistic Goals', duration: '12:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -332,7 +412,7 @@ Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, da
           { id: 6, title: 'Protein untuk Preservasi Otot', duration: '18:00', isPreview: false },
           { id: 7, title: 'Carbs & Fats: Finding Balance', duration: '20:00', isPreview: false },
           { id: 8, title: 'Meal Timing & Frequency', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 3,
@@ -343,7 +423,7 @@ Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, da
           { id: 10, title: 'Cardio: LISS vs HIIT', duration: '18:00', isPreview: false },
           { id: 11, title: 'Optimal Training Split', duration: '20:00', isPreview: false },
           { id: 12, title: 'Active Recovery', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -367,7 +447,7 @@ Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, da
     badge: 'Bestseller',
     updatedAt: 'Januari 2025',
   },
-  
+
   // ============ SPORTS & SKILL TRAINING ============
   {
     id: 4,
@@ -388,11 +468,13 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
     rating: 4.8,
     totalRatings: 1567,
     totalStudents: 8900,
-    thumbnail: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Coach Rocky Hidayat',
-      avatar: 'https://ui-avatars.com/api/?name=Rocky+Hidayat&background=EF4444&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Rocky+Hidayat&background=EF4444&color=fff&size=200',
       title: 'Professional Boxing Coach',
       bio: 'Mantan atlet tinju nasional dengan pengalaman 15+ tahun. Pelatih beberapa atlet profesional Indonesia.',
       totalCourses: 2,
@@ -421,7 +503,7 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
           { id: 2, title: 'Equipment yang Dibutuhkan', duration: '12:00', isPreview: true },
           { id: 3, title: 'Pemanasan Boxing', duration: '15:00', isPreview: false },
           { id: 4, title: 'Hand Wrapping Tutorial', duration: '8:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -432,7 +514,7 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
           { id: 6, title: 'Forward & Backward Movement', duration: '12:00', isPreview: false },
           { id: 7, title: 'Lateral Movement', duration: '15:00', isPreview: false },
           { id: 8, title: 'Pivot & Angles', duration: '18:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 3,
@@ -443,7 +525,7 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
           { id: 10, title: 'The Cross (Straight Right)', duration: '20:00', isPreview: false },
           { id: 11, title: 'The Hook', duration: '22:00', isPreview: false },
           { id: 12, title: 'The Uppercut', duration: '18:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 4,
@@ -454,7 +536,7 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
           { id: 14, title: 'Slipping & Rolling', duration: '18:00', isPreview: false },
           { id: 15, title: 'Blocking & Parrying', duration: '15:00', isPreview: false },
           { id: 16, title: 'Counter Punching Basics', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -470,6 +552,7 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
     badge: 'Popular',
     updatedAt: 'Desember 2024',
   },
+
   {
     id: 5,
     slug: 'basketball-skill-training',
@@ -489,11 +572,13 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
     rating: 4.7,
     totalRatings: 1234,
     totalStudents: 7500,
-    thumbnail: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Coach Daniel Basket',
-      avatar: 'https://ui-avatars.com/api/?name=Daniel+Basket&background=F97316&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Daniel+Basket&background=F97316&color=fff&size=200',
       title: 'Basketball Coach & Former Pro Player',
       bio: 'Mantan pemain profesional IBL dengan 10+ tahun pengalaman coaching. Spesialisasi skill development.',
       totalCourses: 3,
@@ -507,11 +592,7 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
       'Game IQ & court awareness',
       'Practice plans untuk berbagai level',
     ],
-    requirements: [
-      'Bola basket',
-      'Lapangan atau area datar',
-      'Ring basket (untuk shooting drills)',
-    ],
+    requirements: ['Bola basket', 'Lapangan atau area datar', 'Ring basket (untuk shooting drills)'],
     curriculum: [
       {
         moduleId: 1,
@@ -521,7 +602,7 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
           { id: 1, title: 'Memahami Permainan Basket', duration: '10:00', isPreview: true },
           { id: 2, title: 'Posisi & Tugas Pemain', duration: '12:00', isPreview: true },
           { id: 3, title: 'Warm-up untuk Basket', duration: '8:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -532,7 +613,7 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
           { id: 5, title: 'Crossover & Between Legs', duration: '20:00', isPreview: false },
           { id: 6, title: 'Behind the Back', duration: '18:00', isPreview: false },
           { id: 7, title: 'Advanced Combinations', duration: '22:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 3,
@@ -544,7 +625,7 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
           { id: 10, title: 'Mid-Range Game', duration: '20:00', isPreview: false },
           { id: 11, title: '3-Point Shooting', duration: '22:00', isPreview: false },
           { id: 12, title: 'Layups & Finishing', duration: '25:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -560,6 +641,7 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
     badge: null,
     updatedAt: 'November 2024',
   },
+
   {
     id: 6,
     slug: 'futsal-sepak-bola-dasar',
@@ -579,11 +661,13 @@ Cocok untuk pemula yang ingin belajar dari nol, atau pemain rekreasional yang in
     rating: 4.6,
     totalRatings: 987,
     totalStudents: 6200,
-    thumbnail: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Coach Ricky Futsal',
-      avatar: 'https://ui-avatars.com/api/?name=Ricky+Futsal&background=10B981&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Ricky+Futsal&background=10B981&color=fff&size=200',
       title: 'Licensed Football Coach',
       bio: 'Coach berlisensi AFC C dengan pengalaman melatih tim muda dan dewasa selama 8 tahun.',
       totalCourses: 2,
@@ -597,11 +681,7 @@ Cocok untuk pemula yang ingin belajar dari nol, atau pemain rekreasional yang in
       'Positioning basics',
       'Small-sided game tactics',
     ],
-    requirements: [
-      'Bola sepak/futsal',
-      'Sepatu futsal/bola',
-      'Area latihan',
-    ],
+    requirements: ['Bola sepak/futsal', 'Sepatu futsal/bola', 'Area latihan'],
     curriculum: [
       {
         moduleId: 1,
@@ -612,7 +692,7 @@ Cocok untuk pemula yang ingin belajar dari nol, atau pemain rekreasional yang in
           { id: 2, title: 'First Touch Training', duration: '18:00', isPreview: true },
           { id: 3, title: 'Passing Fundamentals', duration: '22:00', isPreview: false },
           { id: 4, title: 'Receiving Under Pressure', duration: '18:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [],
@@ -640,11 +720,13 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
     rating: 4.9,
     totalRatings: 2890,
     totalStudents: 15000,
-    thumbnail: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Dr. Sari Nutritionist',
-      avatar: 'https://ui-avatars.com/api/?name=Dr+Sari&background=8B5CF6&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dr+Sari&background=8B5CF6&color=fff&size=200',
       title: 'Clinical Nutritionist',
       bio: 'Ahli gizi klinis dengan pengalaman 10+ tahun. Lulusan S2 Gizi UI, praktisi dan content creator nutrisi.',
       totalCourses: 4,
@@ -658,11 +740,7 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
       'Membaca label nutrisi',
       'Suplemen: mana yang perlu?',
     ],
-    requirements: [
-      'Tidak ada prasyarat',
-      'Kalkulator/app untuk tracking',
-      'Open mind untuk belajar',
-    ],
+    requirements: ['Tidak ada prasyarat', 'Kalkulator/app untuk tracking', 'Open mind untuk belajar'],
     curriculum: [
       {
         moduleId: 1,
@@ -673,7 +751,7 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
           { id: 2, title: 'Kalori: Energi untuk Tubuh', duration: '15:00', isPreview: true },
           { id: 3, title: 'TDEE & BMR Explained', duration: '18:00', isPreview: false },
           { id: 4, title: 'Surplus vs Deficit', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -684,7 +762,7 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
           { id: 6, title: 'Carbohydrates: Not Evil!', duration: '18:00', isPreview: false },
           { id: 7, title: 'Fats: Essential & Healthy', duration: '18:00', isPreview: false },
           { id: 8, title: 'Optimal Macro Ratios', duration: '20:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 3,
@@ -695,7 +773,7 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
           { id: 10, title: 'Minerals yang Penting', duration: '15:00', isPreview: false },
           { id: 11, title: 'Water & Hydration', duration: '12:00', isPreview: false },
           { id: 12, title: 'Fiber & Gut Health', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -719,6 +797,7 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
     badge: 'Bestseller',
     updatedAt: 'Januari 2025',
   },
+
   {
     id: 8,
     slug: 'meal-prep-gaya-hidup-sibuk',
@@ -738,11 +817,13 @@ Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hem
     rating: 4.8,
     totalRatings: 1654,
     totalStudents: 9500,
-    thumbnail: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1547592180-85f173990554?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Chef Rina',
-      avatar: 'https://ui-avatars.com/api/?name=Chef+Rina&background=EC4899&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Chef+Rina&background=EC4899&color=fff&size=200',
       title: 'Healthy Food Chef & Nutritionist',
       bio: 'Chef dengan passion untuk healthy eating. Content creator dengan 500K+ followers di Instagram.',
       totalCourses: 3,
@@ -756,11 +837,7 @@ Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hem
       '30+ resep meal prep',
       'Macro-friendly recipes',
     ],
-    requirements: [
-      'Peralatan dapur standar',
-      'Container untuk storage',
-      'Kulkas & freezer',
-    ],
+    requirements: ['Peralatan dapur standar', 'Container untuk storage', 'Kulkas & freezer'],
     curriculum: [
       {
         moduleId: 1,
@@ -771,7 +848,7 @@ Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hem
           { id: 2, title: 'Benefits of Meal Prep', duration: '12:00', isPreview: true },
           { id: 3, title: 'Tools & Equipment', duration: '15:00', isPreview: false },
           { id: 4, title: 'Container Guide', duration: '8:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -782,7 +859,7 @@ Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hem
           { id: 6, title: 'Creating Shopping List', duration: '15:00', isPreview: false },
           { id: 7, title: 'Smart Grocery Shopping', duration: '15:00', isPreview: false },
           { id: 8, title: 'Budget-friendly Tips', duration: '10:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -792,12 +869,14 @@ Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hem
         avatar: 'https://ui-avatars.com/api/?name=Lisa+M&background=random',
         rating: 5,
         date: '1 minggu lalu',
-        comment: 'Life changing! Sekarang saya prep food setiap Minggu dan tidak stress lagi urusan makan.',
+        comment:
+          'Life changing! Sekarang saya prep food setiap Minggu dan tidak stress lagi urusan makan.',
       },
     ],
     badge: 'Popular',
     updatedAt: 'Desember 2024',
   },
+
   {
     id: 9,
     slug: 'mental-health-untuk-pemula',
@@ -817,11 +896,13 @@ Pelajari tentang stress management, anxiety coping, mindfulness, dan cara memban
     rating: 4.9,
     totalRatings: 2100,
     totalStudents: 12000,
-    thumbnail: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Psikolog Anita',
-      avatar: 'https://ui-avatars.com/api/?name=Anita+Psikolog&background=6366F1&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Anita+Psikolog&background=6366F1&color=fff&size=200',
       title: 'Clinical Psychologist',
       bio: 'Psikolog klinis dengan 12+ tahun praktik. Spesialisasi anxiety, depression, dan stress management.',
       totalCourses: 3,
@@ -835,11 +916,7 @@ Pelajari tentang stress management, anxiety coping, mindfulness, dan cara memban
       'Building healthy habits',
       'When to seek help',
     ],
-    requirements: [
-      'Tidak ada prasyarat',
-      'Jurnal untuk refleksi (recommended)',
-      'Ruang tenang untuk practice',
-    ],
+    requirements: ['Tidak ada prasyarat', 'Jurnal untuk refleksi (recommended)', 'Ruang tenang untuk practice'],
     curriculum: [
       {
         moduleId: 1,
@@ -850,7 +927,7 @@ Pelajari tentang stress management, anxiety coping, mindfulness, dan cara memban
           { id: 2, title: 'Common Misconceptions', duration: '12:00', isPreview: true },
           { id: 3, title: 'Mental Health Spectrum', duration: '18:00', isPreview: false },
           { id: 4, title: 'Signs & Symptoms', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
@@ -861,7 +938,7 @@ Pelajari tentang stress management, anxiety coping, mindfulness, dan cara memban
           { id: 6, title: 'Identifying Triggers', duration: '18:00', isPreview: false },
           { id: 7, title: 'Coping Strategies', duration: '22:00', isPreview: false },
           { id: 8, title: 'Relaxation Techniques', duration: '20:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -871,12 +948,14 @@ Pelajari tentang stress management, anxiety coping, mindfulness, dan cara memban
         avatar: 'https://ui-avatars.com/api/?name=SW&background=random',
         rating: 5,
         date: '4 hari lalu',
-        comment: 'Course ini membantu saya memahami diri sendiri lebih baik. Teknik-tekniknya applicable!',
+        comment:
+          'Course ini membantu saya memahami diri sendiri lebih baik. Teknik-tekniknya applicable!',
       },
     ],
     badge: 'New',
     updatedAt: 'Januari 2025',
   },
+
   {
     id: 10,
     slug: 'sleep-optimization',
@@ -896,11 +975,13 @@ Dari sleep hygiene, circadian rhythm, hingga mengatasi insomnia ringan. Bangun k
     rating: 4.8,
     totalRatings: 1432,
     totalStudents: 8000,
-    thumbnail: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Dr. Sleep Expert',
-      avatar: 'https://ui-avatars.com/api/?name=Dr+Sleep&background=1E40AF&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dr+Sleep&background=1E40AF&color=fff&size=200',
       title: 'Sleep Medicine Specialist',
       bio: 'Dokter spesialis tidur dengan research di bidang sleep optimization. Penulis buku "Tidur Berkualitas".',
       totalCourses: 2,
@@ -929,7 +1010,7 @@ Dari sleep hygiene, circadian rhythm, hingga mengatasi insomnia ringan. Bangun k
           { id: 2, title: 'Sleep Cycles & Stages', duration: '18:00', isPreview: true },
           { id: 3, title: 'Circadian Rhythm', duration: '15:00', isPreview: false },
           { id: 4, title: 'Sleep Debt Reality', duration: '12:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -966,11 +1047,13 @@ Dari basic poses, breathing techniques, hingga simple flows yang bisa kamu prakt
     rating: 4.9,
     totalRatings: 3200,
     totalStudents: 16000,
-    thumbnail: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Yoga Instructor Devi',
-      avatar: 'https://ui-avatars.com/api/?name=Devi+Yoga&background=A855F7&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Devi+Yoga&background=A855F7&color=fff&size=200',
       title: 'Certified Yoga Instructor (RYT 500)',
       bio: 'Instruktur yoga bersertifikat internasional dengan 10+ tahun pengalaman. Spesialisasi Hatha dan Vinyasa yoga.',
       totalCourses: 4,
@@ -984,11 +1067,7 @@ Dari basic poses, breathing techniques, hingga simple flows yang bisa kamu prakt
       'Flexibility & mobility',
       'Morning & evening routines',
     ],
-    requirements: [
-      'Yoga mat',
-      'Pakaian yang nyaman',
-      'Ruang tenang untuk practice',
-    ],
+    requirements: ['Yoga mat', 'Pakaian yang nyaman', 'Ruang tenang untuk practice'],
     curriculum: [
       {
         moduleId: 1,
@@ -999,18 +1078,23 @@ Dari basic poses, breathing techniques, hingga simple flows yang bisa kamu prakt
           { id: 2, title: 'Benefits of Yoga', duration: '10:00', isPreview: true },
           { id: 3, title: 'Yoga Equipment', duration: '8:00', isPreview: false },
           { id: 4, title: 'Safety & Alignment', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
       {
         moduleId: 2,
         title: 'Basic Poses',
         duration: '1.5 jam',
         lessons: [
-          { id: 5, title: 'Mountain Pose & Standing Poses', duration: '20:00', isPreview: false },
+          {
+            id: 5,
+            title: 'Mountain Pose & Standing Poses',
+            duration: '20:00',
+            isPreview: false,
+          },
           { id: 6, title: 'Forward Folds', duration: '18:00', isPreview: false },
           { id: 7, title: 'Backbends Basics', duration: '18:00', isPreview: false },
           { id: 8, title: 'Twists & Balance', duration: '22:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -1034,6 +1118,7 @@ Dari basic poses, breathing techniques, hingga simple flows yang bisa kamu prakt
     badge: 'Bestseller',
     updatedAt: 'Januari 2025',
   },
+
   {
     id: 12,
     slug: 'meditation-mindfulness',
@@ -1053,11 +1138,13 @@ Dari guided meditation, breathing exercises, hingga mindfulness dalam aktivitas 
     rating: 4.8,
     totalRatings: 2100,
     totalStudents: 11000,
-    thumbnail: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Mindfulness Coach Budi',
-      avatar: 'https://ui-avatars.com/api/?name=Budi+Mind&background=14B8A6&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Budi+Mind&background=14B8A6&color=fff&size=200',
       title: 'Certified Mindfulness Coach',
       bio: 'Praktisi meditasi 15+ tahun. Certified dari Mindfulness-Based Stress Reduction (MBSR) program.',
       totalCourses: 3,
@@ -1071,11 +1158,7 @@ Dari guided meditation, breathing exercises, hingga mindfulness dalam aktivitas 
       'Stress reduction techniques',
       'Daily practice routines',
     ],
-    requirements: [
-      'Tidak ada prasyarat',
-      'Ruang tenang',
-      'Headphone (recommended)',
-    ],
+    requirements: ['Tidak ada prasyarat', 'Ruang tenang', 'Headphone (recommended)'],
     curriculum: [
       {
         moduleId: 1,
@@ -1086,7 +1169,7 @@ Dari guided meditation, breathing exercises, hingga mindfulness dalam aktivitas 
           { id: 2, title: 'Benefits of Meditation', duration: '12:00', isPreview: true },
           { id: 3, title: 'Creating Your Space', duration: '10:00', isPreview: false },
           { id: 4, title: 'Posture & Comfort', duration: '13:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -1102,6 +1185,7 @@ Dari guided meditation, breathing exercises, hingga mindfulness dalam aktivitas 
     badge: 'Popular',
     updatedAt: 'Desember 2024',
   },
+
   {
     id: 13,
     slug: 'power-yoga-intermediate',
@@ -1121,11 +1205,13 @@ Expect to sweat! Ini bukan yoga yang slow dan gentle, tapi powerful dan energizi
     rating: 4.7,
     totalRatings: 1450,
     totalStudents: 7800,
-    thumbnail: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Power Yoga Instructor Maya',
-      avatar: 'https://ui-avatars.com/api/?name=Maya+Power&background=F59E0B&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Maya+Power&background=F59E0B&color=fff&size=200',
       title: 'Power Yoga Specialist',
       bio: 'Atlet yoga dan instruktur power yoga dengan 8+ tahun pengalaman. Former gymnast.',
       totalCourses: 3,
@@ -1139,11 +1225,7 @@ Expect to sweat! Ini bukan yoga yang slow dan gentle, tapi powerful dan energizi
       'Flexibility & balance',
       'Full-body conditioning',
     ],
-    requirements: [
-      'Basic yoga experience',
-      'Good fitness level',
-      'Yoga mat & blocks',
-    ],
+    requirements: ['Basic yoga experience', 'Good fitness level', 'Yoga mat & blocks'],
     curriculum: [],
     reviews: [],
     badge: null,
@@ -1170,11 +1252,13 @@ Dari stance, footwork, punches, kicks, elbows, knees, hingga clinch basics. All-
     rating: 4.9,
     totalRatings: 1890,
     totalStudents: 9500,
-    thumbnail: 'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Kru Arief',
-      avatar: 'https://ui-avatars.com/api/?name=Kru+Arief&background=DC2626&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Kru+Arief&background=DC2626&color=fff&size=200',
       title: 'Certified Muay Thai Instructor',
       bio: 'Mantan fighter Muay Thai dengan 50+ fights. Kru (instruktur) bersertifikat dari Thailand.',
       totalCourses: 2,
@@ -1204,7 +1288,7 @@ Dari stance, footwork, punches, kicks, elbows, knees, hingga clinch basics. All-
           { id: 2, title: 'Equipment Guide', duration: '10:00', isPreview: true },
           { id: 3, title: 'Wai Kru Ritual', duration: '8:00', isPreview: false },
           { id: 4, title: 'Warm-up Routine', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -1220,6 +1304,7 @@ Dari stance, footwork, punches, kicks, elbows, knees, hingga clinch basics. All-
     badge: 'Bestseller',
     updatedAt: 'Januari 2025',
   },
+
   {
     id: 15,
     slug: 'brazilian-jiu-jitsu-basics',
@@ -1239,11 +1324,13 @@ Pelajari positions, escapes, submissions, dan strategy dalam grappling.`,
     rating: 4.8,
     totalRatings: 1234,
     totalStudents: 6800,
-    thumbnail: 'https://images.unsplash.com/photo-1555597408-26bc8e548a46?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1555597408-26bc8e548a46?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Professor Joko',
-      avatar: 'https://ui-avatars.com/api/?name=Prof+Joko&background=7C3AED&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Prof+Joko&background=7C3AED&color=fff&size=200',
       title: 'BJJ Black Belt & Professor',
       bio: 'Black belt BJJ dengan 15+ tahun pengalaman. Kompetitor aktif dan head instructor.',
       totalCourses: 3,
@@ -1257,16 +1344,13 @@ Pelajari positions, escapes, submissions, dan strategy dalam grappling.`,
       'Takedowns basics',
       'Rolling strategy',
     ],
-    requirements: [
-      'Gi (kimono) atau rashguard',
-      'Partner untuk practice (optional)',
-      'Mats atau soft surface',
-    ],
+    requirements: ['Gi (kimono) atau rashguard', 'Partner untuk practice (optional)', 'Mats atau soft surface'],
     curriculum: [],
     reviews: [],
     badge: 'Popular',
     updatedAt: 'Desember 2024',
   },
+
   {
     id: 16,
     slug: 'taekwondo-kicks-mastery',
@@ -1286,11 +1370,13 @@ Dari basic kicks hingga advanced spinning kicks. Improve flexibility, power, dan
     rating: 4.7,
     totalRatings: 890,
     totalStudents: 5200,
-    thumbnail: 'https://images.unsplash.com/photo-1555597408-26bc8e548a46?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1555597408-26bc8e548a46?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Master Kim',
-      avatar: 'https://ui-avatars.com/api/?name=Master+Kim&background=0EA5E9&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Master+Kim&background=0EA5E9&color=fff&size=200',
       title: 'Taekwondo 4th Dan Black Belt',
       bio: 'Master Taekwondo dengan 20+ tahun pengalaman. Mantan atlet nasional.',
       totalCourses: 2,
@@ -1304,11 +1390,7 @@ Dari basic kicks hingga advanced spinning kicks. Improve flexibility, power, dan
       'Jumping kicks',
       'Kicking combinations',
     ],
-    requirements: [
-      'Comfortable clothing',
-      'Open space',
-      'Kicking pad (optional)',
-    ],
+    requirements: ['Comfortable clothing', 'Open space', 'Kicking pad (optional)'],
     curriculum: [],
     reviews: [],
     badge: null,
@@ -1335,11 +1417,13 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
     rating: 4.8,
     totalRatings: 2340,
     totalStudents: 13000,
-    thumbnail: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Coach Runner Andi',
-      avatar: 'https://ui-avatars.com/api/?name=Andi+Run&background=059669&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Andi+Run&background=059669&color=fff&size=200',
       title: 'Running Coach & Marathon Finisher',
       bio: 'Running coach dengan 10+ marathon finishes. Spesialisasi beginner training programs.',
       totalCourses: 4,
@@ -1353,11 +1437,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
       'Nutrition for runners',
       'Race day preparation',
     ],
-    requirements: [
-      'Running shoes',
-      'Comfortable clothing',
-      'Running track atau treadmill',
-    ],
+    requirements: ['Running shoes', 'Comfortable clothing', 'Running track atau treadmill'],
     curriculum: [
       {
         moduleId: 1,
@@ -1368,7 +1448,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
           { id: 2, title: 'Choosing Running Shoes', duration: '15:00', isPreview: true },
           { id: 3, title: 'Running Form Basics', duration: '20:00', isPreview: false },
           { id: 4, title: 'Week 1 Training Plan', duration: '15:00', isPreview: false },
-        ]
+        ],
       },
     ],
     reviews: [
@@ -1384,6 +1464,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
     badge: 'Bestseller',
     updatedAt: 'Januari 2025',
   },
+
   {
     id: 18,
     slug: 'hiit-workout-fat-burning',
@@ -1403,11 +1484,13 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
     rating: 4.9,
     totalRatings: 3100,
     totalStudents: 17000,
-    thumbnail: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'HIIT Coach Sarah',
-      avatar: 'https://ui-avatars.com/api/?name=Sarah+HIIT&background=EF4444&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Sarah+HIIT&background=EF4444&color=fff&size=200',
       title: 'HIIT Specialist & Fitness Coach',
       bio: 'Certified HIIT instructor dengan passion untuk efficient workouts. 7+ tahun experience.',
       totalCourses: 3,
@@ -1421,11 +1504,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
       'Nutrition guidance',
       'Recovery protocols',
     ],
-    requirements: [
-      'Good fitness base',
-      'Exercise mat',
-      'Timer atau app',
-    ],
+    requirements: ['Good fitness base', 'Exercise mat', 'Timer atau app'],
     curriculum: [],
     reviews: [
       {
@@ -1440,6 +1519,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
     badge: 'Bestseller',
     updatedAt: 'Januari 2025',
   },
+
   {
     id: 19,
     slug: 'cycling-indoor-outdoor',
@@ -1459,11 +1539,13 @@ Dari basic cycling form hingga advanced training zones dan periodization.`,
     rating: 4.7,
     totalRatings: 1560,
     totalStudents: 8900,
-    thumbnail: 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Cycling Coach Budi',
-      avatar: 'https://ui-avatars.com/api/?name=Budi+Cycle&background=2563EB&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Budi+Cycle&background=2563EB&color=fff&size=200',
       title: 'Professional Cycling Coach',
       bio: 'Mantan atlet balap sepeda nasional. Coach dengan 12+ tahun pengalaman.',
       totalCourses: 2,
@@ -1477,16 +1559,13 @@ Dari basic cycling form hingga advanced training zones dan periodization.`,
       'Bike fitting basics',
       'Nutrition for cyclists',
     ],
-    requirements: [
-      'Sepeda atau spin bike',
-      'Cycling shoes (recommended)',
-      'Heart rate monitor (optional)',
-    ],
+    requirements: ['Sepeda atau spin bike', 'Cycling shoes (recommended)', 'Heart rate monitor (optional)'],
     curriculum: [],
     reviews: [],
     badge: 'Popular',
     updatedAt: 'Desember 2024',
   },
+
   {
     id: 20,
     slug: 'swimming-technique-improvement',
@@ -1506,11 +1585,13 @@ Dari freestyle, backstroke, breaststroke, hingga butterfly. Swim faster and more
     rating: 4.8,
     totalRatings: 1120,
     totalStudents: 6500,
-    thumbnail: 'https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=800',
+    thumbnail:
+      'https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=800',
     previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     instructor: {
       name: 'Swim Coach Dina',
-      avatar: 'https://ui-avatars.com/api/?name=Dina+Swim&background=06B6D4&color=fff&size=200',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dina+Swim&background=06B6D4&color=fff&size=200',
       title: 'Professional Swimming Coach',
       bio: 'Mantan atlet renang PON. Coach bersertifikat dengan 15+ tahun pengalaman.',
       totalCourses: 3,
@@ -1524,11 +1605,7 @@ Dari freestyle, backstroke, breaststroke, hingga butterfly. Swim faster and more
       'Training programs',
       'Open water tips',
     ],
-    requirements: [
-      'Akses ke kolam renang',
-      'Goggles & swim cap',
-      'Basic swimming ability',
-    ],
+    requirements: ['Akses ke kolam renang', 'Goggles & swim cap', 'Basic swimming ability'],
     curriculum: [],
     reviews: [],
     badge: null,
@@ -1536,21 +1613,669 @@ Dari freestyle, backstroke, breaststroke, hingga butterfly. Swim faster and more
   },
 ]
 
+// Additional course data - Part 1
+export const additionalCourses1 = [
+  // ============ BODYBUILDING & MUSCLE ============
+  {
+    id: 21,
+    slug: 'binaraga-dasar-pemula',
+    title: 'Binaraga Dasar untuk Pemula',
+    shortDescription: 'Mulai perjalanan bodybuilding-mu dengan program yang terstruktur dan aman.',
+    description: `Bodybuilding bukan hanya tentang angkat beban berat, tapi tentang membangun otot dengan teknik yang benar dan nutrisi yang tepat.
+
+Course ini mengajarkan fundamental bodybuilding: split training, progressive overload, nutrition untuk muscle gain, dan recovery yang optimal. Cocok untuk pemula yang serius ingin membangun massa otot.`,
+    category: 'bodybuilding',
+    categoryLabel: 'Bodybuilding & Muscle',
+    level: 'Pemula',
+    duration: '10 jam',
+    totalModules: 8,
+    totalLessons: 42,
+    price: 199000,
+    discountPrice: 149000,
+    rating: 4.9,
+    totalRatings: 2890,
+    totalStudents: 14500,
+    thumbnail:
+      'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Coach Bambang Bodybuilder',
+      avatar:
+        'https://ui-avatars.com/api/?name=Bambang+BB&background=DC2626&color=fff&size=200',
+      title: 'Professional Bodybuilder & Coach',
+      bio: 'Juara bodybuilding nasional 3x. Coach dengan 12+ tahun pengalaman membantu atlet pemula hingga profesional.',
+      totalCourses: 4,
+      totalStudents: 22000,
+    },
+    features: [
+      'Program split training untuk muscle gain',
+      'Teknik compound & isolation yang benar',
+      'Nutrition untuk bulking & cutting',
+      'Supplement guide',
+      'Recovery & rest optimization',
+      'Posing & presentation basics',
+    ],
+    requirements: [
+      'Akses ke gym dengan free weights',
+      'Komitmen latihan 5-6x seminggu',
+      'Food scale untuk tracking makro',
+    ],
+    curriculum: [],
+    reviews: [
+      {
+        id: 1,
+        user: 'Aspiring Bodybuilder',
+        avatar: 'https://ui-avatars.com/api/?name=AB&background=random',
+        rating: 5,
+        date: '1 minggu lalu',
+        comment: 'Naik 5kg lean mass dalam 3 bulan! Program ini legit!',
+      },
+    ],
+    badge: 'Bestseller',
+    updatedAt: 'Januari 2025',
+  },
+
+  {
+    id: 22,
+    slug: 'renang-pemula-teknik-dasar',
+    title: 'Renang Pemula: Teknik Dasar 4 Gaya',
+    shortDescription: 'Belajar renang dari nol hingga mahir 4 gaya renang.',
+    description: `Tidak bisa renang? Tidak masalah! Course ini dirancang untuk pemula absolut yang ingin belajar renang dengan teknik yang benar.
+
+Dari mengatasi takut air, floating, hingga menguasai 4 gaya renang: freestyle, backstroke, breaststroke, dan butterfly. Step by step dengan video underwater yang jelas.`,
+    category: 'cardio',
+    categoryLabel: 'Cardio & Endurance',
+    level: 'Pemula',
+    duration: '12 jam',
+    totalModules: 10,
+    totalLessons: 48,
+    price: 179000,
+    discountPrice: 129000,
+    rating: 4.8,
+    totalRatings: 3450,
+    totalStudents: 18900,
+    thumbnail:
+      'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Coach Renang Sari',
+      avatar:
+        'https://ui-avatars.com/api/?name=Sari+Swim&background=06B6D4&color=fff&size=200',
+      title: 'Professional Swimming Coach',
+      bio: 'Mantan atlet renang PON dengan 15+ tahun pengalaman mengajar. Spesialisasi pemula hingga kompetitif.',
+      totalCourses: 5,
+      totalStudents: 25000,
+    },
+    features: [
+      'Mengatasi takut air',
+      'Teknik floating & breathing',
+      '4 gaya renang lengkap',
+      'Underwater video analysis',
+      'Drills untuk improvement',
+      'Safety & water confidence',
+    ],
+    requirements: ['Akses ke kolam renang', 'Goggles & swim cap', 'Tidak perlu bisa renang sebelumnya'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Popular',
+    updatedAt: 'Januari 2025',
+  },
+
+  {
+    id: 23,
+    slug: 'boxing-advanced-techniques',
+    title: 'Boxing Advanced: Teknik & Strategi Lanjutan',
+    shortDescription: 'Tingkatkan skill boxing-mu ke level berikutnya dengan teknik advanced.',
+    description: `Untuk kamu yang sudah menguasai basic boxing dan ingin naik level. Course ini mengajarkan advanced combinations, counter-punching, ring generalship, dan fight strategy.
+
+Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik-teknik yang digunakan di level kompetitif.`,
+    category: 'martial-arts',
+    categoryLabel: 'Martial Arts',
+    level: 'Lanjutan',
+    duration: '9 jam',
+    totalModules: 7,
+    totalLessons: 35,
+    price: 219000,
+    discountPrice: 169000,
+    rating: 4.9,
+    totalRatings: 1890,
+    totalStudents: 7800,
+    thumbnail:
+      'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Pro Boxer Dedi',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dedi+Box&background=EF4444&color=fff&size=200',
+      title: 'Professional Boxer & Coach',
+      bio: 'Mantan juara tinju nasional dengan 80+ professional fights. Coach untuk beberapa atlet profesional.',
+      totalCourses: 3,
+      totalStudents: 11000,
+    },
+    features: [
+      'Advanced combinations',
+      'Counter-punching mastery',
+      'Ring generalship',
+      'Fight IQ development',
+      'Sparring strategies',
+      'Mental game untuk kompetisi',
+    ],
+    requirements: ['Basic boxing skills', 'Good fitness level', 'Sparring partner (recommended)'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Advanced',
+    updatedAt: 'Desember 2024',
+  },
+
+  // ============ MORE SPORTS ============
+  {
+    id: 24,
+    slug: 'badminton-skill-improvement',
+    title: 'Badminton: Teknik & Strategi Permainan',
+    shortDescription: 'Tingkatkan permainan badminton dengan teknik yang benar.',
+    description: `Badminton adalah olahraga yang membutuhkan speed, agility, dan technique. Course ini mengajarkan fundamental hingga advanced badminton skills.`,
+    category: 'sports',
+    categoryLabel: 'Sports & Skill Training',
+    level: 'Semua Level',
+    duration: '7 jam',
+    totalModules: 6,
+    totalLessons: 28,
+    price: 149000,
+    discountPrice: 99000,
+    rating: 4.7,
+    totalRatings: 1234,
+    totalStudents: 8500,
+    thumbnail:
+      'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Coach Badminton Rina',
+      avatar:
+        'https://ui-avatars.com/api/?name=Rina+Bad&background=10B981&color=fff&size=200',
+      title: 'National Badminton Coach',
+      bio: 'Mantan atlet badminton nasional. Coach dengan 10+ tahun pengalaman.',
+      totalCourses: 2,
+      totalStudents: 12000,
+    },
+    features: [
+      'Grip & footwork fundamentals',
+      'Smash, drop, clear techniques',
+      'Net play mastery',
+      'Singles & doubles strategy',
+      'Conditioning untuk badminton',
+    ],
+    requirements: ['Raket badminton', 'Akses ke lapangan', 'Shuttlecock'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Popular',
+    updatedAt: 'Januari 2025',
+  },
+
+  {
+    id: 25,
+    slug: 'crossfit-fundamentals',
+    title: 'CrossFit Fundamentals',
+    shortDescription: 'Masuk ke dunia CrossFit dengan fundamental yang kuat.',
+    description: `CrossFit menggabungkan weightlifting, gymnastics, dan cardio dalam workout yang intense. Perfect untuk yang suka variety dan challenge!`,
+    category: 'kebugaran',
+    categoryLabel: 'Kebugaran dan Fisik',
+    level: 'Menengah',
+    duration: '8 jam',
+    totalModules: 7,
+    totalLessons: 32,
+    price: 189000,
+    discountPrice: 139000,
+    rating: 4.8,
+    totalRatings: 2100,
+    totalStudents: 9800,
+    thumbnail:
+      'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'CrossFit Coach Alex',
+      avatar:
+        'https://ui-avatars.com/api/?name=Alex+CF&background=F97316&color=fff&size=200',
+      title: 'CrossFit Level 2 Trainer',
+      bio: 'CrossFit coach bersertifikat dengan 8+ tahun pengalaman. Box owner dan kompetitor.',
+      totalCourses: 3,
+      totalStudents: 15000,
+    },
+    features: [
+      'Olympic lifting basics',
+      'Gymnastics movements',
+      'MetCon workouts',
+      'Scaling & modifications',
+      'WOD programming',
+    ],
+    requirements: ['Good fitness base', 'Akses ke CrossFit box atau gym', 'Barbell & bumper plates'],
+    curriculum: [],
+    reviews: [],
+    badge: 'New',
+    updatedAt: 'Januari 2025',
+  },
+
+  // ============ RECOVERY & MOBILITY ============
+  {
+    id: 26,
+    slug: 'stretching-flexibility-program',
+    title: 'Stretching & Flexibility Program',
+    shortDescription: 'Tingkatkan flexibility dan mobility untuk performa optimal.',
+    description: `Flexibility sering diabaikan padahal sangat penting untuk injury prevention dan performance. Course ini mengajarkan stretching yang benar dan progressive flexibility training.`,
+    category: 'recovery',
+    categoryLabel: 'Recovery & Mobility',
+    level: 'Semua Level',
+    duration: '5 jam',
+    totalModules: 5,
+    totalLessons: 24,
+    price: 119000,
+    discountPrice: 79000,
+    rating: 4.9,
+    totalRatings: 2890,
+    totalStudents: 16500,
+    thumbnail:
+      'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Flexibility Coach Maya',
+      avatar:
+        'https://ui-avatars.com/api/?name=Maya+Flex&background=A855F7&color=fff&size=200',
+      title: 'Flexibility & Mobility Specialist',
+      bio: 'Spesialisasi flexibility training dengan background gymnastics dan yoga. 12+ tahun pengalaman.',
+      totalCourses: 4,
+      totalStudents: 20000,
+    },
+    features: [
+      'Static & dynamic stretching',
+      'PNF stretching techniques',
+      'Splits progression',
+      'Upper & lower body flexibility',
+      'Daily stretching routines',
+    ],
+    requirements: ['Yoga mat', 'Resistance bands (optional)', 'Ruang untuk stretching'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Bestseller',
+    updatedAt: 'Januari 2025',
+  },
+
+  {
+    id: 27,
+    slug: 'foam-rolling-self-massage',
+    title: 'Foam Rolling & Self-Massage Techniques',
+    shortDescription: 'Recovery mandiri dengan foam rolling dan self-massage.',
+    description: `Foam rolling adalah cara efektif untuk recovery, mengurangi muscle soreness, dan meningkatkan mobility. Pelajari teknik yang benar untuk setiap muscle group.`,
+    category: 'recovery',
+    categoryLabel: 'Recovery & Mobility',
+    level: 'Semua Level',
+    duration: '4 jam',
+    totalModules: 4,
+    totalLessons: 18,
+    price: 99000,
+    discountPrice: 69000,
+    rating: 4.7,
+    totalRatings: 1560,
+    totalStudents: 11200,
+    thumbnail:
+      'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Recovery Specialist Budi',
+      avatar:
+        'https://ui-avatars.com/api/?name=Budi+Rec&background=14B8A6&color=fff&size=200',
+      title: 'Sports Massage Therapist',
+      bio: 'Terapis olahraga bersertifikat dengan spesialisasi recovery techniques. 10+ tahun pengalaman.',
+      totalCourses: 2,
+      totalStudents: 14000,
+    },
+    features: [
+      'Foam rolling techniques',
+      'Trigger point therapy',
+      'Self-massage protocols',
+      'Recovery routines',
+      'Injury prevention',
+    ],
+    requirements: ['Foam roller', 'Massage ball (optional)', 'Yoga mat'],
+    curriculum: [],
+    reviews: [],
+    badge: null,
+    updatedAt: 'Desember 2024',
+  },
+
+  // ============ MENTAL WELLNESS ============
+  {
+    id: 28,
+    slug: 'stress-management-techniques',
+    title: 'Stress Management: Teknik Praktis Sehari-hari',
+    shortDescription: 'Kelola stress dengan teknik yang terbukti efektif.',
+    description: `Stress adalah bagian dari hidup, tapi kita bisa belajar mengelolanya. Course ini mengajarkan berbagai teknik stress management yang bisa langsung dipraktikkan.`,
+    category: 'mental-wellness',
+    categoryLabel: 'Mental Wellness',
+    level: 'Semua Level',
+    duration: '6 jam',
+    totalModules: 5,
+    totalLessons: 22,
+    price: 139000,
+    discountPrice: 89000,
+    rating: 4.9,
+    totalRatings: 3200,
+    totalStudents: 17800,
+    thumbnail:
+      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Psikolog Dr. Anita',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dr+Anita&background=6366F1&color=fff&size=200',
+      title: 'Clinical Psychologist',
+      bio: 'Psikolog klinis dengan spesialisasi stress & anxiety management. 15+ tahun praktik.',
+      totalCourses: 5,
+      totalStudents: 28000,
+    },
+    features: [
+      'Stress identification',
+      'Breathing techniques',
+      'Progressive muscle relaxation',
+      'Cognitive reframing',
+      'Daily stress management',
+    ],
+    requirements: ['Tidak ada prasyarat', 'Jurnal (recommended)', 'Ruang tenang'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Bestseller',
+    updatedAt: 'Januari 2025',
+  },
+
+  {
+    id: 29,
+    slug: 'mindful-eating-habits',
+    title: 'Mindful Eating: Membangun Hubungan Sehat dengan Makanan',
+    shortDescription: 'Belajar makan dengan mindful dan bangun relationship yang sehat dengan food.',
+    description: `Mindful eating bukan diet, tapi cara baru memandang makanan. Pelajari bagaimana makan dengan awareness, mengenali hunger cues, dan menikmati makanan tanpa guilt.`,
+    category: 'mental-wellness',
+    categoryLabel: 'Mental Wellness',
+    level: 'Semua Level',
+    duration: '5 jam',
+    totalModules: 4,
+    totalLessons: 20,
+    price: 129000,
+    discountPrice: 79000,
+    rating: 4.8,
+    totalRatings: 2100,
+    totalStudents: 13500,
+    thumbnail:
+      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Nutritionist Sari',
+      avatar:
+        'https://ui-avatars.com/api/?name=Sari+Mind&background=EC4899&color=fff&size=200',
+      title: 'Mindful Eating Coach',
+      bio: 'Ahli gizi dengan spesialisasi mindful eating dan eating psychology. 8+ tahun pengalaman.',
+      totalCourses: 3,
+      totalStudents: 16000,
+    },
+    features: [
+      'Mindful eating principles',
+      'Hunger & fullness cues',
+      'Emotional eating management',
+      'Food relationship healing',
+      'Practical exercises',
+    ],
+    requirements: ['Tidak ada prasyarat', 'Food journal (recommended)', 'Open mind'],
+    curriculum: [],
+    reviews: [],
+    badge: 'New',
+    updatedAt: 'Januari 2025',
+  },
+]
+
+// Additional course data - Part 2
+export const additionalCourses2 = [
+  // ============ MORE BODYBUILDING ============
+  {
+    id: 30,
+    slug: 'powerlifting-strength-training',
+    title: 'Powerlifting: Squat, Bench, Deadlift Mastery',
+    shortDescription: 'Bangun kekuatan maksimal dengan powerlifting training.',
+    description: `Powerlifting fokus pada 3 lift utama: squat, bench press, dan deadlift. Course ini mengajarkan teknik yang benar untuk memaksimalkan strength gains.`,
+    category: 'bodybuilding',
+    categoryLabel: 'Bodybuilding & Muscle',
+    level: 'Menengah',
+    duration: '11 jam',
+    totalModules: 9,
+    totalLessons: 45,
+    price: 209000,
+    discountPrice: 159000,
+    rating: 4.9,
+    totalRatings: 1890,
+    totalStudents: 8900,
+    thumbnail:
+      'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Powerlifter Coach Joko',
+      avatar:
+        'https://ui-avatars.com/api/?name=Joko+PL&background=7C3AED&color=fff&size=200',
+      title: 'National Powerlifting Champion',
+      bio: 'Juara powerlifting nasional dengan total 600kg+. Coach untuk atlet kompetitif.',
+      totalCourses: 3,
+      totalStudents: 12000,
+    },
+    features: [
+      'Squat technique & variations',
+      'Bench press mastery',
+      'Deadlift form perfection',
+      'Periodization untuk strength',
+      'Meet preparation',
+      'Accessory work',
+    ],
+    requirements: [
+      'Basic lifting experience',
+      'Akses ke powerlifting gym',
+      'Lifting belt & shoes (recommended)',
+    ],
+    curriculum: [],
+    reviews: [],
+    badge: 'Advanced',
+    updatedAt: 'Januari 2025',
+  },
+
+  // ============ MORE SPORTS ============
+  {
+    id: 31,
+    slug: 'tennis-fundamentals',
+    title: 'Tennis Fundamentals: Forehand, Backhand, Serve',
+    shortDescription: 'Pelajari teknik dasar tennis yang benar.',
+    description: `Tennis adalah olahraga yang elegant dan challenging. Course ini mengajarkan fundamental strokes, footwork, dan game strategy untuk pemula.`,
+    category: 'sports',
+    categoryLabel: 'Sports & Skill Training',
+    level: 'Pemula',
+    duration: '8 jam',
+    totalModules: 7,
+    totalLessons: 32,
+    price: 169000,
+    discountPrice: 119000,
+    rating: 4.7,
+    totalRatings: 1450,
+    totalStudents: 7800,
+    thumbnail:
+      'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Tennis Coach David',
+      avatar:
+        'https://ui-avatars.com/api/?name=David+Tennis&background=F59E0B&color=fff&size=200',
+      title: 'Professional Tennis Coach',
+      bio: 'Mantan atlet tennis nasional. Coach bersertifikat dengan 12+ tahun pengalaman.',
+      totalCourses: 2,
+      totalStudents: 9500,
+    },
+    features: [
+      'Grip & stance fundamentals',
+      'Forehand & backhand technique',
+      'Serve mastery',
+      'Volley & overhead',
+      'Singles & doubles strategy',
+    ],
+    requirements: ['Raket tennis', 'Akses ke lapangan tennis', 'Tennis balls'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Popular',
+    updatedAt: 'Desember 2024',
+  },
+
+  {
+    id: 32,
+    slug: 'volleyball-skills-training',
+    title: 'Volleyball: Spike, Block, Serve Training',
+    shortDescription: 'Tingkatkan skill volleyball untuk bermain lebih baik.',
+    description: `Volleyball membutuhkan teamwork, timing, dan technique. Course ini mengajarkan fundamental skills hingga advanced techniques.`,
+    category: 'sports',
+    categoryLabel: 'Sports & Skill Training',
+    level: 'Semua Level',
+    duration: '7 jam',
+    totalModules: 6,
+    totalLessons: 28,
+    price: 149000,
+    discountPrice: 99000,
+    rating: 4.6,
+    totalRatings: 1120,
+    totalStudents: 6800,
+    thumbnail:
+      'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Volleyball Coach Rina',
+      avatar:
+        'https://ui-avatars.com/api/?name=Rina+VB&background=0EA5E9&color=fff&size=200',
+      title: 'National Volleyball Coach',
+      bio: 'Mantan atlet voli nasional. Coach dengan 10+ tahun pengalaman.',
+      totalCourses: 2,
+      totalStudents: 8500,
+    },
+    features: [
+      'Passing & setting fundamentals',
+      'Spiking technique',
+      'Blocking mastery',
+      'Serving variations',
+      'Team positioning',
+    ],
+    requirements: ['Volleyball', 'Akses ke lapangan', 'Knee pads (recommended)'],
+    curriculum: [],
+    reviews: [],
+    badge: null,
+    updatedAt: 'November 2024',
+  },
+
+  // ============ MORE NUTRITION ============
+  {
+    id: 33,
+    slug: 'plant-based-nutrition',
+    title: 'Plant-Based Nutrition untuk Atlet',
+    shortDescription: 'Nutrisi nabati yang optimal untuk performa olahraga.',
+    description: `Plant-based diet bisa mendukung performa atletik dengan nutrisi yang tepat. Course ini mengajarkan bagaimana memenuhi kebutuhan protein, vitamin, dan mineral dari sumber nabati.`,
+    category: 'nutrisi',
+    categoryLabel: 'Nutrisi & Gaya Hidup',
+    level: 'Semua Level',
+    duration: '6 jam',
+    totalModules: 5,
+    totalLessons: 24,
+    price: 139000,
+    discountPrice: 89000,
+    rating: 4.8,
+    totalRatings: 1890,
+    totalStudents: 11200,
+    thumbnail:
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Plant-Based Nutritionist Lisa',
+      avatar:
+        'https://ui-avatars.com/api/?name=Lisa+Plant&background=22C55E&color=fff&size=200',
+      title: 'Sports Nutritionist',
+      bio: 'Ahli gizi olahraga dengan spesialisasi plant-based nutrition. 8+ tahun pengalaman.',
+      totalCourses: 3,
+      totalStudents: 14000,
+    },
+    features: [
+      'Complete protein sources',
+      'Vitamin & mineral optimization',
+      'Meal planning plant-based',
+      'Supplement guide',
+      '50+ resep atlet',
+    ],
+    requirements: ['Tidak ada prasyarat', 'Open mind untuk plant-based', 'Food scale (recommended)'],
+    curriculum: [],
+    reviews: [],
+    badge: 'New',
+    updatedAt: 'Januari 2025',
+  },
+
+  {
+    id: 34,
+    slug: 'sports-supplements-guide',
+    title: 'Sports Supplements: Panduan Lengkap & Evidence-Based',
+    shortDescription: 'Pahami supplement mana yang worth it dan mana yang hype.',
+    description: `Dunia supplement penuh dengan marketing hype. Course ini memberikan panduan evidence-based tentang supplement yang benar-benar efektif untuk performa dan recovery.`,
+    category: 'nutrisi',
+    categoryLabel: 'Nutrisi & Gaya Hidup',
+    level: 'Semua Level',
+    duration: '5 jam',
+    totalModules: 4,
+    totalLessons: 20,
+    price: 119000,
+    discountPrice: 79000,
+    rating: 4.9,
+    totalRatings: 2340,
+    totalStudents: 15600,
+    thumbnail:
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: 'Dr. Supplement Expert',
+      avatar:
+        'https://ui-avatars.com/api/?name=Dr+Supp&background=8B5CF6&color=fff&size=200',
+      title: 'Sports Scientist',
+      bio: 'Dokter olahraga dengan research di bidang sports nutrition. Evidence-based approach.',
+      totalCourses: 4,
+      totalStudents: 20000,
+    },
+    features: [
+      'Protein powder guide',
+      'Creatine explained',
+      'Pre-workout analysis',
+      'Recovery supplements',
+      'Timing & dosage',
+    ],
+    requirements: ['Basic nutrition knowledge', 'Budget untuk supplement (optional)'],
+    curriculum: [],
+    reviews: [],
+    badge: 'Bestseller',
+    updatedAt: 'Januari 2025',
+  },
+]
+
+// Merge all course data
+const allCoursesData = [...baseCoursesData, ...additionalCourses1, ...additionalCourses2]
+
+// Export merged data
+export { allCoursesData as coursesData }
+
 // Helper function to get courses by category
 export const getCoursesByCategory = (categoryId) => {
-  if (!categoryId || categoryId === 'all') return coursesData
-  return coursesData.filter(course => course.category === categoryId)
+  if (!categoryId || categoryId === 'all') return allCoursesData
+  return allCoursesData.filter((course) => course.category === categoryId)
 }
 
 // Helper function to get course by slug
 export const getCourseBySlug = (slug) => {
-  return coursesData.find(course => course.slug === slug)
+  return allCoursesData.find((course) => course.slug === slug)
 }
 
 // Helper function to get related courses
 export const getRelatedCourses = (currentCourseId, category, limit = 3) => {
-  return coursesData
-    .filter(course => course.id !== currentCourseId && course.category === category)
+  return allCoursesData
+    .filter((course) => course.id !== currentCourseId && course.category === category)
     .slice(0, limit)
 }
 
