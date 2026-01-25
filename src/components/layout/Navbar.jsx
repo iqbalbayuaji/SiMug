@@ -54,6 +54,12 @@ export default function Navbar() {
       return
     }
 
+    // Check if on forum pages (including /forum, /forum-intro, /forum/*)
+    if (currentPath.startsWith('/forum')) {
+      setActiveMenu('Forum')
+      return
+    }
+
     const activeItem = menuItems.find(item => item.path === currentPath)
     if (activeItem) {
       setActiveMenu(activeItem.name)
@@ -128,7 +134,10 @@ export default function Navbar() {
           </Link>
 
           {/* Menu Items */}
-          <div className="hidden md:flex items-center gap-8">
+          <div 
+            className="hidden md:flex items-center gap-8"
+            onMouseLeave={() => setHoveredMenu(null)}
+          >
             {menuItems.map((item) => (
               <div
                 key={item.name}
@@ -176,11 +185,9 @@ export default function Navbar() {
                     {/* Active/Hover Underline */}
                     <span 
                       className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
-                        activeMenu === item.name && hoveredMenu === null
-                          ? "w-full" 
-                          : activeMenu === item.name && hoveredMenu !== null && hoveredMenu !== item.name
-                          ? "w-0"
-                          : hoveredMenu === item.name
+                        hoveredMenu === item.name
+                          ? "w-full"
+                          : hoveredMenu === null && activeMenu === item.name
                           ? "w-full"
                           : "w-0"
                       }`}
@@ -201,7 +208,11 @@ export default function Navbar() {
                     {/* Active/Hover Underline */}
                     <span 
                       className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
-                        hoveredMenu === item.name ? "w-full" : "w-0"
+                        hoveredMenu === item.name
+                          ? "w-full"
+                          : hoveredMenu === null && activeMenu === item.name
+                          ? "w-full"
+                          : "w-0"
                       }`}
                     ></span>
                   </button>

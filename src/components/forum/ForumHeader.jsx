@@ -24,7 +24,7 @@ export default function ForumHeader({
     };
 
     return (
-        <div className={`bg-white py-3 px-4 lg:px-6 sticky top-0 z-40 ${className}`}>
+        <div className={`bg-white py-4 px-4 lg:px-28 sticky top-0 z-40 ${className}`}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 {/* Left Side: Page Title or Back Button */}
                 <div className="flex-1">
