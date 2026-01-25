@@ -80,7 +80,7 @@ export default function PopularCoursesSection() {
         </div>
 
         {/* Course Cards with Navigation */}
-        <div className="relative mt-8 lg:mt-32 max-w-[1400px] mx-auto">
+        <div className="relative mt-4 lg:mt-16 max-w-[1400px] mx-auto">
           {/* Previous Button - Hidden on mobile */}
           <button
             onClick={prevSlide}
