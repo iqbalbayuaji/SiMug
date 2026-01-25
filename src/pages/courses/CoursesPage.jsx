@@ -125,15 +125,15 @@ export default function CoursesPage() {
               {/* Stats */}
               <div className="flex flex-wrap gap-8 mb-10">
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">10K+</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">10K+</div>
                   <div className="text-white/70 text-sm">Siswa Aktif</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">100+</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">100+</div>
                   <div className="text-white/70 text-sm">Course Premium</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">4.8★</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">4.8★</div>
                   <div className="text-white/70 text-sm">Rating Rata-rata</div>
                 </div>
               </div>
@@ -265,7 +265,7 @@ export default function CoursesPage() {
           {/* Results Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
                 {selectedCategory === 'all' 
                   ? 'Semua Course' 
                   : courseCategories.find(c => c.id === selectedCategory)?.name}

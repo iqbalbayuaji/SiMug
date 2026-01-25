@@ -156,7 +156,7 @@ export default function CalendarSection({
           <img src={decoCalendar} alt="" className="absolute top-0 left-0 h-36" />
             
             <div className="relative z-10 flex items-center justify-between">
-              <h3 className="text-2xl font-bold text-white">Target Harian</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white">Target Harian</h3>
               <button 
                 onClick={() => setShowModal(true)}
                 className="bg-[#5F8DFF] text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#6B95FF] transition-colors flex items-center gap-2"
@@ -171,7 +171,7 @@ export default function CalendarSection({
         <div className="p-6">
           {/* Calendar Header */}
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-xl font-semibold text-[#1E1E1E]">Januari 2026</h4>
+            <h4 className="text-lg sm:text-xl font-semibold text-[#1E1E1E]">Januari 2026</h4>
             <div className="flex gap-2">
               <button className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors border border-gray-200">
                 <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -285,7 +285,7 @@ export default function CalendarSection({
                   <img src={calendarIcon} alt="Calendar" className="w-7 h-7 brightness-0 invert" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Atur Jadwal Belajar</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Atur Jadwal Belajar</h2>
                   <p className="text-gray-500 text-sm">Jadwal belajar akan membantu konsistensi kamu.</p>
                 </div>
               </div>
@@ -293,11 +293,11 @@ export default function CalendarSection({
 
             {/* Content */}
             <div className="p-8">
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Left Side - Calendar */}
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <h4 className="text-2xl font-bold text-gray-900">{getMonthName()}</h4>
+                    <h4 className="text-xl sm:text-2xl font-bold text-gray-900">{getMonthName()}</h4>
                     <div className="flex gap-2">
                       <button 
                         type="button"

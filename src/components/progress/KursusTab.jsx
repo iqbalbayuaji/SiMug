@@ -15,9 +15,9 @@ export default function KursusTab() {
   return (
     <div className="space-y-6">
       {/* Header with Search */}
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Daftar Kursus Kamu <span className="text-sm text-gray-500">{courses.length} total kursus</span></h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Daftar Kursus Kamu <span className="text-xs sm:text-sm text-gray-500">{courses.length} total kursus</span></h2>
         </div>
         
         <div className="flex items-center gap-3">

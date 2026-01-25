@@ -76,7 +76,7 @@ export default function HotFreshCourseSection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
               {/* Left Side - Text Content */}
               <div className="text-white">
-                <h2 className="text-4xl font-bold mb-3">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
                   Hot & Fresh Course
                 </h2>
                 <p className="text-medium mb-5 text-white/90 leading-relaxed">
@@ -90,7 +90,7 @@ export default function HotFreshCourseSection() {
               </div>
 
               {/* Right Side - Course Cards */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {courses.map((course) => (
                   <div
                     key={course.id}

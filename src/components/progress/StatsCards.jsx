@@ -10,7 +10,7 @@ import infoIcon from "../../assets/icon/duo-icons_info.svg"
 
 export default function StatsCards() {
   return (
-    <div className="grid gap-4 mb-6" style={{ gridTemplateColumns: '1fr 1fr 1fr 1.5fr' }}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       {/* Durasi Belajar Card */}
       <div className="bg-[#4177FF] rounded-2xl p-6 text-white relative overflow-hidden h-full">
         {/* Decoration */}
@@ -20,7 +20,7 @@ export default function StatsCards() {
         <img src={infoIcon} alt="Info" className=" absolute top-4 right-4 w-6 h-6" />
         <p className="text-base opacity-90 relative z-10">Durasi Belajar</p>
         <div className="flex items-baseline gap-1 relative z-10">
-          <span className="text-[3rem] font-bold">7,8</span>
+          <span className="text-2xl sm:text-3xl lg:text-[3rem] font-bold">7,8</span>
           <span className="text-lg">jam</span>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function StatsCards() {
         <img src={infoIcon} alt="Info" className=" absolute top-4 right-4 w-6 h-6" />
         <p className="text-base opacity-90">Streak Belajar</p>
         <div className="flex items-baseline gap-1">
-          <span className="text-[3rem] font-bold z-10">25</span>
+          <span className="text-2xl sm:text-3xl lg:text-[3rem] font-bold z-10">25</span>
           <span className="text-lg">hari</span>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function StatsCards() {
         <img src={infoIcon} alt="Info" className=" absolute top-4 right-4 w-6 h-6" />
         <p className="text-base text-white relative z-10">Kursus Diikuti</p>
         <div className="flex items-baseline gap-1 relative z-10">
-          <span className="text-[3rem] font-bold text-white">5</span>
+          <span className="text-2xl sm:text-3xl lg:text-[3rem] font-bold text-white">5</span>
           <span className="text-lg text-white">kursus</span>
         </div>
       </div>

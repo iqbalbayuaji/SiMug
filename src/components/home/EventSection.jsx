@@ -16,7 +16,7 @@ export default function EventSection() {
           {/* Header */}
           <div className="flex gap-3 mb-4">
             <div className="w-1 bg-[#4177FF] rounded-full"></div>
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
               Event Menarik
             </h2>
           </div>
@@ -70,7 +70,7 @@ export default function EventSection() {
 
             {/* Right Side - Content */}
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
                 Kesempatan nggak datang 2x<br />
                 Ayo segera ikuti <span className="text-[#4177FF]">event terbatas!</span>
               </h3>
