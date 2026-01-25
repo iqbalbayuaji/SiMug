@@ -557,7 +557,7 @@ export default function LandingPage() {
             {/* Benefits Section */}
             <section className="py-10 lg:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10">
-                    <div className="grid grid-cols-1 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {/* Title & Description Items */}
                         <div className="flex flex-col h-full mr-10">
                             <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight mb-3">

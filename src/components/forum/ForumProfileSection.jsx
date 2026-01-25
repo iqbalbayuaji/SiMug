@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import komunitasImg from "../../assets/images/Komunitas-Onine.jpeg";
 
 export default function ForumProfileSection({
     title = "Komunitas Kebugaran SiMug",
@@ -22,7 +23,9 @@ export default function ForumProfileSection({
                 {/* Left Side: Vertical Stack (Avatar -> Info) */}
                 <div className="flex flex-col items-start">
                     {/* Avatar - Overlapping Banner */}
-                    <div className={`relative z-10 lg:w-36 lg:h-36 w-26 h-26 ${avatarColor} rounded-full flex-shrink-0 border-4 border-white shadow-md`}></div>
+                    <div className="relative z-10 lg:w-36 lg:h-36 w-26 h-26 rounded-full flex-shrink-0 border-4 border-white shadow-md overflow-hidden">
+                        <img src={komunitasImg} alt="Community Avatar" className="w-full h-full object-cover" />
+                    </div>
 
                     {/* Info Stacked Below Avatar */}
                     <div className="mt-4 max-w-2xl items-center">

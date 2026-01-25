@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import aiIcon from "../../assets/icon/ai.svg"
 import thumbnailLogin from "../../assets/maskot/mascot1.png"
+import komunitasImg from "../../assets/images/Komunitas-Onine.jpeg"
 
 export default function HeroSection({ userName = "Rizki Fiko" }) {
   const navigate = useNavigate()
@@ -91,18 +92,64 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
               Masih bingung cara mulai? <a href="#" className="text-[#4177FF] font-medium hover:underline">Jelajahi minat</a>
             </p>
 
-            {/* AI Assistant */}
-            <div className="inline-flex flex-col gap-4 bg-white px-6 py-5 rounded-3xl shadow-lg border border-gray-100">
-              <div className="flex items-center gap-2">
-                <img src={aiIcon} alt="AI" className="w-7 h-7" />
-                <span className="font-bold text-gray-900 text-lg">Tanya SiMug AI</span>
+            {/* AI Assistant & Forum Cards */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* AI Assistant */}
+              <div className="inline-flex flex-col gap-4 bg-white px-6 py-5 rounded-3xl shadow-lg border border-gray-100 flex-1">
+                <div className="flex items-center gap-2">
+                  <img src={aiIcon} alt="AI" className="w-7 h-7" />
+                  <span className="font-bold text-gray-900 text-lg">Tanya SiMug AI</span>
+                </div>
+                <button 
+                  onClick={() => navigate('/chatbot')}
+                  className="bg-[#4177FF] text-white px-8 py-3 rounded-2xl text-base font-semibold hover:bg-[#3461D9] transition-colors w-full"
+                >
+                  Tanyakan apa saja!
+                </button>
               </div>
-              <button 
-                onClick={() => navigate('/chatbot')}
-                className="bg-[#4177FF] text-white px-8 py-3 rounded-2xl text-base font-semibold hover:bg-[#3461D9] transition-colors w-full"
+
+              {/* Forum Community - Creative Layout */}
+              <div 
+                onClick={() => navigate('/forum-intro')}
+                className="group relative bg-gradient-to-br from-[#4177FF] via-[#5A8CFF] to-[#6B95FF] px-5 py-5 rounded-2xl shadow-lg cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex-1 overflow-hidden"
               >
-                Tanyakan apa saja!
-              </button>
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-white rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                </div>
+                
+                <div className="relative z-10 flex gap-4">
+                  {/* Stacked Avatars - Vertical */}
+                  <div className="relative flex flex-col -space-y-3 pt-1">
+                    <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-md z-30">
+                      <img src={komunitasImg} alt="Member" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-md z-20">
+                      <img src={komunitasImg} alt="Member" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
+                      <img src={komunitasImg} alt="Member" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-white flex items-center justify-center text-[#4177FF] font-bold text-[10px] shadow-md z-0">
+                      +99
+                    </div>
+                  </div>
+                  
+                  {/* Text Content */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h4 className="text-white font-bold text-lg leading-tight">Forum Komunitas</h4>
+                    <p className="text-white/70 text-xs mt-1">Diskusi, sharing & support</p>
+                    <p className="text-white font-semibold text-sm mt-1">10K+ member aktif</p>
+                    <button className="mt-3 bg-white text-[#4177FF] px-4 py-2 rounded-xl text-sm font-semibold hover:bg-blue-50 transition-colors flex items-center gap-2 w-fit">
+                      Gabung Sekarang
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

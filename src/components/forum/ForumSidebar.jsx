@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import komunitasImg from "../../assets/images/Komunitas-Onine.jpeg";
 
 const suggestions = [
     { id: 1, name: 'Calisthenics Indonesia', members: '1.528', color: 'bg-blue-600' },
@@ -32,8 +33,8 @@ const topics = [
 
 const ForumSuggestions = () => {
     return (
-        <div className="bg-white rounded-xl shadow-sm border-1 border-gray-100 ">
-            <div className="flex justify-between items-center border-b-1 px-5 py-3 border-gray-100">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 ">
+            <div className="flex justify-between items-center border-b px-5 py-3 border-gray-100">
                 <h3 className="font-semibold text-gray-800 text-base">Saran Forum</h3>
                 <button className="text-blue-500 cursor-pointer text-xs font-medium hover:underline">Segarkan ↻</button>
             </div>
@@ -44,7 +45,9 @@ const ForumSuggestions = () => {
                         to="/forum/beranda"
                         className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
                     >
-                        <div className={`w-10 h-10 ${item.color} rounded-full flex-shrink-0`}></div>
+                        <div className={`w-10 h-10 rounded-full shrink-0 overflow-hidden`}>
+                            <img src={komunitasImg} alt={item.name} className="w-full h-full object-cover" />
+                        </div>
                         <div>
                             <h4 className="font-bold text-gray-800 text-sm">{item.name}</h4>
                             <p className="text-gray-500 text-xs">{item.members} member</p>
@@ -58,8 +61,8 @@ const ForumSuggestions = () => {
 
 const RelatedTopics = () => {
     return (
-        <div className="bg-white rounded-xl shadow-sm border-1 border-gray-100">
-            <div className="flex justify-between items-center border-b-1 px-5 py-3 border-gray-100">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+            <div className="flex justify-between items-center border-b px-5 py-3 border-gray-100">
                 <h3 className="font-semibold text-gray-800 text-base">Topik Relate</h3>
                 <button className="text-blue-500 cursor-pointer text-xs font-medium hover:underline">Segarkan ↻</button>
             </div>
@@ -83,7 +86,7 @@ const RelatedTopics = () => {
 
 export default function ForumSidebar() {
     return (
-        <div className="w-80 flex-shrink-0 flex flex-col gap-4 h-full overflow-hidden">
+        <div className="w-80 shrink-0 flex flex-col gap-4 h-full overflow-hidden">
             {/* Container for fixed styling if needed within the sticky wrapper */}
             <ForumSuggestions />
             <RelatedTopics />
