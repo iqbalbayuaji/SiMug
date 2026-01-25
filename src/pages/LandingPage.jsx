@@ -414,7 +414,7 @@ export default function LandingPage() {
                         {/* Social Proof Stats */}
                         <div className="mx-2 sm:mx-4 md:mx-10">
                             <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
-                                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 items-center h-full">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center h-full">
                                     {/* Title */}
                                     <div className="lg:col-span-1 text-left">
                                         <h3 className="text-2xl lg:text-3xl">
@@ -425,7 +425,7 @@ export default function LandingPage() {
                                     </div>
 
                                     {/* Stats */}
-                                    <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-0">
+                                    <div className="md:col-span-2 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-0">
                                         {/* Stat 1 */}
                                         <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
                                             <h4 className="text-1xl lg:text-2xl font-bold text-gray-900">10,000+</h4>
@@ -493,7 +493,7 @@ export default function LandingPage() {
                     </div>
 
                     {/* Feature Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
                         {/* Card 1 */}
                         <div className="p-3 bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                             <div className="h-64 lg:h-72 overflow-hidden rounded-2xl">
@@ -557,7 +557,7 @@ export default function LandingPage() {
             {/* Benefits Section */}
             <section className="py-10 lg:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6">
                         {/* Title & Description Items */}
                         <div className="flex flex-col h-full mr-10">
                             <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight mb-3">
@@ -773,93 +773,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Course Listing Section */}
-            <section className="py-10 lg:py-10 g-white relative overflow-hidden">
-                {/* Decorative Blue Circles */}
-                <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
-                <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
-                <div className="absolute top-40 right-1/3 w-18 h-18 bg-blue-300/30 rounded-2xl blur-xl"></div>
-
-                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                    {/* Section Header */}
-                    <div className="text-center mb-8 lg:mb-12">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-                            Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
-                        </h2>
-                        <p className="text-gray-600 text-base lg:text-lg">
-                            Kamu bisa lihat beberapa kursus relevan disini.
-                        </p>
-                    </div>
-
-                    {/* Category Tabs */}
-                    <div className="flex justify-center gap-4 lg:gap-6 mb-8 lg:mb-12 flex-wrap">
-                        <button
-                            onClick={() => setActiveCategory('Kebugaran')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Kebugaran'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Kebugaran
-                        </button>
-                        <button
-                            onClick={() => setActiveCategory('Olahraga')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Olahraga'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Olahraga
-                        </button>
-                        <button
-                            onClick={() => setActiveCategory('Nutrisi')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Nutrisi'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Nutrisi
-                        </button>
-                        <button
-                            onClick={() => setActiveCategory('Mental')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Mental'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Mental
-                        </button>
-                    </div>
-
-                    {/* Course Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-                        {courses
-                            .filter(course => {
-                                if (activeCategory === 'Kebugaran') return course.category === 'kebugaran';
-                                if (activeCategory === 'Olahraga') return course.category === 'sports';
-                                if (activeCategory === 'Nutrisi') return course.category === 'nutrisi';
-                                if (activeCategory === 'Mental') return course.category === 'mental';
-                                return true;
-                            })
-                            .map((course) => (
-                                <CourseCard
-                                    key={course.id}
-                                    image={course.image}
-                                    title={course.title}
-                                    instructor={course.instructor}
-                                    date={course.date}
-                                    rating={course.rating}
-                                    ratingCount={course.ratingCount}
-                                    materialsCount={course.materialsCount}
-                                    duration={course.duration}
-                                    level={course.level}
-                                    price={course.price}
-                                />
-                            ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Features Grid Section */}
             <section className="py-5 lg:py-10 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -874,7 +787,7 @@ export default function LandingPage() {
                     </div>
 
                     {/* Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
                         {/* 1. Top Left Card - Progressive Learning */}
                         <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
                             {/* Animated Glowing Border */}
@@ -993,7 +906,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* 3. Right Tall Card - Mentorship (Spans 2 rows) */}
-                        <div className="group relative bg-gradient-to-b from-white via-blue-50 to-blue-100/80 rounded-2xl w-full md:row-span-2 md:h-full min-h-[300px] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
+                        <div className="group relative bg-gradient-to-b from-white via-blue-50 to-blue-100/80 rounded-2xl w-full lg:row-span-2 lg:h-full min-h-[300px] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
@@ -1086,7 +999,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* 4. Bottom Wide Card - Community (Spans 2 columns) */}
-                        <div className="group relative bg-gradient-to-r from-white via-blue-50 to-blue-100/80 rounded-2xl w-full md:col-span-2 aspect-[2.1/0.7] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
+                        <div className="group relative bg-gradient-to-r from-white via-blue-50 to-blue-100/80 rounded-2xl w-full lg:col-span-2 aspect-[2.1/0.7] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>

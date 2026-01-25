@@ -7,7 +7,7 @@ export default function ProgressHeader({ userName, activeTab, setActiveTab }) {
   return (
     <>
       {/* Header Section */}
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-gray-900 mb-1">
             Selamat Pagi, {userName}

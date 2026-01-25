@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="lg:col-span-2 lg:pr-8 lg:border-r border-white/50">
             <div className="flex items-center gap-2 mb-4">
               <img src={logo} alt="SiMUG Logo" className="w-15 h-15" />
-              <span className="text-4xl font-bold">SiMUG</span>
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold">SiMUG</span>
             </div>
             <h3 className="text-lg font-semibold mb-2">
               Satu Platform, Banyak<br />Cara Jadi Lebih Sehat.

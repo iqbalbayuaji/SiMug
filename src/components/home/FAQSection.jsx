@@ -44,10 +44,10 @@ export default function FAQSection() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-8 h-0.5 bg-[#4177FF]"></div>
-              <h2 className="text-2xl font-bold text-gray-900">FAQ's</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">FAQ's</h2>
               <div className="w-8 h-0.5 bg-[#4177FF]"></div>
             </div>
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
               Masih ngerasa bingung pakai <span className="text-[#4177FF]">SiMug?</span>
             </h3>
             <p className="text-gray-600">

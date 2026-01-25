@@ -43,7 +43,7 @@ export default function TopicsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-[1fr_2fr] items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] items-center gap-8 lg:gap-12">
           {/* Left - Header Text */}
           <div className="pr-2">
             <h2 className="text-3xl md:text-4xl font-bold text-[#4177FF] mb-4">
@@ -57,7 +57,7 @@ export default function TopicsSection() {
           </div>
 
           {/* Right - Cards Grid Horizontal */}
-          <div className="grid md:grid-cols-3 gap-4 pl-16 ml-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {topics.map((topic, index) => (
               <div
                 key={index}

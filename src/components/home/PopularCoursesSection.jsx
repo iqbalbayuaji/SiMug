@@ -43,7 +43,7 @@ export default function PopularCoursesSection() {
           {/* Left Card - Active Users - Hidden on mobile */}
           <div className="hidden lg:block absolute left-0 top-0 bg-gradient-to-tr from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform -rotate-3">
             <div className="bg-white rounded-2xl px-6 py-4">
-              <p className="text-3xl font-bold text-[#4177FF] opacity-70">12.593+ <span className="text-lg font-normal">user</span></p>
+              <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#4177FF] opacity-70">12.593+ <span className="text-sm sm:text-base lg:text-lg font-normal">user</span></p>
               <p className="text-sm text-[#4177FF] opacity-60">Aktif mengikuti course</p>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function PopularCoursesSection() {
           {/* Right Card - Helped Users - Hidden on mobile */}
           <div className="hidden lg:block absolute right-0 top-0 bg-gradient-to-l from-[#EEF3FF] via-[#F0F4FF] to-[#85A8FF] rounded-2xl p-[3px] shadow-lg transform rotate-3">
             <div className="bg-white rounded-2xl px-6 py-4">
-              <p className="text-3xl font-bold text-[#4177FF] opacity-70">11.294+ <span className="text-lg font-normal">user</span></p>
+              <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#4177FF] opacity-70">11.294+ <span className="text-sm sm:text-base lg:text-lg font-normal">user</span></p>
               <p className="text-sm text-[#4177FF] opacity-60">Merasa terbantu oleh SiMug</p>
             </div>
           </div>

@@ -91,13 +91,13 @@ export default function ForumIntroPage() {
                 </button>
 
                 {/* Stats Cards */}
-                <div className="flex justify-center gap-12 mt-16 px-4">
+                <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 lg:gap-12 mt-16 px-4">
                     <div className="bg-white/90 backdrop-blur-sm px-3 py-2.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-blue-50 transform rotate-[-2deg] hover:rotate-0 transition-all duration-300 hover:shadow-lg">
-                        <div className="text-2xl font-semibold text-blue-600">100.000+</div>
+                        <div className="text-xl sm:text-2xl font-semibold text-blue-600">100.000+</div>
                         <div className="text-sm text-gray-500 font-light tracking-wider mt-1">User Terhubung</div>
                     </div>
                     <div className="bg-white/90 backdrop-blur-sm px-3 py-2.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-blue-50 transform rotate-[2deg] hover:rotate-0 transition-all duration-300 hover:shadow-lg">
-                        <div className="text-2xl font-semibold text-blue-600">50.000+</div>
+                        <div className="text-xl sm:text-2xl font-semibold text-blue-600">50.000+</div>
                         <div className="text-sm text-gray-500 font-light tracking-wider mt-1">Daftar Forum</div>
                     </div>
                 </div>

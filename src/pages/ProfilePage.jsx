@@ -219,9 +219,9 @@ export default function ProfilePage() {
               {/* Tab Content */}
               <div className="p-6">
                 {activeTab === 'overview' && (
-                  <div className="grid grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Left Column */}
-                    <div className="space-y-6 pr-8 border-r border-gray-200">
+                    <div className="space-y-6 lg:pr-8 lg:border-r lg:border-gray-200">
                       {/* Level Card */}
                       <div>
                         <div className="flex items-center justify-between mb-4">

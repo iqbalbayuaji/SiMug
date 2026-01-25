@@ -35,7 +35,7 @@ export default function MainContent({ recentLearning }) {
       {/* Pembelajaran Terakhir */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
             Pembelajaran Terakhir <span className="text-gray-400 font-normal text-base">3 topik</span>
           </h2>
           <button className="text-[#4177FF] text-sm font-medium hover:underline">
@@ -43,7 +43,7 @@ export default function MainContent({ recentLearning }) {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {recentLearning.map((course) => (
             <div 
               key={course.id} 
