@@ -26,22 +26,22 @@ export default function SertifikatTab() {
   return (
     <div className="space-y-6">
       {/* Header with Search */}
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
           <p className="text-gray-600">
             Sertifikat yang kamu punya: <span className="text-[#4177FF] font-bold">"{certificates.length} sertifikat"</span>
           </p>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
           {/* Search Bar */}
-          <div className="relative">
+          <div className="relative flex-1 min-w-0">
             <input
               type="text"
               placeholder="Cari sertifikat..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-80 pl-10 pr-4 py-2.5 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent"
             />
             <svg 
               className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" 
@@ -54,8 +54,8 @@ export default function SertifikatTab() {
           </div>
 
           {/* Sort Dropdown */}
-          <div className="relative">
-            <button className="flex items-center gap-2 px-4 py-2.5 bg-[#F0F4FF] rounded-full text-[#4177FF] font-semibold hover:bg-gray-50 transition-colors">
+          <div className="relative shrink-0">
+            <button className="flex items-center justify-center gap-2 px-4 py-2.5 bg-[#F0F4FF] rounded-full text-[#4177FF] font-semibold hover:bg-gray-50 transition-colors w-full sm:w-auto">
               Semua
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -66,8 +66,8 @@ export default function SertifikatTab() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-sm overflow-hidden">
-        <table className="w-full">
+      <div className="bg-white rounded-sm overflow-hidden overflow-x-auto">
+        <table className="w-full min-w-[800px]">
           <thead>
             <tr className="bg-[#F0F4FF]">
               <th className="text-left py-4 px-6 text-[#4177FF] opacity-70 font-semibold text-base">No.</th>

@@ -154,17 +154,13 @@ export default function RoadmapPage() {
                 <p className="text-sm sm:text-base text-gray-600">Lanjutkan kursus terakhir yang dikunjungi</p>
               </div>
             </div>
-            {/* Mobile scroll indicator */}
-            <div className="sm:hidden flex items-center gap-2 text-xs text-gray-500 mt-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-              <span>Geser ke kanan untuk melihat lebih banyak</span>
-            </div>
+          {/* Mobile scroll indicator - REMOVED since we are going vertical on mobile */}
+          {/* <div className="sm:hidden flex items-center gap-2 text-xs text-gray-500 mt-2"> ... </div> */}
+
           </div>
 
-          {/* Roadmap Container */}
-          <div className="max-w-7xl mx-auto relative bg-gradient-to-b from-[#F8FBFF] to-white rounded-2xl sm:rounded-3xl border border-gray-200 overflow-x-auto overflow-y-hidden shadow-sm scrollbar-hide" style={{ height: '480px' }}>
+          {/* Desktop Layout (Hidden on Mobile) */}
+          <div className="hidden md:block max-w-7xl mx-auto relative bg-gradient-to-b from-[#F8FBFF] to-white rounded-3xl border border-gray-200 overflow-x-auto overflow-y-hidden shadow-sm scrollbar-hide" style={{ height: '550px' }}>
             {/* Horizontal scroll container */}
             <div className="relative h-full" style={{ minWidth: '1000px', padding: '30px 60px' }}>
               
@@ -346,32 +342,110 @@ export default function RoadmapPage() {
             </div>
           </div>
 
+          {/* Mobile Layout (Visible on Mobile Only) - Vertical Stack */}
+          <div className="md:hidden space-y-8 px-2 relative">
+             {/* Vertical Connect Line */}
+             <div className="absolute left-4 top-8 bottom-8 w-1 bg-gray-200 -z-10"></div>
+             
+             {phases.map((phase, index) => (
+                <div key={phase.id} className="relative pl-10">
+                   {/* Timeline Dot */}
+                   <div className={`absolute -left-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center z-10 ${
+                     phase.status === 'completed' || phase.status === 'current' 
+                      ? 'bg-[#4177FF]' 
+                      : 'bg-gray-300'
+                   }`}>
+                      {phase.status === 'completed' && (
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      )}
+                      {phase.status === 'current' && (
+                        <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                      )}
+                   </div>
+
+                   {/* Card */}
+                   <div 
+                      onClick={() => navigate(`/course-progress/${phase.id}`)}
+                      className={`bg-white rounded-2xl p-3 shadow-md border-2 ${
+                        phase.status === 'current' 
+                          ? 'border-[#4177FF]' 
+                          : phase.status === 'completed' 
+                            ? 'border-green-400' 
+                            : 'border-gray-200'
+                      } ${phase.status === 'locked' ? 'opacity-70' : ''}`}
+                   >
+                      <div className="flex gap-4">
+                         <img src={phase.image} alt={phase.title} className="w-24 h-24 object-cover rounded-xl shrink-0" />
+                         <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-gray-900 text-sm mb-1">{phase.title}</h3>
+                            <div className="flex items-center gap-2 text-xs text-gray-600 mb-2">
+                               <span className="flex items-center gap-1">
+                                  <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                                  </svg>
+                                  {phase.duration}
+                               </span>
+                               <span>•</span>
+                               <span>{phase.tasks}</span>
+                            </div>
+                            <div className={`font-semibold text-xs ${phase.status === 'completed' ? 'text-green-500' : 'text-[#4177FF]'}`}>
+                               + {phase.xpReward} XP
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             ))}
+          </div>
+
           {/* Navigation Buttons */}
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 mt-8">
+          <div className="max-w-7xl mx-auto flex flex-col-reverse sm:flex-row items-center justify-between gap-4 mt-8">
             <button 
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => navigate(-1)}
+              className="px-6 py-3 bg-white text-gray-700 font-semibold rounded-full border border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors shadow-sm flex items-center gap-2"
             >
-              <svg className="w-6 h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
+              Kembali
             </button>
-            <button 
-              onClick={handleNext}
-              disabled={currentIndex === phases.length - 1}
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <svg className="w-6 h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-            <button className="bg-[#4177FF] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#3461D9] transition-colors shadow-lg flex items-center gap-2">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-              </svg>
-              Lanjut Belajar
-            </button>
+
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={handlePrevious}
+                disabled={currentIndex === 0}
+                className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <svg className="w-6 h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button 
+                onClick={handleNext}
+                disabled={currentIndex === phases.length - 1}
+                className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <svg className="w-6 h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <button 
+                onClick={() => {
+                  const currentPhase = phases.find(p => p.status === 'current')
+                  if (currentPhase) {
+                    navigate(`/course-progress/${currentPhase.id}`)
+                  }
+                }}
+                className="bg-[#4177FF] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#3461D9] transition-colors shadow-lg flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+                Lanjut Belajar
+              </button>
+            </div>
           </div>
         </div>
       </section>
