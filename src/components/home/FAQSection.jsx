@@ -33,10 +33,10 @@ export default function FAQSection() {
   return (
     <section className="relative bg-white py-20 overflow-hidden">
       {/* Decorative Circle - Top Left */}
-      <div className="absolute left-0 top-32 w-40 h-40 bg-[#C8D7FF] rounded-full -translate-x-24"></div>
+      <div className="absolute left-0 top-32 w-40 h-40 bg-[#C8D7FF] rounded-full -translate-x-24 opacity-50 lg:opacity-100"></div>
 
       {/* Decorative Circle - Middle Right */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#C8D7FF] rounded-full translate-x-36"></div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-48 h-48 bg-[#C8D7FF] rounded-full translate-x-36 opacity-50 lg:opacity-100"></div>
 
       <div className="w-full px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -66,7 +66,7 @@ export default function FAQSection() {
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-3 text-left hover:bg-[#E5ECFF] transition-colors"
                 >
-                  <span className="text-gray-900 font-medium pl-4">
+                  <span className="text-gray-900 text-sm lg:text-base font-medium pl-4">
                     {faq.question}
                   </span>
                   <div className="flex-shrink-0 w-10 h-10 bg-[#4177FF] rounded-full flex items-center justify-center">

@@ -26,19 +26,19 @@ export default function TopicsSection() {
 
   return (
     <section className="relative bg-[#E5ECFF] py-16 overflow-hidden">
-      {/* Decorative Dots - Top Left (Large circles) */}
-      <div className="absolute top-0 left-0">
+      {/* Decorative Dots - Top Left (Large circles) - Hidden on mobile */}
+      <div className="absolute top-0 left-0 hidden md:block">
         <div className="w-32 h-32 bg-[#C0D2FF] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
       </div>
-      <div className="absolute top-12 left-0">
+      <div className="absolute top-12 left-0 hidden md:block">
         <div className="w-20 h-20 bg-[#9AB7FF] rounded-full -translate-x-1/3"></div>
       </div>
 
-      {/* Decorative Dots - Bottom Right (Large circles) */}
-      <div className="absolute bottom-0 right-0">
+      {/* Decorative Dots - Bottom Right (Large circles) - Hidden on mobile */}
+      <div className="absolute bottom-0 right-0 hidden md:block">
         <div className="w-32 h-32 bg-[#C0D2FF] rounded-full translate-x-1/2 translate-y-1/2"></div>
       </div>
-      <div className="absolute bottom-12 right-0">
+      <div className="absolute bottom-12 right-0 hidden md:block">
         <div className="w-20 h-20 bg-[#9AB7FF] rounded-full translate-x-1/3"></div>
       </div>
 

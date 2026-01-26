@@ -22,14 +22,14 @@ export default function EventSection() {
           </div>
 
           {/* Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 md:gap-12 lg:gap-16 xl:gap-24 items-center">
             {/* Left Side - Images Collage */}
-            <div className="relative h-[320px] min-[425px]:h-[360px] md:h-[450px] lg:h-[420px] xl:h-[500px] order-2 lg:order-1">
+            <div className="relative h-[320px] min-[425px]:h-[360px] md:h-[450px] lg:h-[420px] xl:h-[500px]">
               {/* Decorative Circle - Light Blue Top Right */}
-              <div className="absolute w-20 h-20 min-[425px]:w-24 min-[425px]:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-[#ABC3FF] rounded-full right-8 min-[425px]:right-10 md:right-20 lg:right-16 xl:right-24 top-2 min-[425px]:top-4 md:top-6 lg:top-6 xl:top-8 z-0"></div>
+              <div className="absolute w-20 h-20 min-[425px]:w-24 min-[425px]:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-[#ABC3FF] rounded-full right-14 min-[425px]:right-10 md:right-20 lg:right-16 xl:right-24 top-2 min-[425px]:top-4 md:top-6 lg:top-6 xl:top-8 z-0"></div>
               
               {/* Decorative Circle - Light Blue Bottom Left */}
-              <div className="absolute w-20 h-20 min-[425px]:w-24 min-[425px]:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-[#ABC3FF] rounded-full left-10 min-[425px]:left-14 md:left-24 lg:left-20 xl:left-30 bottom-6 min-[425px]:bottom-8 md:bottom-12 lg:bottom-10 xl:bottom-16 z-0"></div>
+              <div className="absolute w-20 h-20 min-[425px]:w-24 min-[425px]:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-[#ABC3FF] rounded-full bottom-16 left-10 min-[425px]:left-14 md:left-24 lg:left-20 xl:left-30 bottom-6 min-[425px]:bottom-8 md:bottom-12 lg:bottom-10 xl:bottom-16 z-0"></div>
 
               {/* Main Image (Gambar 1) - Running - Center, Largest */}
               <div className="absolute left-4 min-[425px]:left-6 md:left-16 lg:left-12 xl:left-24 top-6 min-[425px]:top-8 md:top-12 lg:top-10 xl:top-16 w-[220px] min-[425px]:w-[260px] md:w-[360px] lg:w-[340px] xl:w-[440px] h-[160px] min-[425px]:h-[180px] md:h-[250px] lg:h-[230px] xl:h-[300px] rounded-[20px] min-[425px]:rounded-[22px] md:rounded-[28px] lg:rounded-[26px] xl:rounded-[32px] overflow-hidden shadow-2xl z-10">
@@ -44,7 +44,7 @@ export default function EventSection() {
               </div>
 
               {/* Image 2 - Basketball - Top Right Corner, Smaller */}
-              <div className="absolute right-0 top-16 min-[425px]:top-18 md:top-24 lg:top-20 xl:top-32 w-[120px] min-[425px]:w-[140px] md:w-[200px] lg:w-[180px] xl:w-[240px] h-[90px] min-[425px]:h-[105px] md:h-[150px] lg:h-[135px] xl:h-[180px] rounded-[16px] min-[425px]:rounded-[18px] md:rounded-[24px] lg:rounded-[22px] xl:rounded-[28px] overflow-hidden shadow-2xl z-20">
+              <div className="absolute right-10 top-10 min-[425px]:top-18 md:top-24 lg:top-20 xl:top-32 w-[140px] min-[425px]:w-[140px] md:w-[200px] lg:w-[180px] xl:w-[240px] h-[90px] min-[425px]:h-[105px] md:h-[150px] lg:h-[135px] xl:h-[180px] rounded-[16px] min-[425px]:rounded-[18px] md:rounded-[24px] lg:rounded-[22px] xl:rounded-[28px] overflow-hidden shadow-2xl z-20">
                 <img
                   src={event2}
                   alt="Basketball event"
@@ -56,7 +56,7 @@ export default function EventSection() {
               </div>
 
               {/* Image 3 - Swimming - Bottom Center, Same Size as Image 2 */}
-              <div className="absolute left-14 min-[425px]:left-18 md:left-28 lg:left-24 xl:left-40 bottom-4 min-[425px]:bottom-6 md:bottom-8 lg:bottom-8 xl:bottom-12 w-[120px] min-[425px]:w-[140px] md:w-[200px] lg:w-[180px] xl:w-[240px] h-[85px] min-[425px]:h-[95px] md:h-[135px] lg:h-[120px] xl:h-[160px] rounded-[16px] min-[425px]:rounded-[18px] md:rounded-[24px] lg:rounded-[22px] xl:rounded-[28px] overflow-hidden shadow-2xl z-30">
+              <div className="absolute bottom-20 left-14 min-[425px]:left-18 md:left-28 lg:left-24 xl:left-40 bottom-4 min-[425px]:bottom-6 md:bottom-8 lg:bottom-8 xl:bottom-12 w-[160px] min-[425px]:w-[140px] md:w-[200px] lg:w-[180px] xl:w-[240px] h-[85px] min-[425px]:h-[95px] md:h-[135px] lg:h-[120px] xl:h-[160px] rounded-[16px] min-[425px]:rounded-[18px] md:rounded-[24px] lg:rounded-[22px] xl:rounded-[28px] overflow-hidden shadow-2xl z-30">
                 <img
                   src={event3}
                   alt="Swimming event"
@@ -69,7 +69,7 @@ export default function EventSection() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="order-1 lg:order-2">
+            <div>
               <h3 className="text-lg min-[425px]:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 min-[425px]:mb-4">
                 Kesempatan nggak datang 2x<br />
                 Ayo segera ikuti <span className="text-[#4177FF]">event terbatas!</span>
