@@ -1,17 +1,26 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import gridHiasan from "../assets/images/grid-hiasan.png"
 import ImageCard1 from "../assets/images/fitness_training_card.png"
 import ImageCard2 from "../assets/images/running_progress_card.png"
 import ImageCard3 from "../assets/images/community_fitness_card.png"
-import CourseImg1 from "../assets/images/course_english_running.png"
-import CourseImg2 from "../assets/images/course_japanese_yoga.png"
-import CourseImg3 from "../assets/images/course_korean_basketball.png"
-import CourseImg4 from "../assets/images/course_german_nature.png"
+import landingAsset1 from "../assets/images/landing-asset1.png"
+import landingAsset2 from "../assets/images/landing-asset2.png"
+import roadImg1 from "../assets/images/road-img-1.png"
+import roadImg2 from "../assets/images/road-img-2.png"
+import roadImg3 from "../assets/images/road-img-3.png"
+import step1 from "../assets/images/step-1.png"
+import step2 from "../assets/images/step-2.png"
+import step3 from "../assets/images/step-3.png"
+import lineBlue from "../assets/images/lineblue.png"
+import bottomBlueComponent from "../assets/images/bottom-blue-component.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
 import CourseCard from '../components/CourseCard'
+import { landingCourses } from '../constants/landingCoursesData'
+import { testimonialsRow1, testimonialsRow2 } from '../constants/testimonialsData'
 
 // Mascot imports
 import Mascot1 from "../assets/maskot/mascot1.png"
@@ -20,6 +29,22 @@ import Mascot3 from "../assets/maskot/mascot3.png"
 import Mascot4 from "../assets/maskot/mascot4.png"
 import Mascot5 from "../assets/maskot/mascot5.png"
 
+// Counter component with framer-motion
+function Counter({ value, duration = 2 }) {
+    const count = useMotionValue(0)
+    const rounded = useTransform(count, (latest) => {
+        const num = Math.round(latest)
+        return num.toLocaleString('id-ID')
+    })
+
+    useEffect(() => {
+        const controls = animate(count, value, { duration })
+        return controls.stop
+    }, [count, value, duration])
+
+    return <motion.span>{rounded}</motion.span>
+}
+
 export default function LandingPage() {
     const [scrolled, setScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,125 +52,23 @@ export default function LandingPage() {
     const [activeCategory, setActiveCategory] = useState('Kebugaran')
     const mascotSectionRef = useRef(null)
 
-    // Course data
-    const courses = [
-        {
-            id: 1,
-            image: CourseImg1,
-            category: "sports",
-            title: "Panduan Lari Marathon untuk Pemula: Dari 0 ke 42K dalam 12 Minggu",
-            instructor: "Budi Santoso",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
-            level: "Semua kalangan",
-            price: "Rp. 99.000"
-        },
-        {
-            id: 2,
-            image: CourseImg2,
-            category: "kebugaran",
-            title: "Teknik Dasar Yoga untuk Fleksibilitas dan Ketenangan Mental",
-            instructor: "Sari Devi",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
-            level: "Semua kalangan",
-            price: "Rp. 59.000"
-        },
-        {
-            id: 3,
-            image: CourseImg3,
-            category: "kebugaran",
-            title: "Latihan Intensif HIIT: Bakar Kalori Maksimal dalam 30 Menit",
-            instructor: "Rian Wijaya",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
-            level: "Semua kalangan",
-            price: "Rp. 79.000"
-        },
-        {
-            id: 4,
-            image: CourseImg4,
-            category: "nutrisi",
-            title: "Nutrisi Olahraga: Atur Pola Makan untuk Performa Atletis",
-            instructor: "Dr. Andi Pratama",
-            date: "2 bulan lalu",
-            rating: 4.8,
-            ratingCount: "9.5k rating",
-            materialsCount: "20 materi+",
-            duration: "10 jam",
-            level: "Semua kalangan",
-            price: "Rp. 50.000"
-        },
-        {
-            id: 5,
-            image: CourseImg1,
-            category: "sports",
-            title: "Lari Jarak Jauh: Teknik dan Strategi untuk Atlet Menengah",
-            instructor: "Budi Santoso",
-            date: "1 bulan lalu",
-            rating: 4.9,
-            ratingCount: "1.2k rating",
-            materialsCount: "15 materi+",
-            duration: "8 jam",
-            level: "Menengah",
-            price: "Rp. 129.000"
-        },
-        {
-            id: 6,
-            image: CourseImg2,
-            category: "mental",
-            title: "Mindfulness Berbasis Olahraga: Kelola Stress dengan Aktivitas Fisik",
-            instructor: "Sari Devi",
-            date: "3 minggu lalu",
-            rating: 4.7,
-            ratingCount: "800 rating",
-            materialsCount: "12 materi+",
-            duration: "5 jam",
-            level: "Semua kalangan",
-            price: "Rp. 49.000"
-        },
-        {
-            id: 7,
-            image: CourseImg3,
-            category: "kebugaran",
-            title: "Calisthenics Fundamental: Kuasai Tubuhmu Tanpa Beban Luar",
-            instructor: "Rian Wijaya",
-            date: "1 bulan lalu",
-            rating: 4.8,
-            ratingCount: "2.1k rating",
-            materialsCount: "25 materi+",
-            duration: "12 jam",
-            level: "Semua kalangan",
-            price: "Rp. 89.000"
-        },
-        {
-            id: 8,
-            image: CourseImg4,
-            category: "nutrisi",
-            title: "Meal Prep Sehat: Hemat Waktu dan Uang untuk Hidup Lebih Baik",
-            instructor: "Dr. Andi Pratama",
-            date: "2 minggu lalu",
-            rating: 4.9,
-            ratingCount: "3.5k rating",
-            materialsCount: "18 materi+",
-            duration: "6 jam",
-            level: "Semua kalangan",
-            price: "Rp. 75.000"
-        }
-    ]
+    // Use courses data from separate file
+    const courses = landingCourses
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
+
+            // Scroll animation for glassmorphism card
+            const scrollElements = document.querySelectorAll('.scroll-animate')
+            scrollElements.forEach((el) => {
+                const elementTop = el.getBoundingClientRect().top
+                const elementVisible = 150
+                if (elementTop < window.innerHeight - elementVisible) {
+                    el.classList.add('opacity-100', 'translate-y-0')
+                    el.classList.remove('opacity-0', 'translate-y-8')
+                }
+            })
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
@@ -291,7 +214,22 @@ export default function LandingPage() {
 
             {/* Hero Section */}
             <main className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
-                <div className="flex flex-col lg:flex-col items-center justify-between">
+                <div className="flex flex-col lg:flex-col items-center justify-between relative">
+                    {/* Decorative Icon Spans */}
+                    {/* Green Icon - Top Left */}
+                    <span className="absolute top-8 left-4 lg:top-12 lg:left-20 inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12 animate-fade-in-up">
+                        <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </span>
+
+                    {/* Orange Icon - Top Right */}
+                    <span className="absolute top-16 right-4 lg:top-20 lg:right-20 inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12 animate-fade-in-up delay-100">
+                        <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </span>
+
                     {/* Main Heading */}
                     <div className="grid place-items-center lg:text-center space-y-6 lg:space-y-8">
                         {/* Badge */}
@@ -303,10 +241,10 @@ export default function LandingPage() {
                         </div>
 
                         <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight flex flex-col items-center gap-3 lg:gap-3">
-                            <span className="text-blue-600">Usaha Aja Gaakan Cukup</span>
-                            <div className='flex items-center lg:gap-3'>
+                            <span className="text-blue-600 animate-fade-in-up">Usaha Aja Gaakan Cukup</span>
+                            <div className='flex items-center lg:gap-3 animate-fade-in-up delay-100'>
                                 <span className="text-gray-900">Tanpa Arah yang Jelas</span>
-                                <span className="inline-flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-300 to-blue-600 rounded-xl lg:rounded-2xl ml-3 align-middle shadow-lg shadow-blue-400/70 rotate-350 hover:w-15 hover:h-15 transition-all duration-200">
+                                <span className="inline-flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-300 to-blue-600 rounded-xl lg:rounded-2xl ml-3 shadow-lg shadow-blue-400/70 -rotate-12">
                                     <FaArrowTrendUp className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                                 </span>
                             </div>
@@ -314,12 +252,12 @@ export default function LandingPage() {
                         </h1>
 
                         {/* Description */}
-                        <p className="text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 leading-relaxed">
+                        <p className="text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 leading-relaxed animate-fade-in-up delay-200">
                             Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
                         </p>
 
                         {/* CTA Button */}
-                        <div className="pt-15 pb-10">
+                        <div className="pt-15 pb-10 animate-fade-in-up delay-300">
                             <Link
                                 to="/register"
                                 className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
@@ -414,41 +352,45 @@ export default function LandingPage() {
                         {/* Social Proof Stats */}
                         <div className="mx-2 sm:mx-4 md:mx-10">
                             <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
-                                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 items-center h-full">
-                                    {/* Title */}
-                                    <div className="lg:col-span-1 text-left">
-                                        <h3 className="text-2xl lg:text-3xl">
-                                            <span className="font-semibold text-blue-600">Key</span>{' '}
-                                            <span className="font-normal text-blue-600">For</span>
-                                        </h3>
-                                        <p className="text-blue-600 text-lg lg:text-3xl font-normal mt-1">Social Proof</p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center h-full">
+                                    {/* Stat 1 - 50.000+ (No border-left) */}
+                                    <div className="text-left pl-6 pr-2">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                            <Counter value={50000} duration={2} />+
+                                        </h4>
+                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                            User telah aktif dan gabung bersama SiMug
+                                        </p>
                                     </div>
 
-                                    {/* Stats */}
-                                    <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-0">
-                                        {/* Stat 1 */}
-                                        <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
-                                            <h4 className="text-1xl lg:text-2xl font-bold text-gray-900">10,000+</h4>
-                                            <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
-                                                User telah mencoba dan membuktikan hasil mereka
-                                            </p>
-                                        </div>
+                                    {/* Stat 2 - 10.000+ */}
+                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                            <Counter value={10000} duration={2} />+
+                                        </h4>
+                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                            User telah mencoba dan membuktikan hasil mereka
+                                        </p>
+                                    </div>
 
-                                        {/* Stat 2 */}
-                                        <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
-                                            <h4 className="text-1xl lg:text-2xl font-bold text-gray-900">200+</h4>
-                                            <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
-                                                Mentor aktif dan terverifikasi
-                                            </p>
-                                        </div>
+                                    {/* Stat 3 - 250+ */}
+                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                            <Counter value={250} duration={1.5} />+
+                                        </h4>
+                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                            Mentor aktif dan terverifikasi
+                                        </p>
+                                    </div>
 
-                                        {/* Stat 3 */}
-                                        <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
-                                            <h4 className="text-1xl lg:text-2xl font-bold text-gray-900">1,000+</h4>
-                                            <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
-                                                Komunitas aktif diseluruh wilayah Indonesia
-                                            </p>
-                                        </div>
+                                    {/* Stat 4 - 1.000+ */}
+                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                            <Counter value={1000} duration={1.8} />+
+                                        </h4>
+                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                            Komunitas aktif diseluruh wilayah Indonesia
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -773,93 +715,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Course Listing Section */}
-            <section className="py-10 lg:py-10 g-white relative overflow-hidden">
-                {/* Decorative Blue Circles */}
-                <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
-                <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
-                <div className="absolute top-40 right-1/3 w-18 h-18 bg-blue-300/30 rounded-2xl blur-xl"></div>
-
-                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                    {/* Section Header */}
-                    <div className="text-center mb-8 lg:mb-12">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-                            Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
-                        </h2>
-                        <p className="text-gray-600 text-base lg:text-lg">
-                            Kamu bisa lihat beberapa kursus relevan disini.
-                        </p>
-                    </div>
-
-                    {/* Category Tabs */}
-                    <div className="flex justify-center gap-4 lg:gap-6 mb-8 lg:mb-12 flex-wrap">
-                        <button
-                            onClick={() => setActiveCategory('Kebugaran')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Kebugaran'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Kebugaran
-                        </button>
-                        <button
-                            onClick={() => setActiveCategory('Olahraga')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Olahraga'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Olahraga
-                        </button>
-                        <button
-                            onClick={() => setActiveCategory('Nutrisi')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Nutrisi'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Nutrisi
-                        </button>
-                        <button
-                            onClick={() => setActiveCategory('Mental')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${activeCategory === 'Mental'
-                                ? 'text-blue-600'
-                                : 'text-gray-600 hover:text-gray-900'
-                                }`}
-                        >
-                            Mental
-                        </button>
-                    </div>
-
-                    {/* Course Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-                        {courses
-                            .filter(course => {
-                                if (activeCategory === 'Kebugaran') return course.category === 'kebugaran';
-                                if (activeCategory === 'Olahraga') return course.category === 'sports';
-                                if (activeCategory === 'Nutrisi') return course.category === 'nutrisi';
-                                if (activeCategory === 'Mental') return course.category === 'mental';
-                                return true;
-                            })
-                            .map((course) => (
-                                <CourseCard
-                                    key={course.id}
-                                    image={course.image}
-                                    title={course.title}
-                                    instructor={course.instructor}
-                                    date={course.date}
-                                    rating={course.rating}
-                                    ratingCount={course.ratingCount}
-                                    materialsCount={course.materialsCount}
-                                    duration={course.duration}
-                                    level={course.level}
-                                    price={course.price}
-                                />
-                            ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Features Grid Section */}
             <section className="py-5 lg:py-10 bg-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -1178,30 +1033,464 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Container */}
-            <section className='py-5 lg:py-20 bg-white'>
+            {/* New Section - Kami Terus Update */}
+            <section className="py-10 lg:py-16 bg-[#EDF2FF]">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className='group relative bg-blue-600 hover:bg-blue-700 rounded-3xl overflow-hidden px-6 md:px-16 hover:md:py-15 py-10 lg:py-20 group transition-all duration-500 hover:shadow-2xl hover:scale-[1.009]'>
-                        {/* Background Decorations */}
-                        <div className="absolute -top-24 -right-24 w-64 h-64 md:w-96 md:h-96 rounded-full border-[30px] lg:border-[50px] group-hover:border-[30px] border-white/10 transition-all duration-500 ease-out group-hover:scale-125 group-hover:rotate-12"></div>
-                        <div className="absolute -bottom-24 -left-24 w-64 h-64 md:w-80 md:h-80 rounded-full border-[30px] lg:border-[50px] group-hover:border-[30px] border-white/10 transition-all duration-500 ease-out group-hover:scale-125 group-hover:-rotate-12"></div>
+                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+                        {/* Left Side - Blue Card with Assets */}
+                        <div className="relative">
+                            <div className="group relative bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-3xl p-8 lg:p-12 overflow-visible shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/60 min-h-[400px] transition-all duration-500">
+                                {/* Corner Circles with Zoom Effect */}
+                                <div className="absolute -top-4 -left-4 w-16 h-16 bg-white/10 rounded-full blur-md group-hover:scale-150 transition-transform duration-500 ease-out"></div>
+                                <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full blur-md group-hover:scale-150 transition-transform duration-500 ease-out"></div>
 
-                        {/* Content */}
-                        <div className="relative z-10">
-                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white group-hover:mb-15 lg:mb-6 mb-10 transition-all duration-500 leading-tight">
-                                Lebih dari 10.000+ Mentor <br className="hidden md:block" />
-                                Bakal Ngajarin Kamu <br className="hidden md:block" />
-                                Mulai dari Nol!
+                                {/* Decorative Circles Inside Card */}
+                                <div className="absolute top-0 left-0 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl"></div>
+                                <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
+                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+
+                                {/* Landing Assets - Diagonal Positioning */}
+                                <img 
+                                    src={landingAsset1} 
+                                    alt="Asset 1"
+                                    className="absolute top-0 right-5 w-48 h-48 lg:w-80 lg:h-80 object-contain opacity-100 z-10"
+                                />
+                                <img 
+                                    src={landingAsset2} 
+                                    alt="Asset 2" 
+                                    className="absolute -bottom-2 left-5 w-48 h-48 lg:w-80 lg:h-80 object-contain opacity-100 z-10"
+                                />
+
+                                {/* Glassmorphism Card - Top Right (Outside) with Scroll Animation */}
+                                <div className="absolute bottom-6 -right-6 lg:right-2 z-20 scroll-animate opacity-0 translate-x-8 transition-all duration-700 hover:scale-105">
+                                    <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/30 shadow-xl">
+                                        <p className="text-white font-bold text-lg mb-0.5">24/7 Update</p>
+                                        <p className="text-white/90 text-md">From Feedback</p>
+                                    </div>
+                                </div>
+
+                                {/* Glassmorphism Card - Left (Outside) with Scroll Animation */}
+                                <div className="absolute top-6 -left-6 lg:-left-1 transform -translate-y-1/2 z-20 scroll-animate opacity-0 -translate-x-8 transition-all duration-700 hover:scale-105" style={{transitionDelay: '0.2s'}}>
+                                    <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/30 shadow-xl">
+                                        <p className="text-white font-bold text-lg mb-0.5">New Course</p>
+                                        <p className="text-white/90 text-md">Everyday</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Side - Content */}
+                        <div className="space-y-6">
+                            {/* Badge */}
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 backdrop-blur-sm rounded-full shadow-lg shadow-blue-200/50 scroll-animate opacity-0 translate-x-8 transition-all duration-700">
+                                <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                <span className="text-[#4177FF] text-md font-semibold">Pelayanan no 1</span>
+                            </div>
+
+                            {/* Heading with Gradient */}
+                            <h2 className="text-4xl lg:text-5xl font-bold leading-tight scroll-animate opacity-0 translate-x-8 transition-all duration-700" style={{transitionDelay: '0.1s'}}>
+                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
+                                    Kami Terus Update
+                                </span>
+                                <br />
+                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
+                                    Kamu Fokus Berprogres
+                                </span>
                             </h2>
-                            <p className="text-blue-50 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl">
-                                Nggak harus langsung jago. Di SiMug, kamu <br className="hidden lg:block" />
-                                mulai dari yang basic, naik level sesuai <br className="hidden lg:block" />
-                                progres, dan dapet arahan yang jelas.
+
+                            {/* Description with 85% opacity blue */}
+                            <p className="text-[#4177FF] opacity-85 text-2xl leading-relaxed scroll-animate opacity-0 translate-x-8 transition-all duration-700" style={{transitionDelay: '0.2s'}}>
+                                Setiap materi di SiMug akan dirancang untuk membantu kamu tetap konsisten dan berkembang menuju hidup yang lebih sehat.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* Course Listing Section */}
+            <section className="py-10 lg:py-10 bg-white relative overflow-hidden">
+                {/* Decorative Blue Circles and Rounded Squares */}
+                <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
+                <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
+                <div className="absolute top-40 right-1/3 w-18 h-18 bg-blue-300/30 rounded-2xl blur-xl"></div>
+                
+                {/* Small Decorative Rounded Squares */}
+                <div className="absolute top-16 left-1/4 w-12 h-12 bg-blue-100/60 rounded-xl blur-sm"></div>
+                <div className="absolute top-8 right-1/4 w-10 h-10 bg-blue-200/50 rounded-lg blur-sm"></div>
+                <div className="absolute top-32 left-1/2 w-14 h-14 bg-blue-100/50 rounded-xl blur-sm"></div>
+                <div className="absolute top-12 right-1/3 w-8 h-8 bg-blue-300/40 rounded-lg blur-sm"></div>
+                <div className="absolute top-24 left-2/3 w-10 h-10 bg-blue-200/40 rounded-lg blur-sm"></div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                    {/* Section Header */}
+                    <div className="text-center mb-8 lg:mb-8">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
+                        </h2>
+                        <p className="text-gray-600 text-base lg:text-xl">
+                            Kamu bisa lihat beberapa kursus relevan disini.
+                        </p>
+                    </div>
+
+                    {/* Category Tabs */}
+                    <div className="flex justify-center gap-4 lg:gap-1 mb-8 lg:mb-10 flex-wrap">
+                        <button
+                            onClick={() => setActiveCategory('Kebugaran')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                                activeCategory === 'Kebugaran'
+                                    ? 'text-blue-600'
+                                    : 'text-gray-600 hover:text-blue-200'
+                            }`}
+                        >
+                            Kebugaran
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Olahraga')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                                activeCategory === 'Olahraga'
+                                    ? 'text-blue-600'
+                                    : 'text-gray-600 hover:text-blue-300'
+                            }`}
+                        >
+                            Olahraga
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Nutrisi')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                                activeCategory === 'Nutrisi'
+                                    ? 'text-blue-600'
+                                    : 'text-gray-600 hover:text-blue-300'
+                            }`}
+                        >
+                            Nutrisi
+                        </button>
+                        <button
+                            onClick={() => setActiveCategory('Mental')}
+                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                                activeCategory === 'Mental'
+                                    ? 'text-blue-600'
+                                    : 'text-gray-600 hover:text-blue-300'
+                            }`}
+                        >
+                            Mental
+                        </button>
+                    </div>
+
+                    {/* Course Grid - Centered with max 8 cards (4 top, 4 bottom) */}
+                    <div className="flex justify-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 max-w-full">
+                            {courses
+                                .filter(course => {
+                                    if (activeCategory === 'Kebugaran') return course.category === 'kebugaran';
+                                    if (activeCategory === 'Olahraga') return course.category === 'sports';
+                                    if (activeCategory === 'Nutrisi') return course.category === 'nutrisi';
+                                    if (activeCategory === 'Mental') return course.category === 'mental';
+                                    return true;
+                                })
+                                .slice(0, 8)
+                                .map((course) => (
+                                    <CourseCard
+                                        key={course.id}
+                                        image={course.image}
+                                        title={course.title}
+                                        instructor={course.instructor}
+                                        date={course.date}
+                                        rating={course.rating}
+                                        ratingCount={course.ratingCount}
+                                        materialsCount={course.materialsCount}
+                                        duration={course.duration}
+                                        level={course.level}
+                                        price={course.price}
+                                    />
+                                ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Cara Kerja SiMug Section */}
+            <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
+                {/* Blue Line Background - Full Width */}
+                {/* PENGATURAN UKURAN BLUELINE: 
+                    - Ubah 'h-[700px]' menjadi nilai lain seperti 'h-[600px]' atau 'h-[800px]' untuk mengatur tinggi
+                    - Ubah 'opacity-30' menjadi nilai lain (0-100) untuk mengatur transparansi
+                    - 'object-contain' memastikan gambar tidak pecah dan menjaga proporsi asli
+                */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <img 
+                        src={lineBlue} 
+                        alt="Path Line" 
+                        className="w-full h-[700px] object-contain opacity-70"
+                    />
+                </div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                    {/* Header and Main Tips - Same Row */}
+                    <div className="mb-16 lg:mb-20 flex justify-between items-start">
+                        {/* Header */}
+                        <div>
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-2">
+                                <span className="text-blue-600">Cara Kerja SiMug</span>
+                            </h2>
+                            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                Itu Gimana Sih?
+                            </h3>
+                        </div>
+                            
+                    </div>
+
+                    {/* Roadmap Container */}
+                    {/* SOLUSI ZOOM: Menggunakan scale(1) pada transform-origin untuk mencegah perubahan posisi saat zoom */}
+                    <div className="relative min-h-[700px] lg:min-h-[600px]" style={{transformOrigin: 'center center', transform: 'scale(1)'}}>
+                        {/* Step 1 - Cari Kursus (Bottom Left) - Step asset, Icon, Road-img */}
+                        <div className="absolute bottom-24 left-0 lg:-left-1 z-10" style={{transformOrigin: 'left bottom'}}>
+                            <div className="flex flex-col items-start gap-4 max-w-xs">
+                                {/* Step 1 Text Asset */}
+                                <img 
+                                    src={step1} 
+                                    alt="Step 1" 
+                                    className="w-48 lg:w-92 h-auto"
+                                    style={{transform: 'translate(-4.5rem, 0.5rem)', transformOrigin: 'left top'}}
+                                />
+                                {/* Search Icon - Adjustable position with margin */}
+                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-5">
+                                    <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </div>
+                                {/* Road Image Illustration */}
+                                <div className="relative group">
+                                    {/* Hover effect - positioned exactly behind road-img */}
+                                    <div 
+                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
+                                        style={{
+                                            width: '176px',
+                                            height: '176px',
+                                            left: '-80px',
+                                            top: '20px',
+                                            transformOrigin: 'left top'
+                                        }}
+                                    ></div>
+                                    <img 
+                                        src={roadImg1} 
+                                        alt="Cari Kursus Illustration" 
+                                        className="w-44 lg:w-52 h-auto rounded-2xl shadow-lg"
+                                        style={{transform: 'translate(-5rem, 1.25rem)', transformOrigin: 'left top'}}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Step 2 - Tonton Kursus (Center Top) - Road-img, Icon, Step asset */}
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10" style={{transformOrigin: 'center top'}}>
+                            <div className="flex flex-col items-center gap-4 max-w-sm">
+                                {/* Road Image Illustration - No white background */}
+                                {/* Play Icon - Adjustable position with margin */}
+                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg border border-gray-100 my-2" style={{transform: 'translateX(-3rem)', transformOrigin: 'center center'}}>
+                                    <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                {/* Step 2 Text Asset */}
+                                <img 
+                                    src={step2} 
+                                    alt="Step 2" 
+                                    className="w-56 lg:w-96 h-auto"
+                                    style={{transform: 'translateY(-16rem)', transformOrigin: 'center top'}}
+                                />
+                                <div className="relative group">
+                                    {/* Hover effect - positioned exactly behind road-img */}
+                                    <div 
+                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
+                                        style={{
+                                            width: '208px',
+                                            height: '208px',
+                                            left: '-32px',
+                                            top: '-160px',
+                                            transformOrigin: 'center top'
+                                        }}
+                                    ></div>
+                                    <img 
+                                        src={roadImg2} 
+                                        alt="Tonton Kursus Illustration" 
+                                        className="w-52 lg:w-60 h-auto rounded-2xl shadow-lg"
+                                        style={{transform: 'translate(-2rem, -10rem)', transformOrigin: 'center top'}}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Step 3 - Dapatkan Reward (Bottom Right) - Step asset, Icon, Road-img */}
+                        <div className="absolute bottom-8 right-0 lg:right-8 z-10" style={{transformOrigin: 'right bottom'}}>
+                            <div className="flex flex-col items-end gap-4 max-w-xs">
+                                {/* Step 3 Text Asset */}
+                                <img 
+                                    src={step3} 
+                                    alt="Step 3" 
+                                    className="w-48 lg:w-92 h-auto"
+                                    style={{transform: 'translateX(7rem)', transformOrigin: 'right top'}}
+                                />
+                                {/* Trophy Icon - Adjustable position with margin */}
+                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-2" style={{transform: 'translateY(4rem)', transformOrigin: 'center center'}}>
+                                    <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                {/* Road Image Illustration */}
+                                <div className="relative group">
+                                    {/* Hover effect - positioned exactly behind road-img */}
+                                    <div 
+                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
+                                        style={{
+                                            width: '176px',
+                                            height: '176px',
+                                            left: '80px',
+                                            top: '88px',
+                                            transformOrigin: 'right top'
+                                        }}
+                                    ></div>
+                                    <img 
+                                        src={roadImg3} 
+                                        alt="Dapatkan Reward Illustration" 
+                                        className="w-44 lg:w-52 h-auto rounded-2xl shadow-lg"
+                                        style={{transform: 'translate(5rem, 5.5rem)', transformOrigin: 'right top'}}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Testimonial Section */}
+            <section className="py-16 lg:py-20 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
+                {/* Section Header */}
+                <div className="text-center mb-12 px-6 lg:px-12">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+                        Apa Kata Mereka yang Telah
+                    </h2>
+                    <h3 className="text-3xl lg:text-4xl font-bold">
+                        <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                            Berprogres Bersama SiMUG
+                        </span>
+                    </h3>
+                </div>
+
+                {/* First Row - Scroll Right - Full Width */}
+                <div className="relative mb-6 overflow-hidden w-full">
+                    <div className="flex gap-6 animate-scroll-right-seamless">
+                        {/* Triple duplicate for seamless infinite loop */}
+                        {[...Array(3)].map((_, setIndex) => (
+                            <div key={setIndex} className="flex gap-6 flex-shrink-0">
+                                {testimonialsRow1.map((testimonial) => (
+                                    <div 
+                                        key={`${setIndex}-${testimonial.id}`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow w-80 flex-shrink-0`}
+                                    >
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <img 
+                                                src={testimonial.avatar} 
+                                                alt={testimonial.name}
+                                                className="w-12 h-12 rounded-full flex-shrink-0 object-cover"
+                                            />
+                                            <div>
+                                                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                                                <p className="text-sm text-gray-500">{testimonial.timeAgo}</p>
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-700 leading-relaxed">
+                                            "{testimonial.testimonial}"
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Second Row - Scroll Left - Full Width */}
+                <div className="relative overflow-hidden w-full">
+                    <div className="flex gap-6 animate-scroll-left-seamless">
+                        {/* Triple duplicate for seamless infinite loop */}
+                        {[...Array(3)].map((_, setIndex) => (
+                            <div key={setIndex} className="flex gap-6 flex-shrink-0">
+                                {testimonialsRow2.map((testimonial) => (
+                                    <div 
+                                        key={`${setIndex}-${testimonial.id}`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow w-80 flex-shrink-0`}
+                                    >
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <img 
+                                                src={testimonial.avatar} 
+                                                alt={testimonial.name}
+                                                className="w-12 h-12 rounded-full flex-shrink-0 object-cover"
+                                            />
+                                            <div>
+                                                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                                                <p className="text-sm text-gray-500">{testimonial.timeAgo}</p>
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-700 leading-relaxed">
+                                            "{testimonial.testimonial}"
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section - Gabung Sekarang */}
+            <section className="py-12 lg:py-16 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 lg:px-3">
+                    <div className="relative bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl px-8 py-8 lg:px-10 lg:py-8 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/50 group">
+                        {/* Decorative Elements */}
+                        <div className="absolute top-4 right-8 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
+                        <div className="absolute bottom-6 left-12 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 right-1/4 w-12 h-12 bg-white/10 rounded-2xl blur-lg"></div>
+                        <div className="absolute bottom-8 right-16 w-14 h-14 bg-white/10 rounded-2xl blur-lg"></div>
+                        <div className="absolute top-6 left-1/3 w-10 h-10 bg-white/10 rounded-full blur-md"></div>
+                        
+                        {/* Small decorative circles */}
+                        <div className="absolute top-8 left-20 w-3 h-3 bg-white/30 rounded-full"></div>
+                        <div className="absolute bottom-12 right-32 w-4 h-4 bg-white/30 rounded-full"></div>
+                        <div className="absolute top-16 right-48 w-2 h-2 bg-white/40 rounded-full"></div>
+                        <div className="absolute bottom-16 left-40 w-3 h-3 bg-white/30 rounded-full"></div>
+
+                        {/* Bottom Blue Component Illustration - Behind Button */}
+                        <div className="absolute bottom-0 right-0 lg:-right-4 opacity-40 pointer-events-none">
+                            <img 
+                                src={bottomBlueComponent} 
+                                alt="Decorative Component" 
+                                className="w-64 lg:w-80 h-auto"
+                            />
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+                            <div className="text-center lg:text-left">
+                                <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
+                                    Hi, udah siap buat cobain kursus?
+                                </h2>
+                                <p className="text-white/90 text-base lg:text-lg">
+                                    Langsung aja join, dijamin ga rugi deh.
+                                </p>
+                            </div>
+                            <Link 
+                                to="/login"
+                                className="relative bg-white text-lg text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 whitespace-nowrap z-20"
+                            >
+                                Gabung Sekarang
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
 
             <Footer />
         </div>
