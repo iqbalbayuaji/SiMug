@@ -14,7 +14,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <PromoBanner />
-      <HeroSection userName="Rizki Fiko" />
+      <HeroSection />
       <TopicsSection />
       <PopularCoursesSection />
       <RecommendedCoursesSection />
