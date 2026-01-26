@@ -75,7 +75,7 @@ export default function HeroSection() {
         <div className="absolute bottom-10 right-[5%] w-24 h-24 bg-[#0039C9]/10 rounded-full blur-2xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-12 lg:py-16 relative z-10 flex items-center min-h-[100vh] md:min-h-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-16 sm:py-12 lg:py-16 relative z-10 flex items-center min-h-[100vh] md:min-h-0">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-36 items-center w-full">
           {/* Left Content */}
           <motion.div
@@ -84,7 +84,7 @@ export default function HeroSection() {
             variants={fadeInUpVariants}
           >
             {/* Badge Platform Kesehatan No. 1 */}
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-2 sm:px-3 py-2 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 0px 10px rgba(65, 119, 255, 0.15)' }}>
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-2 sm:px-3 py-0 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 0px 10px rgba(65, 119, 255, 0.15)' }}>
               <div className="w-7 h-7 sm:w-7 sm:h-7 bg-[#4177FF] rounded-full flex items-center justify-center">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
