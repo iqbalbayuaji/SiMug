@@ -29,7 +29,17 @@ const ThreadItem = ({ thread, isFirst = false }) => {
             )}
             <div className="grid grid-cols-[40px_1fr] gap-x-4">
                 {/* Row 1: Avatar & Header */}
-                <div className={`w-10 h-10 ${thread.avatarColor} rounded-full`}></div>
+                <div className="w-10 h-10 shrink-0">
+                    {thread.avatar ? (
+                        <img 
+                            src={thread.avatar} 
+                            alt={thread.author} 
+                            className="w-full h-full rounded-full object-cover"
+                        />
+                    ) : (
+                        <div className={`w-full h-full ${thread.avatarColor} rounded-full`}></div>
+                    )}
+                </div>
                 <div className="mb-4">
                     <div className="flex items-baseline gap-2 mb-1">
                         <h3 className="font-bold text-gray-800">{thread.author}</h3>

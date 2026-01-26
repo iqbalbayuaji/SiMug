@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import profileAffan from '../../assets/images/profile2.jpg';
+import profileRizki from '../../assets/images/profile3.jpg';
 
 const threads = [
     {
@@ -6,6 +8,7 @@ const threads = [
         author: 'Affan Helmi',
         username: '@affanhelmi10',
         avatarColor: 'bg-emerald-500',
+        avatar: profileAffan,
         time: 'Dijawab 1 minggu lalu',
         topic: 'Tips mulai lari pagi buat yang susah bangun tidur?',
         originalQuestion: {
@@ -22,6 +25,7 @@ const threads = [
         author: 'Rizki Fiko',
         username: '@rizkifiko',
         avatarColor: 'bg-indigo-500',
+        avatar: profileRizki,
         time: 'Dijawab 2 hari lalu',
         topic: 'Berhenti minum manis bikin badan lebih enteng nggak sih?',
         originalQuestion: {

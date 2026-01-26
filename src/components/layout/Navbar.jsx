@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from "../../assets/images/logo-simug.png"
 import vegan from "../../assets/images/vegan.png"
 import NotificationPopup from "./NotificationPopup"
+import profileImg from "../../assets/images/profile.jpg"
 
 // Import course icons
 import gymIcon from "../../assets/icon/course/iconoir_gym.svg"
@@ -371,7 +372,7 @@ export default function Navbar() {
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white overflow-hidden border-2 sm:border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
               >
                 <img
-                  src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
+                  src={profileImg}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
@@ -540,7 +541,7 @@ export default function Navbar() {
               className="w-10 h-10 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]"
             >
               <img
-                src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
+                src={profileImg}
                 alt="Profile"
                 className="w-full h-full object-cover"
               />

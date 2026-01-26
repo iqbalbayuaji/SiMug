@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-export default function ChatInput({ message, setMessage, inputMode, setInputMode, onSend }) {
+export default function ChatInput({ message, setMessage, inputMode, setInputMode, onSend, selectedTopic }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isAttachDropdownOpen, setIsAttachDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -89,7 +89,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
                             onKeyPress={handleKeyPress}
-                            placeholder="Mulai percakapan dengan SiMug..."
+                            placeholder={selectedTopic ? `Apa yang ingin kamu konsultasikan terkait "${selectedTopic.title}"?` : "Mulai percakapan dengan SiMug..."}
                             className="w-full resize-none border-0 focus:ring-0 text-gray-700 placeholder-gray-400 text-base sm:text-lg outline-none"
                             rows="3"
                         />
@@ -163,6 +163,14 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
                                     </div>
                                 )}
                             </div>
+
+
+                            {/* Selected Topic Badge */}
+                            {selectedTopic && (
+                                <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-[#4177FF] rounded-full animate-fadeIn transition-all duration-300">
+                                    <span className="text-sm font-medium text-white">{selectedTopic.title}</span>
+                                </div>
+                            )}
                         </div>
 
                         {/* Send Button */}

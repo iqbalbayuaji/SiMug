@@ -129,6 +129,7 @@ export default function ChatbotPage() {
                     inputMode={inputMode}
                     setInputMode={setInputMode}
                     onSend={handleSendMessage}
+                    selectedTopic={topics.find(t => t.id === selectedTopic)}
                 />
             </div>
 
