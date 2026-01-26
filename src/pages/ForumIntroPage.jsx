@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 // Import icons
 import iconOrang from '../assets/icon/orang.png';
 import iconChat from '../assets/icon/chat.png';
+import iconDumble from '../assets/icon/dumble.png';
+import iconBasket from '../assets/icon/basket.png';
+import iconMi from '../assets/icon/mi.png';
 
 export default function ForumIntroPage() {
     const navigate = useNavigate();
@@ -39,8 +42,12 @@ export default function ForumIntroPage() {
                     <div className="absolute top-[10%] right-[18%] w-3 h-3 md:w-5 md:h-5 bg-blue-400 rounded-full animate-pulse shadow-md"></div>
                     <div className="absolute bottom-[16%] left-[10%] w-4 h-4 md:w-6 md:h-6 bg-indigo-300 rounded-full opacity-80"></div>
                     {/* New Object with Orang Icon */}
-                    <div className="absolute top-[40%] text-transparent right-[-2.5%] w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-xl shadow-lg flex items-center justify-center animate-reverse-spin-slower">
+                    <div className="absolute top-[40%] text-transparent right-[-1%] w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-xl shadow-lg flex items-center justify-center animate-reverse-spin-slower">
                         <img src={iconOrang} alt="User" className="w-5 h-5 md:w-7 md:h-7 object-contain brightness-0 invert" />
+                    </div>
+                    {/* Dumble Icon - Opposite side */}
+                    <div className="absolute bottom-[30%] left-[1%] w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-xl shadow-lg flex items-center justify-center animate-reverse-spin-slower">
+                         <img src={iconDumble} alt="Fitness" className="w-5 h-5 md:w-7 md:h-7 object-contain brightness-0 invert" />
                     </div>
                 </div>
 
@@ -49,14 +56,25 @@ export default function ForumIntroPage() {
                     <div className="absolute top-[19%] right-[8%] w-7 h-7 md:w-10 md:h-10 bg-white/60 backdrop-blur-md border-[2px] border-blue-200/80 rounded-full flex items-center justify-center animate-reverse-spin-slowest shadow-sm">
                         <div className="w-5 h-5 md:w-8 md:h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full shadow-lg"></div>
                     </div>
-                    {/* New Object with Chat Icon */}
+                    {/* Chat Icon */}
                     <div className="absolute bottom-[10%] right-[15%] w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-full shadow-lg flex items-center justify-center animate-reverse-spin-slowest">
                         <img src={iconChat} alt="Chat" className="w-4 h-4 md:w-6 md:h-6 object-contain brightness-0 invert" />
                     </div>
+                    {/* Basket Icon - Top Left */}
+                    <div className="absolute top-[18%] left-[8%] w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-full shadow-lg flex items-center justify-center animate-reverse-spin-slowest">
+                        <img src={iconBasket} alt="Sports" className="w-6 h-6 md:w-8 md:h-8 object-contain brightness-0 invert" />
+                    </div>
+                    {/* Mi Icon - Bottom Left */}
+                    <div className="absolute bottom-[20%] left-[6%] w-9 h-9 md:w-13 md:h-13 bg-gradient-to-br from-[#6994FF] to-[#9EBAFF] rounded-xl shadow-lg flex items-center justify-center animate-reverse-spin-slowest">
+                        <img src={iconMi} alt="Nutrition" className="w-5 h-5 md:w-7 md:h-7 object-contain brightness-0 invert" />
+                    </div>
                 </div>
 
-                {/* Additional Floating Elements */}
-                <div className="absolute bottom-40 right-[20%] w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full blur-xl animate-pulse"></div>
+                {/* Additional Floating Elements - Particles */}
+                <div className="absolute bottom-40 right-[20%] w-12 h-12 md:w-16 md:h-16 bg-blue-100/60 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute top-32 left-[15%] w-8 h-8 bg-cyan-100/60 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 right-[10%] w-6 h-6 bg-indigo-100/60 rounded-full blur-md animate-pulse" style={{ animationDelay: '2s' }}></div>
+                <div className="absolute bottom-20 left-[30%] w-10 h-10 bg-blue-50/80 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1.5s' }}></div>
             </div>
 
             {/* Main Content */}

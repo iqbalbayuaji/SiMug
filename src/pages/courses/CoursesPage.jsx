@@ -10,6 +10,7 @@ export default function CoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredCourses, setFilteredCourses] = useState(coursesData)
+  const [visibleCount, setVisibleCount] = useState(9)
 
   // Get category from URL params
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function CoursesPage() {
     }
 
     setFilteredCourses(result)
+    setVisibleCount(9)
   }, [selectedCategory, searchQuery])
 
   const handleCategoryChange = (categoryId) => {
@@ -282,12 +284,13 @@ export default function CoursesPage() {
 
           {/* Course Cards Grid */}
           {filteredCourses.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredCourses.map((course) => (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredCourses.slice(0, visibleCount).map((course) => (
                 <Link
                   key={course.id}
                   to={`/courses/${course.slug}`}
-                  className="block h-full border border-[#DBDBDB] rounded-2xl p-4 hover:border-blue-300 hover:shadow-lg transition-all bg-white"
+                  className="h-full border border-[#DBDBDB] rounded-2xl p-4 hover:border-blue-300 hover:shadow-lg transition-all bg-white flex flex-col"
                 >
                   {/* Course Image */}
                   <div className="relative h-52 bg-gray-800 rounded-2xl overflow-hidden mb-4">
@@ -302,7 +305,7 @@ export default function CoursesPage() {
                   </div>
 
                   {/* Course Info */}
-                  <div>
+                  <div className="flex flex-col flex-1">
                     <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 mb-2">
                       {course.title}
                     </h3>
@@ -328,12 +331,12 @@ export default function CoursesPage() {
                       </div>
                     </div>
 
-                    <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-4">
+                    <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-4 w-fit">
                       {course.level}
                     </div>
 
                     {/* Price & CTA */}
-                    <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center justify-between gap-2 mt-auto">
                       <div>
                         {course.discountPrice < course.price && (
                           <span className="text-sm text-gray-400 line-through mr-2">
@@ -353,8 +356,32 @@ export default function CoursesPage() {
                     </div>
                   </div>
                 </Link>
-              ))}
-            </div>
+                ))}
+              </div>
+              {visibleCount < filteredCourses.length && (
+                <div className="flex justify-center mt-10">
+                  <button
+                    onClick={() => setVisibleCount((prev) => prev + 6)}
+                    className="px-8 py-3 bg-white border border-blue-200 text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-all shadow-sm hover:shadow-md hover:border-blue-300 flex items-center gap-2 group"
+                  >
+                    Lebih Banyak
+                    <svg
+                      className="w-4 h-4 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-center py-20">
               <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
