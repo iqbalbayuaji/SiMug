@@ -1,8 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
-import aiIcon from "../../assets/icon/ai.svg"
-import komunitasImg from "../../assets/images/Komunitas-Onine.jpeg"
 import mascot6 from "../../assets/maskot/mascot6.png"
 import runningImg from "../../assets/images/course_english_running.png"
 import yogaImg from "../../assets/images/course_japanese_yoga.png"
@@ -53,34 +51,56 @@ export default function HeroSection() {
     },
   })
 
+  // Animation variants untuk fade in dari bawah
+  const fadeInUpVariants = {
+    initial: {
+      opacity: 0,
+      y: 30,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  }
+
   return (
-    <section className="relative bg-gradient-to-br from-[#F8FAFF] via-white to-[#F8FAFF] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#F8FAFF] via-white to-[#F8FAFF] overflow-hidden min-h-[100vh] md:min-h-0">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-[10%] w-32 h-32 bg-[#4177FF]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-[5%] w-24 h-24 bg-[#0039C9]/10 rounded-full blur-2xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-16 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-36 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-12 lg:py-16 relative z-10 flex items-center min-h-[100vh] md:min-h-0">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-36 items-center w-full">
           {/* Left Content */}
-          <div>
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={fadeInUpVariants}
+          >
             {/* Badge Platform Kesehatan No. 1 */}
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 4px 12px rgba(65, 119, 255, 0.15)' }}>
-              <div className="relative">
-                <div className="w-5 h-5 sm:w-5 sm:h-5 bg-[#4177FF] rounded-full" style={{ boxShadow: '0 0 0 3px #E8F0FF, 0 0 0 5px #4177FF' }}></div>
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-2 sm:px-3 py-2 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 0px 10px rgba(65, 119, 255, 0.15)' }}>
+              <div className="w-7 h-7 sm:w-7 sm:h-7 bg-[#4177FF] rounded-full flex items-center justify-center">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
               </div>
-              <span className="text-[#4177FF] font-semibold text-xs sm:text-sm">Platform Kesehatan No. 1</span>
+              <span className="text-[#4177FF] font-semibold text-xs sm:text-sm">#Platform Kesehatan No. 1</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-bold mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-[#4177FF] to-[#6B95FF] bg-clip-text text-transparent">
                 Belajar Kesehatan dan Kebugaraan
               </span>{" "}
               <span className="text-gray-900">dengan Cara Lebih Terstruktur</span>
             </h1>
             
-            <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8 pr-20">
+            <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">
               Ikuti kursus berbasis progres, dapatkan panduan mentor, dan raih reward dari setiap pencapaianmu.
             </p>
 
@@ -100,22 +120,22 @@ export default function HeroSection() {
                   className="w-full pl-12 sm:pl-14 pr-4 sm:pr-5 py-3 sm:py-3.5 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent text-sm sm:text-base placeholder:text-gray-400"
                 />
               </div>
-              <button 
+             <button 
                 type="submit"
-                className="bg-[#4177FF] text-white pl-3 pr-8 sm:pl-3 sm:pr-5 py-2 sm:py-0 rounded-full font-semibold hover:bg-[#3461D9] transition-all text-sm sm:text-base flex items-center gap-4 sm:gap-5"
+                className="bg-[#4177FF] text-white pl-3 pr-3 sm:pl-3 sm:pr-8 py-3 sm:py-0 rounded-full font-semibold hover:bg-[#3461D9] transition-all text-sm sm:text-base flex items-center gap-0 sm:gap-5 whitespace-nowrap"
                 style={{ boxShadow: '0 8px 24px rgba(65, 119, 255, 0.4)' }}
               >
-                <div className="w-10 h-10 sm:w-7 sm:h-7 bg-white/20 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
-                Jelajah
+                <span className="hidden sm:inline">Jelajah</span>
               </button>
             </form>
 
             {/* Quick Tags */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               <button 
                 onClick={() => handleQuickTag("Binaraga dasar")}
                 className="px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
@@ -135,67 +155,7 @@ export default function HeroSection() {
                 Boxing advance
               </button>
             </div>
-
-            {/* AI Assistant & Forum Cards */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              {/* AI Assistant */}
-              <div className="inline-flex flex-col gap-2 bg-white px-3 sm:px-4 py-3 sm:py-4 rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 flex-1">
-                <div className="flex items-center gap-2">
-                  <img src={aiIcon} alt="AI" className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span className="font-bold text-gray-900 text-sm sm:text-base">Tanya SiMug AI</span>
-                </div>
-                <button 
-                  onClick={() => navigate('/chatbot')}
-                  className="bg-[#4177FF] text-white px-3 sm:px-4 py-2 sm:py-3 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold hover:bg-[#3461D9] transition-colors w-full"
-                >
-                  Tanyakan apa saja!
-                </button>
-              </div>
-
-              {/* Forum Community - Creative Layout */}
-              <div 
-                onClick={() => navigate('/forum-intro')}
-                className="group relative bg-gradient-to-br from-[#4177FF] via-[#5A8CFF] to-[#6B95FF] px-3 sm:px-4 py-3 rounded-2xl shadow-lg cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex-1 overflow-hidden"
-              >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-white rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                  <div className="absolute bottom-0 left-0 w-16 sm:w-20 h-16 sm:h-20 bg-white rounded-full translate-y-1/2 -translate-x-1/2"></div>
-                </div>
-                
-                <div className="relative z-10 flex gap-2 sm:gap-3">
-                  {/* Stacked Avatars - Vertical */}
-                  <div className="relative flex flex-col -space-y-2 sm:-space-y-2.5 pt-1">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white overflow-hidden shadow-md z-30">
-                      <img src={komunitasImg} alt="Member" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white overflow-hidden shadow-md z-20">
-                      <img src={komunitasImg} alt="Member" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
-                      <img src={komunitasImg} alt="Member" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-white flex items-center justify-center text-[#4177FF] font-bold text-[8px] sm:text-[9px] shadow-md z-0">
-                      +99
-                    </div>
-                  </div>
-                  
-                  {/* Text Content */}
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h4 className="text-white font-bold text-sm sm:text-base leading-tight">Forum Komunitas</h4>
-                    <p className="text-white/70 text-[10px] sm:text-xs mt-0.5">Diskusi, sharing & support</p>
-                    <p className="text-white font-semibold text-[10px] sm:text-xs mt-0.5">10K+ member aktif</p>
-                    <button className="mt-1.5 sm:mt-2 bg-white text-[#4177FF] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-semibold hover:bg-blue-50 transition-colors flex items-center gap-1 sm:gap-1.5 w-fit">
-                      Gabung Sekarang
-                      <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
 
           {/* Right Content - Concentric Circles with Floating Elements */}
           <div className="relative h-[300px] md:h-[400px] lg:h-[480px] xl:h-[550px] hidden md:block">
