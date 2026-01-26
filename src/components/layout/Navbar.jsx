@@ -125,17 +125,17 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/home" className="flex items-center gap-2">
-            <img src={logo} alt="SiMUG Logo" className="w-16 h-16" />
-            <span className="text-xl font-bold text-gray-900">SiMUG</span>
+          <Link to="/home" className="flex items-center gap-1.5 sm:gap-2">
+            <img src={logo} alt="SiMUG Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
+            <span className="text-lg sm:text-xl font-bold text-gray-900">SiMUG</span>
           </Link>
 
           {/* Menu Items */}
           <div 
-            className="hidden md:flex items-center gap-8"
+            className="hidden md:flex items-center gap-4 lg:gap-8"
             onMouseLeave={() => setHoveredMenu(null)}
           >
             {menuItems.map((item) => (
@@ -343,18 +343,18 @@ export default function Navbar() {
           </div>
 
           {/* Right Side - Notification & Profile */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2 sm:gap-4">
             {/* Notification Bell */}
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="relative w-8 h-8 bg-[#D9E4FF] rounded-full flex items-center justify-center hover:bg-[#D0DFFF] transition-colors"
+                className="relative w-7 h-7 sm:w-8 sm:h-8 bg-[#D9E4FF] rounded-full flex items-center justify-center hover:bg-[#D0DFFF] transition-colors"
               >
-                <svg className="w-6 h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
                 {/* Notification Badge */}
-                <span className="absolute bottom-5 left-6 w-3.5 h-3.5 bg-[#4177FF] rounded-full border-2 border-white"></span>
+                <span className="absolute bottom-4 sm:bottom-5 left-5 sm:left-6 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-[#4177FF] rounded-full border-2 border-white"></span>
               </button>
 
               {/* Notification Popup */}
@@ -368,7 +368,7 @@ export default function Navbar() {
             <div className="relative profile-dropdown-container">
               <button 
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                className="w-12 h-12 rounded-full bg-white overflow-hidden border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white overflow-hidden border-2 sm:border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
               >
                 <img
                   src="https://ui-avatars.com/api/?name=Rizki+Fiko&background=E5ECFF&color=4177FF"
