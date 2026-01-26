@@ -48,10 +48,9 @@ export default function TopicsSection() {
           <div className="pr-2">
             <h2 className="text-3xl md:text-4xl font-bold text-[#4177FF] mb-4">
               Apa saja topik utama
-              <br />
               yang akan dipelajari?
             </h2>
-            <p className="text-gray-600 text-base leading-relaxed">
+            <p className="text-[#4177FF] text-base leading-relaxed">
               Tentu ada banyak sekali topik yang bisa di eksplorasi. Namun, kebanyakan user akan terjun dahulu di topik ini.
             </p>
           </div>

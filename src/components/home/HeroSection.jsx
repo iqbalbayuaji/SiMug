@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion"
 import aiIcon from "../../assets/icon/ai.svg"
 import komunitasImg from "../../assets/images/Komunitas-Onine.jpeg"
 import mascot6 from "../../assets/maskot/mascot6.png"
 import runningImg from "../../assets/images/course_english_running.png"
 import yogaImg from "../../assets/images/course_japanese_yoga.png"
 
-export default function HeroSection({ userName = "Rizki Fiko" }) {
+export default function HeroSection() {
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -20,11 +21,36 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
   const handleQuickTag = (tag) => {
     navigate(`/search?q=${encodeURIComponent(tag)}`)
   }
-  const currentDate = new Date().toLocaleDateString('id-ID', { 
-    weekday: 'long', 
-    day: 'numeric', 
-    month: 'long', 
-    year: 'numeric' 
+
+  // Animation variants untuk muncul dari tengah
+  const floatingVariants = (delay = 0, floatY = 10, floatX = 0) => ({
+    initial: {
+      x: "50%",
+      y: "50%",
+      opacity: 0,
+      scale: 0.5,
+    },
+    animate: {
+      x: 0,
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: delay,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+    float: {
+      y: [0, floatY, 0],
+      x: [0, floatX, 0],
+      transition: {
+        duration: 3 + delay,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: 0.8 + delay,
+      },
+    },
   })
 
   return (
@@ -39,32 +65,52 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-36 items-center">
           {/* Left Content */}
           <div>
-            <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">{currentDate}</p>
+            {/* Badge Platform Kesehatan No. 1 */}
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 4px 12px rgba(65, 119, 255, 0.15)' }}>
+              <div className="relative">
+                <div className="w-5 h-5 sm:w-5 sm:h-5 bg-[#4177FF] rounded-full" style={{ boxShadow: '0 0 0 3px #E8F0FF, 0 0 0 5px #4177FF' }}></div>
+              </div>
+              <span className="text-[#4177FF] font-semibold text-xs sm:text-sm">Platform Kesehatan No. 1</span>
+            </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-              Hi, <span className="text-[#4177FF]">{userName}!</span>
-              <br />
-              Hari ini mau belajar apa?
+            <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl font-bold mb-3 sm:mb-4">
+              <span className="bg-gradient-to-r from-[#4177FF] to-[#6B95FF] bg-clip-text text-transparent">
+                Belajar Kesehatan dan Kebugaraan
+              </span>{" "}
+              <span className="text-gray-900">dengan Cara Lebih Terstruktur</span>
             </h1>
             
-            <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">
-              SiMug itu tempat bagi kamu yang pengin hidup sehat tapi nggak mau ribet.
+            <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8 pr-20">
+              Ikuti kursus berbasis progres, dapatkan panduan mentor, dan raih reward dari setiap pencapaianmu.
             </p>
 
             {/* Search Bar */}
-            <form onSubmit={handleSearch} className="relative mb-4 sm:mb-6">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Telusuri Course..."
-                className="w-full px-4 sm:px-5 py-2.5 sm:py-3 pr-20 sm:pr-24 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent text-sm sm:text-base"
-              />
+            <form onSubmit={handleSearch} className="flex gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <div className="relative flex-1">
+                <div className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-gray-400">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Telusuri kursus..."
+                  className="w-full pl-12 sm:pl-14 pr-4 sm:pr-5 py-3 sm:py-3.5 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent text-sm sm:text-base placeholder:text-gray-400"
+                />
+              </div>
               <button 
                 type="submit"
-                className="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 bg-[#4177FF] text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-medium hover:bg-[#3461D9] transition-colors text-sm sm:text-base"
+                className="bg-[#4177FF] text-white pl-3 pr-8 sm:pl-3 sm:pr-5 py-2 sm:py-0 rounded-full font-semibold hover:bg-[#3461D9] transition-all text-sm sm:text-base flex items-center gap-4 sm:gap-5"
+                style={{ boxShadow: '0 8px 24px rgba(65, 119, 255, 0.4)' }}
               >
-                Cari
+                <div className="w-10 h-10 sm:w-7 sm:h-7 bg-white/20 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+                Jelajah
               </button>
             </form>
 
@@ -89,10 +135,6 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                 Boxing advance
               </button>
             </div>
-
-            <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4">
-              Masih bingung cara mulai? <a href="#" className="text-[#4177FF] font-medium hover:underline">Jelajahi minat</a>
-            </p>
 
             {/* AI Assistant & Forum Cards */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -177,48 +219,78 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
               <div className="relative w-full h-full">
                 
                 {/* Icon 1 - Chart/Stats (Top Left) */}
-                <div className="absolute top-[15%] left-[5%] lg:left-[6%] xl:left-[8%] z-10">
+                <motion.div 
+                  className="absolute top-[15%] left-[5%] lg:left-[6%] xl:left-[8%] z-10"
+                  variants={floatingVariants(0.1, -8, 5)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="w-12 h-12 lg:w-13 lg:h-13 xl:w-14 xl:h-14 bg-[#6B95FF] rounded-3xl shadow-lg flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-5.5 lg:h-5.5 xl:w-6 xl:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Icon 2 - Chat (Middle Left) */}
-                <div className="absolute top-[40%] left-[2%] lg:left-[3%] xl:left-[5%] z-10">
+                <motion.div 
+                  className="absolute top-[40%] left-[2%] lg:left-[3%] xl:left-[5%] z-10"
+                  variants={floatingVariants(0.2, 10, -5)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="w-12 h-12 lg:w-13 lg:h-13 xl:w-14 xl:h-14 bg-[#6B95FF] rounded-3xl shadow-lg flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-5.5 lg:h-5.5 xl:w-6 xl:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Icon 3 - Calendar (Top Right) */}
-                <div className="absolute top-[0%] right-[15%] lg:right-[17%] xl:right-[20%] z-10">
+                <motion.div 
+                  className="absolute top-[0%] right-[15%] lg:right-[17%] xl:right-[20%] z-10"
+                  variants={floatingVariants(0.15, -10, -8)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="w-12 h-12 lg:w-13 lg:h-13 xl:w-14 xl:h-14 bg-[#6B95FF] rounded-3xl shadow-lg flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-5.5 lg:h-5.5 xl:w-6 xl:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Image 1 - Top Center (Workout) */}
-                <div className="absolute top-[4%] left-[25%] lg:left-[26%] xl:left-[28%] z-10">
+                <motion.div 
+                  className="absolute top-[4%] left-[25%] lg:left-[26%] xl:left-[28%] z-10"
+                  variants={floatingVariants(0.25, -12, 8)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="w-32 h-20 lg:w-38 lg:h-24 xl:w-44 xl:h-28 rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                     <img src={runningImg} alt="Workout" className="w-full h-full object-cover" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Image 2 - Middle Center (Running) */}
-                <div className="absolute top-[30%] left-[18%] lg:left-[20%] xl:left-[22%] z-10">
+                <motion.div 
+                  className="absolute top-[30%] left-[18%] lg:left-[20%] xl:left-[22%] z-10"
+                  variants={floatingVariants(0.3, 15, -10)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="w-36 h-24 lg:w-42 lg:h-28 xl:w-48 xl:h-32 rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                     <img src={yogaImg} alt="Running" className="w-full h-full object-cover" />
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Card 1 - Progress Card (Right) */}
-                <div className="absolute top-[22%] left-[58%] lg:left-[60%] xl:left-[62%] z-10">
+                <motion.div 
+                  className="absolute top-[22%] left-[58%] lg:left-[60%] xl:left-[62%] z-10"
+                  variants={floatingVariants(0.35, -10, 12)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl p-2.5 lg:p-3.5 xl:p-4 w-[170px] lg:w-[220px] xl:w-[260px]">
                     <div className="flex items-center gap-1.5 lg:gap-2 xl:gap-2.5 mb-2 lg:mb-2.5 xl:mb-3">
                       <div className="w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-[#E5EDFF] rounded-lg lg:rounded-xl flex items-center justify-center">
@@ -252,10 +324,15 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Card 2 - Chat/Question Card (Bottom Left) */}
-                <div className="absolute bottom-[20%] left-[0%] z-10">
+                <motion.div 
+                  className="absolute bottom-[20%] left-[0%] z-10"
+                  variants={floatingVariants(0.4, 12, -8)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl p-2.5 lg:p-3.5 xl:p-4 w-40 lg:w-52 xl:w-64">
                     <div className="flex items-center gap-1.5 lg:gap-2 xl:gap-2.5 mb-2 lg:mb-2.5 xl:mb-3">
                       <div className="w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-[#E5EDFF] rounded-lg lg:rounded-xl flex items-center justify-center">
@@ -279,10 +356,15 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                       </button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Card 3 - Admin Profile Card (Bottom Center) */}
-                <div className="absolute top-[85%] left-[8%] lg:left-[9%] xl:left-[10%] z-10">
+                <motion.div 
+                  className="absolute top-[85%] left-[8%] lg:left-[9%] xl:left-[10%] z-10"
+                  variants={floatingVariants(0.45, -8, 10)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl p-2 lg:p-3 xl:p-3.5 w-40 lg:w-50 xl:w-60">
                     <div className="flex items-center gap-1.5 lg:gap-2.5 xl:gap-3">
                       <div className="w-8 h-8 lg:w-10 lg:h-10 xl:w-11 xl:h-11 rounded-full lg:rounded-ful overflow-hidden bg-[#D9D9D9]">
@@ -294,10 +376,15 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Card 4 - Community Groups (Bottom Right) */}
-                <div className="absolute top-[60%] left-[55%] lg:left-[58%] xl:left-[60%] z-10">
+                <motion.div 
+                  className="absolute top-[60%] left-[55%] lg:left-[58%] xl:left-[60%] z-10"
+                  variants={floatingVariants(0.5, 10, -12)}
+                  initial="initial"
+                  animate={["animate", "float"]}
+                >
                   <div className="bg-[#C4D5FF] backdrop-blur-sm rounded-lg lg:rounded-xl shadow-xl p-1.5 lg:p-2 xl:p-2.5 w-40 lg:w-52 xl:w-64 space-y-1 lg:space-y-1.5 xl:space-y-2">
                     <div className="flex items-center gap-1.5 lg:gap-2.5 xl:gap-3 bg-[#97B4FF] rounded-lg lg:rounded-xl p-1 lg:p-1.5 xl:p-2">
                       <div className="w-6 h-6 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-[#7A9FFF] rounded-full"></div>
@@ -321,7 +408,7 @@ export default function HeroSection({ userName = "Rizki Fiko" }) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
               </div>
             </div>
