@@ -352,43 +352,43 @@ export default function LandingPage() {
                         {/* Social Proof Stats */}
                         <div className="mx-2 sm:mx-4 md:mx-10">
                             <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center h-full">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start h-full">
                                     {/* Stat 1 - 50.000+ (No border-left) */}
-                                    <div className="text-left pl-6 pr-2">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                    <div className="text-left pl-6 pr-2 flex flex-col">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                                             <Counter value={50000} duration={2} />+
                                         </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
                                             User telah aktif dan gabung bersama SiMug
                                         </p>
                                     </div>
 
                                     {/* Stat 2 - 10.000+ */}
-                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                                             <Counter value={10000} duration={2} />+
                                         </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
                                             User telah mencoba dan membuktikan hasil mereka
                                         </p>
                                     </div>
 
                                     {/* Stat 3 - 250+ */}
-                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                                             <Counter value={250} duration={1.5} />+
                                         </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
                                             Mentor aktif dan terverifikasi
                                         </p>
                                     </div>
 
                                     {/* Stat 4 - 1.000+ */}
-                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
+                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                                             <Counter value={1000} duration={1.8} />+
                                         </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base mt-2 leading-relaxed">
+                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
                                             Komunitas aktif diseluruh wilayah Indonesia
                                         </p>
                                     </div>
