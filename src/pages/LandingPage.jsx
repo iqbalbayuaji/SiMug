@@ -1190,7 +1190,7 @@ export default function LandingPage() {
                                 />
 
                                 {/* Glassmorphism Card - Top Right (Outside) with Scroll Animation */}
-                                <div className="absolute bottom-6 right-2 z-20 scroll-animate transition-all duration-700 hover:scale-105">
+                                <div className="absolute bottom-7 -right-6 z-20 scroll-animate transition-all duration-700 hover:scale-105">
                                     <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/30 shadow-xl">
                                         <p className="text-white font-bold text-lg mb-0.5">24/7 Update</p>
                                         <p className="text-white/90 text-md">From Feedback</p>
@@ -1198,7 +1198,7 @@ export default function LandingPage() {
                                 </div>
 
                                 {/* Glassmorphism Card - Left (Outside) with Scroll Animation */}
-                                <div className="absolute top-6 -left-1 transform -translate-y-1/2 z-20 scroll-animate transition-all duration-700 hover:scale-105">
+                                <div className="absolute top-6 -left-6 transform -translate-y-1/2 z-20 scroll-animate transition-all duration-700 hover:scale-105">
                                     <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/30 shadow-xl">
                                         <p className="text-white font-bold text-lg mb-0.5">New Course</p>
                                         <p className="text-white/90 text-md">Everyday</p>
@@ -1311,10 +1311,15 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Cara Kerja SiMug Section */}
-            <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
-                {/* Blue Line Background - Hidden on Mobile */}
-                <div className="hidden lg:block absolute inset-0 flex items-center justify-center pointer-events-none">
+            {/* Cara Kerja SiMug Section - Hidden on Mobile */}
+            <section className="hidden lg:block py-16 lg:py-20 bg-white relative overflow-hidden">
+                {/* Blue Line Background - Full Width */}
+                {/* PENGATURAN UKURAN BLUELINE: 
+                    - Ubah 'h-[700px]' menjadi nilai lain seperti 'h-[600px]' atau 'h-[800px]' untuk mengatur tinggi
+                    - Ubah 'opacity-30' menjadi nilai lain (0-100) untuk mengatur transparansi
+                    - 'object-contain' memastikan gambar tidak pecah dan menjaga proporsi asli
+                */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <img 
                         src={lineBlue} 
                         alt="Path Line" 
@@ -1323,63 +1328,42 @@ export default function LandingPage() {
                 </div>
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                    {/* Header */}
-                    <div className="mb-12 lg:mb-16 text-center lg:text-left">
-                        <h2 className="text-3xl lg:text-4xl font-bold mb-2">
-                            <span className="text-blue-600">Cara Kerja SiMug</span>
-                        </h2>
-                        <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                            Itu Gimana Sih?
-                        </h3>
+                    {/* Header and Main Tips - Same Row */}
+                    <div className="mb-16 lg:mb-20 flex justify-between items-start">
+                        {/* Header */}
+                        <div>
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-2">
+                                <span className="text-blue-600">Cara Kerja SiMug</span>
+                            </h2>
+                            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                                Itu Gimana Sih?
+                            </h3>
+                        </div>
+                            
                     </div>
 
-                    {/* Mobile Layout - Vertical Steps */}
-                    <div className="lg:hidden flex flex-col items-center gap-8">
-                        {/* Step 1 */}
-                        <div className="w-full max-w-md">
-                            <img 
-                                src={step1} 
-                                alt="Step 1 - Cari Kursus" 
-                                className="w-full h-auto"
-                            />
-                        </div>
-
-                        {/* Step 2 */}
-                        <div className="w-full max-w-md">
-                            <img 
-                                src={step2} 
-                                alt="Step 2 - Tonton Kursus" 
-                                className="w-full h-auto"
-                            />
-                        </div>
-
-                        {/* Step 3 */}
-                        <div className="w-full max-w-md">
-                            <img 
-                                src={step3} 
-                                alt="Step 3 - Dapatkan Reward" 
-                                className="w-full h-auto"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Desktop Layout - Roadmap Container */}
-                    <div className="hidden lg:block relative min-h-[600px]" style={{transformOrigin: 'center center', transform: 'scale(1)'}}>
-                        {/* Step 1 - Cari Kursus (Bottom Left) */}
-                        <div className="absolute bottom-24 -left-1 z-10" style={{transformOrigin: 'left bottom'}}>
+                    {/* Roadmap Container */}
+                    {/* SOLUSI ZOOM: Menggunakan scale(1) pada transform-origin untuk mencegah perubahan posisi saat zoom */}
+                    <div className="relative min-h-[700px] lg:min-h-[600px]" style={{transformOrigin: 'center center', transform: 'scale(1)'}}>
+                        {/* Step 1 - Cari Kursus (Bottom Left) - Step asset, Icon, Road-img */}
+                        <div className="absolute bottom-24 left-0 lg:-left-1 z-10" style={{transformOrigin: 'left bottom'}}>
                             <div className="flex flex-col items-start gap-4 max-w-xs">
+                                {/* Step 1 Text Asset */}
                                 <img 
                                     src={step1} 
                                     alt="Step 1" 
-                                    className="w-92 h-auto"
+                                    className="w-48 lg:w-92 h-auto"
                                     style={{transform: 'translate(-4.5rem, 0.5rem)', transformOrigin: 'left top'}}
                                 />
+                                {/* Search Icon - Adjustable position with margin */}
                                 <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-5">
                                     <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
                                 </div>
+                                {/* Road Image Illustration */}
                                 <div className="relative group">
+                                    {/* Hover effect - positioned exactly behind road-img */}
                                     <div 
                                         className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
                                         style={{
@@ -1393,28 +1377,32 @@ export default function LandingPage() {
                                     <img 
                                         src={roadImg1} 
                                         alt="Cari Kursus Illustration" 
-                                        className="w-52 h-auto rounded-2xl shadow-lg"
+                                        className="w-44 lg:w-52 h-auto rounded-2xl shadow-lg"
                                         style={{transform: 'translate(-5rem, 1.25rem)', transformOrigin: 'left top'}}
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Step 2 - Tonton Kursus (Center Top) */}
+                        {/* Step 2 - Tonton Kursus (Center Top) - Road-img, Icon, Step asset */}
                         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10" style={{transformOrigin: 'center top'}}>
                             <div className="flex flex-col items-center gap-4 max-w-sm">
+                                {/* Road Image Illustration - No white background */}
+                                {/* Play Icon - Adjustable position with margin */}
                                 <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg border border-gray-100 my-2" style={{transform: 'translateX(-3rem)', transformOrigin: 'center center'}}>
                                     <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z"/>
                                     </svg>
                                 </div>
+                                {/* Step 2 Text Asset */}
                                 <img 
                                     src={step2} 
                                     alt="Step 2" 
-                                    className="w-96 h-auto"
+                                    className="w-56 lg:w-96 h-auto"
                                     style={{transform: 'translateY(-16rem)', transformOrigin: 'center top'}}
                                 />
                                 <div className="relative group">
+                                    {/* Hover effect - positioned exactly behind road-img */}
                                     <div 
                                         className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
                                         style={{
@@ -1428,28 +1416,32 @@ export default function LandingPage() {
                                     <img 
                                         src={roadImg2} 
                                         alt="Tonton Kursus Illustration" 
-                                        className="w-60 h-auto rounded-2xl shadow-lg"
+                                        className="w-52 lg:w-60 h-auto rounded-2xl shadow-lg"
                                         style={{transform: 'translate(-2rem, -10rem)', transformOrigin: 'center top'}}
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Step 3 - Dapatkan Reward (Bottom Right) */}
-                        <div className="absolute bottom-8 right-8 z-10" style={{transformOrigin: 'right bottom'}}>
+                        {/* Step 3 - Dapatkan Reward (Bottom Right) - Step asset, Icon, Road-img */}
+                        <div className="absolute bottom-8 right-0 lg:right-8 z-10" style={{transformOrigin: 'right bottom'}}>
                             <div className="flex flex-col items-end gap-4 max-w-xs">
+                                {/* Step 3 Text Asset */}
                                 <img 
                                     src={step3} 
                                     alt="Step 3" 
-                                    className="w-92 h-auto"
+                                    className="w-48 lg:w-92 h-auto"
                                     style={{transform: 'translateX(7rem)', transformOrigin: 'right top'}}
                                 />
+                                {/* Trophy Icon - Adjustable position with margin */}
                                 <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-2" style={{transform: 'translateY(4rem)', transformOrigin: 'center center'}}>
                                     <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
+                                {/* Road Image Illustration */}
                                 <div className="relative group">
+                                    {/* Hover effect - positioned exactly behind road-img */}
                                     <div 
                                         className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
                                         style={{
@@ -1463,7 +1455,7 @@ export default function LandingPage() {
                                     <img 
                                         src={roadImg3} 
                                         alt="Dapatkan Reward Illustration" 
-                                        className="w-52 h-auto rounded-2xl shadow-lg"
+                                        className="w-44 lg:w-52 h-auto rounded-2xl shadow-lg"
                                         style={{transform: 'translate(5rem, 5.5rem)', transformOrigin: 'right top'}}
                                     />
                                 </div>
@@ -1489,27 +1481,27 @@ export default function LandingPage() {
 
                 {/* First Row - Scroll Right - Full Width */}
                 <div className="relative mb-6 overflow-hidden w-full">
-                    <div className="flex gap-6 animate-scroll-right-seamless">
+                    <div className="flex gap-4 lg:gap-6 animate-scroll-right-seamless">
                         {/* Triple duplicate for seamless infinite loop */}
                         {[...Array(3)].map((_, setIndex) => (
-                            <div key={setIndex} className="flex gap-6 flex-shrink-0">
+                            <div key={setIndex} className="flex gap-4 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow1.map((testimonial) => (
                                     <div 
                                         key={`${setIndex}-${testimonial.id}`}
-                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow w-80 flex-shrink-0`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-4 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-64 lg:w-80 flex-shrink-0`}
                                     >
-                                        <div className="flex items-center gap-3 mb-4">
+                                        <div className="flex items-center gap-2 lg:gap-3 mb-3 lg:mb-4">
                                             <img 
                                                 src={testimonial.avatar} 
                                                 alt={testimonial.name}
-                                                className="w-12 h-12 rounded-full flex-shrink-0 object-cover"
+                                                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
                                             <div>
-                                                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                                                <p className="text-sm text-gray-500">{testimonial.timeAgo}</p>
+                                                <h4 className="font-bold text-gray-900 text-sm lg:text-base">{testimonial.name}</h4>
+                                                <p className="text-xs lg:text-sm text-gray-500">{testimonial.timeAgo}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed">
+                                        <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
                                             "{testimonial.testimonial}"
                                         </p>
                                     </div>
@@ -1521,27 +1513,27 @@ export default function LandingPage() {
 
                 {/* Second Row - Scroll Left - Full Width */}
                 <div className="relative overflow-hidden w-full">
-                    <div className="flex gap-6 animate-scroll-left-seamless">
+                    <div className="flex gap-4 lg:gap-6 animate-scroll-left-seamless">
                         {/* Triple duplicate for seamless infinite loop */}
                         {[...Array(3)].map((_, setIndex) => (
-                            <div key={setIndex} className="flex gap-6 flex-shrink-0">
+                            <div key={setIndex} className="flex gap-4 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow2.map((testimonial) => (
                                     <div 
                                         key={`${setIndex}-${testimonial.id}`}
-                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow w-80 flex-shrink-0`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-4 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-64 lg:w-80 flex-shrink-0`}
                                     >
-                                        <div className="flex items-center gap-3 mb-4">
+                                        <div className="flex items-center gap-2 lg:gap-3 mb-3 lg:mb-4">
                                             <img 
                                                 src={testimonial.avatar} 
                                                 alt={testimonial.name}
-                                                className="w-12 h-12 rounded-full flex-shrink-0 object-cover"
+                                                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
                                             <div>
-                                                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                                                <p className="text-sm text-gray-500">{testimonial.timeAgo}</p>
+                                                <h4 className="font-bold text-gray-900 text-sm lg:text-base">{testimonial.name}</h4>
+                                                <p className="text-xs lg:text-sm text-gray-500">{testimonial.timeAgo}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed">
+                                        <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
                                             "{testimonial.testimonial}"
                                         </p>
                                     </div>
