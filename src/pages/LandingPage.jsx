@@ -15,6 +15,7 @@ import step2 from "../assets/images/step-2.png"
 import step3 from "../assets/images/step-3.png"
 import lineBlue from "../assets/images/lineblue.png"
 import bottomBlueComponent from "../assets/images/bottom-blue-component.png"
+import logoSimug from "../assets/images/logo-simug.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
@@ -50,10 +51,38 @@ export default function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mascotScattered, setMascotScattered] = useState(false)
     const [activeCategory, setActiveCategory] = useState('Kebugaran')
+    const [isMobile, setIsMobile] = useState(false)
     const mascotSectionRef = useRef(null)
 
     // Use courses data from separate file
     const courses = landingCourses
+
+    // Smooth scroll function
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            const offset = 80 // Navbar height offset
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            })
+        }
+        setIsMenuOpen(false) // Close mobile menu after click
+    }
+
+    // Check if mobile on mount and resize
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -123,24 +152,25 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 lg:h-20">
                         {/* Logo */}
-                        <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                        <Link to="/" className="flex items-center gap-1 text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                            <img src={logoSimug} alt="SiMug Logo" className="h-14 w-14" />
                             SiMug
                         </Link>
 
                         {/* Navigation Links */}
                         <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
-                            <a href="#tentang" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                            <button onClick={() => scrollToSection('tentang')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                                 Tentang
-                            </a>
-                            <a href="#fitur" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                            </button>
+                            <button onClick={() => scrollToSection('fitur')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                                 Fitur Kami
-                            </a>
-                            <a href="#course" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                            </button>
+                            <button onClick={() => scrollToSection('course')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                                 Course Preview
-                            </a>
-                            <a href="#faq" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-                                FAQ
-                            </a>
+                            </button>
+                            <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                                Reviews
+                            </button>
                         </div>
 
                         {/* Auth Buttons - Desktop */}
@@ -178,18 +208,18 @@ export default function LandingPage() {
                 {/* Mobile Menu Dropdown */}
                 {isMenuOpen && (
                     <div className="md:hidden bg-white/95 backdrop-blur-md absolute top-16 left-0 right-0 shadow-lg py-4 px-6 flex flex-col space-y-4 border-t border-gray-100 animate-fade-in-down">
-                        <a href="#tentang" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                        <button onClick={() => scrollToSection('tentang')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
                             Tentang
-                        </a>
-                        <a href="#fitur" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                        </button>
+                        <button onClick={() => scrollToSection('fitur')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
                             Fitur Kami
-                        </a>
-                        <a href="#course" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                        </button>
+                        <button onClick={() => scrollToSection('course')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
                             Course Preview
-                        </a>
-                        <a href="#faq" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
-                            FAQ
-                        </a>
+                        </button>
+                        <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
+                            Reviews
+                        </button>
 
                         {/* Mobile Auth Buttons */}
                         <div className="flex flex-col gap-3 pt-2">
@@ -213,34 +243,44 @@ export default function LandingPage() {
             </nav>
 
             {/* Hero Section */}
-            <main className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
+            <motion.main 
+                className="relative z-10"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                {/* Blue Glow Effect from Bottom - Mobile Only */}
+                <div className="md:hidden absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-blue-400/60 via-blue-300/30 to-transparent pointer-events-none z-0"></div>
+                
+                <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
                 <div className="flex flex-col lg:flex-col items-center justify-between relative">
-                    {/* Decorative Icon Spans */}
+                    {/* Decorative Icon Spans - Hidden on mobile */}
                     {/* Green Icon - Top Left */}
-                    <span className="absolute top-8 left-4 lg:top-12 lg:left-20 inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12 animate-fade-in-up">
+                    <span className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12 animate-fade-in-up">
                         <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </span>
 
                     {/* Orange Icon - Top Right */}
-                    <span className="absolute top-16 right-4 lg:top-20 lg:right-20 inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12 animate-fade-in-up delay-100">
+                    <span className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12 animate-fade-in-up delay-100">
                         <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </span>
 
                     {/* Main Heading */}
-                    <div className="grid place-items-center lg:text-center space-y-6 lg:space-y-8">
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full mb-7 shadow-md">
+                    <div className="grid place-items-center lg:text-center space-y-6 md:space-y-6 lg:space-y-8 min-h-[85vh] md:min-h-0 flex flex-col justify-center">
+                        {/* Badge - Desktop Only */}
+                        <div className="hidden md:inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full mb-7 shadow-md">
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
                             <span className="font-semibold text-sm lg:text-base">#1 Platform Edukasi Kesehatan</span>
                         </div>
 
-                        <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight flex flex-col items-center gap-3 lg:gap-3">
+                        {/* Header - Desktop Version (separated lines) */}
+                        <h1 className="hidden md:flex text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight flex-col items-center gap-1 md:gap-3 lg:gap-3">
                             <span className="text-blue-600 animate-fade-in-up">Usaha Aja Gaakan Cukup</span>
                             <div className='flex items-center lg:gap-3 animate-fade-in-up delay-100'>
                                 <span className="text-gray-900">Tanpa Arah yang Jelas</span>
@@ -248,16 +288,35 @@ export default function LandingPage() {
                                     <FaArrowTrendUp className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                                 </span>
                             </div>
-
                         </h1>
 
-                        {/* Description */}
-                        <p className="text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 leading-relaxed animate-fade-in-up delay-200">
+                        {/* Header - Mobile Version (Badge + Title + Description in one wrapper) */}
+                        <div className="md:hidden flex flex-col items-center space-y-4 mb-12 md:mb-0">
+                            {/* Badge - Mobile */}
+                            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full shadow-md">
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                <span className="font-semibold text-sm">#1 Platform Edukasi Kesehatan</span>
+                            </div>
+
+                            <h1 className="text-3xl font-bold leading-tight text-center animate-fade-in-up">
+                                <span className="text-blue-600">Usaha Aja Gaakan Cukup </span>
+                                <span className="text-gray-900">Tanpa Arah yang Jelas</span>
+                            </h1>
+                            
+                            <p className="text-gray-900 text-base font-normal text-center leading-relaxed animate-fade-in-up delay-200">
+                                Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
+                            </p>
+                        </div>
+
+                        {/* Description - Desktop */}
+                        <p className="hidden md:block text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 md:mt-2 leading-relaxed animate-fade-in-up delay-200">
                             Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
                         </p>
 
-                        {/* CTA Button */}
-                        <div className="pt-15 pb-10 animate-fade-in-up delay-300">
+                        {/* CTA Button - Mobile with large margin */}
+                        <div className="md:hidden mt-8 animate-fade-in-up delay-300 mb-16 md:mb-0">
                             <Link
                                 to="/register"
                                 className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
@@ -269,10 +328,23 @@ export default function LandingPage() {
                             </Link>
                         </div>
 
-                        {/* Mascot Section with Scatter Animation */}
+                        {/* CTA Button - Desktop */}
+                        <div className="hidden md:block pt-8 md:pt-15 pb-8 md:pb-10 animate-fade-in-up delay-300">
+                            <Link
+                                to="/register"
+                                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                            >
+                                Gabung Sekarang
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </Link>
+                        </div>
+
+                        {/* Mascot Section with Scatter Animation - Hidden on mobile */}
                         <div
                             ref={mascotSectionRef}
-                            className="relative h-[350px] md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
+                            className="hidden md:block relative h-0 md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
                         >
                             {/* Mascot 1 - Center (main character with breathing effect) */}
                             <div
@@ -349,8 +421,8 @@ export default function LandingPage() {
                             </div>
                         </div>
 
-                        {/* Social Proof Stats */}
-                        <div className="mx-2 sm:mx-4 md:mx-10">
+                        {/* Social Proof Stats - Desktop Only */}
+                        <div className="hidden md:block mx-2 sm:mx-4 md:mx-10 mb-20 md:mb-0">
                             <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start h-full">
                                     {/* Stat 1 - 50.000+ (No border-left) */}
@@ -397,14 +469,69 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </main>
+                </div>
+            </motion.main>
 
-            {/* Why Choose SiMug Section - Smooth blue transition */}
-            <div className="relative -mt-36 mb-16 h-40 bg-gradient-to-b from-white via-blue-400/80 to-white"></div>
-            <section className="relative bg-white">
+            {/* Social Proof Stats - Mobile Only (Separated from Hero) */}
+            <section className="md:hidden bg-white py-8 px-6 mt-6 md:mt-0 mb-10 md:mb-0">
+                <div className="max-w-screen mx-auto bg-white rounded-2xl shadow-lg p-4">
+                    <div className="grid grid-cols-1 gap-6">
+                        {/* Stat 1 - 50.000+ */}
+                        <div className="text-left pl-6 pr-2 flex flex-col">
+                            <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                                <Counter value={50000} duration={2} />+
+                            </h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                User telah aktif dan gabung bersama SiMug
+                            </p>
+                        </div>
+
+                        {/* Stat 2 - 10.000+ */}
+                        <div className="text-left border-t-2 border-gray-200 pt-6 pl-6 pr-2 flex flex-col">
+                            <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                                <Counter value={10000} duration={2} />+
+                            </h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                User telah mencoba dan membuktikan hasil mereka
+                            </p>
+                        </div>
+
+                        {/* Stat 3 - 250+ */}
+                        <div className="text-left border-t-2 border-gray-200 pt-6 pl-6 pr-2 flex flex-col">
+                            <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                                <Counter value={250} duration={1.5} />+
+                            </h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                Mentor aktif dan terverifikasi
+                            </p>
+                        </div>
+
+                        {/* Stat 4 - 1.000+ */}
+                        <div className="text-left border-t-2 border-gray-200 pt-6 pl-6 pr-2 flex flex-col">
+                            <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                                <Counter value={1000} duration={1.8} />+
+                            </h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                Komunitas aktif diseluruh wilayah Indonesia
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Why Choose SiMug Section - Smooth blue transition - Hidden on mobile */}
+            <div className="hidden md:block relative -mt-36 mb-16 h-40 bg-gradient-to-b from-white via-blue-400/80 to-white"></div>
+            <motion.section 
+                id="tentang" 
+                className="relative bg-white"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Section Header */}
-                    <div className="mb-16 lg:mb-15">
+                    <div className="mb-8 lg:mb-15">
                         <div className="flex gap-4 ">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center flex w-full">
                                 {/* Left: Main Title */}
@@ -491,12 +618,18 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Benefits Section */}
-            <section className="py-10 lg:py-20 bg-white">
+            <motion.section 
+                className="py-20 md:py-10 lg:py-20 bg-white"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-6">
                         {/* Title & Description Items */}
                         <div className="flex flex-col h-full mr-10">
                             <h2 className="text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight mb-3">
@@ -509,7 +642,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* Benefit Card 1 - AI Health Companion */}
-                        <div className="group relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 hover:scale-[1.02] border border-blue-400/20">
+                        <div className="group relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl aspect-[14/8] md:aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 hover:scale-[1.02] border border-blue-400/20">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-top"></div>
@@ -548,7 +681,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* Benefit Card 2 - Personalized Learning Path */}
-                        <div className="group relative bg-gradient-to-br from-blue-700 to-blue-800 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-600/40 transition-all duration-500 hover:scale-[1.02] border border-blue-500/20">
+                        <div className="group relative bg-gradient-to-br from-blue-700 to-blue-800 rounded-2xl aspect-[14/8] md:aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-600/40 transition-all duration-500 hover:scale-[1.02] border border-blue-500/20">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-top"></div>
@@ -586,7 +719,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* Benefit Card 3 - Expert Mentorship */}
-                        <div className="group relative bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-400/40 transition-all duration-500 hover:scale-[1.02] border border-blue-300/20">
+                        <div className="group relative bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl aspect-[14/8] md:aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-400/40 transition-all duration-500 hover:scale-[1.02] border border-blue-300/20">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-200 to-transparent glow-border-top"></div>
@@ -626,7 +759,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* Benefit Card 4 - Active Community */}
-                        <div className="group relative bg-gradient-to-br from-blue-800 to-blue-900 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-700/40 transition-all duration-500 hover:scale-[1.02] border border-blue-600/20">
+                        <div className="group relative bg-gradient-to-br from-blue-800 to-blue-900 rounded-2xl aspect-[14/8] md:aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-700/40 transition-all duration-500 hover:scale-[1.02] border border-blue-600/20">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-400 to-transparent glow-border-top"></div>
@@ -666,7 +799,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* Benefit Card 5 - Gamified Progress */}
-                        <div className="group relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 hover:scale-[1.02] border border-blue-400/20">
+                        <div className="group relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl aspect-[14/8] md:aspect-[14/5] w-full shadow-xl overflow-hidden p-6 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-500 hover:scale-[1.02] border border-blue-400/20">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-300 to-transparent glow-border-top"></div>
@@ -710,10 +843,17 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Features Grid Section */}
-            <section className="py-5 lg:py-10 bg-white">
+            <motion.section 
+                id="fitur" 
+                className="py-5 lg:py-10 bg-white"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Header */}
                     <div className="text-center mb-12">
@@ -728,7 +868,7 @@ export default function LandingPage() {
                     {/* Grid Layout */}
                     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
                         {/* 1. Top Left Card - Progressive Learning */}
-                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
+                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl min-h-[220px] md:aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
@@ -750,8 +890,8 @@ export default function LandingPage() {
                             {/* Animated Glow */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-150 group-hover:bg-blue-400/30 transition-all duration-700 z-0"></div>
                             
-                            {/* Illustration - Learning Path */}
-                            <div className="absolute top-4 right-4 w-24 h-24 md:w-32 md:h-32 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 z-10">
+                            {/* Illustration - Learning Path - Hidden on Mobile */}
+                            <div className="hidden md:block absolute top-4 right-4 w-24 h-24 md:w-32 md:h-32 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 z-10">
                                 <svg viewBox="0 0 120 120" className="w-full h-full">
                                     {/* Steps */}
                                     <rect x="15" y="70" width="25" height="35" rx="4" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors duration-300"/>
@@ -765,7 +905,7 @@ export default function LandingPage() {
                             </div>
                             
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                            <div className="absolute md:bottom-0 bottom-auto top-1/2 md:top-auto md:translate-y-0 -translate-y-1/2 md:-translate-y-0 left-0 right-0 p-5 z-10">
                                 <div className="flex items-center gap-2 mb-2">
                                     <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
                                         <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -783,7 +923,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* 2. Top Middle Card - AI Assistant */}
-                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
+                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100/80 rounded-2xl min-h-[220px] md:aspect-video w-full overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.02]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
@@ -806,8 +946,8 @@ export default function LandingPage() {
                             <div className="absolute top-8 right-12 w-2 h-2 bg-blue-500/50 rounded-full group-hover:animate-ping z-10"></div>
                             <div className="absolute top-16 right-6 w-1.5 h-1.5 bg-blue-400/40 rounded-full group-hover:animate-ping z-10" style={{animationDelay: '0.3s'}}></div>
                             
-                            {/* Illustration - AI Brain */}
-                            <div className="absolute top-3 right-3 w-28 h-28 md:w-36 md:h-36 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 z-10">
+                            {/* Illustration - AI Brain - Hidden on Mobile */}
+                            <div className="hidden md:block absolute top-3 right-3 w-28 h-28 md:w-36 md:h-36 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 z-10">
                                 <svg viewBox="0 0 120 120" className="w-full h-full">
                                     {/* Brain outline */}
                                     <ellipse cx="60" cy="55" rx="35" ry="30" className="fill-none stroke-blue-400 group-hover:stroke-blue-500 transition-colors" strokeWidth="2"/>
@@ -830,7 +970,7 @@ export default function LandingPage() {
                             </div>
                             
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                            <div className="absolute md:bottom-0 bottom-auto top-1/2 md:top-auto md:translate-y-0 -translate-y-1/2 md:-translate-y-0 left-0 right-0 p-5 z-10">
                                 <div className="flex items-center gap-2 mb-2">
                                     <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40 group-hover:animate-pulse">
                                         <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -845,7 +985,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* 3. Right Tall Card - Mentorship (Spans 2 rows) */}
-                        <div className="group relative bg-gradient-to-b from-white via-blue-50 to-blue-100/80 rounded-2xl w-full lg:row-span-2 lg:h-full min-h-[300px] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
+                        <div className="group relative bg-gradient-to-b from-white via-blue-50 to-blue-100/80 rounded-2xl w-full lg:row-span-2 lg:h-full min-h-[280px] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
@@ -868,8 +1008,8 @@ export default function LandingPage() {
                             <div className="absolute top-10 right-10 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
                             <div className="absolute bottom-20 left-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
                             
-                            {/* Illustration - Mentorship Network */}
-                            <div className="absolute top-8 left-1/2 -translate-x-1/2 w-48 h-48 md:w-56 md:h-56 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                            {/* Illustration - Mentorship Network - Hidden on Mobile */}
+                            <div className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-48 h-48 md:w-56 md:h-56 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <svg viewBox="0 0 200 200" className="w-full h-full">
                                     {/* Central Mentor */}
                                     <circle cx="100" cy="80" r="25" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors"/>
@@ -938,7 +1078,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* 4. Bottom Wide Card - Community (Spans 2 columns) */}
-                        <div className="group relative bg-gradient-to-r from-white via-blue-50 to-blue-100/80 rounded-2xl w-full lg:col-span-2 aspect-[2.1/0.7] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
+                        <div className="group relative bg-gradient-to-r from-white via-blue-50 to-blue-100/80 rounded-2xl w-full lg:col-span-2 min-h-[280px] md:aspect-[2.1/0.7] overflow-hidden border border-blue-200/60 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/50 hover:scale-[1.01]">
                             {/* Animated Glowing Border */}
                             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                                 <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-500 to-transparent glow-border-top"></div>
@@ -961,8 +1101,8 @@ export default function LandingPage() {
                             <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-48 h-48 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
                             <div className="absolute right-10 top-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                             
-                            {/* Illustration - Community */}
-                            <div className="absolute right-6 top-1/2 -translate-y-1/2 w-40 h-32 md:w-56 md:h-44 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                            {/* Illustration - Community - Hidden on Mobile */}
+                            <div className="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 w-40 h-32 md:w-56 md:h-44 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <svg viewBox="0 0 220 150" className="w-full h-full">
                                     {/* Chat bubbles */}
                                     <rect x="10" y="20" width="70" height="45" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
@@ -997,7 +1137,7 @@ export default function LandingPage() {
                             </div>
                             
                             {/* Content */}
-                            <div className="absolute left-0 top-0 bottom-0 p-6 flex flex-col justify-center max-w-[55%] z-10">
+                            <div className="absolute left-0 top-0 bottom-0 p-6 flex flex-col justify-center max-w-full md:max-w-[55%] z-10">
                                 <div className="flex items-center gap-2 mb-2">
                                     <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm border border-blue-400/40">
                                         <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1019,7 +1159,7 @@ export default function LandingPage() {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="flex justify-start">
+                    <div className="flex justify-start mb-7 md:mb-0">
                         <button className="flex group items-center gap-2 hover:gap-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold pl-4 pr-3 py-2.5 rounded-full transition-all shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1">
                             Cobain Sekarang!
                             <svg className="w-5 h-5 group-hover:rotate-90 ease-out transition-transform duration-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1028,15 +1168,49 @@ export default function LandingPage() {
                         </button>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* New Section - Kami Terus Update */}
             <section className="py-10 lg:py-16 bg-[#EDF2FF]">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
-                        {/* Left Side - Blue Card with Assets */}
-                        <div className="relative">
-                            <div className="group relative bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-3xl p-8 lg:p-12 overflow-visible shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/60 min-h-[400px] transition-all duration-500">
+                        {/* Right Side - Content */}
+                        <div className="space-y-4 lg:space-y-6 lg:order-2">
+                            {/* Badge */}
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 backdrop-blur-sm rounded-full shadow-lg shadow-blue-200/50 scroll-animate transition-all duration-700">
+                                <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                <span className="text-[#4177FF] text-md font-semibold">Pelayanan no 1</span>
+                            </div>
+
+                            {/* Heading with Gradient - Desktop Version */}
+                            <h2 className="hidden lg:block text-4xl lg:text-5xl font-bold leading-tight scroll-animate transition-all duration-700">
+                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
+                                    Kami Terus Update
+                                </span>
+                                <br />
+                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
+                                    Kamu Fokus Berprogres
+                                </span>
+                            </h2>
+
+                            {/* Heading with Gradient - Mobile Version (Connected) */}
+                            <h2 className="lg:hidden text-3xl font-bold leading-tight scroll-animate transition-all duration-700">
+                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
+                                    Kami Terus Update Kamu Fokus Berprogres
+                                </span>
+                            </h2>
+
+                            {/* Description with 85% opacity blue */}
+                            <p className="text-[#4177FF] opacity-85 text-base md:text-2xl leading-relaxed scroll-animate transition-all duration-700">
+                                Setiap materi di SiMug akan dirancang untuk membantu kamu tetap konsisten dan berkembang menuju hidup yang lebih sehat.
+                            </p>
+                        </div>
+
+                        {/* Left Side - Blue Card with Assets - Hidden on Mobile */}
+                        <div className="hidden lg:block relative lg:order-1">
+                            <div className="group relative bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-3xl p-12 overflow-visible shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/60 min-h-[400px] transition-all duration-500">
                                 {/* Corner Circles with Zoom Effect */}
                                 <div className="absolute -top-4 -left-4 w-16 h-16 bg-white/10 rounded-full blur-md group-hover:scale-150 transition-transform duration-500 ease-out"></div>
                                 <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-white/10 rounded-full blur-md group-hover:scale-150 transition-transform duration-500 ease-out"></div>
@@ -1050,16 +1224,16 @@ export default function LandingPage() {
                                 <img 
                                     src={landingAsset1} 
                                     alt="Asset 1"
-                                    className="absolute top-0 right-5 w-48 h-48 lg:w-80 lg:h-80 object-contain opacity-100 z-10"
+                                    className="absolute top-0 right-5 w-80 h-80 object-contain opacity-100 z-10"
                                 />
                                 <img 
                                     src={landingAsset2} 
                                     alt="Asset 2" 
-                                    className="absolute -bottom-2 left-5 w-48 h-48 lg:w-80 lg:h-80 object-contain opacity-100 z-10"
+                                    className="absolute -bottom-2 left-5 w-80 h-80 object-contain opacity-100 z-10"
                                 />
 
                                 {/* Glassmorphism Card - Top Right (Outside) with Scroll Animation */}
-                                <div className="absolute bottom-6 -right-6 lg:right-2 z-20 scroll-animate opacity-0 translate-x-8 transition-all duration-700 hover:scale-105">
+                                <div className="absolute bottom-7 -right-6 z-20 scroll-animate transition-all duration-700 hover:scale-105">
                                     <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/30 shadow-xl">
                                         <p className="text-white font-bold text-lg mb-0.5">24/7 Update</p>
                                         <p className="text-white/90 text-md">From Feedback</p>
@@ -1067,7 +1241,7 @@ export default function LandingPage() {
                                 </div>
 
                                 {/* Glassmorphism Card - Left (Outside) with Scroll Animation */}
-                                <div className="absolute top-6 -left-6 lg:-left-1 transform -translate-y-1/2 z-20 scroll-animate opacity-0 -translate-x-8 transition-all duration-700 hover:scale-105" style={{transitionDelay: '0.2s'}}>
+                                <div className="absolute top-6 -left-6 transform -translate-y-1/2 z-20 scroll-animate transition-all duration-700 hover:scale-105">
                                     <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/30 shadow-xl">
                                         <p className="text-white font-bold text-lg mb-0.5">New Course</p>
                                         <p className="text-white/90 text-md">Everyday</p>
@@ -1075,39 +1249,19 @@ export default function LandingPage() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Right Side - Content */}
-                        <div className="space-y-6">
-                            {/* Badge */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 backdrop-blur-sm rounded-full shadow-lg shadow-blue-200/50 scroll-animate opacity-0 translate-x-8 transition-all duration-700">
-                                <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                                <span className="text-[#4177FF] text-md font-semibold">Pelayanan no 1</span>
-                            </div>
-
-                            {/* Heading with Gradient */}
-                            <h2 className="text-4xl lg:text-5xl font-bold leading-tight scroll-animate opacity-0 translate-x-8 transition-all duration-700" style={{transitionDelay: '0.1s'}}>
-                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
-                                    Kami Terus Update
-                                </span>
-                                <br />
-                                <span className="bg-gradient-to-r from-[#4177FF] via-[#7BA3FF] to-[#4177FF] bg-clip-text text-transparent">
-                                    Kamu Fokus Berprogres
-                                </span>
-                            </h2>
-
-                            {/* Description with 85% opacity blue */}
-                            <p className="text-[#4177FF] opacity-85 text-2xl leading-relaxed scroll-animate opacity-0 translate-x-8 transition-all duration-700" style={{transitionDelay: '0.2s'}}>
-                                Setiap materi di SiMug akan dirancang untuk membantu kamu tetap konsisten dan berkembang menuju hidup yang lebih sehat.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Course Listing Section */}
-            <section className="py-10 lg:py-10 bg-white relative overflow-hidden">
+            <motion.section 
+                id="course" 
+                className="py-10 lg:py-10 bg-white relative overflow-hidden"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 {/* Decorative Blue Circles and Rounded Squares */}
                 <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
                 <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
@@ -1126,16 +1280,16 @@ export default function LandingPage() {
                         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                             Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
                         </h2>
-                        <p className="text-gray-600 text-base lg:text-xl">
+                        <p className="text-gray-600 text-base lg:text-xl px-10 md:px-0">
                             Kamu bisa lihat beberapa kursus relevan disini.
                         </p>
                     </div>
 
-                    {/* Category Tabs */}
-                    <div className="flex justify-center gap-4 lg:gap-1 mb-8 lg:mb-10 flex-wrap">
+                    {/* Category Tabs - No scrollbar on mobile */}
+                    <div className="flex justify-center gap-2 lg:gap-1 mb-8 lg:mb-10 overflow-x-auto scrollbar-hide">
                         <button
                             onClick={() => setActiveCategory('Kebugaran')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
                                 activeCategory === 'Kebugaran'
                                     ? 'text-blue-600'
                                     : 'text-gray-600 hover:text-blue-200'
@@ -1145,7 +1299,7 @@ export default function LandingPage() {
                         </button>
                         <button
                             onClick={() => setActiveCategory('Olahraga')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
                                 activeCategory === 'Olahraga'
                                     ? 'text-blue-600'
                                     : 'text-gray-600 hover:text-blue-300'
@@ -1155,7 +1309,7 @@ export default function LandingPage() {
                         </button>
                         <button
                             onClick={() => setActiveCategory('Nutrisi')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
                                 activeCategory === 'Nutrisi'
                                     ? 'text-blue-600'
                                     : 'text-gray-600 hover:text-blue-300'
@@ -1165,7 +1319,7 @@ export default function LandingPage() {
                         </button>
                         <button
                             onClick={() => setActiveCategory('Mental')}
-                            className={`cursor-pointer px-6 py-2 font-semibold transition-colors ${
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
                                 activeCategory === 'Mental'
                                     ? 'text-blue-600'
                                     : 'text-gray-600 hover:text-blue-300'
@@ -1175,7 +1329,7 @@ export default function LandingPage() {
                         </button>
                     </div>
 
-                    {/* Course Grid - Centered with max 8 cards (4 top, 4 bottom) */}
+                    {/* Course Grid - Centered with max 8 cards desktop, 4 cards mobile */}
                     <div className="flex justify-center">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 max-w-full">
                             {courses
@@ -1186,7 +1340,7 @@ export default function LandingPage() {
                                     if (activeCategory === 'Mental') return course.category === 'mental';
                                     return true;
                                 })
-                                .slice(0, 8)
+                                .slice(0, isMobile ? 4 : 8)
                                 .map((course) => (
                                     <CourseCard
                                         key={course.id}
@@ -1205,10 +1359,10 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
-            {/* Cara Kerja SiMug Section */}
-            <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
+            {/* Cara Kerja SiMug Section - Hidden on Mobile */}
+            <section className="hidden lg:block py-16 lg:py-20 bg-white relative overflow-hidden">
                 {/* Blue Line Background - Full Width */}
                 {/* PENGATURAN UKURAN BLUELINE: 
                     - Ubah 'h-[700px]' menjadi nilai lain seperti 'h-[600px]' atau 'h-[800px]' untuk mengatur tinggi
@@ -1362,7 +1516,7 @@ export default function LandingPage() {
             </section>
 
             {/* Testimonial Section */}
-            <section className="py-16 lg:py-20 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
+            <section id="reviews" className="py-16 lg:py-20 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
                 {/* Section Header */}
                 <div className="text-center mb-12 px-6 lg:px-12">
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
@@ -1376,28 +1530,28 @@ export default function LandingPage() {
                 </div>
 
                 {/* First Row - Scroll Right - Full Width */}
-                <div className="relative mb-6 overflow-hidden w-full">
-                    <div className="flex gap-6 animate-scroll-right-seamless">
+                <div className="relative mb-6 overflow-x-auto lg:overflow-hidden w-full scrollbar-hide">
+                    <div className="flex gap-3 lg:gap-6 animate-scroll-right-seamless lg:animate-scroll-right-seamless">
                         {/* Triple duplicate for seamless infinite loop */}
                         {[...Array(3)].map((_, setIndex) => (
-                            <div key={setIndex} className="flex gap-6 flex-shrink-0">
+                            <div key={setIndex} className="flex gap-3 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow1.map((testimonial) => (
                                     <div 
                                         key={`${setIndex}-${testimonial.id}`}
-                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow w-80 flex-shrink-0`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-3 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-56 lg:w-80 flex-shrink-0`}
                                     >
-                                        <div className="flex items-center gap-3 mb-4">
+                                        <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
                                             <img 
                                                 src={testimonial.avatar} 
                                                 alt={testimonial.name}
-                                                className="w-12 h-12 rounded-full flex-shrink-0 object-cover"
+                                                className="w-9 h-9 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
                                             <div>
-                                                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                                                <p className="text-sm text-gray-500">{testimonial.timeAgo}</p>
+                                                <h4 className="font-bold text-gray-900 text-sm lg:text-base">{testimonial.name}</h4>
+                                                <p className="text-xs lg:text-sm text-gray-500">{testimonial.timeAgo}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed">
+                                        <p className="text-gray-700 leading-relaxed text-xs lg:text-base">
                                             "{testimonial.testimonial}"
                                         </p>
                                     </div>
@@ -1408,28 +1562,28 @@ export default function LandingPage() {
                 </div>
 
                 {/* Second Row - Scroll Left - Full Width */}
-                <div className="relative overflow-hidden w-full">
-                    <div className="flex gap-6 animate-scroll-left-seamless">
+                <div className="relative overflow-x-auto lg:overflow-hidden w-full scrollbar-hide">
+                    <div className="flex gap-3 lg:gap-6 animate-scroll-left-seamless lg:animate-scroll-left-seamless">
                         {/* Triple duplicate for seamless infinite loop */}
                         {[...Array(3)].map((_, setIndex) => (
-                            <div key={setIndex} className="flex gap-6 flex-shrink-0">
+                            <div key={setIndex} className="flex gap-3 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow2.map((testimonial) => (
                                     <div 
                                         key={`${setIndex}-${testimonial.id}`}
-                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow w-80 flex-shrink-0`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-3 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-56 lg:w-80 flex-shrink-0`}
                                     >
-                                        <div className="flex items-center gap-3 mb-4">
+                                        <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
                                             <img 
                                                 src={testimonial.avatar} 
                                                 alt={testimonial.name}
-                                                className="w-12 h-12 rounded-full flex-shrink-0 object-cover"
+                                                className="w-9 h-9 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
                                             <div>
-                                                <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                                                <p className="text-sm text-gray-500">{testimonial.timeAgo}</p>
+                                                <h4 className="font-bold text-gray-900 text-sm lg:text-base">{testimonial.name}</h4>
+                                                <p className="text-xs lg:text-sm text-gray-500">{testimonial.timeAgo}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed">
+                                        <p className="text-gray-700 leading-relaxed text-xs lg:text-base">
                                             "{testimonial.testimonial}"
                                         </p>
                                     </div>

@@ -338,11 +338,7 @@ export default function CoursesPage() {
                     {/* Price & CTA */}
                     <div className="flex items-center justify-between gap-2 mt-auto">
                       <div>
-                        {course.discountPrice < course.price && (
-                          <span className="text-sm text-gray-400 line-through mr-2">
-                            {formatPrice(course.price)}
-                          </span>
-                        )}
+
                         <span className="text-2xl font-bold text-[#4177FF]">
                           {formatPrice(course.discountPrice)}
                         </span>

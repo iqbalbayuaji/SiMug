@@ -12,58 +12,38 @@ export default function ProfileAkunSayaPage() {
       </div>
 
       {/* Status Verifikasi Akun */}
-      <div className="flex items-start justify-between py-3 border-b border-gray-200">
-        <div className="flex-1">
-          <h3 className="font-bold text-gray-900 mb-1">Status Verifikasi Akun</h3>
-          <p className="text-sm text-gray-600">
-            Lihat status verifikasi akun kamu untuk memastikan identitas.
-          </p>
-        </div>
-        <div className="flex items-center gap-2 ml-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 md:pb-6 border-b border-gray-200 gap-2">
+        <h3 className="font-bold text-gray-900">Status Verifikasi Akun</h3>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
           <span className="text-sm text-gray-500">fikoaja10@gmail.com</span>
-          <span className="px-3 py-1 bg-orange-100 text-orange-600 text-xs font-semibold rounded-full">
+          <span className="px-3 py-1 bg-orange-100 text-orange-600 text-xs font-semibold rounded-full w-fit">
             unverified
           </span>
         </div>
       </div>
 
       {/* Password Akun */}
-      <div className="flex items-start justify-between py-3 border-b border-gray-200">
-        <div className="flex-1">
-          <h3 className="font-bold text-gray-900 mb-1">Password Akun</h3>
-          <p className="text-sm text-gray-600">
-            Perbarui kata sandi akun kamu secara berkala untuk menjaga keamanan.
-          </p>
-        </div>
-        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold hover:bg-blue-50 rounded-lg transition-colors ml-4">
+      <div className="flex items-center justify-between py-2 md:py-3 border-b border-gray-200">
+        <h3 className="font-bold text-gray-900">Password Akun</h3>
+        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold hover:bg-blue-50 rounded-lg transition-colors">
           <FaLock />
           Ubah
         </button>
       </div>
 
       {/* Jenis Akun */}
-      <div className="flex items-start justify-between py-3 border-b border-gray-200">
-        <div className="flex-1">
-          <h3 className="font-bold text-gray-900 mb-1">Jenis Akun</h3>
-          <p className="text-sm text-gray-600">
-            Perbarui kata sandi akun kamu secara berkala untuk menjaga keamanan.
-          </p>
-        </div>
-        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold rounded-lg hover:bg-blue-100 transition-colors ml-4">
+      <div className="flex items-center justify-between py-2 md:py-3 border-b border-gray-200">
+        <h3 className="font-bold text-gray-900">Jenis Akun</h3>
+        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold rounded-lg hover:bg-blue-100 transition-colors">
           <FaUserCircle />
           Free
         </button>
       </div>
 
       {/* Notifikasi Akun */}
-      <div className="flex items-start justify-between py-3 border-b border-gray-200">
-        <div className="flex-1">
-          <h3 className="font-bold text-gray-900 mb-1">Notifikasi Akun</h3>
-          <p className="text-sm text-gray-600">
-            Atur jenis notifikasi yang ingin kamu terima.
-          </p>
-        </div>
-        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold hover:bg-blue-50 rounded-lg transition-colors ml-4">
+      <div className="flex items-center justify-between py-2 md:py-3 border-b border-gray-200">
+        <h3 className="font-bold text-gray-900">Notifikasi Akun</h3>
+        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold hover:bg-blue-50 rounded-lg transition-colors">
           <FaBell />
           Atur
           <FaChevronRight className="text-xs" />
@@ -71,14 +51,9 @@ export default function ProfileAkunSayaPage() {
       </div>
 
       {/* Kebijakan Privasi */}
-      <div className="flex items-start justify-between py-3">
-        <div className="flex-1">
-          <h3 className="font-bold text-gray-900 mb-1">Kebijakan Privasi</h3>
-          <p className="text-sm text-gray-600">
-            Pelajari bagaimana data pribadi kamu dikumpulkan, digunakan, dan dilindungi.
-          </p>
-        </div>
-        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold hover:bg-blue-50 rounded-lg transition-colors ml-4">
+      <div className="flex items-center justify-between py-2 md:py-3">
+        <h3 className="font-bold text-gray-900">Kebijakan Privasi</h3>
+        <button className="flex items-center gap-2 px-4 py-2 text-[#4177FF] font-semibold hover:bg-blue-50 rounded-lg transition-colors">
           <FaInfoCircle />
           Detail
         </button>
