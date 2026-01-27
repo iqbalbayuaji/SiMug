@@ -8,7 +8,7 @@ export default function ArtikelContent() {
         <article className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
             {/* Featured Image with Padding */}
             <div className="p-5">
-                <div className="relative w-full h-96 bg-gradient-to-br from-blue-100 to-blue-200 overflow-hidden rounded-xl group">
+                <div className="relative w-full h-56 lg:h-96 bg-gradient-to-br from-blue-100 to-blue-200 overflow-hidden rounded-xl group">
                     <img
                         src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=400&fit=crop"
                         alt="Featured Article"
@@ -36,7 +36,7 @@ export default function ArtikelContent() {
             {/* Article Content */}
             <div className="px-8 pb-8">
                 {/* Title */}
-                <h1 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
                     Mengapa "Consistency is Key" Adalah Aturan Emas dalam Membentuk Tubuh Ideal
                 </h1>
 
@@ -48,7 +48,7 @@ export default function ArtikelContent() {
                             alt="Raka Pratama"
                             className="w-10 h-10 rounded-full"
                         />
-                        <div>
+                        <div className="hidden lg:block">
                             <p className="text-sm font-semibold text-gray-900">Raka Pratama</p>
                             <p className="text-xs text-gray-500">2 hari lalu</p>
                         </div>

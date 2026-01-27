@@ -11,7 +11,7 @@ export default function ArtikelPage() {
             <Navbar />
 
             {/* 2. Forum Header with Back Button */}
-            <ForumHeader showBackButton={true} backTo="/forum" className="animate-slideInLeft" />
+            <ForumHeader showBackButton={true} backTo="/forum" className="animate-slideInLeft" hideBackButtonOnMobile={true} />
 
             {/* 3. Main Content Container */}
             <div className="w-full max-w-7xl mx-auto mt-2">
