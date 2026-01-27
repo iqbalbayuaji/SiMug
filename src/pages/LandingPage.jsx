@@ -15,6 +15,7 @@ import step2 from "../assets/images/step-2.png"
 import step3 from "../assets/images/step-3.png"
 import lineBlue from "../assets/images/lineblue.png"
 import bottomBlueComponent from "../assets/images/bottom-blue-component.png"
+import logoSimug from "../assets/images/logo-simug.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
@@ -55,6 +56,22 @@ export default function LandingPage() {
 
     // Use courses data from separate file
     const courses = landingCourses
+
+    // Smooth scroll function
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            const offset = 80 // Navbar height offset
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            })
+        }
+        setIsMenuOpen(false) // Close mobile menu after click
+    }
 
     // Check if mobile on mount and resize
     useEffect(() => {
@@ -135,24 +152,25 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 lg:h-20">
                         {/* Logo */}
-                        <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                        <Link to="/" className="flex items-center gap-1 text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                            <img src={logoSimug} alt="SiMug Logo" className="h-14 w-14" />
                             SiMug
                         </Link>
 
                         {/* Navigation Links */}
                         <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
-                            <a href="#tentang" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                            <button onClick={() => scrollToSection('tentang')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                                 Tentang
-                            </a>
-                            <a href="#fitur" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                            </button>
+                            <button onClick={() => scrollToSection('fitur')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                                 Fitur Kami
-                            </a>
-                            <a href="#course" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                            </button>
+                            <button onClick={() => scrollToSection('course')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                                 Course Preview
-                            </a>
-                            <a href="#faq" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-                                FAQ
-                            </a>
+                            </button>
+                            <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                                Reviews
+                            </button>
                         </div>
 
                         {/* Auth Buttons - Desktop */}
@@ -190,18 +208,18 @@ export default function LandingPage() {
                 {/* Mobile Menu Dropdown */}
                 {isMenuOpen && (
                     <div className="md:hidden bg-white/95 backdrop-blur-md absolute top-16 left-0 right-0 shadow-lg py-4 px-6 flex flex-col space-y-4 border-t border-gray-100 animate-fade-in-down">
-                        <a href="#tentang" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                        <button onClick={() => scrollToSection('tentang')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
                             Tentang
-                        </a>
-                        <a href="#fitur" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                        </button>
+                        <button onClick={() => scrollToSection('fitur')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
                             Fitur Kami
-                        </a>
-                        <a href="#course" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
+                        </button>
+                        <button onClick={() => scrollToSection('course')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
                             Course Preview
-                        </a>
-                        <a href="#faq" className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100" onClick={() => setIsMenuOpen(false)}>
-                            FAQ
-                        </a>
+                        </button>
+                        <button onClick={() => scrollToSection('reviews')} className="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100 text-left">
+                            Reviews
+                        </button>
 
                         {/* Mobile Auth Buttons */}
                         <div className="flex flex-col gap-3 pt-2">
@@ -225,7 +243,12 @@ export default function LandingPage() {
             </nav>
 
             {/* Hero Section */}
-            <main className="relative z-10">
+            <motion.main 
+                className="relative z-10"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 {/* Blue Glow Effect from Bottom - Mobile Only */}
                 <div className="md:hidden absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-blue-400/60 via-blue-300/30 to-transparent pointer-events-none z-0"></div>
                 
@@ -447,7 +470,7 @@ export default function LandingPage() {
                     </div>
                 </div>
                 </div>
-            </main>
+            </motion.main>
 
             {/* Social Proof Stats - Mobile Only (Separated from Hero) */}
             <section className="md:hidden bg-white py-8 px-6 mt-6 md:mt-0 mb-10 md:mb-0">
@@ -498,7 +521,14 @@ export default function LandingPage() {
 
             {/* Why Choose SiMug Section - Smooth blue transition - Hidden on mobile */}
             <div className="hidden md:block relative -mt-36 mb-16 h-40 bg-gradient-to-b from-white via-blue-400/80 to-white"></div>
-            <section className="relative bg-white">
+            <motion.section 
+                id="tentang" 
+                className="relative bg-white"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Section Header */}
                     <div className="mb-8 lg:mb-15">
@@ -588,10 +618,16 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Benefits Section */}
-            <section className="py-20 md:py-10 lg:py-20 bg-white">
+            <motion.section 
+                className="py-20 md:py-10 lg:py-20 bg-white"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-6">
                         {/* Title & Description Items */}
@@ -807,10 +843,17 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Features Grid Section */}
-            <section className="py-5 lg:py-10 bg-white">
+            <motion.section 
+                id="fitur" 
+                className="py-5 lg:py-10 bg-white"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {/* Header */}
                     <div className="text-center mb-12">
@@ -1125,7 +1168,7 @@ export default function LandingPage() {
                         </button>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* New Section - Kami Terus Update */}
             <section className="py-10 lg:py-16 bg-[#EDF2FF]">
@@ -1211,7 +1254,14 @@ export default function LandingPage() {
             </section>
 
             {/* Course Listing Section */}
-            <section className="py-10 lg:py-10 bg-white relative overflow-hidden">
+            <motion.section 
+                id="course" 
+                className="py-10 lg:py-10 bg-white relative overflow-hidden"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 {/* Decorative Blue Circles and Rounded Squares */}
                 <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
                 <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
@@ -1309,7 +1359,7 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Cara Kerja SiMug Section - Hidden on Mobile */}
             <section className="hidden lg:block py-16 lg:py-20 bg-white relative overflow-hidden">
@@ -1466,7 +1516,7 @@ export default function LandingPage() {
             </section>
 
             {/* Testimonial Section */}
-            <section className="py-16 lg:py-20 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
+            <section id="reviews" className="py-16 lg:py-20 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
                 {/* Section Header */}
                 <div className="text-center mb-12 px-6 lg:px-12">
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
@@ -1480,28 +1530,28 @@ export default function LandingPage() {
                 </div>
 
                 {/* First Row - Scroll Right - Full Width */}
-                <div className="relative mb-6 overflow-hidden w-full">
-                    <div className="flex gap-4 lg:gap-6 animate-scroll-right-seamless">
+                <div className="relative mb-6 overflow-x-auto lg:overflow-hidden w-full scrollbar-hide">
+                    <div className="flex gap-3 lg:gap-6 animate-scroll-right-seamless lg:animate-scroll-right-seamless">
                         {/* Triple duplicate for seamless infinite loop */}
                         {[...Array(3)].map((_, setIndex) => (
-                            <div key={setIndex} className="flex gap-4 lg:gap-6 flex-shrink-0">
+                            <div key={setIndex} className="flex gap-3 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow1.map((testimonial) => (
                                     <div 
                                         key={`${setIndex}-${testimonial.id}`}
-                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-4 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-64 lg:w-80 flex-shrink-0`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-3 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-56 lg:w-80 flex-shrink-0`}
                                     >
-                                        <div className="flex items-center gap-2 lg:gap-3 mb-3 lg:mb-4">
+                                        <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
                                             <img 
                                                 src={testimonial.avatar} 
                                                 alt={testimonial.name}
-                                                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
+                                                className="w-9 h-9 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
                                             <div>
                                                 <h4 className="font-bold text-gray-900 text-sm lg:text-base">{testimonial.name}</h4>
                                                 <p className="text-xs lg:text-sm text-gray-500">{testimonial.timeAgo}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
+                                        <p className="text-gray-700 leading-relaxed text-xs lg:text-base">
                                             "{testimonial.testimonial}"
                                         </p>
                                     </div>
@@ -1512,28 +1562,28 @@ export default function LandingPage() {
                 </div>
 
                 {/* Second Row - Scroll Left - Full Width */}
-                <div className="relative overflow-hidden w-full">
-                    <div className="flex gap-4 lg:gap-6 animate-scroll-left-seamless">
+                <div className="relative overflow-x-auto lg:overflow-hidden w-full scrollbar-hide">
+                    <div className="flex gap-3 lg:gap-6 animate-scroll-left-seamless lg:animate-scroll-left-seamless">
                         {/* Triple duplicate for seamless infinite loop */}
                         {[...Array(3)].map((_, setIndex) => (
-                            <div key={setIndex} className="flex gap-4 lg:gap-6 flex-shrink-0">
+                            <div key={setIndex} className="flex gap-3 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow2.map((testimonial) => (
                                     <div 
                                         key={`${setIndex}-${testimonial.id}`}
-                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-4 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-64 lg:w-80 flex-shrink-0`}
+                                        className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-3 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-56 lg:w-80 flex-shrink-0`}
                                     >
-                                        <div className="flex items-center gap-2 lg:gap-3 mb-3 lg:mb-4">
+                                        <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
                                             <img 
                                                 src={testimonial.avatar} 
                                                 alt={testimonial.name}
-                                                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
+                                                className="w-9 h-9 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
                                             <div>
                                                 <h4 className="font-bold text-gray-900 text-sm lg:text-base">{testimonial.name}</h4>
                                                 <p className="text-xs lg:text-sm text-gray-500">{testimonial.timeAgo}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-700 leading-relaxed text-sm lg:text-base">
+                                        <p className="text-gray-700 leading-relaxed text-xs lg:text-base">
                                             "{testimonial.testimonial}"
                                         </p>
                                     </div>

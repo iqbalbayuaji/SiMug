@@ -652,4 +652,16 @@ html {
   .animate-scroll-left-seamless {
     animation: scroll-left-seamless 30s linear infinite;
   }
+  
+  /* Allow manual scroll on mobile while keeping animation smooth */
+  .overflow-x-auto.scrollbar-hide {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Pause animation on touch/scroll for better UX */
+  .overflow-x-auto.scrollbar-hide:active .animate-scroll-right-seamless,
+  .overflow-x-auto.scrollbar-hide:active .animate-scroll-left-seamless {
+    animation-play-state: paused;
+  }
 }

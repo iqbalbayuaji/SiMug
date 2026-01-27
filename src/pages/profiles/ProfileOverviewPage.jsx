@@ -7,9 +7,9 @@ import chatIcon from '../../assets/icon/profile/proicons_chat.svg'
 
 export default function ProfileOverviewPage({ userData, onUpdateClick }) {
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
       {/* Left Column */}
-      <div className="space-y-6 pr-8 border-r border-gray-200">
+      <div className="space-y-6 lg:pr-8 lg:border-r border-gray-200">
         {/* Level Card */}
         <div>
           <div className="flex items-center justify-between mb-4">
@@ -96,9 +96,9 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
                 <div className="w-6 h-6 rounded-full border-4 border-[#4177FF] bg-white flex-shrink-0 z-10"></div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-2">Tujuan Utama</p>
-                  <div className="flex items-center justify-between p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
-                    <span className="font-semibold text-gray-900">{userData.preferences.mainGoal}</span>
-                    <FaChevronRight className="text-gray-400" />
+                  <div className="flex items-center justify-between p-3 lg:p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
+                    <span className="font-semibold text-gray-900 text-sm lg:text-base">{userData.preferences.mainGoal}</span>
+                    <FaChevronRight className="text-gray-400 text-sm" />
                   </div>
                 </div>
               </div>
@@ -110,9 +110,9 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
                 <div className="w-6 h-6 rounded-full border-4 border-[#4177FF] bg-white flex-shrink-0 z-10"></div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-2">Minat Utama</p>
-                  <div className="flex items-center justify-between p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
-                    <span className="font-semibold text-gray-900">{userData.preferences.secondaryGoal}</span>
-                    <FaChevronRight className="text-gray-400" />
+                  <div className="flex items-center justify-between p-3 lg:p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
+                    <span className="font-semibold text-gray-900 text-sm lg:text-base">{userData.preferences.secondaryGoal}</span>
+                    <FaChevronRight className="text-gray-400 text-sm" />
                   </div>
                 </div>
               </div>
@@ -123,10 +123,10 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
               <div className="flex items-start gap-4">
                 <div className="w-6 h-6 rounded-full border-4 border-[#4177FF] bg-white flex-shrink-0 z-10"></div>
                 <div className="flex-1">
-                  <p className="text-base text-gray-500 mb-2">Metode Belajar</p>
-                  <div className="flex items-center justify-between p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
-                    <span className="font-semibold text-gray-900">{userData.preferences.learningMethod}</span>
-                    <FaChevronRight className="text-gray-400" />
+                  <p className="text-sm text-gray-500 mb-2">Metode Belajar</p>
+                  <div className="flex items-center justify-between p-3 lg:p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
+                    <span className="font-semibold text-gray-900 text-sm lg:text-base">{userData.preferences.learningMethod}</span>
+                    <FaChevronRight className="text-gray-400 text-sm" />
                   </div>
                 </div>
               </div>

@@ -98,24 +98,24 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           {/* Left Sidebar - Profile Info */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 w-full">
             {/* Combined Avatar & Personal Information Card */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-4 lg:mb-6 w-full">
               {/* Avatar Upload Section */}
               <div className="flex items-center gap-4 pb-6 border-b border-gray-200">
                 <div className="relative flex-shrink-0">
                   <img 
                     src={userData.avatar} 
                     alt={userData.name}
-                    className="w-24 h-24 rounded-full"
+                    className="w-20 h-20 lg:w-24 lg:h-24 rounded-full"
                   />
-                  <button className="absolute bottom-0 right-0 w-8 h-8 bg-[#4177FF] rounded-full flex items-center justify-center text-white hover:bg-[#3461D9] transition-colors">
+                  <button className="absolute bottom-0 right-0 w-7 h-7 lg:w-8 lg:h-8 bg-[#4177FF] rounded-full flex items-center justify-center text-white hover:bg-[#3461D9] transition-colors">
                     <FaEdit className="text-xs" />
                   </button>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <button className="w-fit px-3 py-1.5 border-2 border-gray-300 text-gray-900 text-sm font-regular rounded-xl hover:border-[#4177FF] hover:text-[#4177FF] transition-colors mb-2">
                     Upload foto baru
                   </button>
@@ -140,8 +140,8 @@ export default function ProfilePage() {
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <FaUser className="text-[#4177FF]" />
                     </div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-gray-900">{userData.name}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-gray-900 truncate">{userData.name}</p>
                       <p className="text-sm text-gray-500">Nama Lengkap</p>
                     </div>
                   </div>
@@ -150,8 +150,8 @@ export default function ProfilePage() {
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <FaUser className="text-[#4177FF]" />
                     </div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-gray-900">{userData.username}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-gray-900 truncate">{userData.username}</p>
                       <p className="text-sm text-gray-500">Username</p>
                     </div>
                   </div>
@@ -160,8 +160,8 @@ export default function ProfilePage() {
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <FaEnvelope className="text-[#4177FF]" />
                     </div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-gray-900">{userData.email}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-gray-900 truncate">{userData.email}</p>
                       <p className="text-sm text-gray-500">Email</p>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export default function ProfilePage() {
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <FaPhone className="text-[#4177FF]" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <p className="font-semibold text-gray-900">{userData.phone}</p>
                       <p className="text-sm text-gray-500">No. Telp</p>
                     </div>
@@ -180,7 +180,7 @@ export default function ProfilePage() {
                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
                       <FaMapMarkerAlt className="text-[#4177FF]" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <p className="font-semibold text-gray-900">{userData.location}</p>
                       <p className="text-sm text-gray-500">Lokasi</p>
                     </div>
@@ -190,7 +190,7 @@ export default function ProfilePage() {
             </div>
 
             {/* MugCoin Card */}
-            <div className="bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-2xl shadow-lg p-6 text-white">
+            <div className="bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-2xl shadow-lg p-6 text-white w-full">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-medium opacity-90">Total MugCoin</span>
                 <div className="flex items-center gap-2">
