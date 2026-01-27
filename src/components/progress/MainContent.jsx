@@ -36,19 +36,19 @@ export default function MainContent({ recentLearning }) {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-            Pembelajaran Terakhir <span className="text-gray-400 font-normal text-base">3 topik</span>
+            Pembelajaran Terakhir <span className="hidden lg:block text-gray-400 font-normal text-base">3 topik</span>
           </h2>
-          <button className="text-[#4177FF] text-sm font-medium hover:underline">
+          <button className="cursor-pointer text-[#4177FF] text-sm font-medium hover:underline">
             Lihat semua
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none pb-4 sm:pb-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {recentLearning.map((course) => (
-            <div 
-              key={course.id} 
+            <div
+              key={course.id}
               onClick={() => handleCourseClick(course.id)}
-              className="bg-white rounded-2xl p-1.5 shadow-sm hover:shadow-md transition-shadow border border-[#CACACA] cursor-pointer"
+              className="cursor-pointer w-[85%] sm:w-auto flex-shrink-0 sm:flex-shrink snap-center bg-white rounded-2xl p-1.5 shadow-sm hover:shadow-md transition-shadow border border-[#CACACA]"
             >
               <div className="relative h-40 mb-3">
                 <img
@@ -56,7 +56,7 @@ export default function MainContent({ recentLearning }) {
                   alt={course.title}
                   className="w-full h-full object-cover rounded-xl"
                 />
-                <button className="absolute top-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors">
+                <button className="cursor-pointer absolute top-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                   </svg>
@@ -98,7 +98,7 @@ export default function MainContent({ recentLearning }) {
               </div>
               <h3 className="font-bold text-gray-900">Saran dari SiMug</h3>
             </div>
-            <button className="bg-[#E5EDFF] text-[#4177FF] px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-[#D5DDFF] transition-colors">
+            <button className="cursor-pointer bg-[#E5EDFF] text-[#4177FF] px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-[#D5DDFF] transition-colors">
               Update
             </button>
           </div>
