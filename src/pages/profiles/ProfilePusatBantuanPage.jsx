@@ -72,19 +72,18 @@ export default function ProfilePusatBantuanPage() {
           </div>
 
           {/* Note & Submit Button */}
-          <div className="flex items-center justify-between pt-2">
-            <p className="text-xs text-gray-500">
-              * Keluhan dan saran akan kami terima dan kami<br />
-              upayakan update terbaru untuk laporan Kamu.
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 pt-2">
+            <p className="text-xs text-gray-500 pb-2 md:pb-0">
+              * Keluhan dan saran akan kami terima dan kami upayakan update terbaru untuk laporan Kamu.
             </p>
             <button
               type="submit"
-              className="flex items-center gap-2 px-6 py-3 bg-[#4177FF] text-white font-semibold rounded-lg hover:bg-[#3461D9] transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-[#4177FF] text-white font-semibold rounded-lg hover:bg-[#3461D9] transition-colors w-full lg:w-auto"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-              </svg>
               Submit
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </button>
           </div>
         </form>

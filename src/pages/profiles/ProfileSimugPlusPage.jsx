@@ -38,18 +38,16 @@ export default function ProfileSimugPlusPage() {
   return (
     <div className="space-y-6">
       {/* Header with Upgrade Button */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <h2 className="text-xl font-bold text-gray-900">Tingkatkan Akun Kamu</h2>
-            <span className="px-3 py-1 bg-blue-100 text-[#4177FF] text-xs font-semibold rounded-full flex items-center gap-1">
-              <FaCrown className="text-xs" />
-              Mentorship Acc
-            </span>
-          </div>
+          <span className="px-3 py-1 bg-blue-100 text-[#4177FF] text-xs font-semibold rounded-full flex items-center gap-1 w-fit mb-2">
+            <FaCrown className="text-xs" />
+            Mentorship Acc
+          </span>
+          <h2 className="text-xl font-bold text-gray-900 mb-2">Tingkatkan Akun Kamu</h2>
           <p className="text-gray-600">Subscription SiMug bagi kamu yang berminat!</p>
         </div>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-[#4177FF] text-white font-semibold rounded-lg hover:bg-[#3461D9] hover:shadow-lg hover:scale-105 transition-all duration-300">
+        <button className="flex items-center justify-center gap-2 px-5 py-2.5 bg-[#4177FF] text-white font-semibold rounded-lg hover:bg-[#3461D9] hover:shadow-lg hover:scale-105 transition-all duration-300 w-full lg:w-auto">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
             <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
