@@ -4,6 +4,64 @@ import ForumHeader from '../components/forum/ForumHeader';
 import ThreadItem from '../components/forum/ThreadItem';
 import { useSearchParams } from 'react-router-dom';
 
+// Mock data for search results (articles)
+const articleResults = [
+    {
+        id: 1,
+        title: 'Tubuh Sehat, Pikiran Kuat: Hubungan Olahraga dengan Kesehatan Mental Dalam Kehidupan Sehari-hari',
+        image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400',
+        likes: 203,
+        views: 512,
+        shares: 23,
+        readTime: '5 menit baca'
+    },
+    {
+        id: 2,
+        title: 'Workout Ringan, Manfaat Besar: Cara Menjaga Kebugaran di Tengah Aktivitas Padat Sebagai Seorang Mahasiswa',
+        image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400',
+        likes: 189,
+        views: 445,
+        shares: 18,
+        readTime: '4 menit baca'
+    },
+    {
+        id: 3,
+        title: 'Lebih dari Sekadar Fisik: Peran Olahraga dalam Mengelola Stres dan Emosi Dalam Keseharian Kita',
+        image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400',
+        likes: 245,
+        views: 678,
+        shares: 31,
+        readTime: '6 menit baca'
+    },
+    {
+        id: 4,
+        title: 'Konsistensi Lebih Penting dari Intensitas Olahraga: Kunci Hidup Sehat Jangka Panjang',
+        image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400',
+        likes: 167,
+        views: 523,
+        shares: 15,
+        readTime: '5 menit baca'
+    },
+    {
+        id: 5,
+        title: 'Mengenal Tanda Tubuh Lelah: Kapan Harus Istirahat dan Kapan Harus Bergerak',
+        image: 'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=400',
+        likes: 198,
+        views: 601,
+        shares: 27,
+        readTime: '4 menit baca'
+    },
+    {
+        id: 6,
+        title: 'Olahraga sebagai Gaya Hidup: Langkah Sederhana Menuju Kesehatan Menyeluruh',
+        image: 'https://images.unsplash.com/photo-1483721310020-03333e577078?w=400',
+        likes: 221,
+        views: 589,
+        shares: 29,
+        readTime: '7 menit baca'
+    }
+];
+
 // Mock data for search results (threads)
 const searchResults = [
     {
@@ -135,6 +193,8 @@ export default function ForumSearchPage() {
 
     const query = searchParams.get('q') || '';
     const [activeTab, setActiveTab] = useState('Rekomendasi');
+    const [contentType, setContentType] = useState('Threads');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const tabs = ['Rekomendasi', 'Terpopuler', 'Terbaru'];
 
     const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
@@ -151,6 +211,11 @@ export default function ForumSearchPage() {
         }
     }, [activeTab]);
 
+    const handleContentTypeSelect = (type) => {
+        setContentType(type);
+        setIsDropdownOpen(false);
+    };
+
     return (
         <div className="min-h-screen bg-white font-sans text-gray-900">
             <Navbar />
@@ -160,18 +225,18 @@ export default function ForumSearchPage() {
                 className="animate-slideInLeft"
             />
 
-            <div className="max-w-7xl mx-auto pt-2 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_330px] gap-8">
+            <div className="max-w-7xl mx-auto pt-2 pb-8 px-4 lg:px-0 grid grid-cols-1 lg:grid-cols-[1fr_330px] gap-8">
                 {/* Main Content: Search Results */}
                 <main className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden animate-slideUp" style={{ animationDelay: '200ms' }}>
                     {/* Tabs / Filter */}
-                    <div className="border-b border-gray-200 px-6 py-4 flex justify-between items-center bg-white">
-                        <div className="relative flex gap-6 text-sm font-medium text-gray-500">
+                    <div className="border-b border-gray-200 px-3 lg:px-6 py-3 lg:py-4 flex justify-between items-center bg-white">
+                        <div className="relative flex gap-3 lg:gap-6 text-xs lg:text-sm font-medium text-gray-500">
                             {tabs.map((tab, index) => (
                                 <button
                                     key={tab}
                                     ref={el => tabsRef.current[index] = el}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`cursor-pointer pb-4 -mb-4 px-1 transition-colors duration-300 ${activeTab === tab
+                                    className={`cursor-pointer pb-3 lg:pb-4 -mb-3 lg:-mb-4 px-1 transition-colors duration-300 ${activeTab === tab
                                         ? 'text-blue-500 font-semibold'
                                         : 'hover:text-gray-800'
                                         }`}
@@ -181,7 +246,7 @@ export default function ForumSearchPage() {
                             ))}
                             {/* Sliding Indicator */}
                             <div
-                                className="absolute bottom-[-17px] h-0.5 bg-blue-500 rounded-t-full transition-all duration-300 ease-out"
+                                className="absolute bottom-[-13px] lg:bottom-[-17px] h-0.5 bg-blue-500 rounded-t-full transition-all duration-300 ease-out"
                                 style={{
                                     left: `${indicatorStyle.left}px`,
                                     width: `${indicatorStyle.width}px`
@@ -189,12 +254,43 @@ export default function ForumSearchPage() {
                             />
                         </div>
                         <div className="relative">
-                            <button className="cursor-pointer text-blue-500 text-sm font-medium flex items-center gap-1 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors">
-                                Threads
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button 
+                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                className="cursor-pointer text-blue-500 text-xs lg:text-sm font-medium flex items-center gap-1 bg-blue-50 px-2 lg:px-3 py-1 lg:py-1.5 rounded-lg hover:bg-blue-100 transition-colors"
+                            >
+                                {contentType}
+                                <svg className={`w-3 lg:w-4 h-3 lg:h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </button>
+                            
+                            {/* Dropdown Menu */}
+                            {isDropdownOpen && (
+                                <>
+                                    {/* Backdrop */}
+                                    <div 
+                                        className="fixed inset-0 z-10" 
+                                        onClick={() => setIsDropdownOpen(false)}
+                                    ></div>
+                                    
+                                    {/* Menu */}
+                                    <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-20 min-w-[140px]">
+                                        {['Threads', 'Artikel'].map((type, index) => (
+                                            <button
+                                                key={type}
+                                                onClick={() => handleContentTypeSelect(type)}
+                                                className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors ${
+                                                    contentType === type
+                                                        ? 'bg-blue-50 text-blue-600'
+                                                        : 'text-gray-700 hover:bg-gray-50'
+                                                } ${index !== 1 ? 'border-b border-gray-100' : ''}`}
+                                            >
+                                                {type}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -203,50 +299,50 @@ export default function ForumSearchPage() {
                         {searchResults.map((thread, index) => (
                             <div
                                 key={thread.id}
-                                className="p-6 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors cursor-pointer group"
+                                className="p-3 lg:p-6 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors cursor-pointer group"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
-                                <div className="flex gap-4">
+                                <div className="flex gap-2.5 lg:gap-4">
                                     {/* Avatar */}
-                                    <div className={`w-12 h-12 ${thread.avatarColor} rounded-full flex-shrink-0 mt-1`}></div>
+                                    <div className={`w-9 h-9 lg:w-12 lg:h-12 ${thread.avatarColor} rounded-full flex-shrink-0 mt-1`}></div>
 
                                     {/* Content */}
-                                    <div className="flex-1">
+                                    <div className="flex-1 min-w-0">
                                         {/* Metadata Row */}
-                                        <div className="flex items-center gap-2 text-xs text-gray-500 mb-2 flex-wrap">
+                                        <div className="flex items-center gap-1.5 lg:gap-2 text-[10px] lg:text-xs text-gray-500 mb-1.5 lg:mb-2 flex-wrap">
                                             <span>Pertanyaan oleh <span className="text-gray-700 font-medium">{thread.username}</span></span>
                                             <span>•</span>
                                             <span>{thread.time}</span>
-                                            <span>•</span>
-                                            <button className="text-blue-600 font-bold hover:underline">Ikuti</button>
+                                            <span className="hidden lg:inline">•</span>
+                                            <button className="hidden lg:inline text-blue-600 font-bold hover:underline">Ikuti</button>
                                         </div>
 
                                         {/* Title / Question */}
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-snug group-hover:text-blue-600 transition-colors">
+                                        <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-2 lg:mb-3 leading-snug group-hover:text-blue-600 transition-colors">
                                             {thread.topic}
                                         </h3>
 
                                         {/* Actions / Stats Row */}
-                                        <div className="flex items-center gap-2 text-xs font-medium">
-                                            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                                        <div className="flex items-center gap-1.5 lg:gap-2 text-[10px] lg:text-xs font-medium flex-wrap">
+                                            <span className="bg-blue-100 text-blue-600 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full whitespace-nowrap">
                                                 {thread.answerCount}
                                             </span>
-                                            <div className="flex items-center gap-4 px-1 text-gray-500">
-                                                <button className="flex items-center gap-1.5 hover:text-gray-700 border border-gray-200 px-3 py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
-                                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div className="flex items-center gap-1.5 lg:gap-4 text-gray-500">
+                                                <button className="flex items-center gap-1 hover:text-gray-700 border border-gray-200 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
+                                                    <svg className="w-3 lg:w-3.5 h-3 lg:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                                                     </svg>
                                                     {thread.likes}
                                                 </button>
-                                                <button className="flex items-center gap-1.5 hover:text-gray-700 border border-gray-200 px-3 py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
-                                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <button className="flex items-center gap-1 hover:text-gray-700 border border-gray-200 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
+                                                    <svg className="w-3 lg:w-3.5 h-3 lg:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                     </svg>
                                                     {thread.views || 512}
                                                 </button>
-                                                <button className="flex items-center gap-1.5 hover:text-gray-700 border border-gray-200 px-3 py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
-                                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <button className="flex items-center gap-1 hover:text-gray-700 border border-gray-200 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
+                                                    <svg className="w-3 lg:w-3.5 h-3 lg:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                                                     </svg>
                                                     {thread.shares || 23}

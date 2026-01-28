@@ -1,35 +1,11 @@
 import React, { useState } from 'react';
 
-const ThreadItem = ({ thread, isFirst = false }) => {
-    const [activeTab, setActiveTab] = useState('Rekomendasi');
-    const tabs = ['Rekomendasi', 'Populer', 'Terbaru'];
-
+const ThreadItem = ({ thread }) => {
     return (
         <div className="bg-white rounded-xl lg:p-6 p-4 shadow-sm border border-gray-100 mb-6 last:mb-0">
-            {isFirst && (
-                <div className="flex justify-end lg:hidden mb-3">
-                    <div className="relative">
-                        <span className="text-blue-600 text-sm font-semibold flex items-center gap-1.5 bg-blue-50/50 px-3 py-1.5 rounded-full">
-                            {activeTab}
-                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </span>
-                        <select
-                            value={activeTab}
-                            onChange={(e) => setActiveTab(e.target.value)}
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        >
-                            {tabs.map((tab) => (
-                                <option key={tab} value={tab}>{tab}</option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-            )}
-            <div className="grid grid-cols-[40px_1fr] gap-x-4">
+            <div className="grid grid-cols-[32px_1fr] lg:grid-cols-[40px_1fr] gap-x-3 lg:gap-x-4">
                 {/* Row 1: Avatar & Header */}
-                <div className="w-10 h-10 shrink-0">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 shrink-0">
                     {thread.avatar ? (
                         <img 
                             src={thread.avatar} 
@@ -55,7 +31,7 @@ const ThreadItem = ({ thread, isFirst = false }) => {
                 <div className="relative flex justify-center">
                     <div className="w-[2px] bg-gray-100 h-full"></div>
                 </div>
-                <div className="bg-blue-50/50 rounded-lg p-4 mb-4">
+                <div className="bg-blue-50/50 rounded-lg p-3 lg:p-4 mb-4">
                     <div className="text-xs text-gray-500 font-semibold mb-1">
                         Pertanyaan oleh <span className="text-gray-700">{thread.originalQuestion.author}</span>:
                     </div>
@@ -75,7 +51,7 @@ const ThreadItem = ({ thread, isFirst = false }) => {
                 </div>
             </div>
             {/* Footer Stats (Optional - based on image) */}
-            <div className="flex items-center gap-4 mt-4 ml-[56px] text-xs font-medium text-gray-500">
+            <div className="flex items-center gap-4 mt-4 ml-[44px] lg:ml-[56px] text-xs font-medium text-gray-500">
 
                 {/* Placeholder buttons based on design, can be dynamic later */}
                 <div className="flex items-center lg:gap-4 gap-2 pr-2">
