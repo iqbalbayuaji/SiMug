@@ -256,14 +256,14 @@ export default function LandingPage() {
                 <div className="flex flex-col lg:flex-col items-center justify-between relative">
                     {/* Decorative Icon Spans - Hidden on mobile */}
                     {/* Green Icon - Top Left */}
-                    <span className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12 animate-fade-in-up">
+                    <span className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12">
                         <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </span>
 
                     {/* Orange Icon - Top Right */}
-                    <span className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12 animate-fade-in-up delay-100">
+                    <span className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12">
                         <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
@@ -281,8 +281,8 @@ export default function LandingPage() {
 
                         {/* Header - Desktop Version (separated lines) */}
                         <h1 className="hidden md:flex text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight flex-col items-center gap-1 md:gap-3 lg:gap-3">
-                            <span className="text-blue-600 animate-fade-in-up">Usaha Aja Gaakan Cukup</span>
-                            <div className='flex items-center lg:gap-3 animate-fade-in-up delay-100'>
+                            <span className="text-blue-600">Usaha Aja Gaakan Cukup</span>
+                            <div className='flex items-center lg:gap-3'>
                                 <span className="text-gray-900">Tanpa Arah yang Jelas</span>
                                 <span className="inline-flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-300 to-blue-600 rounded-xl lg:rounded-2xl ml-3 shadow-lg shadow-blue-400/70 -rotate-12">
                                     <FaArrowTrendUp className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
@@ -300,23 +300,23 @@ export default function LandingPage() {
                                 <span className="font-semibold text-sm">#1 Platform Edukasi Kesehatan</span>
                             </div>
 
-                            <h1 className="text-3xl font-bold leading-tight text-center animate-fade-in-up">
+                            <h1 className="text-3xl font-bold leading-tight text-center">
                                 <span className="text-blue-600">Usaha Aja Gaakan Cukup </span>
                                 <span className="text-gray-900">Tanpa Arah yang Jelas</span>
                             </h1>
                             
-                            <p className="text-gray-900 text-base font-normal text-center leading-relaxed animate-fade-in-up delay-200">
+                            <p className="text-gray-900 text-base font-normal text-center leading-relaxed">
                                 Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
                             </p>
                         </div>
 
                         {/* Description - Desktop */}
-                        <p className="hidden md:block text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 md:mt-2 leading-relaxed animate-fade-in-up delay-200">
+                        <p className="hidden md:block text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 md:mt-2 leading-relaxed">
                             Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
                         </p>
 
                         {/* CTA Button - Mobile with large margin */}
-                        <div className="md:hidden mt-8 animate-fade-in-up delay-300 mb-16 md:mb-0">
+                        <div className="md:hidden mt-8 mb-16 md:mb-0">
                             <Link
                                 to="/register"
                                 className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
@@ -329,7 +329,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* CTA Button - Desktop */}
-                        <div className="hidden md:block pt-8 md:pt-15 pb-8 md:pb-10 animate-fade-in-up delay-300">
+                        <div className="hidden md:block pt-8 md:pt-15 pb-8 md:pb-10">
                             <Link
                                 to="/register"
                                 className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
