@@ -3,7 +3,7 @@ export default function ChatHeader({ userName = "Rizki Fiko" }) {
         <div className="text-center lg:mb-10 mb-6 relative z-10 animate-fadeIn">
             <div className="inline-block mb-10 animate-float">
                 <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium animate-slideDown">
-                    AI berbasis <span className="font-bold">Groq</span>
+                    AI berbasis <span className="font-bold">LLaMA 3.1</span>
                 </span>
             </div>
 

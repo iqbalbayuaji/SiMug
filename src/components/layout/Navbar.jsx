@@ -222,7 +222,7 @@ export default function Navbar() {
                 {/* Course Dropdown */}
                 {item.name === "Course" && showCourseDropdown && (
                   <div
-                    className="fixed left-0 right-0 top-[73px] bg-white shadow-2xl border-t border-gray-100 z-50"
+                    className="fixed left-0 right-0 top-[73px] bg-white shadow-2xl border-t border-gray-100 z-[60]"
                     onMouseLeave={() => {
                       setShowCourseDropdown(false)
                       setHoveredMenu(null)
@@ -277,7 +277,7 @@ export default function Navbar() {
                 {/* Events Dropdown */}
                 {item.name === "Events" && showEventsDropdown && (
                   <div
-                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[900px] bg-white shadow-2xl rounded-3xl border border-gray-100 z-50"
+                    className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[900px] bg-white shadow-2xl rounded-3xl border border-gray-100 z-60"
                     onMouseLeave={() => {
                       setShowEventsDropdown(false)
                       setHoveredMenu(null)
