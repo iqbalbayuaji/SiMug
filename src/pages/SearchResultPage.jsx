@@ -92,7 +92,7 @@ export default function SearchResultPage() {
         <div className="px-4 sm:px-8 lg:px-12 py-6 relative z-10">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
             {/* Search Bar - Left Aligned with Fixed Width */}
-            <div className="w-full sm:max-w-[600px] bg-white rounded-full pl-5 pr-2 py-1.5 flex items-center gap-3 shadow-lg">
+            <div className="w-full sm:max-w-[600px] bg-white rounded-full pl-5 pr-2 py-2 sm:py-1.5 flex items-center gap-3 shadow-lg">
               <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
@@ -107,9 +107,9 @@ export default function SearchResultPage() {
                 {/* Filter Button - Mobile Only (Inside Search Bar) */}
                 <button 
                   type="button"
-                  className="sm:hidden w-10 h-10 bg-[#4177FF] rounded-full flex items-center justify-center flex-shrink-0"
+                  className="sm:hidden w-9 h-9 bg-[#4177FF] rounded-full flex items-center justify-center flex-shrink-0"
                 >
-                  <img src={filterIcon} alt="Filter" className="w-5 h-5" />
+                  <img src={filterIcon} alt="Filter" className="w-4 h-4" />
                 </button>
                 {/* Cari Button - Desktop Only */}
                 <button 
