@@ -1,6 +1,7 @@
 export default function ChatAnimations() {
     return (
-        <style jsx>{`
+        <style>{`
+
             @keyframes fadeIn {
                 from {
                     opacity: 0;

@@ -92,7 +92,7 @@ export default function SearchResultPage() {
         <div className="px-4 sm:px-8 lg:px-12 py-6 relative z-10">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
             {/* Search Bar - Left Aligned with Fixed Width */}
-            <div className="w-full sm:max-w-[600px] bg-white rounded-full pl-5 pr-2 py-1.5 flex items-center gap-3 shadow-lg">
+            <div className="w-full sm:max-w-[600px] bg-white rounded-full pl-5 pr-2 py-2 sm:py-1.5 flex items-center gap-3 shadow-lg">
               <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
@@ -104,17 +104,25 @@ export default function SearchResultPage() {
                   placeholder="Workout pemula"
                   className="flex-1 border-none focus:outline-none text-gray-900 text-base"
                 />
+                {/* Filter Button - Mobile Only (Inside Search Bar) */}
+                <button 
+                  type="button"
+                  className="sm:hidden w-9 h-9 bg-[#4177FF] rounded-full flex items-center justify-center flex-shrink-0"
+                >
+                  <img src={filterIcon} alt="Filter" className="w-4 h-4" />
+                </button>
+                {/* Cari Button - Desktop Only */}
                 <button 
                   type="submit"
-                  className="bg-[#4177FF] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#3461D9] transition-colors text-sm flex-shrink-0"
+                  className="hidden sm:flex bg-[#4177FF] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#3461D9] transition-colors text-sm flex-shrink-0"
                 >
                   Cari
                 </button>
               </form>
             </div>
 
-            {/* Filter Button - Right Side */}
-            <button className="bg-white text-gray-900 pl-2 pr-5 py-1.5 rounded-full font-semibold hover:bg-gray-50 transition-colors flex items-center gap-2 shadow-lg">
+            {/* Filter Button - Desktop Only (Outside Search Bar) */}
+            <button className="hidden sm:flex bg-white text-gray-900 pl-2 pr-5 py-1.5 rounded-full font-semibold hover:bg-gray-50 transition-colors items-center gap-2 shadow-lg">
               <div className="w-8 h-8 bg-[#4177FF] rounded-full flex items-center justify-center">
                 <img src={filterIcon} alt="Filter" className="w-5 h-5" />
               </div>
@@ -128,7 +136,7 @@ export default function SearchResultPage() {
       <div className="bg-white rounded-t-[50px] relative -mt-12">
         <div className="mx-auto px-4 sm:px-8 lg:px-12 py-12">
         {/* Results Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-0 mb-8">
           <div>
             <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
               Hasil untuk "<span className="text-[#4177FF]">{query}</span>"
@@ -137,12 +145,12 @@ export default function SearchResultPage() {
           </div>
 
           {/* Tab Filters */}
-          <div className="bg-[#F4F4F4] rounded-lg p-1 flex items-center gap-1">
+          <div className="bg-[#F4F4F4] rounded-lg p-1 flex items-center gap-1 w-fit max-w-full lg:w-auto overflow-x-auto scrollbar-hide">
             {["Rekomendasi", "Populer", "Terbaru"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+                className={`px-3 lg:px-6 py-1.5 lg:py-2 rounded-lg font-semibold transition-colors whitespace-nowrap text-xs lg:text-base ${
                   activeTab === tab
                     ? "bg-[#4177FF] text-white"
                     : "bg-transparent text-gray-700 hover:bg-gray-200"
@@ -155,7 +163,7 @@ export default function SearchResultPage() {
         </div>
 
         {/* Course Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
           {paginatedCourses.map((course) => (
             <div 
               key={course.id} 
@@ -179,7 +187,7 @@ export default function SearchResultPage() {
 
               {/* Course Info */}
               <div className="px-5 pb-5">
-                <h3 className="font-bold text-base text-gray-900 leading-tight line-clamp-2 min-h-[48px] mb-2">
+                <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 min-h-[48px] mb-2">
                   {course.title}
                 </h3>
                 <p className="text-xs text-gray-400 mb-3">

@@ -4,6 +4,64 @@ import ForumHeader from '../components/forum/ForumHeader';
 import ThreadItem from '../components/forum/ThreadItem';
 import { useSearchParams } from 'react-router-dom';
 
+// Mock data for search results (articles)
+const articleResults = [
+    {
+        id: 1,
+        title: 'Tubuh Sehat, Pikiran Kuat: Hubungan Olahraga dengan Kesehatan Mental Dalam Kehidupan Sehari-hari',
+        image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400',
+        likes: 203,
+        views: 512,
+        shares: 23,
+        readTime: '5 menit baca'
+    },
+    {
+        id: 2,
+        title: 'Workout Ringan, Manfaat Besar: Cara Menjaga Kebugaran di Tengah Aktivitas Padat Sebagai Seorang Mahasiswa',
+        image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400',
+        likes: 189,
+        views: 445,
+        shares: 18,
+        readTime: '4 menit baca'
+    },
+    {
+        id: 3,
+        title: 'Lebih dari Sekadar Fisik: Peran Olahraga dalam Mengelola Stres dan Emosi Dalam Keseharian Kita',
+        image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400',
+        likes: 245,
+        views: 678,
+        shares: 31,
+        readTime: '6 menit baca'
+    },
+    {
+        id: 4,
+        title: 'Konsistensi Lebih Penting dari Intensitas Olahraga: Kunci Hidup Sehat Jangka Panjang',
+        image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400',
+        likes: 167,
+        views: 523,
+        shares: 15,
+        readTime: '5 menit baca'
+    },
+    {
+        id: 5,
+        title: 'Mengenal Tanda Tubuh Lelah: Kapan Harus Istirahat dan Kapan Harus Bergerak',
+        image: 'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=400',
+        likes: 198,
+        views: 601,
+        shares: 27,
+        readTime: '4 menit baca'
+    },
+    {
+        id: 6,
+        title: 'Olahraga sebagai Gaya Hidup: Langkah Sederhana Menuju Kesehatan Menyeluruh',
+        image: 'https://images.unsplash.com/photo-1483721310020-03333e577078?w=400',
+        likes: 221,
+        views: 589,
+        shares: 29,
+        readTime: '7 menit baca'
+    }
+];
+
 // Mock data for search results (threads)
 const searchResults = [
     {
@@ -166,6 +224,8 @@ export default function ForumSearchPage() {
 
     const query = searchParams.get('q') || '';
     const [activeTab, setActiveTab] = useState('Rekomendasi');
+    const [contentType, setContentType] = useState('Threads');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const tabs = ['Rekomendasi', 'Terpopuler', 'Terbaru'];
 
     const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
@@ -200,6 +260,11 @@ export default function ForumSearchPage() {
         }
     }, [activeTab]);
 
+    const handleContentTypeSelect = (type) => {
+        setContentType(type);
+        setIsDropdownOpen(false);
+    };
+
     return (
         <div className="min-h-screen bg-white font-sans text-gray-900">
             <Navbar />
@@ -209,7 +274,7 @@ export default function ForumSearchPage() {
                 className="animate-slideInLeft"
             />
 
-            <div className="max-w-7xl mx-auto pt-2 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_330px] gap-8">
+            <div className="max-w-7xl mx-auto pt-2 pb-8 px-4 lg:px-0 grid grid-cols-1 lg:grid-cols-[1fr_330px] gap-8">
                 {/* Main Content: Search Results */}
                 <main className="bg-white lg:rounded-xl rounded-xl shadow-sm border border-gray-100 overflow-hidden animate-slideUp" style={{ animationDelay: '200ms' }}>
                     {/* Tabs / Filter */}

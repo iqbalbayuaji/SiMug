@@ -18,9 +18,8 @@ export default function ChatConversation({ messages }) {
 
     return (
         <div className="mb-6 animate-slideUp animation-delay-600">
-            {/* Chat Container */}
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50/30 rounded-3xl shadow-lg border border-gray-200 p-4 sm:p-6 max-h-[500px] overflow-y-auto custom-scrollbar">
-                {/* Messages */}
+            {/* Messages without container */}
+            <div className="max-h-[500px] overflow-y-auto scrollbar-hide">
                 <div className="space-y-4">
                     {messages.map((msg, index) => (
                         <ChatMessage
@@ -33,17 +32,6 @@ export default function ChatConversation({ messages }) {
                     <div ref={messagesEndRef} />
                 </div>
             </div>
-
-            {/* Typing Indicator (optional, can be shown when bot is typing) */}
-            {/* <div className="flex justify-start mt-4">
-                <div className="flex items-center space-x-2 px-4 py-3 bg-white rounded-2xl shadow-md border border-gray-200">
-                    <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
-                </div>
-            </div> */}
         </div>
     );
 }

@@ -86,7 +86,7 @@ const RelatedTopics = () => {
 
 export default function ForumSidebar() {
     return (
-        <div className="w-80 shrink-0 flex flex-col gap-4 h-full overflow-hidden">
+        <div className="w-80 shrink-0 flex flex-col gap-4 sticky top-24 self-start">
             {/* Container for fixed styling if needed within the sticky wrapper */}
             <ForumSuggestions />
             <RelatedTopics />
