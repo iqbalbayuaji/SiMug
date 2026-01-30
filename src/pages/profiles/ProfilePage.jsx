@@ -98,10 +98,10 @@ export default function ProfilePage() {
         <div className="lg:hidden absolute top-4 left-4 right-4 flex items-center justify-between z-10">
           <h1 className="text-lg font-semibold text-white">Profil Pengguna</h1>
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 p-2.5 bg-white/90 backdrop-blur-sm border border-white/50 text-gray-700 rounded-lg hover:bg-white transition-colors shadow-md">
+            <button className="cursor-pointer flex items-center justify-center w-10 h-10 bg-white/90 backdrop-blur-sm border border-white/50 text-gray-700 rounded-lg hover:bg-white transition-colors shadow-md">
               <FaCog className="text-blue-500 text-sm" />
             </button>
-            <button className="flex items-center gap-2 p-2.5 bg-white/90 backdrop-blur-sm border border-white/50 text-[#4177FF] rounded-lg hover:bg-white transition-colors shadow-md" onClick={() => setShowBannerModal(true)}>
+            <button className="cursor-pointer flex items-center justify-center w-10 h-10 bg-white/90 backdrop-blur-sm border border-white/50 text-[#4177FF] rounded-lg hover:bg-white transition-colors shadow-md" onClick={() => setShowBannerModal(true)}>
               <FaEdit className="text-sm" />
             </button>
           </div>
@@ -116,10 +116,10 @@ export default function ProfilePage() {
             <p className="text-sm sm:text-base text-gray-600">Kustomisasi profil kamu dan atur beberapa hal.</p>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
-            <button className="flex items-center gap-2 px-3 sm:px-4 py-2 border border-[#4177FF] text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+            <button className="cursor-pointer flex items-center justify-center h-10 px-3 sm:px-4 bg-white border border-[#4177FF] text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
               <FaCog className="text-blue-500" />
             </button>
-            <button className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-[#4177FF] text-[#4177FF] rounded-lg hover:bg-blue-50 transition-colors" onClick={() => setShowBannerModal(true)}>
+            <button className="cursor-pointer flex items-center justify-center gap-2 h-10 px-3 sm:px-4 bg-white border border-[#4177FF] text-[#4177FF] rounded-lg hover:bg-blue-50 transition-colors" onClick={() => setShowBannerModal(true)}>
               <FaEdit />
               <span className="text-xs sm:text-sm font-semibold hidden sm:inline">Edit Banner</span>
             </button>
@@ -147,7 +147,7 @@ export default function ProfilePage() {
                 <div className="flex-shrink-0">
                   <button
                     onClick={() => navigate('/profile/tukar-coin')}
-                    className="bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
+                    className="cursor-pointer bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -168,12 +168,12 @@ export default function ProfilePage() {
                     alt={userData.name}
                     className="w-20 h-20 lg:w-24 lg:h-24 rounded-full"
                   />
-                  <button className="absolute bottom-0 right-0 w-7 h-7 lg:w-8 lg:h-8 bg-[#4177FF] rounded-full flex items-center justify-center text-white hover:bg-[#3461D9] transition-colors">
+                  <button className="cursor-pointer absolute bottom-0 right-0 w-7 h-7 lg:w-8 lg:h-8 bg-[#4177FF] rounded-full flex items-center justify-center text-white hover:bg-[#3461D9] transition-colors">
                     <FaEdit className="text-xs" />
                   </button>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <button className="w-fit px-3 py-1.5 border-2 border-gray-300 text-gray-900 text-sm font-regular rounded-xl hover:border-[#4177FF] hover:text-[#4177FF] transition-colors mb-2">
+                  <button className="cursor-pointer w-fit px-3 py-1.5 border-2 border-gray-300 text-gray-900 text-sm font-regular rounded-xl hover:border-[#4177FF] hover:text-[#4177FF] transition-colors mb-2">
                     Upload foto baru
                   </button>
                   <p className="text-xs text-gray-500">
@@ -186,7 +186,7 @@ export default function ProfilePage() {
               <div className="pt-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-bold text-gray-900">Informasi Pribadi</h3>
-                  <button className="text-[#4177FF] text-sm font-semibold flex items-center gap-1">
+                  <button className="cursor-pointer text-[#4177FF] text-sm font-semibold flex items-center gap-1">
                     <FaEdit />
                     Edit
                   </button>
@@ -252,7 +252,7 @@ export default function ProfilePage() {
                 <span className="text-sm font-medium opacity-90">Total MugCoin</span>
                 <div className="flex items-center gap-2">
                   <span className="text-xs bg-white/20 px-2 py-1 rounded-full">{userData.mugCoinIncrease}</span>
-                  <button className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <button className="cursor-pointer w-6 h-6 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                     </svg>
@@ -268,7 +268,7 @@ export default function ProfilePage() {
               </div>
               <button
                 onClick={() => navigate('/profile/tukar-coin')}
-                className="w-full bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
+                className="cursor-pointer w-full bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -288,7 +288,7 @@ export default function ProfilePage() {
                     <button
                       key={tab.id}
                       onClick={() => navigate(tab.path)}
-                      className={`py-3 sm:py-4 text-sm sm:text-base font-semibold whitespace-nowrap transition-colors relative ${isActiveTab(tab.path)
+                      className={`cursor-pointer py-3 sm:py-4 text-sm sm:text-base font-semibold whitespace-nowrap transition-colors relative ${isActiveTab(tab.path)
                         ? 'text-[#4177FF]'
                         : 'text-gray-400 hover:text-gray-600'
                         }`}
@@ -346,7 +346,7 @@ export default function ProfilePage() {
             </p>
             <button
               onClick={() => setShowUpdateModal(false)}
-              className="w-full py-3 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
+              className="cursor-pointer w-full py-3 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
             >
               Tutup
             </button>
@@ -380,7 +380,7 @@ export default function ProfilePage() {
                   className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#4177FF] transition-colors text-sm cursor-pointer"
                   readOnly
                 />
-                <button className="flex items-center gap-2 px-5 py-2.5 bg-blue-50 text-[#4177FF] font-semibold rounded-xl hover:bg-blue-100 transition-colors">
+                <button className="cursor-pointer flex items-center gap-2 px-5 py-2.5 bg-blue-50 text-[#4177FF] font-semibold rounded-xl hover:bg-blue-100 transition-colors">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
@@ -400,7 +400,7 @@ export default function ProfilePage() {
                     setShowBannerModal(false)
                     setSelectedBanner(null)
                   }}
-                  className="px-5 py-2.5 text-gray-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+                  className="cursor-pointer px-5 py-2.5 text-gray-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
                   Batalkan
                 </button>
@@ -409,7 +409,7 @@ export default function ProfilePage() {
                     setShowBannerModal(false)
                     setShowUpdateModal(true)
                   }}
-                  className="px-5 py-2.5 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
+                  className="cursor-pointer px-5 py-2.5 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
                 >
                   Simpan Banner
                 </button>
