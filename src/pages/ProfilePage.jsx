@@ -52,8 +52,8 @@ export default function ProfilePage() {
 
       {/* Hero Banner */}
       <div className="relative h-32 overflow-hidden">
-        <img 
-          src={profileBanner} 
+        <img
+          src={profileBanner}
           alt="Profile Banner"
           className="w-full h-full object-cover"
         />
@@ -85,8 +85,8 @@ export default function ProfilePage() {
               {/* Avatar Upload Section */}
               <div className="flex items-center gap-4 pb-6 border-b border-gray-200">
                 <div className="relative flex-shrink-0">
-                  <img 
-                    src={userData.avatar} 
+                  <img
+                    src={userData.avatar}
                     alt={userData.name}
                     className="w-24 h-24 rounded-full"
                   />
@@ -201,15 +201,14 @@ export default function ProfilePage() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`py-4 font-semibold whitespace-nowrap transition-colors relative ${
-                        activeTab === tab.id
-                          ? 'text-[#4177FF]'
-                          : 'text-gray-400 hover:text-gray-600'
-                      }`}
+                      className={`cursor-pointer py-4 font-semibold whitespace-nowrap transition-colors relative ${activeTab === tab.id
+                        ? 'text-[#4177FF]'
+                        : 'text-gray-400 hover:text-gray-600'
+                        }`}
                     >
                       {tab.label}
                       {activeTab === tab.id && (
-                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#4177FF]"></div>
+                        <div className="cursor-pointer absolute bottom-0 left-0 right-0 h-0.5 bg-[#4177FF]"></div>
                       )}
                     </button>
                   ))}
@@ -235,7 +234,7 @@ export default function ProfilePage() {
                         </div>
                         <div className="mb-3">
                           <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                            <div 
+                            <div
                               className="bg-[#4177FF] h-2 rounded-full transition-all"
                               style={{ width: `${(userData.xp / userData.totalXp) * 100}%` }}
                             ></div>
@@ -270,7 +269,7 @@ export default function ProfilePage() {
                         </div>
                         <div className="flex flex-wrap gap-2 mb-3">
                           {userData.favoriteTopics.map((topic, index) => (
-                            <span 
+                            <span
                               key={index}
                               className="px-4 py-2 bg-blue-50 text-[#4177FF] rounded-full text-sm font-medium"
                             >
@@ -299,7 +298,7 @@ export default function ProfilePage() {
                         </div>
 
                         <div className="relative space-y-6 pl-10">
-                          {/* Vertical Line */} 
+                          {/* Vertical Line */}
                           <div className="absolute left-[50px] top-6 bottom-6 w-0.5 bg-[#4177FF]"></div>
 
                           {/* Tujuan Utama */}
@@ -363,7 +362,7 @@ export default function ProfilePage() {
                           <button className="px-6 py-2 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors">
                             Reset
                           </button>
-                          <button 
+                          <button
                             onClick={() => setShowUpdateModal(true)}
                             className="px-6 py-2 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
                           >
