@@ -75,29 +75,42 @@ export default function ProfilePage() {
       <Navbar />
 
       {/* Hero Banner */}
-      <div className="relative h-40 overflow-hidden">
-        <img 
-          src={profileBanner} 
+      <div className="relative h-40 md:h-36 lg:h-56 overflow-hidden">
+        <img
+          src={profileBanner}
           alt="Profile Banner"
           className="w-full h-full object-cover"
         />
-        
+
         {/* Selected Mascot Overlay */}
         {selectedMascotImage && (
           <div className="absolute right-8 bottom-0 h-full flex items-end">
-            <img 
-              src={selectedMascotImage} 
+            <img
+              src={selectedMascotImage}
               alt="Selected Mascot"
               className="h-40 w-auto object-contain"
               style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))' }}
             />
           </div>
         )}
+
+        {/* Mobile Header Overlay - Full Width with Text and Buttons */}
+        <div className="lg:hidden absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+          <h1 className="text-lg font-semibold text-white">Profil Pengguna</h1>
+          <div className="flex items-center gap-2">
+            <button className="flex items-center gap-2 p-2.5 bg-white/90 backdrop-blur-sm border border-white/50 text-gray-700 rounded-lg hover:bg-white transition-colors shadow-md">
+              <FaCog className="text-blue-500 text-sm" />
+            </button>
+            <button className="flex items-center gap-2 p-2.5 bg-white/90 backdrop-blur-sm border border-white/50 text-[#4177FF] rounded-lg hover:bg-white transition-colors shadow-md" onClick={() => setShowBannerModal(true)}>
+              <FaEdit className="text-sm" />
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        {/* Header with Edit Banner Button */}
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-6 sm:mb-8 pt-4 sm:pt-6 gap-4">
+        {/* Header with Edit Banner Button - Desktop Only */}
+        <div className="hidden lg:flex flex-col sm:flex-row sm:items-start justify-between mb-6 sm:mb-8 pt-4 sm:pt-6 gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Profil Pengguna</h1>
             <p className="text-sm sm:text-base text-gray-600">Kustomisasi profil kamu dan atur beberapa hal.</p>
@@ -116,13 +129,42 @@ export default function ProfilePage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
           {/* Left Sidebar - Profile Info */}
           <div className="lg:col-span-1 w-full">
+            {/* MugCoin Card Mobile */}
+            <div className="lg:hidden bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-2xl shadow-lg p-6 text-white w-full mb-4 mt-4">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex-1">
+                  <div className="mb-2">
+                    <span className="text-sm font-medium opacity-90">Total MugCoin</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-4xl font-bold">{userData.mugCoin.toLocaleString()}</span>
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-shrink-0">
+                  <button
+                    onClick={() => navigate('/profile/tukar-coin')}
+                    className="bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                    Tukar Coin
+                  </button>
+                </div>
+              </div>
+            </div>
+
             {/* Combined Avatar & Personal Information Card */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-4 lg:mb-6 w-full">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 lg:mb-6 w-full">
               {/* Avatar Upload Section */}
               <div className="flex items-center gap-4 pb-6 border-b border-gray-200">
                 <div className="relative flex-shrink-0">
-                  <img 
-                    src={userData.avatar} 
+                  <img
+                    src={userData.avatar}
                     alt={userData.name}
                     className="w-20 h-20 lg:w-24 lg:h-24 rounded-full"
                   />
@@ -205,7 +247,7 @@ export default function ProfilePage() {
             </div>
 
             {/* MugCoin Card */}
-            <div className="bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-2xl shadow-lg p-6 text-white w-full">
+            <div className="hidden lg:block bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-2xl shadow-lg p-6 text-white w-full">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-medium opacity-90">Total MugCoin</span>
                 <div className="flex items-center gap-2">
@@ -224,7 +266,7 @@ export default function ProfilePage() {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
                 </svg>
               </div>
-              <button 
+              <button
                 onClick={() => navigate('/profile/tukar-coin')}
                 className="w-full bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
               >
@@ -246,11 +288,10 @@ export default function ProfilePage() {
                     <button
                       key={tab.id}
                       onClick={() => navigate(tab.path)}
-                      className={`py-3 sm:py-4 text-sm sm:text-base font-semibold whitespace-nowrap transition-colors relative ${
-                        isActiveTab(tab.path)
-                          ? 'text-[#4177FF]'
-                          : 'text-gray-400 hover:text-gray-600'
-                      }`}
+                      className={`py-3 sm:py-4 text-sm sm:text-base font-semibold whitespace-nowrap transition-colors relative ${isActiveTab(tab.path)
+                        ? 'text-[#4177FF]'
+                        : 'text-gray-400 hover:text-gray-600'
+                        }`}
                     >
                       {tab.label}
                       {isActiveTab(tab.path) && (
@@ -264,19 +305,19 @@ export default function ProfilePage() {
               {/* Tab Content */}
               <div className="p-6">
                 <Routes>
-                  <Route 
-                    index 
+                  <Route
+                    index
                     element={
-                      <ProfileOverviewPage 
-                        userData={userData} 
+                      <ProfileOverviewPage
+                        userData={userData}
                         onUpdateClick={() => setShowUpdateModal(true)}
                       />
-                    } 
+                    }
                   />
                   <Route path="akun-saya" element={<ProfileAkunSayaPage />} />
-                  <Route 
-                    path="atur-simug" 
-                    element={<ProfileAturSimugPage onMascotSelect={setSelectedMascotImage} />} 
+                  <Route
+                    path="atur-simug"
+                    element={<ProfileAturSimugPage onMascotSelect={setSelectedMascotImage} />}
                   />
                   <Route path="pusat-bantuan" element={<ProfilePusatBantuanPage />} />
                   <Route path="simug-plus" element={<ProfileSimugPlusPage />} />
@@ -319,9 +360,9 @@ export default function ProfilePage() {
           <div className="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-modal-scale-in">
             {/* Banner Preview */}
             <div className="relative h-32 overflow-hidden">
-              <img 
-                src={selectedBanner || imgBanner} 
-                alt="Banner Preview" 
+              <img
+                src={selectedBanner || imgBanner}
+                alt="Banner Preview"
                 className="w-full h-full object-cover"
               />
             </div>
