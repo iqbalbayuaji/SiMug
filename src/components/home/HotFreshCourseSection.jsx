@@ -84,7 +84,7 @@ export default function HotFreshCourseSection() {
                   course-course terbaru yang baru<br />
                   saja launching di SiMug.
                 </p>
-                <button className="cursor-pointer bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
+                <button className="hidden lg:block cursor-pointer bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
                   Lihat lebih banyak
                 </button>
               </div>
@@ -135,6 +135,11 @@ export default function HotFreshCourseSection() {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="flex justify-center">
+                <button className=" cursor-pointer bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
+                  Lihat lebih banyak
+                </button>
               </div>
             </div>
           </div>

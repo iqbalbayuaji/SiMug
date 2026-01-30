@@ -174,37 +174,6 @@ const searchResults = [
     }
 ];
 
-// Mock data for search results (articles)
-const articleResults = [
-    {
-        id: 1,
-        title: 'Tubuh Sehat, Pikiran Kuat: Hubungan Olahraga dengan Kesehatan Mental Dalam Kehidupan Sehari-hari',
-        image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&q=80&w=600',
-        likes: 203,
-        views: 512,
-        shares: 23,
-        readTime: '5 menit baca'
-    },
-    {
-        id: 2,
-        title: 'Panduan Lengkap Nutrisi Makro dan Mikro untuk Pemula Fitness',
-        image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600',
-        likes: 156,
-        views: 420,
-        shares: 15,
-        readTime: '7 menit baca'
-    },
-    {
-        id: 3,
-        title: 'Manfaat Tidur Cukup bagi Pemulihan Otot dan Performa Atletik',
-        image: 'https://images.unsplash.com/photo-1541781777621-af13943727dd?auto=format&fit=crop&q=80&w=600',
-        likes: 312,
-        views: 890,
-        shares: 45,
-        readTime: '4 menit baca'
-    }
-];
-
 // Mock data for found forums (sidebar)
 const discoveredForums = [
     { id: 1, name: 'Gym Bro Indonesia', members: '12.5k', color: 'bg-gray-800' },
@@ -225,7 +194,6 @@ export default function ForumSearchPage() {
     const query = searchParams.get('q') || '';
     const [activeTab, setActiveTab] = useState('Rekomendasi');
     const [contentType, setContentType] = useState('Threads');
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const tabs = ['Rekomendasi', 'Terpopuler', 'Terbaru'];
 
     const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });

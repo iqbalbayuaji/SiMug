@@ -2,10 +2,10 @@ import { useEffect } from "react"
 import { testimonials } from "../../../constants/testimonials"
 import FloatingDots from "../../../components/FloatingDots"
 
-export default function Step3({ 
+export default function Step3({
   selectedInterest,
   setSelectedInterest,
-  handleNextStep, 
+  handleNextStep,
   handlePrevStep,
   currentStep,
   totalSteps,
@@ -48,7 +48,7 @@ export default function Step3({
         <FloatingDots />
 
         {/* Back Button */}
-        <button 
+        <button
           onClick={handlePrevStep}
           className="flex items-center gap-2 text-white text-sm hover:opacity-80 transition z-10"
         >
@@ -71,10 +71,10 @@ export default function Step3({
 
         {/* Tagline */}
         <div className="text-white z-10 space-y-6">
-          <p className="text-3xl md:text-4xl font-bold leading-snug">
+          <p className="text-3xl md:text-3xl font-medium leading-snug">
             Proses belajar terasa hidup ketika sesuai minatmu.
           </p>
-          <p className="text-3xl md:text-4xl font-bold leading-snug">
+          <p className="text-3xl font-medium leading-snug">
             Dalami hal yang benar-benar ingin kamu kuasai.
           </p>
           <div className="w-56 h-1.5 bg-white rounded-full mt-6"></div>
@@ -87,11 +87,11 @@ export default function Step3({
               const isActive = index === testimonialSlide
               const isNext = index === (testimonialSlide + 1) % testimonials.length
               const isNextNext = index === (testimonialSlide + 2) % testimonials.length
-              
+
               let zIndex = 0
               let transform = 'translateY(0) scale(1)'
               let opacity = 0
-              
+
               if (isActive) {
                 zIndex = 30
                 transform = 'translateY(0) scale(1)'
@@ -105,7 +105,7 @@ export default function Step3({
                 transform = 'translateY(16px) scale(0.94)'
                 opacity = 0.4
               }
-              
+
               return (
                 <div
                   key={index}
@@ -138,11 +138,10 @@ export default function Step3({
               <button
                 key={index}
                 onClick={() => setTestimonialSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === testimonialSlide
-                    ? "w-8 bg-white"
-                    : "w-2 bg-white/40 hover:bg-white/60"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${index === testimonialSlide
+                  ? "w-8 bg-white"
+                  : "w-2 bg-white/40 hover:bg-white/60"
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
@@ -151,10 +150,10 @@ export default function Step3({
       </div>
 
       {/* Step 3 - Section Kanan - Main Content */}
-      <div className="w-full lg:w-[65%] flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-6 md:py-8 lg:py-10 overflow-y-auto">
+      <div className="w-full lg:w-[65%] flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-4 md:py-8 lg:py-10 overflow-y-auto">
         {/* Step Indicator */}
-        <div className="mb-6 md:mb-8">
-          <div className="flex justify-between items-center mb-3">
+        <div className="mb-6 md:mb-6 mt-15">
+          <div className="hidden lg:block flex justify-between items-center mb-3">
             <span className="text-sm font-medium text-[#4177FF]">
               Langkah {currentStep} dari {totalSteps}
             </span>
@@ -168,30 +167,27 @@ export default function Step3({
               <div key={index} className="flex items-center flex-1">
                 {/* Starting Dot */}
                 <div
-                  className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
-                    index === 0 && currentStep >= 1
-                      ? "bg-[#4177FF]"
-                      : index > 0 && index < currentStep
+                  className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${index === 0 && currentStep >= 1
+                    ? "bg-[#4177FF]"
+                    : index > 0 && index < currentStep
                       ? "bg-[#4177FF]"
                       : "bg-white border-3 border-[#4177FF]"
-                  }`}
+                    }`}
                 />
                 {/* Progress Line */}
                 <div
-                  className={`flex-1 h-1.5 mx-1 rounded-full transition-all duration-300 ${
-                    index < currentStep
-                      ? "bg-[#4177FF]"
-                      : "bg-gray-200"
-                  }`}
+                  className={`flex-1 h-1.5 mx-1 rounded-full transition-all duration-300 ${index < currentStep
+                    ? "bg-[#4177FF]"
+                    : "bg-gray-200"
+                    }`}
                 />
                 {/* Ending Dot (only for last step) */}
                 {index === totalSteps - 1 && (
                   <div
-                    className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
-                      currentStep > totalSteps
-                        ? "bg-[#4177FF]"
-                        : "bg-white border-3 border-[#4177FF]"
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${currentStep > totalSteps
+                      ? "bg-[#4177FF]"
+                      : "bg-white border-3 border-[#4177FF]"
+                      }`}
                   />
                 )}
               </div>
@@ -200,11 +196,11 @@ export default function Step3({
         </div>
 
         {/* Title */}
-        <div className="mb-8 md:mb-10">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-3">
+        <div className="mb-5 md:mb-6">
+          <h1 className="text-xl sm:text-3xl md:text-3xl font-semibold lg:font-bold text-gray-900 leading-tight mb-2">
             Apa minat utamamu dalam proses pengembangan diri ini?
           </h1>
-          <p className="text-md md:text-base text-gray-500">
+          <p className="text-xs md:text-base text-gray-500">
             SiMug pengen tahu apa yang pengen Kamu capai saat ini.
             <br />
             SiMug bakal nyesuain course yang paling relevan buat Kamu.
@@ -220,16 +216,15 @@ export default function Step3({
               className="w-full text-left p-5 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300"
             >
               <div className="flex items-center gap-4">
-                <div className={`w-6 h-6 rounded-full border-3 flex items-center justify-center flex-shrink-0 transition-all ${
-                  selectedInterest === interest.id
-                    ? "border-[#4177FF]"
-                    : "border-[#4177FF]"
-                }`}>
+                <div className={`w-6 h-6 rounded-full border-3 flex items-center justify-center flex-shrink-0 transition-all ${selectedInterest === interest.id
+                  ? "border-[#4177FF]"
+                  : "border-[#4177FF]"
+                  }`}>
                   {selectedInterest === interest.id && (
                     <div className="w-3 h-3 rounded-full bg-[#4177FF]"></div>
                   )}
                 </div>
-                <h3 className="font-semibold text-gray-900 text-lg">
+                <h3 className="font-medium text-gray-900 text-lg">
                   {interest.title}
                 </h3>
               </div>
@@ -239,18 +234,17 @@ export default function Step3({
 
         {/* Footer */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-          <div className="text-sm">
+          <div className="text-xs">
             <p className="text-[#4177FF] font-medium">Pilih salah satu.</p>
             <p className="text-gray-500">Kamu bisa ganti ini kapan saja.</p>
           </div>
           <button
             onClick={handleNextStep}
             disabled={!selectedInterest}
-            className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
-              selectedInterest
-                ? "bg-[#4177FF] text-white hover:bg-[#3461D9] shadow-lg hover:shadow-xl"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
+            className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${selectedInterest
+              ? "bg-[#4177FF] text-white hover:bg-[#3461D9] shadow-lg hover:shadow-xl"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
           >
             Selanjutnya
           </button>
@@ -259,7 +253,7 @@ export default function Step3({
 
       {/* Mobile Blue Header for Step 3 */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#4177FF] p-4 flex justify-between items-center">
-        <button 
+        <button
           onClick={handlePrevStep}
           className="flex items-center gap-2 text-white text-sm"
         >

@@ -46,11 +46,11 @@ export default function TopicsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] items-center gap-8 lg:gap-12">
           {/* Left - Header Text */}
           <div className="pr-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4177FF] mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-[#4177FF] mb-4">
               Apa saja topik utama
               yang akan dipelajari?
             </h2>
-            <p className="text-[#4177FF] text-base leading-relaxed">
+            <p className="text-[#4177FF] text-sm leading-relaxed">
               Tentu ada banyak sekali topik yang bisa di eksplorasi. Namun, kebanyakan user akan terjun dahulu di topik ini.
             </p>
           </div>
