@@ -25,7 +25,7 @@ export default function TopicsSection() {
   ]
 
   return (
-    <section className="relative bg-[#E5ECFF] py-16 overflow-hidden">
+    <section className="relative bg-[#E5ECFF] py-7 lg:py-16 overflow-hidden">
       {/* Decorative Dots - Top Left (Large circles) - Hidden on mobile */}
       <div className="absolute top-0 left-0 hidden md:block">
         <div className="w-32 h-32 bg-[#C0D2FF] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -66,7 +66,7 @@ export default function TopicsSection() {
                 <div className="w-12 h-12 bg-[#305AC4] rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                   <img src={topic.icon} alt={topic.title} className="w-6 h-6" />
                 </div>
-                
+
                 {/* Content */}
                 <h3 className="font-bold text-lg mb-2">{topic.title}</h3>
                 <p className="text-white/90 text-xs leading-relaxed">

@@ -26,7 +26,7 @@ const ChevronDownIcon = () => (
 );
 
 const ChevronRightIcon = () => (
-    <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="hidden lg:block w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
 );
@@ -123,7 +123,7 @@ export default function TambahPertanyaanModal({ isOpen, onClose, isMobilePage = 
                 ref={dropdownRef}
             >
                 {/* Header */}
-                <div className="px-5 md:px-6 md:pt-4 pb-0 border-b border-gray-200 pb-3">
+                <div className="px-5 py-2 lg:py-2 md:px-6 md:pt-4 pb-0 border-b border-gray-200 pb-3">
                     <h2 className="text-xl md:text-2xl font-semibold text-gray-900 leading-tight">Tambah Pertanyaan</h2>
                     <p className="text-gray-500 text-sm md:text-base mt-1">Tanyakan apa saja di dalam forum</p>
                 </div>
@@ -136,7 +136,10 @@ export default function TambahPertanyaanModal({ isOpen, onClose, isMobilePage = 
                                 <div className="w-12 h-12 rounded-full bg-blue-600 flex-shrink-0"></div>
                                 <div>
                                     <div className="flex items-center gap-2 flex-wrap relative">
-                                        <span className="font-semibold text-gray-900 text-lg mr-1">Rizki Fiko</span>
+                                        <div>
+                                            <span className="font-semibold text-gray-900 text-lg mr-1">Rizki Fiko</span>
+                                            <p className="text-sm text-gray-500 mt-0.5">@pikakso</p>
+                                        </div>
 
                                         {/* Target Dropdown (Publik / Forum) */}
                                         <div className="relative">
@@ -206,7 +209,7 @@ export default function TambahPertanyaanModal({ isOpen, onClose, isMobilePage = 
                                         )}
 
                                     </div>
-                                    <p className="text-sm text-gray-500 mt-0.5">@pikakso</p>
+
                                 </div>
                             </div>
 

@@ -1,20 +1,28 @@
 import { useNavigate } from 'react-router-dom'
 import calendarIcon from "../../assets/icon/calendar.svg"
 
-export default function ProgressHeader({ userName, activeTab, setActiveTab }) {
+export default function ProgressHeader({ userName, activeTab, setActiveTab, onCalendarClick }) {
   const navigate = useNavigate()
 
   return (
     <>
       {/* Header Section */}
       <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-bold text-gray-900 mb-1">
-            Selamat Pagi, {userName}
-          </h1>
-          <p className="text-gray-600 text-lg">
-            Hari ini mau melanjutkan kursus apa?
-          </p>
+        <div className="flex items-center gap-4">
+          <div>
+            <h1 className="lg:text-xl text-lg lg:font-bold font-semibold text-gray-900">
+              Selamat Pagi, {userName}
+            </h1>
+            <p className="text-gray-600 lg:text-lg text-base">
+              Hari ini mau melanjutkan kursus apa?
+            </p>
+          </div>
+          <div
+            onClick={onCalendarClick}
+            className="lg:hidden mb-2 w-14 h-14 bg-[#5686FF] rounded-full shadow-sm border border-gray-100 flex items-center justify-center cursor-pointer hover:bg-[#4a77e8] transition-colors"
+          >
+            <img src={calendarIcon} alt="Calendar" className="w-6.5 h-6.5" />
+          </div>
         </div>
         <button
           onClick={() => navigate('/courses')}
@@ -25,7 +33,9 @@ export default function ProgressHeader({ userName, activeTab, setActiveTab }) {
           <div className="absolute top-0 right-0 bottom-0 w-1/2 bg-[#5686FF] rounded-tl-[3rem]"></div>
 
           {/* Content */}
-          <img src={calendarIcon} alt="Calendar" className="w-5 h-5 relative z-10" />
+          <svg className="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
           <span className="relative z-10">Tambah Kursus</span>
         </button>
       </div>

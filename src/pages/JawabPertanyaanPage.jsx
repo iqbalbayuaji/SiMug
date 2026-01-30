@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import ForumHeader from '../components/forum/ForumHeader';
 import Mailbox from '../assets/icon/mailbox.png';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useForum, questionTypes, relevantTopics } from '../context/ForumContext';
 
 // Mock data (Duplicated from ForumSearchPage as requested)
 const searchResults = [
@@ -116,21 +117,11 @@ const searchResults = [
     }
 ];
 
-const questionTypes = [
-    { id: 1, name: 'Pertanyaan Umum', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: 'bg-blue-100 text-blue-600', active: true },
-    { id: 2, name: 'Pertanyaan Forum', icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z', color: 'text-gray-600', active: false },
-    { id: 3, name: 'Ramai didiskusikan', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z', color: 'text-gray-600', active: false }
-];
-
-const relevantTopics = [
-    'Lari Pagi', 'Gym', 'Calisthenics', 'Diet Sehat', 'Kardio', 'Yoga', 'Renang', 'Sepeda', 'Marathon', 'Otot', 'Nutrisi'
-];
-
 export default function JawabPertanyaanPage() {
+    const navigate = useNavigate();
+    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics } = useForum();
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState('Belum Terjawab');
-    const [activeQuestionType, setActiveQuestionType] = useState(questionTypes[0]);
-    const [hasSelectedTopics, setHasSelectedTopics] = useState(false);
     const tabs = ['Belum Terjawab', 'Harian', 'Mingguan', 'Populer', 'Relate'];
 
     return (
@@ -161,18 +152,28 @@ export default function JawabPertanyaanPage() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={activeQuestionType.icon} />
                                 </svg>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <h2 className="text-xl font-semibold text-gray-900">{activeQuestionType.name}</h2>
-                                <p className="text-sm text-gray-400 font-normal mt-1">6 tipe pertanyaan</p>
+                            <div className="flex-1 flex items-center justify-between sm:justify-start gap-3">
+                                <div className="flex items-center gap-3">
+                                    <h2 className="text-xl font-semibold text-gray-900">{activeQuestionType.name}</h2>
+                                    <p className="hidden sm:block text-sm text-gray-400 font-normal mt-1">6 tipe pertanyaan</p>
+                                </div>
+                                <button
+                                    onClick={() => navigate('/forum/settings')}
+                                    className="sm:hidden text-gray-500 hover:text-gray-700 p-1"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
 
-                        <div className="flex gap-2 flex-wrap px-6 py-3">
+                        <div className="flex gap-2 overflow-x-auto sm:flex-wrap px-6 py-3">
                             {tabs.map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`cursor-pointer px-3 py-1 rounded-full text-sm font-medium transition-colors ${activeTab === tab
+                                    className={`cursor-pointer px-3 py-1 rounded-full text-sm font-medium transition-colors whitespace-nowrap lg:whitespace-normal shrink-0 ${activeTab === tab
                                         ? 'bg-blue-100 text-blue-600'
                                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                         }`}
@@ -198,17 +199,17 @@ export default function JawabPertanyaanPage() {
                         {searchResults.map((thread, index) => (
                             <div
                                 key={thread.id}
-                                className="p-6 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors cursor-pointer group"
+                                className="p-4 sm:p-6 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors cursor-pointer group"
                             >
-                                <div className="flex gap-4">
+                                <div className="flex gap-3 sm:gap-4">
                                     {/* Avatar */}
-                                    <div className={`w-12 h-12 ${thread.avatarColor} rounded-full flex-shrink-0 mt-1`}></div>
+                                    <div className={`w-10 h-10 sm:w-12 sm:h-12 ${thread.avatarColor} rounded-full flex-shrink-0 mt-1`}></div>
 
                                     {/* Content */}
                                     <div className="flex-1">
                                         {/* Metadata Row */}
                                         <div className="flex items-center gap-2 text-xs text-gray-500 mb-2 flex-wrap">
-                                            <span>Pertanyaan oleh <span className="text-gray-700 font-medium">{thread.username}</span></span>
+                                            <span><span className="hidden sm:inline">Pertanyaan oleh </span><span className="text-gray-700 font-medium">{thread.username}</span></span>
                                             <span>•</span>
                                             <span>{thread.time}</span>
                                             <span>•</span>
@@ -216,16 +217,16 @@ export default function JawabPertanyaanPage() {
                                         </div>
 
                                         {/* Title / Question */}
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-snug group-hover:text-blue-600 transition-colors">
+                                        <h3 className="text-lg font-medium lg:font-semibold text-gray-900 mb-3 leading-snug group-hover:text-blue-600 transition-colors">
                                             {thread.topic}
                                         </h3>
 
                                         {/* Actions / Stats Row */}
-                                        <div className="flex items-center gap-2 text-xs font-medium">
-                                            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                                        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-medium mt-auto">
+                                            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full whitespace-nowrap order-last sm:order-first">
                                                 {thread.answerCount}
                                             </span>
-                                            <div className="flex items-center gap-4 px-1 text-gray-500">
+                                            <div className="flex flex-wrap items-center gap-2 sm:gap-4 px-1 text-gray-500">
                                                 <button className="flex items-center gap-1.5 hover:text-gray-700 border border-gray-200 px-3 py-1 rounded-full bg-white transition-colors hover:bg-gray-50">
                                                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
