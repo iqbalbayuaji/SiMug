@@ -94,7 +94,7 @@ export default function EventSection() {
               </div>
 
               {/* CTA Button */}
-              <button className="cursor-pointer text-[#4177FF] font-semibold flex items-center gap-1.5 min-[425px]:gap-2 px-4 min-[425px]:px-5 md:px-6 py-2 min-[425px]:py-2.5 md:py-3 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-xs min-[425px]:text-sm md:text-base">
+              <button className="cursor-pointer text-[#4177FF] font-semibold flex items-center gap-1.5 min-[425px]:gap-2 px-4 min-[425px]:px-5 md:px-6 py-2.5 min-[425px]:py-2.5 md:py-3 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-xs min-[425px]:text-sm md:text-base">
                 Pelajari lebih lanjut
                 <svg className="w-3.5 h-3.5 min-[425px]:w-4 min-[425px]:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
