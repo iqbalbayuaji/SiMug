@@ -196,7 +196,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 md:px-6 py-2 sm:py-2.5 border-2 border-gray-300 rounded-lg sm:rounded-xl text-gray-600 hover:border-gray-400 hover:text-gray-700 transition-colors"
+              className="cursor-pointer flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 md:px-6 py-2 sm:py-2.5 border-2 border-gray-300 rounded-lg sm:rounded-xl text-gray-600 hover:border-gray-400 hover:text-gray-700 transition-colors"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -205,7 +205,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
             </button>
 
             <button
-              className="p-2 sm:p-2.5 md:p-3 border-2 border-gray-300 rounded-lg sm:rounded-xl text-gray-600 hover:border-gray-400 hover:text-gray-700 transition-colors relative"
+              className="cursor-pointer p-2 sm:p-2.5 md:p-3 border-2 border-gray-300 rounded-lg sm:rounded-xl text-gray-600 hover:border-gray-400 hover:text-gray-700 transition-colors relative"
               onClick={() => setShowMenu(!showMenu)}
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -217,7 +217,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
                 <>
                   {/* Backdrop */}
                   <div
-                    className="fixed inset-0 z-40"
+                    className="cursor-pointer fixed inset-0 z-40"
                     onClick={() => setShowMenu(false)}
                   ></div>
 

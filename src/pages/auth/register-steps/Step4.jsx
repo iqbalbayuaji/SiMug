@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { FaChevronLeft } from "react-icons/fa"
 import { testimonials } from "../../../constants/testimonials"
 import FloatingDots from "../../../components/FloatingDots"
 
@@ -56,20 +57,7 @@ export default function Step4({
           onClick={handlePrevStep}
           className="flex items-center gap-2 text-white text-sm hover:opacity-80 transition z-10"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
+          <FaChevronLeft className="h-5 w-5" />
           Kembali
         </button>
 
@@ -266,37 +254,10 @@ export default function Step4({
           onClick={handlePrevStep}
           className="flex items-center gap-2 text-white text-sm"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
+          <FaChevronLeft className="h-5 w-5" />
           Kembali
         </button>
         <div className="flex items-center gap-2 text-white font-semibold">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 10V3L4 14h7v7l9-11h-7z"
-            />
-          </svg>
           SiMug
         </div>
       </div>
