@@ -3,6 +3,7 @@ import Navbar from '../components/layout/Navbar';
 import ForumHeader from '../components/forum/ForumHeader';
 import Mailbox from '../assets/icon/mailbox.png';
 import TopicSelectionModal from '../components/forum/TopicSelectionModal';
+import AnswerQuestionModal from '../components/forum/AnswerQuestionModal';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useForum, questionTypes, relevantTopics } from '../context/ForumContext';
 
@@ -124,7 +125,14 @@ export default function JawabPertanyaanPage() {
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState('Belum Terjawab');
     const [isTopicModalOpen, setIsTopicModalOpen] = useState(false);
+    const [isAnswerModalOpen, setIsAnswerModalOpen] = useState(false);
+    const [selectedQuestion, setSelectedQuestion] = useState(null);
     const tabs = ['Belum Terjawab', 'Harian', 'Mingguan', 'Populer', 'Relate'];
+
+    const handleAnswerClick = (question) => {
+        setSelectedQuestion(question);
+        setIsAnswerModalOpen(true);
+    };
 
     return (
         <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -200,6 +208,7 @@ export default function JawabPertanyaanPage() {
                     <div className="bg-white rounded-b-xl shadow-sm border border-gray-100 border-t-0 overflow-hidden">
                         {searchResults.map((thread, index) => (
                             <div
+                                onClick={() => handleAnswerClick(thread)}
                                 key={thread.id}
                                 className="p-4 sm:p-6 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors cursor-pointer group"
                             >
@@ -376,6 +385,12 @@ export default function JawabPertanyaanPage() {
                 selectedTopics={selectedTopics}
                 addTopic={addTopic}
                 removeTopic={removeTopic}
+            />
+
+            <AnswerQuestionModal
+                isOpen={isAnswerModalOpen}
+                onClose={() => setIsAnswerModalOpen(false)}
+                question={selectedQuestion}
             />
         </div>
     );
