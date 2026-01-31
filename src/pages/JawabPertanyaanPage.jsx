@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import ForumHeader from '../components/forum/ForumHeader';
 import Mailbox from '../assets/icon/mailbox.png';
+import TopicSelectionModal from '../components/forum/TopicSelectionModal';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useForum, questionTypes, relevantTopics } from '../context/ForumContext';
 
@@ -122,6 +123,7 @@ export default function JawabPertanyaanPage() {
     const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics } = useForum();
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState('Belum Terjawab');
+    const [isTopicModalOpen, setIsTopicModalOpen] = useState(false);
     const tabs = ['Belum Terjawab', 'Harian', 'Mingguan', 'Populer', 'Relate'];
 
     return (
@@ -287,7 +289,6 @@ export default function JawabPertanyaanPage() {
 
                         {/* Topik Relevan */}
                         {/* Topik Relevan Container */}
-                        {/* Logic: Show Blue Card (Version 2) if no topics selected, otherwise show List (Version 1) */}
                         {!hasSelectedTopics ? (
                             /* Version 2: Empty State / Promo Card */
                             <div className="bg-blue-600 rounded-xl shadow-sm overflow-hidden relative group p-6 text-white min-h-[340px] flex flex-col justify-between">
@@ -315,7 +316,7 @@ export default function JawabPertanyaanPage() {
                                     {/* Button: Bottom Center */}
                                     <div className="group flex justify-center mt-auto">
                                         <button
-                                            onClick={() => setHasSelectedTopics(true)}
+                                            onClick={() => setIsTopicModalOpen(true)}
                                             className="bg-blue-800 hover:bg-blue-900 text-white text-sm font-semibold py-2.5 px-6 rounded-full inline-flex items-center gap-2 transition-all shadow-lg hover:shadow-blue-900/30 active:scale-95 cursor-pointer"
                                         >
                                             Pilih topik
@@ -347,7 +348,10 @@ export default function JawabPertanyaanPage() {
                                         ))}
                                     </div>
                                     <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
-                                        <button className="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline">
+                                        <button
+                                            onClick={() => setIsTopicModalOpen(true)}
+                                            className="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline"
+                                        >
                                             Tambah Topik Lain
                                         </button>
                                         {/* Helper to reset state for demo */}
@@ -366,6 +370,11 @@ export default function JawabPertanyaanPage() {
                     </div>
                 </aside>
             </div>
+
+            <TopicSelectionModal
+                isOpen={isTopicModalOpen}
+                onClose={() => setIsTopicModalOpen(false)}
+            />
         </div>
     );
 }
