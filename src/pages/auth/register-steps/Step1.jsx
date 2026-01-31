@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
+import { FaChevronLeft } from "react-icons/fa"
 import StackedCarousel from "../../../components/StackedCarousel"
-import logo from "../../../assets/images/logo-simug.png"
 
 export default function Step1({
   formData,
@@ -196,24 +196,10 @@ export default function Step1({
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10">
           <Link to="/login" className="flex items-center gap-2 text-white text-sm hover:opacity-80 transition">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
+            <FaChevronLeft className="h-5 w-5" />
             Kembali
           </Link>
           <div className="flex items-center gap-2 text-white font-semibold text-lg">
-            <img src={logo} alt="SiMug" className="h-6 w-6" />
             SiMug
           </div>
         </div>
@@ -244,24 +230,10 @@ export default function Step1({
       {/* Mobile Blue Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#4177FF] p-4 flex justify-between items-center">
         <Link to="/login" className="flex items-center gap-2 text-white text-sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
+          <FaChevronLeft className="h-5 w-5" />
           Kembali
         </Link>
         <div className="flex items-center gap-2 text-white font-semibold">
-          <img src={logo} alt="SiMug" className="h-5 w-5" />
           SiMug
         </div>
       </div>

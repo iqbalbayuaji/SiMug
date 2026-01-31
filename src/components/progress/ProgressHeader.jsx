@@ -19,7 +19,7 @@ export default function ProgressHeader({ userName, activeTab, setActiveTab, onCa
           </div>
           <div
             onClick={onCalendarClick}
-            className="lg:hidden mb-2 w-14 h-14 bg-[#5686FF] rounded-full shadow-sm border border-gray-100 flex items-center justify-center cursor-pointer hover:bg-[#4a77e8] transition-colors"
+            className="lg:hidden mb-2 w-14 h-14 flex-shrink-0 aspect-square bg-[#5686FF] rounded-full shadow-sm border border-gray-100 flex items-center justify-center cursor-pointer hover:bg-[#4a77e8] transition-colors"
           >
             <img src={calendarIcon} alt="Calendar" className="w-6.5 h-6.5" />
           </div>

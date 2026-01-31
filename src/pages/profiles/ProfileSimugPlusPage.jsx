@@ -40,7 +40,7 @@ export default function ProfileSimugPlusPage() {
       {/* Header with Upgrade Button */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
         <div>
-          <span className="px-3 py-1 bg-blue-100 text-[#4177FF] text-xs font-semibold rounded-full flex items-center gap-1 w-fit mb-2">
+          <span className="px-3 py-1 bg-blue-100 text-[#4177FF] text-xs font-semibold rounded-full flex items-center gap-1 w-fit mb-3 lg:mb-2">
             <FaCrown className="text-xs" />
             Mentorship Acc
           </span>
@@ -87,7 +87,7 @@ export default function ProfileSimugPlusPage() {
                       <FaChevronDown className="text-gray-400 flex-shrink-0" />
                     )}
                   </button>
-                  
+
                   {openBenefit === benefit.id && (
                     <div className="px-4 pb-4 bg-blue-50">
                       <p className="text-sm text-[#4177FF] leading-relaxed">
@@ -108,12 +108,12 @@ export default function ProfileSimugPlusPage() {
             {/* Decorative circles */}
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-500"></div>
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full -ml-10 -mb-10 group-hover:scale-150 transition-transform duration-500"></div>
-            
+
             {/* Mascot - Floating/Absolute positioned */}
             <div className="absolute bottom-0 right-0 -mb-5 -mr-5 z-20 pointer-events-none">
-              <img 
-                src={bossImage} 
-                alt="Boss Mascot" 
+              <img
+                src={bossImage}
+                alt="Boss Mascot"
                 className="w-40 h-40 object-contain animate-slideUp"
               />
             </div>
@@ -144,7 +144,7 @@ export default function ProfileSimugPlusPage() {
               <div className="text-2xl font-bold mb-1">250+</div>
               <div className="text-xs opacity-90">Mentor Aktif</div>
             </div>
-            
+
             <div className="bg-gradient-to-br from-[#4177FF] to-[#5B8FFF] rounded-xl p-3 text-white hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
               <div className="text-xs font-semibold mb-1">SiMug+ Tips</div>
               <div className="text-xs opacity-90 leading-relaxed">
