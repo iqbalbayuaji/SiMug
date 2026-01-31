@@ -1,36 +1,30 @@
 import React, { useState } from 'react';
+import { relevantTopics } from '../../context/ForumContext';
 
-const TopicSelectionModal = ({ isOpen, onClose }) => {
+const TopicSelectionModal = ({ isOpen, onClose, selectedTopics = [], addTopic, removeTopic }) => {
     if (!isOpen) return null;
 
-    const [checkedItems, setCheckedItems] = useState({
-        'Makan sehat': false,
-        'Makanan bergizi': false,
-        'Makan apa adanya': false,
-        'Makan sehat berkhasiat': false,
-        'Makanan lezat': false,
-        'Makanan murah': false,
-        'Makanan enak': false,
-    });
-
-    const toggleCheckbox = (label) => {
-        setCheckedItems(prev => ({ ...prev, [label]: !prev[label] }));
+    const toggleTopic = (topic) => {
+        if (selectedTopics.includes(topic)) {
+            removeTopic(topic);
+        } else {
+            addTopic(topic);
+        }
     };
 
     const historyTopics = ['Bahasa', 'Grammar', 'Vocab', 'Hafalan', 'Ngobrol'];
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-            {/* Backdrop */}
+
             <div
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
                 onClick={onClose}
             ></div>
 
-            {/* Modal Content Wrapper */}
             <div className="w-full max-w-2xl relative z-10 flex flex-col gap-4 animate-fade-in-up">
 
-                {/* 1. Search Bar Container */}
+                {/* Search Bar Container */}
                 <div className="bg-white rounded-full shadow-xl px-1 py-1 flex items-center relative">
                     <div className="pl-3 pr-3 pointer-events-none">
                         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +43,7 @@ const TopicSelectionModal = ({ isOpen, onClose }) => {
                     </button>
                 </div>
 
-                {/* 2. Main Content Container */}
+                {/* Main Content Container */}
                 <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                     <div className="p-6">
 
@@ -77,27 +71,30 @@ const TopicSelectionModal = ({ isOpen, onClose }) => {
                         <div>
                             <h3 className="font-semibold lg:font-bold text-base lg:text-lg text-gray-900 lg:mb-4">Rekomendasi Pencarian</h3>
                             <div className="space-y-1 max-h-[300px] overflow-y-auto pr-2">
-                                {Object.entries(checkedItems).map(([label, isChecked]) => (
-                                    <div
-                                        key={label}
-                                        onClick={() => toggleCheckbox(label)}
-                                        className={`cursor-pointer text-sm lg:text-base flex items-center justify-between p-3 rounded-xl cursor-pointer transition-colors ${isChecked ? 'bg-blue-50' : 'hover:bg-gray-50'}`}
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                            <span className="text-gray-700">{label}</span>
-                                        </div>
-                                        <div className={`w-6 h-6 rounded-md border flex items-center justify-center transition-colors ${isChecked ? 'bg-blue-600 border-blue-600' : 'bg-white border-blue-400'}`}>
-                                            {isChecked && (
-                                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                {relevantTopics.map((topic) => {
+                                    const isChecked = selectedTopics.includes(topic);
+                                    return (
+                                        <div
+                                            key={topic}
+                                            onClick={() => toggleTopic(topic)}
+                                            className={`cursor-pointer text-sm lg:text-base flex items-center justify-between p-3 rounded-xl cursor-pointer transition-colors ${isChecked ? 'bg-blue-50' : 'hover:bg-gray-50'}`}
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                                 </svg>
-                                            )}
+                                                <span className="text-gray-700">{topic}</span>
+                                            </div>
+                                            <div className={`w-6 h-6 rounded-md border flex items-center justify-center transition-colors ${isChecked ? 'bg-blue-600 border-blue-600' : 'bg-white border-blue-400'}`}>
+                                                {isChecked && (
+                                                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 

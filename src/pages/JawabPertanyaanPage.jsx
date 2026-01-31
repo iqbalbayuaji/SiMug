@@ -120,7 +120,7 @@ const searchResults = [
 
 export default function JawabPertanyaanPage() {
     const navigate = useNavigate();
-    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics } = useForum();
+    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics, selectedTopics, addTopic, removeTopic } = useForum();
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState('Belum Terjawab');
     const [isTopicModalOpen, setIsTopicModalOpen] = useState(false);
@@ -289,7 +289,7 @@ export default function JawabPertanyaanPage() {
 
                         {/* Topik Relevan */}
                         {/* Topik Relevan Container */}
-                        {!hasSelectedTopics ? (
+                        {selectedTopics.length === 0 ? (
                             /* Version 2: Empty State / Promo Card */
                             <div className="bg-blue-600 rounded-xl shadow-sm overflow-hidden relative group p-6 text-white min-h-[340px] flex flex-col justify-between">
                                 {/* Decorative Circles (Background) - Animated Half Circles */}
@@ -334,11 +334,11 @@ export default function JawabPertanyaanPage() {
                                     <div className="absolute top-16 -right-9 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
                                     <div className="absolute -top-4 -left-10 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
                                     <span className="relative z-10">Topik Relevan</span>
-                                    <span className="relative z-10 text-blue-100 bg-white/20 px-2 py-0.5 rounded-full text-xs">11</span>
+                                    <span className="relative z-10 text-blue-100 bg-white/20 px-2 py-0.5 rounded-full text-xs">{selectedTopics.length}</span>
                                 </div>
                                 <div className="p-3">
                                     <div className="flex flex-wrap gap-2">
-                                        {relevantTopics.map((topic, index) => (
+                                        {selectedTopics.map((topic, index) => (
                                             <button
                                                 key={index}
                                                 className="cursor-pointer px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm rounded-full transition-colors font-medium border border-gray-200"
@@ -354,10 +354,9 @@ export default function JawabPertanyaanPage() {
                                         >
                                             Tambah Topik Lain
                                         </button>
-                                        {/* Helper to reset state for demo */}
                                         <button
                                             onClick={() => setHasSelectedTopics(false)}
-                                            className="text-xs text-gray-400 hover:text-gray-600 underline"
+                                            className="cursor-pointer text-xs text-gray-400 hover:text-gray-600 underline"
                                             title="Reset to Empty State (Demo)"
                                         >
                                             Reset
@@ -374,6 +373,9 @@ export default function JawabPertanyaanPage() {
             <TopicSelectionModal
                 isOpen={isTopicModalOpen}
                 onClose={() => setIsTopicModalOpen(false)}
+                selectedTopics={selectedTopics}
+                addTopic={addTopic}
+                removeTopic={removeTopic}
             />
         </div>
     );

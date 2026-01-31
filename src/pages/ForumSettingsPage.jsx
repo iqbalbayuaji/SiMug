@@ -8,7 +8,7 @@ import { useForum, questionTypes, relevantTopics } from '../context/ForumContext
 
 export default function ForumSettingsPage() {
     const navigate = useNavigate();
-    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics } = useForum();
+    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics, selectedTopics, addTopic, removeTopic } = useForum();
     const [isTopicModalOpen, setIsTopicModalOpen] = useState(false);
 
     return (
@@ -74,7 +74,7 @@ export default function ForumSettingsPage() {
                 <section className="space-y-3">
                     <h2 className="text-base font-semibold text-gray-900 px-1">Topik Minat</h2>
 
-                    {!hasSelectedTopics ? (
+                    {selectedTopics.length === 0 ? (
                         /* Empty State Card */
                         <div className="bg-blue-600 rounded-xl shadow-sm overflow-hidden relative group p-6 text-white flex flex-col items-center text-center">
                             {/* Decorative Circles */}
@@ -102,17 +102,28 @@ export default function ForumSettingsPage() {
                         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                             <div className="bg-blue-600 px-5 py-3.5 text-white font-medium flex justify-between items-center">
                                 <span>Topik Terpilih</span>
-                                <span className="text-blue-100 bg-white/20 px-2.5 py-0.5 rounded-full text-xs font-bold">11</span>
+                                <span className="text-blue-100 bg-white/20 px-2.5 py-0.5 rounded-full text-xs font-bold">{selectedTopics.length}</span>
                             </div>
                             <div className="p-4">
                                 <div className="flex flex-wrap gap-2">
-                                    {relevantTopics.map((topic, index) => (
-                                        <button
+                                    {selectedTopics.map((topic, index) => (
+                                        <div
                                             key={index}
-                                            className="cursor-pointer px-3.5 py-2 bg-gray-50 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 text-gray-700 text-sm rounded-full transition-all font-medium border border-gray-200"
+                                            className="cursor-pointer px-3.5 py-2 bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-600 text-sm rounded-full transition-all font-medium border border-gray-200 hover:border-blue-200 flex items-center gap-2 group"
                                         >
-                                            {topic}
-                                        </button>
+                                            <span>{topic}</span>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    removeTopic(topic);
+                                                }}
+                                                className="text-gray-400 hover:text-red-500 transition-colors"
+                                            >
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
                                     ))}
                                     <button
                                         onClick={() => setIsTopicModalOpen(true)}
@@ -149,6 +160,9 @@ export default function ForumSettingsPage() {
             <TopicSelectionModal
                 isOpen={isTopicModalOpen}
                 onClose={() => setIsTopicModalOpen(false)}
+                selectedTopics={selectedTopics}
+                addTopic={addTopic}
+                removeTopic={removeTopic}
             />
         </div>
     );
