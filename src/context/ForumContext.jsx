@@ -15,14 +15,32 @@ export const relevantTopics = [
 export function ForumProvider({ children }) {
     const [activeQuestionType, setActiveQuestionType] = useState(questionTypes[0]);
     const [hasSelectedTopics, setHasSelectedTopics] = useState(false);
-    // You could also add activeTab state here if needed, but per request, Question Type is the priority.
+    const [selectedTopics, setSelectedTopics] = useState([]);
+
+    const addTopic = (topic) => {
+        if (!selectedTopics.includes(topic)) {
+            setSelectedTopics([...selectedTopics, topic]);
+            setHasSelectedTopics(true);
+        }
+    };
+
+    const removeTopic = (topic) => {
+        const updated = selectedTopics.filter(t => t !== topic);
+        setSelectedTopics(updated);
+        if (updated.length === 0) {
+            setHasSelectedTopics(false);
+        }
+    };
 
     return (
         <ForumContext.Provider value={{
             activeQuestionType,
             setActiveQuestionType,
             hasSelectedTopics,
-            setHasSelectedTopics
+            setHasSelectedTopics,
+            selectedTopics,
+            addTopic,
+            removeTopic
         }}>
             {children}
         </ForumContext.Provider>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../components/layout/Navbar';
 import ForumHeader from '../components/forum/ForumHeader';
 import Mailbox from '../assets/icon/mailbox.png';
+import TopicSelectionModal from '../components/forum/TopicSelectionModal';
+import AnswerQuestionModal from '../components/forum/AnswerQuestionModal';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useForum, questionTypes, relevantTopics } from '../context/ForumContext';
 
@@ -119,10 +121,18 @@ const searchResults = [
 
 export default function JawabPertanyaanPage() {
     const navigate = useNavigate();
-    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics } = useForum();
+    const { activeQuestionType, setActiveQuestionType, hasSelectedTopics, setHasSelectedTopics, selectedTopics, addTopic, removeTopic } = useForum();
     const [searchParams] = useSearchParams();
     const [activeTab, setActiveTab] = useState('Belum Terjawab');
+    const [isTopicModalOpen, setIsTopicModalOpen] = useState(false);
+    const [isAnswerModalOpen, setIsAnswerModalOpen] = useState(false);
+    const [selectedQuestion, setSelectedQuestion] = useState(null);
     const tabs = ['Belum Terjawab', 'Harian', 'Mingguan', 'Populer', 'Relate'];
+
+    const handleAnswerClick = (question) => {
+        setSelectedQuestion(question);
+        setIsAnswerModalOpen(true);
+    };
 
     return (
         <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -198,6 +208,7 @@ export default function JawabPertanyaanPage() {
                     <div className="bg-white rounded-b-xl shadow-sm border border-gray-100 border-t-0 overflow-hidden">
                         {searchResults.map((thread, index) => (
                             <div
+                                onClick={() => handleAnswerClick(thread)}
                                 key={thread.id}
                                 className="p-4 sm:p-6 border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors cursor-pointer group"
                             >
@@ -287,8 +298,7 @@ export default function JawabPertanyaanPage() {
 
                         {/* Topik Relevan */}
                         {/* Topik Relevan Container */}
-                        {/* Logic: Show Blue Card (Version 2) if no topics selected, otherwise show List (Version 1) */}
-                        {!hasSelectedTopics ? (
+                        {selectedTopics.length === 0 ? (
                             /* Version 2: Empty State / Promo Card */
                             <div className="bg-blue-600 rounded-xl shadow-sm overflow-hidden relative group p-6 text-white min-h-[340px] flex flex-col justify-between">
                                 {/* Decorative Circles (Background) - Animated Half Circles */}
@@ -315,7 +325,7 @@ export default function JawabPertanyaanPage() {
                                     {/* Button: Bottom Center */}
                                     <div className="group flex justify-center mt-auto">
                                         <button
-                                            onClick={() => setHasSelectedTopics(true)}
+                                            onClick={() => setIsTopicModalOpen(true)}
                                             className="bg-blue-800 hover:bg-blue-900 text-white text-sm font-semibold py-2.5 px-6 rounded-full inline-flex items-center gap-2 transition-all shadow-lg hover:shadow-blue-900/30 active:scale-95 cursor-pointer"
                                         >
                                             Pilih topik
@@ -333,11 +343,11 @@ export default function JawabPertanyaanPage() {
                                     <div className="absolute top-16 -right-9 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
                                     <div className="absolute -top-4 -left-10 -translate-y-1/2 w-24 h-24 bg-white/20 rounded-full transition-transform duration-600 ease-out group-hover:scale-120"></div>
                                     <span className="relative z-10">Topik Relevan</span>
-                                    <span className="relative z-10 text-blue-100 bg-white/20 px-2 py-0.5 rounded-full text-xs">11</span>
+                                    <span className="relative z-10 text-blue-100 bg-white/20 px-2 py-0.5 rounded-full text-xs">{selectedTopics.length}</span>
                                 </div>
                                 <div className="p-3">
                                     <div className="flex flex-wrap gap-2">
-                                        {relevantTopics.map((topic, index) => (
+                                        {selectedTopics.map((topic, index) => (
                                             <button
                                                 key={index}
                                                 className="cursor-pointer px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm rounded-full transition-colors font-medium border border-gray-200"
@@ -347,13 +357,15 @@ export default function JawabPertanyaanPage() {
                                         ))}
                                     </div>
                                     <div className="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
-                                        <button className="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline">
+                                        <button
+                                            onClick={() => setIsTopicModalOpen(true)}
+                                            className="cursor-pointer text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline"
+                                        >
                                             Tambah Topik Lain
                                         </button>
-                                        {/* Helper to reset state for demo */}
                                         <button
                                             onClick={() => setHasSelectedTopics(false)}
-                                            className="text-xs text-gray-400 hover:text-gray-600 underline"
+                                            className="cursor-pointer text-xs text-gray-400 hover:text-gray-600 underline"
                                             title="Reset to Empty State (Demo)"
                                         >
                                             Reset
@@ -366,6 +378,20 @@ export default function JawabPertanyaanPage() {
                     </div>
                 </aside>
             </div>
+
+            <TopicSelectionModal
+                isOpen={isTopicModalOpen}
+                onClose={() => setIsTopicModalOpen(false)}
+                selectedTopics={selectedTopics}
+                addTopic={addTopic}
+                removeTopic={removeTopic}
+            />
+
+            <AnswerQuestionModal
+                isOpen={isAnswerModalOpen}
+                onClose={() => setIsAnswerModalOpen(false)}
+                question={selectedQuestion}
+            />
         </div>
     );
 }

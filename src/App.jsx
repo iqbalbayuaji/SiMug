@@ -24,6 +24,7 @@ import ForumBerandaPage from './pages/ForumBerandaPage'
 import ForumAboutPage from './pages/ForumAboutPage'
 import ForumSettingsPage from './pages/ForumSettingsPage'
 import { ForumProvider } from './context/ForumContext'
+import CheckoutPage from './pages/CheckoutPage'
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/roadmap/:courseId" element={<RoadmapPage />} />
           <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
           <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/profile/*" element={<ProfilePage />} />
           <Route path="/forum-intro" element={<ForumIntroPage />} />
           <Route path="/forum" element={<Forum />} />
