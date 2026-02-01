@@ -7,6 +7,7 @@ import Footer from '../components/layout/Footer'
 import mascot1 from '../assets/maskot/mascot1.png'
 import mascot2 from '../assets/maskot/mascot2.png'
 import mascot3 from '../assets/maskot/mascot3.png'
+import profileBanner from '../assets/images/profilebanner.png'
 
 export default function LeaderboardPage() {
   const [activeTab, setActiveTab] = useState('bulanan')
@@ -154,7 +155,7 @@ export default function LeaderboardPage() {
         </Link>
 
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-32">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#4177FF] via-[#8CADFF] to-[#4177FF] bg-clip-text text-transparent mb-3">
             PAPAN PERINGKAT
           </h1>
@@ -165,32 +166,31 @@ export default function LeaderboardPage() {
 
         {/* Top 3 Podium */}
         <div className="relative mb-16">
-          {/* Decorative numbers in background */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-            <span className="text-[200px] font-bold text-[#4177FF]">1</span>
-            <span className="text-[150px] font-bold text-[#4177FF]">2</span>
-            <span className="text-[120px] font-bold text-[#4177FF]">3</span>
+          {/* Decorative Blurred Dots */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-[500px] h-[500px] bg-[#4177FF] rounded-full opacity-20 blur-[200px]"></div>
           </div>
 
-          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto items-end">
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto items-center">
             {/* Rank 2 - Left */}
-            <div className="order-2 md:order-1 transform md:translate-y-8 flex justify-center relative">
+            <div className="order-2 md:order-1 transform md:translate-y-16 flex justify-center relative">
               {/* Large Number 2 Background */}
               <div className="absolute -top-30 left-4 text-[120px] font-black bg-gradient-to-b from-[#A2BCFF] to-[#FFFFFF] bg-clip-text text-transparent select-none pointer-events-none z-0">
                 2
               </div>
               <div className="w-[270px] h-[255px] bg-white rounded-[24px] shadow-xl border-2 border-gray-100 overflow-visible hover:shadow-2xl transition-all p-2 relative z-10">
                 {/* Blue Header Background - Inside card with rounded corners */}
-                <div className="bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] h-20 rounded-[16px] relative mb-2">
-                  {/* Avatar at bottom left corner */}
-                  <div className="absolute -bottom-10 left-3">
-                    <div className="w-18 h-18 rounded-full bg-[#FF8C42] p-1 shadow-lg">
-                      <img
-                        src={topThreeUsers[0].avatar}
-                        alt={topThreeUsers[0].name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    </div>
+                <div className="h-20 rounded-[16px] relative mb-2 overflow-hidden">
+                  <img src={profileBanner} alt="Profile Banner" className="w-full h-full object-cover" />
+                </div>
+                {/* Avatar at bottom left corner */}
+                <div className="absolute top-[60px] left-5">
+                  <div className="w-18 h-18 rounded-full bg-[#FF8C42] p-1 shadow-lg">
+                    <img
+                      src={topThreeUsers[0].avatar}
+                      alt={topThreeUsers[0].name}
+                      className="w-full h-full rounded-full object-cover"
+                    />
                   </div>
                 </div>
 
@@ -212,11 +212,6 @@ export default function LeaderboardPage() {
                 <div className="mb-3">
                   <div className="flex items-center gap-1.5 mb-1">
                     <h3 className="text-base font-bold text-gray-900 truncate">{topThreeUsers[0].name}</h3>
-                    <div className="w-5 h-5 bg-blue-100 rounded-md flex items-center justify-center shrink-0">
-                      <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z" />
-                      </svg>
-                    </div>
                   </div>
                   <p className="text-xs text-gray-400 truncate">{topThreeUsers[0].username}</p>
                 </div>
@@ -243,23 +238,24 @@ export default function LeaderboardPage() {
             </div>
 
             {/* Rank 1 - Center (Highest) */}
-            <div className="order-1 md:order-2 flex justify-center relative pt-20">
+            <div className="order-1 md:order-2 flex justify-center relative -mt-8">
               {/* Large Number 1 Background */}
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[100px] font-black bg-gradient-to-b from-[#A2BCFF] to-[#FFFFFF] bg-clip-text text-transparent select-none pointer-events-none z-10">
+              <div className="absolute -top-28 left-1/2 -translate-x-1/2 text-[100px] font-black bg-gradient-to-b from-[#A2BCFF] to-[#FFFFFF] bg-clip-text text-transparent select-none pointer-events-none z-10">
                 1
               </div>
               <div className="w-[270px] h-[255px] bg-white rounded-[24px] shadow-2xl border-4 border-gray-100 overflow-visible transform md:scale-110 hover:scale-115 transition-all p-2 relative z-20">
                 {/* Blue Header Background - Inside card with rounded corners */}
-                <div className="bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] h-20 rounded-[16px] relative mb-2">               
-                  {/* Avatar at bottom left corner */}
-                  <div className="absolute -bottom-10 left-3">
-                    <div className="w-18 h-18 rounded-full bg-[#FF8C42] p-1 shadow-lg">
-                      <img
-                        src={topThreeUsers[1].avatar}
-                        alt={topThreeUsers[1].name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    </div>
+                <div className="h-20 rounded-[16px] relative mb-2 overflow-hidden">
+                  <img src={profileBanner} alt="Profile Banner" className="w-full h-full object-cover" />
+                </div>
+                {/* Avatar at bottom left corner */}
+                <div className="absolute top-[60px] left-5">
+                  <div className="w-18 h-18 rounded-full bg-[#FF8C42] p-1 shadow-lg">
+                    <img
+                      src={topThreeUsers[1].avatar}
+                      alt={topThreeUsers[1].name}
+                      className="w-full h-full rounded-full object-cover"
+                    />
                   </div>
                 </div>
 
@@ -312,23 +308,24 @@ export default function LeaderboardPage() {
             </div>
 
             {/* Rank 3 - Right */}
-            <div className="order-3 transform md:translate-y-8 flex justify-center relative">
+            <div className="order-3 transform md:translate-y-16 flex justify-center relative">
               {/* Large Number 3 Background */}
               <div className="absolute -top-2 -right-8 text-[120px] font-black bg-gradient-to-b from-[#A2BCFF] to-[#FFFFFF] bg-clip-text text-transparent select-none pointer-events-none z-0">
                 3
               </div>
               <div className="w-[270px] h-[255px] bg-white rounded-[24px] shadow-xl border-4 border-gray-100 overflow-visible hover:shadow-2xl transition-all p-2 relative z-10">
                 {/* Blue Header Background - Inside card with rounded corners */}
-                <div className="bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] h-20 rounded-[16px] relative mb-2">
-                  {/* Avatar at bottom left corner */}
-                  <div className="absolute -bottom-10 left-3">
-                    <div className="w-18 h-18 rounded-full bg-[#FF8C42] p-1 shadow-lg">
-                      <img
-                        src={topThreeUsers[2].avatar}
-                        alt={topThreeUsers[2].name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    </div>
+                <div className="h-20 rounded-[16px] relative mb-2 overflow-hidden">
+                  <img src={profileBanner} alt="Profile Banner" className="w-full h-full object-cover" />
+                </div>
+                {/* Avatar at bottom left corner */}
+                <div className="absolute top-[60px] left-5">
+                  <div className="w-18 h-18 rounded-full bg-[#FF8C42] p-1 shadow-lg">
+                    <img
+                      src={topThreeUsers[2].avatar}
+                      alt={topThreeUsers[2].name}
+                      className="w-full h-full rounded-full object-cover"
+                    />
                   </div>
                 </div>
                    
@@ -351,11 +348,6 @@ export default function LeaderboardPage() {
                 <div className="mb-3">
                   <div className="flex items-center gap-1.5 mb-1">
                     <h3 className="text-base font-bold text-gray-900 truncate">{topThreeUsers[2].name}</h3>
-                    <div className="w-5 h-5 bg-blue-100 rounded-md flex items-center justify-center shrink-0">
-                      <svg className="w-3 h-3 text-[#4177FF]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z" />
-                      </svg>
-                    </div>
                   </div>
                   <p className="text-xs text-gray-400 truncate">{topThreeUsers[2].username}</p>
                 </div>
@@ -456,73 +448,80 @@ export default function LeaderboardPage() {
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto px-4 pb-4">
-            <table className="w-full">
+          <div className="overflow-x-auto px-4 pb-4 mt-2">
+            <table className="w-full table-fixed">
               <thead>
                 <tr>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[8%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">No.</span>
                     </div>
                   </th>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[18%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">Username</span>
                     </div>
                   </th>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[12%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">Lv. User</span>
                     </div>
                   </th>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[14%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">XP Total</span>
                     </div>
                   </th>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[14%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">Streak</span>
                     </div>
                   </th>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[17%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">Fase Selesai</span>
                     </div>
                   </th>
-                  <th className="pb-3">
+                  <th className="pb-3 w-[17%]">
                     <div className="bg-[#F0F4FF] rounded-lg px-6 py-3 text-left">
                       <span className="text-sm font-semibold text-[#4177FF]">Jawaban Forum</span>
                     </div>
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="space-y-2">
                 {leaderboardData.map((user, index) => (
-                  <tr
-                    key={index}
-                    className="hover:bg-[#F5F8FF] transition-colors"
-                  >
-                    <td className="px-6 py-4">
-                      <span className="font-semibold text-gray-700">{user.rank}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="font-semibold text-gray-900">{user.username}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-gray-700">{user.level}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="font-semibold text-gray-900">{user.xpTotal}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-gray-700">{user.streak}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-gray-700">{user.faseSelesai}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-gray-700">{user.jawabanForum}</span>
+                  <tr key={index}>
+                    <td colSpan="7" className="px-0 py-1">
+                      <div className="border border-gray-200 rounded-lg hover:bg-[#F5F8FF] transition-colors">
+                        <table className="w-full table-fixed">
+                          <tbody>
+                            <tr>
+                              <td className="px-6 py-4 w-[8%]">
+                                <span className="font-semibold text-gray-700">{user.rank}</span>
+                              </td>
+                              <td className="px-6 py-4 w-[18%]">
+                                <span className="font-semibold text-gray-900">{user.username}</span>
+                              </td>
+                              <td className="px-6 py-4 w-[12%]">
+                                <span className="text-gray-700">{user.level}</span>
+                              </td>
+                              <td className="px-6 py-4 w-[14%]">
+                                <span className="font-semibold text-gray-900">{user.xpTotal}</span>
+                              </td>
+                              <td className="px-6 py-4 w-[14%]">
+                                <span className="text-gray-700">{user.streak}</span>
+                              </td>
+                              <td className="px-6 py-4 w-[17%]">
+                                <span className="text-gray-700">{user.faseSelesai}</span>
+                              </td>
+                              <td className="px-6 py-4 w-[17%]">
+                                <span className="text-gray-700">{user.jawabanForum}</span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </td>
                   </tr>
                 ))}
