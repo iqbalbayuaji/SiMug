@@ -19,11 +19,11 @@ export default function ForumTabs({ activeTab, onTabChange }) {
 
     return (
         <div className="px-4 lg:px-0 mt-1 lg:mt-6">
-            <div className="border-y border-gray-200 px-10 pt-4 relative">
-                <div className="flex gap-8 relative">
+            <div className="border-y border-gray-200 lg:px-10 pt-4 relative">
+                <div className="flex justify-center lg:justify-start gap-8 relative px-4 lg:px-0">
                     {/* Animated Indicator */}
                     <span
-                        className="absolute bottom-0 h-0.5 bg-blue-600 rounded-t-full transition-all duration-300 ease-in-out"
+                        className="absolute bottom-0 h-0.5 bg-blue-600 transition-all duration-300 ease-in-out"
                         style={{
                             left: indicatorStyle.left,
                             width: indicatorStyle.width

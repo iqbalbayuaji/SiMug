@@ -28,7 +28,7 @@ export default function HotFreshCourseSection() {
   ]
 
   return (
-    <section className="relative bg-white py-12">
+    <section className="relative bg-white py-2 lg:py-12">
       <div className="w-full px-6">
         <div className="max-w-[1500px] mx-auto">
           {/* Blue Gradient Background Container */}
@@ -84,7 +84,7 @@ export default function HotFreshCourseSection() {
                   course-course terbaru yang baru<br />
                   saja launching di SiMug.
                 </p>
-                <button className="bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
+                <button className="hidden lg:block cursor-pointer bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
                   Lihat lebih banyak
                 </button>
               </div>
@@ -126,7 +126,7 @@ export default function HotFreshCourseSection() {
                             {course.badge}
                           </span>
                         </div>
-                        <button className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                        <button className="cursor-pointer w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -135,6 +135,11 @@ export default function HotFreshCourseSection() {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="flex justify-center">
+                <button className=" cursor-pointer bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
+                  Lihat lebih banyak
+                </button>
               </div>
             </div>
           </div>

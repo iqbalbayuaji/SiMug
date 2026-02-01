@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
+import { FaChevronLeft } from "react-icons/fa"
 import StackedCarousel from "../../../components/StackedCarousel"
-import logo from "../../../assets/images/logo-simug.png"
 
 export default function Step1({
   formData,
@@ -17,8 +17,8 @@ export default function Step1({
       {/* Step 1 - Section Kiri - Form */}
       <div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-4 md:py-6 lg:py-8 overflow-y-auto">
         {/* Step Indicator */}
-        <div className="mb-4 md:mb-6">
-          <div className="flex justify-between items-center mb-2">
+        <div className="mb-6 md:mb-6 mt-15">
+          <div className="hidden lg:block flex justify-between items-center mb-3">
             <span className="text-sm font-medium text-[#4177FF]">
               Langkah {currentStep} dari {totalSteps}
             </span>
@@ -32,30 +32,27 @@ export default function Step1({
               <div key={index} className="flex items-center flex-1">
                 {/* Starting Dot */}
                 <div
-                  className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
-                    index === 0 && currentStep >= 1
-                      ? "bg-[#4177FF]"
-                      : index > 0 && index < currentStep
+                  className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${index === 0 && currentStep >= 1
+                    ? "bg-[#4177FF]"
+                    : index > 0 && index < currentStep
                       ? "bg-[#4177FF]"
                       : "bg-white border-3 border-[#4177FF]"
-                  }`}
+                    }`}
                 />
                 {/* Progress Line */}
                 <div
-                  className={`flex-1 h-1.5 mx-1 rounded-full transition-all duration-300 ${
-                    index < currentStep
-                      ? "bg-[#4177FF]"
-                      : "bg-gray-200"
-                  }`}
+                  className={`flex-1 h-1.5 mx-1 rounded-full transition-all duration-300 ${index < currentStep
+                    ? "bg-[#4177FF]"
+                    : "bg-gray-200"
+                    }`}
                 />
                 {/* Ending Dot (only for last step) */}
                 {index === totalSteps - 1 && (
                   <div
-                    className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
-                      currentStep > totalSteps
-                        ? "bg-[#4177FF]"
-                        : "bg-white border-3 border-[#4177FF]"
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${currentStep > totalSteps
+                      ? "bg-[#4177FF]"
+                      : "bg-white border-3 border-[#4177FF]"
+                      }`}
                   />
                 )}
               </div>
@@ -64,13 +61,13 @@ export default function Step1({
         </div>
 
         {/* Title */}
-        <div className="mb-4 md:mb-6">
-          <h1 className="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-900 leading-tight mb-2">
+        <div className="mb-5 md:mb-6">
+          <h1 className="text-xl sm:text-3xl md:text-3xl font-semibold lg:font-bold text-gray-900 leading-tight mb-2">
             Hi, Selamat Bergabung,
             <br />
             Buruan <span className="text-gray-900">Daftarin Akunmu!</span>
           </h1>
-          <p className="text-sm md:text-base text-gray-500">
+          <p className="text-xs md:text-base text-gray-500">
             Jangan tunda-tunda lagi. Segera daftarkan akun dan
             <br className="hidden sm:block" />
             mulai program pengembangan diri SiMug sekarang.
@@ -78,7 +75,7 @@ export default function Step1({
         </div>
 
         {/* Form */}
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-4 md:space-y-5 flex-1">
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-6 md:space-y-5 flex-1">
           {/* Nama Lengkap */}
           <div className="relative">
             <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
@@ -125,7 +122,7 @@ export default function Step1({
           </div>
 
           {/* Password & Konfirmasi Password */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="relative">
               <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
                 Password
@@ -155,7 +152,7 @@ export default function Step1({
           </div>
 
           {/* Terms Checkbox */}
-          <div className="flex items-center gap-2 text-sm mt-3">
+          <div className="flex items-center gap-2 text-sm mt-5">
             <input
               type="checkbox"
               id="terms"
@@ -179,7 +176,7 @@ export default function Step1({
           <button
             type="button"
             onClick={handleNextStep}
-            className="w-full py-2.5 md:py-3 text-sm md:text-base rounded-full bg-[#4177FF] text-white font-semibold hover:bg-[#3461D9] transition-all duration-300 shadow-lg hover:shadow-xl mt-3"
+            className="w-full py-2.5 md:py-3 text-sm md:text-base rounded-full bg-[#4177FF] text-white font-semibold hover:bg-[#3461D9] transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Verifikasi Identitas
           </button>
@@ -199,24 +196,10 @@ export default function Step1({
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10">
           <Link to="/login" className="flex items-center gap-2 text-white text-sm hover:opacity-80 transition">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
+            <FaChevronLeft className="h-5 w-5" />
             Kembali
           </Link>
           <div className="flex items-center gap-2 text-white font-semibold text-lg">
-            <img src={logo} alt="SiMug" className="h-6 w-6" />
             SiMug
           </div>
         </div>
@@ -245,26 +228,12 @@ export default function Step1({
       </div>
 
       {/* Mobile Blue Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#4177FF] to-[#3461D9] p-4 flex justify-between items-center">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#4177FF] p-4 flex justify-between items-center">
         <Link to="/login" className="flex items-center gap-2 text-white text-sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
+          <FaChevronLeft className="h-5 w-5" />
           Kembali
         </Link>
         <div className="flex items-center gap-2 text-white font-semibold">
-          <img src={logo} alt="SiMug" className="h-5 w-5" />
           SiMug
         </div>
       </div>

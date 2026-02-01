@@ -72,7 +72,7 @@ export default function RecommendedCoursesSection() {
                 </p>
               </div>
             </div>
-            <Link to="/artikel" className="text-[#4177FF] font-semibold flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-sm md:text-base self-start">
+            <Link to="/artikel" className=" hidden lg:flex text-[#4177FF] font-semibold flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-sm md:text-base self-start">
               Telusuri Lebih banyak
               <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -82,62 +82,72 @@ export default function RecommendedCoursesSection() {
         </div>
 
         {/* Article Cards with Navigation */}
-        <div className="relative max-w-[1400px] mx-auto">
-          {/* Article Cards Grid */}
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-                    {articles
-                      .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
-                      .map((article) => (
-                        <div key={article.id} className="w-full">
-                          <Link to="/artikel" className="block h-full group">
-                            {/* Article Image */}
-                            <div className="relative h-56 rounded-2xl overflow-hidden mb-3">
-                              <img
-                                src={article.image}
-                                alt={article.title}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                              />
-                              {/* Gradient Overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                              
-                              {/* Category Badge */}
-                              <div className="absolute top-3 left-3 opacity-70">
-                                <span className={`${article.categoryColor} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
-                                  {article.category}
-                                </span>
-                              </div>
+        <div>
+          <div className="relative max-w-[1400px] mx-auto">
+            {/* Article Cards Grid */}
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                  <div key={slideIndex} className="w-full flex-shrink-0">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                      {articles
+                        .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
+                        .map((article) => (
+                          <div key={article.id} className="w-full">
+                            <Link to="/artikel" className="block h-full group">
+                              {/* Article Image */}
+                              <div className="relative h-56 rounded-2xl overflow-hidden mb-3">
+                                <img
+                                  src={article.image}
+                                  alt={article.title}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                {/* Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
-                              {/* Three Dots Menu */}
-                              <button className="absolute top-3 right-3 w-8 h-8 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/50 transition-colors">
-                                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                </svg>
-                              </button>
+                                {/* Category Badge */}
+                                <div className="absolute top-3 left-3 opacity-70">
+                                  <span className={`${article.categoryColor} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
+                                    {article.category}
+                                  </span>
+                                </div>
 
-                              {/* Title & Author Overlay */}
-                              <div className="absolute bottom-0 left-0 right-0 p-4">
-                                <h3 className="font-bold text-base text-white leading-tight line-clamp-2 mb-2">
-                                  {article.title}
-                                </h3>
-                                <p className="text-xs text-white/90">
-                                  {article.author} • {article.duration}
-                                </p>
+                                {/* Three Dots Menu */}
+                                <button className="cursor-pointer absolute top-3 right-3 w-8 h-8 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/50 transition-colors">
+                                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                  </svg>
+                                </button>
+
+                                {/* Title & Author Overlay */}
+                                <div className="absolute bottom-0 left-0 right-0 p-4">
+                                  <h3 className="font-bold text-base text-white leading-tight line-clamp-2 mb-2">
+                                    {article.title}
+                                  </h3>
+                                  <p className="text-xs text-white/90">
+                                    {article.author} • {article.duration}
+                                  </p>
+                                </div>
                               </div>
-                            </div>
-                          </Link>
-                        </div>
-                      ))}
+                            </Link>
+                          </div>
+                        ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          </div>
+          <div className="flex justify-center mt-4">
+            <Link to="/artikel" className="lg:hidden block text-[#4177FF] font-semibold flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-sm md:text-base self-start">
+              Telusuri Lebih banyak
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

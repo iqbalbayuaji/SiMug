@@ -27,7 +27,7 @@ export default function EventSection() {
             <div className="relative h-[320px] min-[425px]:h-[360px] md:h-[450px] lg:h-[420px] xl:h-[500px]">
               {/* Decorative Circle - Light Blue Top Right */}
               <div className="absolute w-20 h-20 min-[425px]:w-24 min-[425px]:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-[#ABC3FF] rounded-full right-14 min-[425px]:right-10 md:right-20 lg:right-16 xl:right-24 top-2 min-[425px]:top-4 md:top-6 lg:top-6 xl:top-8 z-0"></div>
-              
+
               {/* Decorative Circle - Light Blue Bottom Left */}
               <div className="absolute w-20 h-20 min-[425px]:w-24 min-[425px]:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-[#ABC3FF] rounded-full bottom-16 left-10 min-[425px]:left-14 md:left-24 lg:left-20 xl:left-30 bottom-6 min-[425px]:bottom-8 md:bottom-12 lg:bottom-10 xl:bottom-16 z-0"></div>
 
@@ -74,7 +74,7 @@ export default function EventSection() {
                 Kesempatan nggak datang 2x<br />
                 Ayo segera ikuti <span className="text-[#4177FF]">event terbatas!</span>
               </h3>
-              
+
               <p className="text-xs min-[425px]:text-sm md:text-base text-gray-600 mb-5 min-[425px]:mb-6 md:mb-8 leading-relaxed">
                 Event SiMug dirancang untuk bikin kamu aktif, konsisten, dan terhubung dengan orang-orang yang punya tujuan yang sama.
               </p>
@@ -88,13 +88,13 @@ export default function EventSection() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <p className="text-xs min-[425px]:text-sm md:text-base text-gray-700 font-medium">{benefit}</p>
+                    <p className="text-sm min-[425px]:text-sm md:text-base text-gray-700 font-medium">{benefit}</p>
                   </div>
                 ))}
               </div>
 
               {/* CTA Button */}
-              <button className="text-[#4177FF] font-semibold flex items-center gap-1.5 min-[425px]:gap-2 px-4 min-[425px]:px-5 md:px-6 py-2 min-[425px]:py-2.5 md:py-3 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-xs min-[425px]:text-sm md:text-base">
+              <button className="cursor-pointer text-[#4177FF] font-semibold flex items-center gap-1.5 min-[425px]:gap-2 px-4 min-[425px]:px-5 md:px-6 py-2.5 min-[425px]:py-2.5 md:py-3 border-2 border-[#4177FF] rounded-full hover:bg-[#E5ECFF] transition-colors text-xs min-[425px]:text-sm md:text-base">
                 Pelajari lebih lanjut
                 <svg className="w-3.5 h-3.5 min-[425px]:w-4 min-[425px]:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

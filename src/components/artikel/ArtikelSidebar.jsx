@@ -47,7 +47,7 @@ export default function ArtikelSidebar() {
             <div className="p-4 border-b border-gray-100">
                 <div className="flex items-start justify-between">
                     <div className="flex-1">
-                        <h2 className="text-2xl font-semibold text-gray-900 mb-1">Artikel Lainnya</h2>
+                        <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 mb-1">Artikel Lainnya</h2>
                         <p className="text-sm text-gray-500">Menampilkan beberapa artikel lain</p>
                     </div>
                     <Link
@@ -72,7 +72,7 @@ export default function ArtikelSidebar() {
                     >
                         <div className="flex gap-4 items-center">
                             {/* Thumbnail - Larger and more square */}
-                            <div className="flex-shrink-0 w-35 h-23 rounded-xl overflow-hidden bg-gray-100">
+                            <div className="flex-shrink-0 lg:w-35 lg:h-23 w-30 rounded-xl overflow-hidden bg-gray-100">
                                 <img
                                     src={article.image}
                                     alt={article.title}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TambahPertanyaanModal from './TambahPertanyaanModal';
+import QuestionQAModal from './QuestionQAModal';
 
 export default function ActionCards() {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isQAModalOpen, setIsQAModalOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -75,7 +77,10 @@ export default function ActionCards() {
                 </div>
 
                 {/* Daftar Tanya Jawab */}
-                <div className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#7AA0FA] to-[#688DEB] text-white shadow-md lg:shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1">
+                <div
+                    onClick={() => setIsQAModalOpen(true)}
+                    className="snap-center flex-shrink-0 w-[50%] lg:w-[100%] md:w-auto h-23 rounded-xl px-5 py-3 bg-gradient-to-br from-[#7AA0FA] to-[#688DEB] text-white shadow-md lg:shadow-lg shadow-blue-500/20 relative overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1"
+                >
                     <div className="absolute right-45 -top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:-translate-x-3 group-hover:-translate-y-2 group-hover:scale-110"></div>
                     <div className="absolute -right-11 top-14 w-24 h-24 bg-white/20 rounded-full pointer-events-none transition-all duration-500 ease-out group-hover:translate-x-4 group-hover:translate-y-3 group-hover:scale-105"></div>
                     <div className="relative z-10 flex flex-row justify-between h-full">
@@ -92,6 +97,11 @@ export default function ActionCards() {
             <TambahPertanyaanModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
+            />
+
+            <QuestionQAModal
+                isOpen={isQAModalOpen}
+                onClose={() => setIsQAModalOpen(false)}
             />
         </section>
     );

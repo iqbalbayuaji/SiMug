@@ -25,7 +25,7 @@ export default function TopicsSection() {
   ]
 
   return (
-    <section className="relative bg-[#E5ECFF] py-16 overflow-hidden">
+    <section className="relative bg-[#E5ECFF] py-7 lg:py-16 overflow-hidden">
       {/* Decorative Dots - Top Left (Large circles) - Hidden on mobile */}
       <div className="absolute top-0 left-0 hidden md:block">
         <div className="w-32 h-32 bg-[#C0D2FF] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -46,11 +46,11 @@ export default function TopicsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] items-center gap-8 lg:gap-12">
           {/* Left - Header Text */}
           <div className="pr-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4177FF] mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-[#4177FF] mb-4">
               Apa saja topik utama
               yang akan dipelajari?
             </h2>
-            <p className="text-[#4177FF] text-base leading-relaxed">
+            <p className="text-[#4177FF] text-sm leading-relaxed">
               Tentu ada banyak sekali topik yang bisa di eksplorasi. Namun, kebanyakan user akan terjun dahulu di topik ini.
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function TopicsSection() {
                 <div className="w-12 h-12 bg-[#305AC4] rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                   <img src={topic.icon} alt={topic.title} className="w-6 h-6" />
                 </div>
-                
+
                 {/* Content */}
                 <h3 className="font-bold text-lg mb-2">{topic.title}</h3>
                 <p className="text-white/90 text-xs leading-relaxed">
