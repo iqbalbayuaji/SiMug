@@ -12,6 +12,7 @@ import RoadmapPage from './pages/courses/RoadmapPage'
 import CourseProgressDetailPage from './pages/courses/CourseProgressDetailPage'
 import AssignmentPage from './pages/courses/AssignmentPage'
 import ProfilePage from './pages/profiles/ProfilePage'
+import LeaderboardPage from './pages/LeaderboardPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'
@@ -41,6 +42,7 @@ function App() {
         <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
         <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
         <Route path="/profile/*" element={<ProfilePage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/forum/search" element={<ForumSearchPage />} />
