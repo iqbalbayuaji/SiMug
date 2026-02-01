@@ -44,7 +44,9 @@ function App() {
         <Route path="/roadmap/:courseId" element={<RoadmapPage />} />
         <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
         <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/profile/*" element={<ProfilePage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/forum/search" element={<ForumSearchPage />} />
