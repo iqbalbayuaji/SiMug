@@ -43,6 +43,7 @@ function App() {
         <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
         <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
         <Route path="/profile/*" element={<ProfilePage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/forum-intro" element={<ForumIntroPage />} />
         <Route path="/forum" element={<Forum />} />
         <Route path="/forum/search" element={<ForumSearchPage />} />
