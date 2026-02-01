@@ -68,14 +68,14 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative bg-gradient-to-br from-[#F8FAFF] via-white to-[#F8FAFF] overflow-hidden min-h-[100vh] md:min-h-0">
+    <section className="relative bg-gradient-to-br from-[#F8FAFF] via-white to-[#F8FAFF] overflow-hidden lg:min-h-[100vh] md:min-h-0">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-[10%] w-32 h-32 bg-[#4177FF]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-[5%] w-24 h-24 bg-[#0039C9]/10 rounded-full blur-2xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-16 sm:py-12 lg:py-16 relative z-10 flex items-center min-h-[100vh] md:min-h-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pt-8 pt-10 lg:pb-16 pb-10 sm:py-12 lg:py-16 relative z-10 flex items-center lg:min-h-[100vh] md:min-h-0">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-36 items-center w-full">
           {/* Left Content */}
           <motion.div
@@ -92,14 +92,14 @@ export default function HeroSection() {
               </div>
               <span className="text-[#4177FF] font-semibold text-xs sm:text-sm">#Platform Kesehatan No. 1</span>
             </div>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+
+            <h1 className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-1 lg:mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-[#4177FF] to-[#6B95FF] bg-clip-text text-transparent">
                 Belajar Kesehatan dan Kebugaraan
               </span>{" "}
               <span className="text-gray-900">dengan Cara Lebih Terstruktur</span>
             </h1>
-            
+
             <p className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8">
               Ikuti kursus berbasis progres, dapatkan panduan mentor, dan raih reward dari setiap pencapaianmu.
             </p>
@@ -120,9 +120,9 @@ export default function HeroSection() {
                   className="w-full pl-12 sm:pl-14 pr-4 sm:pr-5 py-3 sm:py-3.5 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4177FF] focus:border-transparent text-sm sm:text-base placeholder:text-gray-400"
                 />
               </div>
-             <button 
+              <button
                 type="submit"
-                className="bg-[#4177FF] text-white pl-3 pr-3 sm:pl-3 sm:pr-8 py-3 sm:py-0 rounded-full font-semibold hover:bg-[#3461D9] transition-all text-sm sm:text-base flex items-center gap-0 sm:gap-5 whitespace-nowrap"
+                className="cursor-pointer bg-[#4177FF] text-white pl-3 pr-3 sm:pl-3 sm:pr-8 py-3 sm:py-0 rounded-full font-semibold hover:bg-[#3461D9] transition-all text-sm sm:text-base flex items-center gap-0 sm:gap-5 whitespace-nowrap"
                 style={{ boxShadow: '0 8px 24px rgba(65, 119, 255, 0.4)' }}
               >
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -136,21 +136,21 @@ export default function HeroSection() {
 
             {/* Quick Tags */}
             <div className="flex flex-wrap gap-2 sm:gap-3">
-              <button 
+              <button
                 onClick={() => handleQuickTag("Binaraga dasar")}
-                className="px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
+                className="cursor-pointer px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
               >
                 Binaraga dasar
               </button>
-              <button 
+              <button
                 onClick={() => handleQuickTag("Renang pemula")}
-                className="px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
+                className="cursor-pointer px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
               >
                 Renang pemula
               </button>
-              <button 
+              <button
                 onClick={() => handleQuickTag("Boxing advance")}
-                className="px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
+                className="cursor-pointer px-3 sm:px-5 py-1.5 sm:py-2 bg-[#4177FF]/10 text-[#4177FF] rounded-full text-xs sm:text-sm font-medium hover:bg-[#4177FF]/20 transition-colors"
               >
                 Boxing advance
               </button>
@@ -163,13 +163,13 @@ export default function HeroSection() {
             <div className="absolute inset-0 flex items-center justify-center">
               {/* Circle 4 - Largest (710px) - Paling belakang */}
               <div className="absolute w-[500px] h-[500px] lg:w-[580px] lg:h-[580px] xl:w-[710px] xl:h-[710px] bg-[#F1F5FF] opacity-70 rounded-full z-0" style={{ filter: 'blur(5px)' }}></div>
-              
+
               {/* Circle 3 - Large (575px) */}
               <div className="absolute w-[400px] h-[400px] lg:w-[470px] lg:h-[470px] xl:w-[575px] xl:h-[575px] bg-[#ECF2FF] opacity-70 rounded-full z-0" style={{ filter: 'blur(5px)' }}></div>
-              
+
               {/* Circle 2 - Medium (450px) */}
               <div className="absolute w-[320px] h-[320px] lg:w-[370px] lg:h-[370px] xl:w-[450px] xl:h-[450px] bg-[#E1E9FF] opacity-70 rounded-full z-0" style={{ filter: 'blur(5px)' }}></div>
-              
+
               {/* Circle 1 - Smallest (250px) - Paling depan */}
               <div className="absolute w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] xl:w-[250px] xl:h-[250px] bg-[#CEDCFF] opacity-70 rounded-full z-0" style={{ filter: 'blur(5px)' }}></div>
             </div>
@@ -177,9 +177,9 @@ export default function HeroSection() {
             {/* Floating Elements Container */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-full h-full">
-                
+
                 {/* Icon 1 - Chart/Stats (Top Left) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[15%] left-[5%] lg:left-[6%] xl:left-[8%] z-10"
                   variants={floatingVariants(0.1, -8, 5)}
                   initial="initial"
@@ -193,7 +193,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Icon 2 - Chat (Middle Left) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[40%] left-[2%] lg:left-[3%] xl:left-[5%] z-10"
                   variants={floatingVariants(0.2, 10, -5)}
                   initial="initial"
@@ -207,7 +207,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Icon 3 - Calendar (Top Right) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[0%] right-[15%] lg:right-[17%] xl:right-[20%] z-10"
                   variants={floatingVariants(0.15, -10, -8)}
                   initial="initial"
@@ -221,7 +221,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Image 1 - Top Center (Workout) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[4%] left-[25%] lg:left-[26%] xl:left-[28%] z-10"
                   variants={floatingVariants(0.25, -12, 8)}
                   initial="initial"
@@ -233,7 +233,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Image 2 - Middle Center (Running) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[30%] left-[18%] lg:left-[20%] xl:left-[22%] z-10"
                   variants={floatingVariants(0.3, 15, -10)}
                   initial="initial"
@@ -245,7 +245,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Card 1 - Progress Card (Right) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[22%] left-[58%] lg:left-[60%] xl:left-[62%] z-10"
                   variants={floatingVariants(0.35, -10, 12)}
                   initial="initial"
@@ -287,7 +287,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Card 2 - Chat/Question Card (Bottom Left) */}
-                <motion.div 
+                <motion.div
                   className="absolute bottom-[20%] left-[0%] z-10"
                   variants={floatingVariants(0.4, 12, -8)}
                   initial="initial"
@@ -303,13 +303,13 @@ export default function HeroSection() {
                       <h4 className="font-bold text-gray-900 text-[10px] lg:text-xs xl:text-sm">Tanya ke <span className="text-[#4177FF]">MUGION</span></h4>
                     </div>
                     <div className="flex items-center gap-1 lg:gap-1.5 xl:gap-2">
-                      <input 
-                        type="text" 
-                        placeholder="Tanya apa saja?" 
+                      <input
+                        type="text"
+                        placeholder="Tanya apa saja?"
                         className="flex-1 px-1.5 lg:px-2.5 xl:px-3 py-1 lg:py-1.5 xl:py-2 bg-gray-50 rounded-lg lg:rounded-xl text-[9px] lg:text-[10px] xl:text-xs border border-gray-200 placeholder:text-gray-400"
                         readOnly
                       />
-                      <button className="w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-[#4177FF] rounded-lg lg:rounded-xl flex items-center justify-center hover:bg-[#5A8CFF] transition-colors">
+                      <button className="cursor-pointer w-7 h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-[#4177FF] rounded-lg lg:rounded-xl flex items-center justify-center hover:bg-[#5A8CFF] transition-colors">
                         <svg className="w-3 h-3 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
@@ -319,7 +319,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Card 3 - Admin Profile Card (Bottom Center) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[85%] left-[8%] lg:left-[9%] xl:left-[10%] z-10"
                   variants={floatingVariants(0.45, -8, 10)}
                   initial="initial"
@@ -339,7 +339,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Card 4 - Community Groups (Bottom Right) */}
-                <motion.div 
+                <motion.div
                   className="absolute top-[60%] left-[55%] lg:left-[58%] xl:left-[60%] z-10"
                   variants={floatingVariants(0.5, 10, -12)}
                   initial="initial"

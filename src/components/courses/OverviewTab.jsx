@@ -14,7 +14,7 @@ export default function OverviewTab({ course }) {
       {/* Description Section */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
             <HiSparkles className="text-white text-xl" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Tentang Course Ini</h2>
@@ -31,15 +31,15 @@ export default function OverviewTab({ course }) {
       {/* What You'll Learn - Modern Cards */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
+          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
             <FaCheckCircle className="text-white text-xl" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Yang Akan Kamu Pelajari</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           {course.features.map((feature, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="group flex items-start gap-4 p-5 bg-gradient-to-r from-emerald-50 via-white to-teal-50 rounded-2xl border border-emerald-100/50 hover:shadow-lg hover:shadow-emerald-100/50 transition-all duration-300 hover:-translate-y-1"
             >
               <span className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
@@ -56,18 +56,18 @@ export default function OverviewTab({ course }) {
       {/* Target Audience - New Section */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">
+          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">
             <FaUsers className="text-white text-xl" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Untuk Siapa Course Ini?</h2>
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
           {targetAudience.map((item, idx) => (
-            <div 
+            <div
               key={idx}
               className="flex items-center gap-4 p-5 bg-gradient-to-r from-purple-50 via-white to-violet-50 rounded-2xl border border-purple-100/50 hover:shadow-lg hover:shadow-purple-100/50 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center shadow-md">
+              <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center shadow-md">
                 <item.icon className="text-white text-lg" />
               </div>
               <span className="text-gray-700 font-medium">{item.text}</span>
@@ -79,7 +79,7 @@ export default function OverviewTab({ course }) {
       {/* Requirements */}
       <div>
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30">
+          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30">
             <HiLightningBolt className="text-white text-xl" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Prasyarat</h2>

@@ -40,13 +40,13 @@ const ProfileAturSimugPage = ({ onMascotSelect }) => {
   ];
 
   return (
-    <div className="p-6">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Pilih Skin Mugion</h2>
+    <div className="">
+      <div className="block lg:hidden mb-6 items-center justify-between">
+        <div className='mb-3'>
+          <h2 className="text-2xl font-bold text-gray-800">Pilih Skin Mugion</h2>
           <p className="text-gray-600">Silahkan pilih skin andalanmu:</p>
         </div>
-        
+
         <div className="flex items-center gap-3">
           {/* Dropdown Button */}
           <div className="relative">
@@ -58,7 +58,7 @@ const ProfileAturSimugPage = ({ onMascotSelect }) => {
               <span className="font-medium">Semua</span>
               <FaChevronDown className={`text-sm transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-100">
                 <button className="w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors">
@@ -81,10 +81,9 @@ const ProfileAturSimugPage = ({ onMascotSelect }) => {
           <button
             onClick={handleConfirmSelection}
             disabled={!selectedMascot}
-            className={`px-8 py-2 text-white rounded-lg transition-all ${
-              selectedMascot ? 'hover:opacity-90' : 'cursor-not-allowed'
-            }`}
-            style={{ 
+            className={`px-8 py-2 text-white rounded-lg transition-all ${selectedMascot ? 'hover:opacity-90' : 'cursor-not-allowed'
+              }`}
+            style={{
               backgroundColor: '#4177FF',
               opacity: selectedMascot ? 1 : 0.5
             }}
@@ -94,44 +93,94 @@ const ProfileAturSimugPage = ({ onMascotSelect }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="hidden lg:flex mb-6 items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Pilih Skin Mugion</h2>
+          <p className="text-gray-600">Silahkan pilih skin andalanmu:</p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          {/* Dropdown Button */}
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="flex items-center gap-2 px-6 py-2 rounded-lg transition-colors"
+              style={{ backgroundColor: '#F0F5FF', color: '#4177FF' }}
+            >
+              <span className="font-medium">Semua</span>
+              <FaChevronDown className={`text-sm transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-100">
+                <button className="w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors">
+                  Semua
+                </button>
+                <button className="w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors">
+                  Olahraga
+                </button>
+                <button className="w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors">
+                  Makanan
+                </button>
+                <button className="w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors">
+                  Lainnya
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Pilih Button */}
+          <button
+            onClick={handleConfirmSelection}
+            disabled={!selectedMascot}
+            className={`px-8 py-2 text-white rounded-lg transition-all ${selectedMascot ? 'hover:opacity-90' : 'cursor-not-allowed'
+              }`}
+            style={{
+              backgroundColor: '#4177FF',
+              opacity: selectedMascot ? 1 : 0.5
+            }}
+          >
+            Pilih
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
         {mascots.map((mascot) => {
           const isLocked = lockedMascot === mascot.id;
           const isSelected = selectedMascot === mascot.id;
-          
+
           return (
             <div
               key={mascot.id}
               onClick={() => !isLocked && setSelectedMascot(mascot.id)}
-              className={`relative rounded-2xl p-6 transition-all duration-300 hover:shadow-lg group ${
-                isLocked ? 'cursor-not-allowed' : 'cursor-pointer'
-              }`}
+              className={`relative rounded-2xl p-3 sm:p-4 lg:p-6 transition-all duration-300 hover:shadow-lg group ${isLocked ? 'cursor-not-allowed' : 'cursor-pointer'
+                }`}
               style={{
                 background: isLocked
                   ? '#9CA3AF'
-                  : isSelected 
+                  : isSelected
                     ? 'linear-gradient(180deg, #A6BFFF 0%, #4177FF 100%)'
                     : '#f3f4f6'
               }}
             >
               {!isLocked && (
-                <div 
+                <div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
                     background: 'linear-gradient(180deg, #A6BFFF 0%, #4177FF 100%)'
                   }}
                 />
               )}
-              
+
               <div className="aspect-square flex items-center justify-center relative z-10">
                 <img
                   src={mascot.image}
                   alt={mascot.name}
-                  className={`w-full h-full object-contain transition-all duration-300 ${
-                    isLocked ? 'opacity-30' : ''
-                  }`}
+                  className={`w-full h-full object-contain transition-all duration-300 ${isLocked ? 'opacity-30' : ''
+                    }`}
                 />
-                
+
                 {isLocked && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <div className="bg-white rounded-full p-4 mb-3">
