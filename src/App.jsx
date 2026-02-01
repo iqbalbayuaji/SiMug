@@ -30,32 +30,6 @@ import CheckoutPage from './pages/CheckoutPage'
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/landing" element={<Navigate to="/" replace />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/progress" element={<ProgressPage />} />
-        <Route path="/search" element={<SearchResultPage />} />
-        <Route path="/chatbot" element={<ChatbotPage />} />
-        <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/courses/:slug" element={<CourseDetailPage />} />
-        <Route path="/roadmap/:courseId" element={<RoadmapPage />} />
-        <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
-        <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
-        <Route path="/profile/*" element={<ProfilePage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
-        <Route path="/forum-intro" element={<ForumIntroPage />} />
-        <Route path="/forum" element={<Forum />} />
-        <Route path="/forum/search" element={<ForumSearchPage />} />
-        <Route path="/forum/beranda" element={<ForumBerandaPage />} />
-        <Route path="/forum/beranda/about" element={<ForumAboutPage />} />
-        <Route path="/jawab-pertanyaan" element={<JawabPertanyaanPage />} />
-        <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
-        <Route path="/artikel" element={<ArtikelPage />} />
-        <Route path="/artikel/:id" element={<ArtikelPage />} />
-      </Routes>
       <ForumProvider>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -73,6 +47,7 @@ function App() {
           <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/profile/*" element={<ProfilePage />} />
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/forum-intro" element={<ForumIntroPage />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/forum/search" element={<ForumSearchPage />} />
