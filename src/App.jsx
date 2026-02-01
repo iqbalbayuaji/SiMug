@@ -22,6 +22,7 @@ import JawabPertanyaanPage from './pages/JawabPertanyaanPage'
 import TambahPertanyaanPage from './pages/TambahPertanyaanPage'
 import ForumBerandaPage from './pages/ForumBerandaPage'
 import ForumAboutPage from './pages/ForumAboutPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
@@ -50,6 +51,8 @@ function App() {
         <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
+        {/* Catch-all route for 404 Not Found */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   )
