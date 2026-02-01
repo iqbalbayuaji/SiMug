@@ -15,16 +15,15 @@ export default function ArtikelPage() {
 
             {/* 3. Main Content Container */}
             <div className="w-full max-w-7xl mx-auto mt-2">
-                <div className="flex ">
+                <div className="flex flex-col lg:flex-row">
                     {/* Left Column - Main Article */}
-                    <main className="flex-1 pr-6 animate-slideUp" style={{ animationDelay: '200ms' }}>
+                    <main className="w-full lg:flex-1 px-4 lg:px-2 lg:pr-6 animate-slideUp" style={{ animationDelay: '200ms' }}>
                         <ArtikelContent />
-                        {/* Extra padding at bottom for comfortable scrolling */}
-                        <div className="h-20"></div>
+                        <div className="h-6"></div>
                     </main>
 
-                    {/* Right Column - Sidebar */}
-                    <aside className="hidden lg:block flex-shrink-0 w-[500px] animate-slideUp" style={{ animationDelay: '400ms' }}>
+                    {/* Right Column - Sidebar (below on mobile, side on desktop) */}
+                    <aside className="w-full lg:w-[500px] lg:flex-shrink-0 px-4 lg:px-0 animate-slideUp" style={{ animationDelay: '400ms' }}>
                         <ArtikelSidebar />
                     </aside>
                 </div>

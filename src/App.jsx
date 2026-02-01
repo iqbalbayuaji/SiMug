@@ -12,6 +12,7 @@ import RoadmapPage from './pages/courses/RoadmapPage'
 import CourseProgressDetailPage from './pages/courses/CourseProgressDetailPage'
 import AssignmentPage from './pages/courses/AssignmentPage'
 import ProfilePage from './pages/profiles/ProfilePage'
+import LeaderboardPage from './pages/LeaderboardPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'

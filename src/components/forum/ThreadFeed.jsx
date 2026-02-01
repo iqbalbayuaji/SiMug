@@ -133,36 +133,35 @@ export default function ThreadFeed() {
                         className="flex items-center justify-between gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3.5 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
                     >
                         <span className="text-sm">{activeTab}</span>
-                        <svg 
-                            className={`w-3.5 h-3.5 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} 
-                            fill="none" 
-                            stroke="currentColor" 
+                        <svg
+                            className={`w-3.5 h-3.5 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
                             viewBox="0 0 24 24"
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-                    
+
                     {/* Dropdown Menu */}
                     {isDropdownOpen && (
                         <>
                             {/* Backdrop */}
-                            <div 
-                                className="fixed inset-0 z-10" 
+                            <div
+                                className="fixed inset-0 z-10"
                                 onClick={() => setIsDropdownOpen(false)}
                             ></div>
-                            
+
                             {/* Menu */}
                             <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-20 animate-slideDown min-w-[160px]">
                                 {tabs.map((tab, index) => (
                                     <button
                                         key={tab}
                                         onClick={() => handleTabSelect(tab)}
-                                        className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors ${
-                                            activeTab === tab
-                                                ? 'bg-blue-50 text-blue-600'
-                                                : 'text-gray-700 hover:bg-gray-50'
-                                        } ${index !== tabs.length - 1 ? 'border-b border-gray-100' : ''}`}
+                                        className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors ${activeTab === tab
+                                            ? 'bg-blue-50 text-blue-600'
+                                            : 'text-gray-700 hover:bg-gray-50'
+                                            } ${index !== tabs.length - 1 ? 'border-b border-gray-100' : ''}`}
                                     >
                                         {tab}
                                     </button>

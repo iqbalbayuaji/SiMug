@@ -69,7 +69,7 @@ export default function Navbar() {
 
   const menuItems = [
     { name: "Home", path: "/home" },
-    { name: "Progres", path: "/progress" },
+    { name: "Progress", path: "/progress" },
     { name: "Course", path: "/courses", hasDropdown: true },
     { name: "Events", hasDropdown: true },
     { name: "Forum", path: "/forum-intro" },
@@ -135,7 +135,7 @@ export default function Navbar() {
           </Link>
 
           {/* Menu Items */}
-          <div 
+          <div
             className="hidden md:flex items-center gap-4 lg:gap-8"
             onMouseLeave={() => setHoveredMenu(null)}
           >
@@ -173,48 +173,44 @@ export default function Navbar() {
                       }
                       setActiveMenu(item.name)
                     }}
-                    className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${
-                      activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
-                    }`}
+                    className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
+                      }`}
                   >
                     {item.name}
                     {item.hasDropdown && (
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
                     {/* Active/Hover Underline */}
-                    <span 
-                      className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
-                        hoveredMenu === item.name
+                    <span
+                      className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${hoveredMenu === item.name
                           ? "w-full"
                           : hoveredMenu === null && activeMenu === item.name
-                          ? "w-full"
-                          : "w-0"
-                      }`}
+                            ? "w-full"
+                            : "w-0"
+                        }`}
                     ></span>
                   </Link>
                 ) : (
                   <button
-                    className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${
-                      activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
-                    }`}
+                    className={`relative flex items-center gap-1 text-sm font-medium transition-colors ${activeMenu === item.name ? "text-gray-900" : "text-[#1E1E1E] opacity-60"
+                      }`}
                   >
                     {item.name}
                     {item.hasDropdown && (
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
                     {/* Active/Hover Underline */}
-                    <span 
-                      className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${
-                        hoveredMenu === item.name
+                    <span
+                      className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${hoveredMenu === item.name
                           ? "w-full"
                           : hoveredMenu === null && activeMenu === item.name
-                          ? "w-full"
-                          : "w-0"
-                      }`}
+                            ? "w-full"
+                            : "w-0"
+                        }`}
                     ></span>
                   </button>
                 )}
@@ -367,7 +363,7 @@ export default function Navbar() {
 
             {/* Profile Picture */}
             <div className="relative profile-dropdown-container">
-              <button 
+              <button
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white overflow-hidden border-2 sm:border-3 border-[#4177FF] hover:border-[#5B8FFF] transition-all"
               >
@@ -533,7 +529,7 @@ export default function Navbar() {
               </svg>
               <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
             </button>
-            <button 
+            <button
               onClick={() => {
                 navigate('/profile')
                 setIsMobileMenuOpen(false)

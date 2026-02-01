@@ -64,16 +64,15 @@ export default function FAQSection() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-3 text-left hover:bg-[#E5ECFF] transition-colors"
+                  className="cursor-pointer w-full flex items-center justify-between p-3 text-left hover:bg-[#E5ECFF] transition-colors"
                 >
                   <span className="text-gray-900 text-sm lg:text-base font-medium pl-4">
                     {faq.question}
                   </span>
                   <div className="flex-shrink-0 w-10 h-10 bg-[#4177FF] rounded-full flex items-center justify-center">
                     <svg
-                      className={`w-6 h-6 text-white transition-transform ${
-                        openIndex === index ? "rotate-45" : ""
-                      }`}
+                      className={`w-6 h-6 text-white transition-transform ${openIndex === index ? "rotate-45" : ""
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

@@ -36,7 +36,7 @@ export default function ArtikelContent() {
             {/* Article Content */}
             <div className="px-8 pb-8">
                 {/* Title */}
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
+                <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4 leading-tight">
                     Mengapa "Consistency is Key" Adalah Aturan Emas dalam Membentuk Tubuh Ideal
                 </h1>
 
@@ -58,7 +58,7 @@ export default function ArtikelContent() {
                     <div className="ml-auto flex items-center gap-2">
                         <button
                             onClick={() => setIsLiked(!isLiked)}
-                            className={`px-4 py-2 cursor-pointer border rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${isLiked
+                            className={`px-4 py-2 cursor-pointer border rounded-full text-sm font-base transition-colors flex items-center gap-2 ${isLiked
                                 ? 'border-red-500 bg-red-50 text-red-600'
                                 : 'border-gray-200 text-gray-700 hover:bg-gray-50'
                                 }`}
@@ -70,7 +70,7 @@ export default function ArtikelContent() {
                         </button>
                         <button
                             onClick={() => setIsSaved(!isSaved)}
-                            className={`px-4 py-2 border cursor-pointer rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${isSaved
+                            className={`px-4 py-2 border cursor-pointer rounded-full text-sm font-base transition-colors flex items-center gap-2 ${isSaved
                                 ? 'border-blue-500 bg-blue-50 text-blue-600'
                                 : 'border-gray-200 text-gray-700 hover:bg-gray-50'
                                 }`}
@@ -105,7 +105,7 @@ export default function ArtikelContent() {
                         </p>
                     </div>
 
-                    <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Tips Menjaga Konsistensi</h2>
+                    <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 mt-8 mb-4">Tips Menjaga Konsistensi</h2>
 
                     <p className="text-gray-700 leading-relaxed mb-4">
                         Mulailah dengan target kecil yang realistis. Daripada memaksakan diri lari 10km di hari pertama, cobalah 2-3km namun rutin setiap dua hari sekali. Catat progres latihanmu, entah itu beban angkatan yang bertambah atau durasi lari yang semakin cepat.

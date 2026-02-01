@@ -36,7 +36,7 @@ export default function PopularCoursesSection() {
   }
 
   return (
-    <section className="relative bg-white py-12 md:py-20">
+    <section className="relative bg-white py-7 lg:py-12 md:py-20">
       <div className="w-full px-4 md:px-6">
         {/* Header with Stats Cards */}
         <div className="relative mb-8 md:mb-12 max-w-7xl mx-auto">
@@ -84,7 +84,7 @@ export default function PopularCoursesSection() {
           {/* Previous Button - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
+            className="cursor-pointer hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -175,7 +175,7 @@ export default function PopularCoursesSection() {
           {/* Next Button - Hidden on mobile */}
           <button
             onClick={nextSlide}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
+            className="cursor-pointer hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -189,11 +189,10 @@ export default function PopularCoursesSection() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentSlide
-                  ? "w-8 bg-[#4177FF]"
-                  : "w-2 bg-gray-300 hover:bg-gray-400"
-              }`}
+              className={`cursor-pointer h-2 rounded-full transition-all ${index === currentSlide
+                ? "w-8 bg-[#4177FF]"
+                : "w-2 bg-gray-300 hover:bg-gray-400"
+                }`}
             />
           ))}
         </div>
