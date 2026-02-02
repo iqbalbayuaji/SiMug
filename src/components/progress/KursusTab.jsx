@@ -3,12 +3,12 @@ import { coursesData } from "../../constants/coursesData"
 
 export default function KursusTab() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [viewMode, setViewMode] = useState("grid") // grid or list
+  const [viewMode, setViewMode] = useState("grid")
 
   // Ambil 4 course pertama sebagai dummy data
-  const courses = coursesData.slice(0, 4).map((course, index) => ({
+  const courses = coursesData.slice(0, 6).map((course, index) => ({
     ...course,
-    completion: [35, 60, 45, 80][index], // Random completion percentage
+    completion: [35, 60, 45, 80][index],
     lastActivity: ["18:30 - 17 Jan", "14:20 - 16 Jan", "09:15 - 15 Jan", "20:45 - 14 Jan"][index]
   }))
 
@@ -17,11 +17,10 @@ export default function KursusTab() {
       {/* Header with Search */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Daftar Kursus Kamu <span className="hidden sm:inline-block ml-2 text-xs sm:text-sm text-gray-500">{courses.length} total kursus</span></h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Daftar Kursus Kamu <span className="hidden font-normal sm:inline-block ml-2 text-xs sm:text-sm text-gray-500">{courses.length} total kursus</span></h2>
         </div>
 
         <div className="w-full sm:w-auto flex items-center gap-3">
-          {/* Search Bar with Button */}
           <div className="relative flex-1 sm:flex-none">
             <input
               type="text"
@@ -40,7 +39,6 @@ export default function KursusTab() {
             </svg>
           </div>
 
-          {/* View Toggle */}
           <div className="flex items-center justify-center bg-[#E5EDFF] rounded-full p-1 flex-shrink-0">
             <button
               onClick={() => setViewMode("grid")}

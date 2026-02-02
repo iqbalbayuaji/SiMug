@@ -31,7 +31,7 @@ export default function CalendarSection({
   })
   const [modalCalendarDate, setModalCalendarDate] = useState({
     year: 2026,
-    month: 0 // January (0-indexed)
+    month: 0
   })
   const [dateRangeSelection, setDateRangeSelection] = useState({
     start: null,
@@ -39,15 +39,13 @@ export default function CalendarSection({
     selecting: false
   })
 
-  // Get days in month for modal calendar
   const getModalDaysInMonth = () => {
     return new Date(modalCalendarDate.year, modalCalendarDate.month + 1, 0).getDate()
   }
 
-  // Get start day of month (0 = Sunday, 1 = Monday, etc.)
   const getModalStartDay = () => {
     const firstDay = new Date(modalCalendarDate.year, modalCalendarDate.month, 1).getDay()
-    return firstDay === 0 ? 6 : firstDay - 1 // Convert to Monday = 0
+    return firstDay === 0 ? 6 : firstDay - 1
   }
 
   // Format date to YYYY-MM-DD for input
@@ -161,10 +159,10 @@ export default function CalendarSection({
   return (
     <>
       <div className="lg:col-span-1">
-        <div className="bg-white rounded-4xl overflow-hidden shadow-lg sticky top-6">
+        <div className="bg-white rounded-2xl overflow-hidden shadow-lg sticky top-6">
           {/* Header with Gradient Background */}
           <div className="relative bg-[#4177FF] p-4 overflow-hidden">
-            {/* Decorative Circles */}
+
             <img src={decoCalendar} alt="" className="absolute top-0 left-0 h-36" />
 
             <div className="relative z-10 flex items-center justify-between">
@@ -181,7 +179,7 @@ export default function CalendarSection({
 
           {/* Calendar Content */}
           <div className="p-6">
-            {/* Calendar Header */}
+
             <div className="flex items-center justify-between mb-4">
               <h4 className="text-lg sm:text-xl font-semibold text-[#1E1E1E]">Januari 2026</h4>
               <div className="flex gap-2">
@@ -198,7 +196,6 @@ export default function CalendarSection({
               </div>
             </div>
 
-            {/* Calendar Grid */}
             <div className="mb-2 border-t border-[#CACACA] pt-6 -mx-6 px-6">
               <div className="grid grid-cols-7 gap-3 mb-3">
                 {["SEN", "SEL", "RAB", "KAM", "JUM", "SAB", "MIN"].map((day) => (
@@ -208,11 +205,9 @@ export default function CalendarSection({
                 ))}
               </div>
               <div className="grid grid-cols-7">
-                {/* Empty cells for days before month starts */}
                 {[...Array(startDay)].map((_, i) => (
                   <div key={`empty-${i}`} className="p-1.5" />
                 ))}
-                {/* Days of month */}
                 {[...Array(daysInMonth)].map((_, i) => {
                   const day = i + 1
                   const isCurrentDay = day === currentDay
@@ -223,7 +218,6 @@ export default function CalendarSection({
 
                   return (
                     <div key={day} className="relative p-1.5">
-                      {/* Background bar for range - extends beyond cell */}
                       {isInRange && (
                         <div
                           className={`absolute bg-[#E5EDFF] -z-10 ${isRangeStart ? 'rounded-l-full' : ''
@@ -255,7 +249,6 @@ export default function CalendarSection({
               </div>
             </div>
 
-            {/* Current Day Info */}
             <div className="border-t border-[#CACACA] pt-4 -mx-6 px-6">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-base text-gray-800">
@@ -287,7 +280,6 @@ export default function CalendarSection({
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-0 lg:p-4 modal-overlay">
           <div className="bg-white rounded-none lg:rounded-3xl max-w-5xl w-full shadow-2xl modal-content overflow-hidden">
-            {/* Header */}
             <div className="px-8 py-6 border-b border-gray-200">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-[#4177FF] rounded-2xl flex items-center justify-center">
@@ -303,7 +295,6 @@ export default function CalendarSection({
             {/* Content */}
             <div className="p-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Left Side - Calendar */}
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <h4 className="text-xl sm:text-2xl font-bold text-gray-900">{getMonthName()}</h4>
@@ -338,12 +329,10 @@ export default function CalendarSection({
                   </div>
 
                   <div className="grid grid-cols-7">
-                    {/* Empty cells for days before month starts */}
                     {[...Array(getModalStartDay())].map((_, i) => (
                       <div key={`empty-${i}`} className="p-1.5" />
                     ))}
 
-                    {/* Days of month */}
                     {[...Array(getModalDaysInMonth())].map((_, i) => {
                       const day = i + 1
                       const isInRange = isInModalRange(day)
@@ -353,7 +342,6 @@ export default function CalendarSection({
 
                       return (
                         <div key={day} className="relative p-1.5">
-                          {/* Background bar for range - extends beyond cell */}
                           {isInRange && (
                             <div
                               className={`absolute bg-[#E5EDFF] ${isRangeStart ? 'rounded-l-full' : ''
@@ -388,10 +376,8 @@ export default function CalendarSection({
                   </div>
                 </div>
 
-                {/* Right Side - Form */}
                 <div className="lg:border-l lg:border-gray-200 lg:pl-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Date Inputs - Side by Side */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-base font-semibold text-gray-900 mb-3">
@@ -421,7 +407,6 @@ export default function CalendarSection({
                       </div>
                     </div>
 
-                    {/* Duration - Full Width */}
                     <div>
                       <label className="block text-base font-semibold text-gray-900 mb-3">
                         Durasi Belajar per Hari:
@@ -442,13 +427,11 @@ export default function CalendarSection({
                       </div>
                     </div>
 
-                    {/* Info Text */}
                     <div className="flex items-start gap-2 text-sm text-gray-600 pt-2">
                       <span className="text-[#4177FF] mt-0.5">*</span>
                       <p>Notifikasi akan muncul setelah jadwal diatur.</p>
                     </div>
 
-                    {/* Buttons */}
                     <div className="flex gap-3 pt-6">
                       <button
                         type="button"

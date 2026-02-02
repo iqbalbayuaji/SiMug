@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import LoginImg from "../../assets/images/thumbnail-login.png"
 
 export default function LoginPage() {
+  const navigate = useNavigate()
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [
@@ -91,17 +92,20 @@ export default function LoginPage() {
       <div className="w-full lg:w-1/2 flex items-center justify-center px-9 sm:px-6 md:px-8 py-6 md:py-7">
         <div className="max-w-md w-full ">
           {/* Link Belum Punya Akun */}
-          <div className="flex flex-col items-start text-xs sm:text-sm mb-3 md:mb-4">
+          {/* <div className="flex flex-col items-start text-xs sm:text-sm mb-3 md:mb-4">
             <span className="text-gray-500">Belum Punya Akun?</span>
             <Link to="/register" className="text-blue-500 font-medium">Buat Akun</Link>
-          </div>
+          </div> */}
           <div className="space-y-1.5 md:space-y-2 mb-6 md:mb-10 mt-4 md:mt-6">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-medium leading-tight">Hi, Selamat Datang Kembali, Udah Siap Lanjutin Progress?</h1>
             <p className="text-sm md:text-base text-gray-500 font-normal">Akses kembali course, materi, progres tracker, dan artikel yang kamu simpan. Jangan sampai ketinggalan update terbaru!</p>
           </div>
 
           {/* Form */}
-          <form className="space-y-4 md:space-y-5">
+          <form className="space-y-4 md:space-y-5" onSubmit={(e) => {
+            e.preventDefault()
+            navigate('/home')
+          }}>
             <div className="relative">
               <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
                 Email or Username
@@ -154,6 +158,11 @@ export default function LoginPage() {
             />
             Lanjutkan dengan Google
           </button>
+
+          <div className="items-center text-xs sm:text-sm ml-4 mt-4">
+            <span className="text-gray-500 mr-2">Belum Punya Akun?</span>
+            <Link to="/register" className="text-blue-500 font-medium">Buat Akun</Link>
+          </div>
 
           <p className="text-xs text-gray-700 text-center mx-4 sm:mx-10 md:mx-20 mt-4 md:mt-5">
             Dengan melanjutkan ini, Saya telah menyetujui
