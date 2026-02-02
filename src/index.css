@@ -563,6 +563,17 @@ html {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes modal-scale-in {
   from {
     opacity: 0;
@@ -575,7 +586,13 @@ html {
 }
 
 .animate-fade-in {
-  animation: modal-fade-in 0.2s ease-out;
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
 }
 
 .modal-overlay {
@@ -588,6 +605,123 @@ html {
 
 .animate-modal-scale-in {
   animation: modal-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Floating animation for rank numbers */
+@keyframes rank-number-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes rank-number-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(162, 188, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(162, 188, 255, 0.8));
+  }
+}
+
+.animate-rank-number {
+  animation: 
+    rank-number-float 4s ease-in-out infinite,
+    rank-number-glow 3s ease-in-out infinite;
+}
+
+.animate-rank-number-1 {
+  animation: 
+    rank-number-float 3.5s ease-in-out infinite,
+    rank-number-glow 2.5s ease-in-out infinite;
+}
+
+.animate-rank-number-2 {
+  animation: 
+    rank-number-float 4s ease-in-out infinite,
+    rank-number-glow 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.animate-rank-number-3 {
+  animation: 
+    rank-number-float 4s ease-in-out infinite,
+    rank-number-glow 3s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* ===== LEADERBOARD PODIUM ANIMATIONS ===== */
+
+/* Floating animation for podium cards */
+@keyframes podium-float-1 {
+  0%, 100% {
+    transform: translateY(0) scale(1.1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+@keyframes podium-float-2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes podium-float-3 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Glow pulse for podium cards */
+@keyframes podium-glow {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(65, 119, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 15px 60px rgba(65, 119, 255, 0.4);
+  }
+}
+
+@keyframes podium-glow-winner {
+  0%, 100% {
+    box-shadow: 0 20px 60px rgba(65, 119, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 25px 80px rgba(65, 119, 255, 0.5);
+  }
+}
+
+/* Apply animations to podium cards */
+.animate-podium-1 {
+  animation: 
+    podium-float-1 3s ease-in-out infinite,
+    podium-glow-winner 2s ease-in-out infinite;
+}
+
+.animate-podium-2 {
+  animation: 
+    podium-float-2 3.5s ease-in-out infinite,
+    podium-glow 2.5s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-podium-3 {
+  animation: 
+    podium-float-3 3.5s ease-in-out infinite,
+    podium-glow 2.5s ease-in-out infinite;
+  animation-delay: 0.4s;
 }
 
 /* ===== GLOWING BORDER ANIMATION ===== */
