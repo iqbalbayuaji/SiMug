@@ -8,9 +8,7 @@ import profileImg from "../../assets/images/profile.jpg"
 // Import course icons
 import gymIcon from "../../assets/icon/course/iconoir_gym.svg"
 import bodyweightIcon from "../../assets/icon/course/bodyweight.svg"
-import runningIcon from "../../assets/icon/course/running.svg"
 import fatlossIcon from "../../assets/icon/course/fatloss.svg"
-import muscleBuildingIcon from "../../assets/icon/course/muscle-building.svg"
 import boxingIcon from "../../assets/icon/course/boxing.svg"
 import soccerIcon from "../../assets/icon/course/soccer-ball.svg"
 import basketballIcon from "../../assets/icon/course/basketball.svg"
@@ -19,7 +17,6 @@ import foodIcon from "../../assets/icon/course/ep_food.svg"
 import mealIcon from "../../assets/icon/course/meal.svg"
 import mentalHealthIcon from "../../assets/icon/course/mental-health.svg"
 import injuryIcon from "../../assets/icon/course/injury.svg"
-import sleepIcon from "../../assets/icon/course/sleep.svg"
 import sixPack from "../../assets/icon/course/hugeicons_body-part-muscle.svg"
 
 export default function Navbar() {
@@ -98,8 +95,7 @@ export default function Navbar() {
         { name: "Fitness Fundamental Pemula", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: gymIcon },
         { name: "Bodyweight Training di Rumah", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: bodyweightIcon },
         { name: "Gym Starter Program", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: sixPack },
-        { name: "Fat Loss Program Berkelanjutan", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: fatlossIcon },
-        { name: "Muscle Building untuk Pemula", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: muscleBuildingIcon }
+        { name: "Fat Loss Program Berkelanjutan", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: fatlossIcon }
       ]
     },
     {
@@ -108,8 +104,7 @@ export default function Navbar() {
         { name: "Basic Boxing Training", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: boxingIcon },
         { name: "Basic Futsal & Sepak Bola", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: soccerIcon },
         { name: "Basketball Skill Training", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: basketballIcon },
-        { name: "Speed & Agility Training", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: speedIcon },
-        { name: "Atletik Pemula & Expert", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: runningIcon }
+        { name: "Speed & Agility Training", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: speedIcon }
       ]
     },
     {
@@ -118,8 +113,7 @@ export default function Navbar() {
         { name: "Basic Nutrition 101", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: foodIcon },
         { name: "Meal Prep Gaya Hidup Sibuk", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: mealIcon },
         { name: "Mental Health untuk Pemula", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: mentalHealthIcon },
-        { name: "Injury & Recovery Dasar", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: injuryIcon },
-        { name: "Sleep Optimization", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: sleepIcon, badge: "Baru" }
+        { name: "Injury & Recovery Dasar", desc: "Dasar latihan tubuh dan rutinitas aman.", icon: injuryIcon }
       ]
     }
   ]
