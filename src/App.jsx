@@ -25,6 +25,7 @@ import ForumAboutPage from './pages/ForumAboutPage'
 import ForumSettingsPage from './pages/ForumSettingsPage'
 import { ForumProvider } from './context/ForumContext'
 import CheckoutPage from './pages/CheckoutPage'
+import EventsPage from './pages/EventsPage'
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
           <Route path="/artikel" element={<ArtikelPage />} />
           <Route path="/artikel/:id" element={<ArtikelPage />} />
+          <Route path="/events" element={<EventsPage />} />
         </Routes>
       </ForumProvider>
     </Router>

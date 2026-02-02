@@ -23,7 +23,7 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
           </div>
           <div className="mb-3">
             <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-              <div 
+              <div
                 className="bg-[#4177FF] h-2 rounded-full transition-all"
                 style={{ width: `${(userData.xp / userData.totalXp) * 100}%` }}
               ></div>
@@ -58,7 +58,7 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
           </div>
           <div className="flex flex-wrap gap-2 mb-3">
             {userData.favoriteTopics.map((topic, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-4 py-2 bg-blue-50 text-[#4177FF] rounded-full text-sm font-medium"
               >
@@ -86,9 +86,9 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
             <h3 className="font-bold text-gray-900">Preferensi User</h3>
           </div>
 
-          <div className="relative space-y-6 pl-10">
-            {/* Vertical Line */} 
-            <div className="absolute left-[50px] top-6 bottom-6 w-0.5 bg-[#4177FF]"></div>
+          <div className="relative space-y-6 pl-2">
+            {/* Vertical Line */}
+            <div className="absolute left-[20px] top-6 bottom-6 w-0.5 bg-[#4177FF]"></div>
 
             {/* Tujuan Utama */}
             <div className="relative">
@@ -96,7 +96,7 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
                 <div className="w-6 h-6 rounded-full border-4 border-[#4177FF] bg-white flex-shrink-0 z-10"></div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-2">Tujuan Utama</p>
-                  <div className="flex items-center justify-between p-3 lg:p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
+                  <div className="flex items-center justify-between p-2 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
                     <span className="font-semibold text-gray-900 text-sm lg:text-base">{userData.preferences.mainGoal}</span>
                     <FaChevronRight className="text-gray-400 text-sm" />
                   </div>
@@ -110,7 +110,7 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
                 <div className="w-6 h-6 rounded-full border-4 border-[#4177FF] bg-white flex-shrink-0 z-10"></div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-2">Minat Utama</p>
-                  <div className="flex items-center justify-between p-3 lg:p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
+                  <div className="flex items-center justify-between p-2 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
                     <span className="font-semibold text-gray-900 text-sm lg:text-base">{userData.preferences.secondaryGoal}</span>
                     <FaChevronRight className="text-gray-400 text-sm" />
                   </div>
@@ -124,7 +124,7 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
                 <div className="w-6 h-6 rounded-full border-4 border-[#4177FF] bg-white flex-shrink-0 z-10"></div>
                 <div className="flex-1">
                   <p className="text-sm text-gray-500 mb-2">Metode Belajar</p>
-                  <div className="flex items-center justify-between p-3 lg:p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
+                  <div className="flex items-center justify-between p-2 bg-white border-2 border-gray-200 rounded-xl hover:border-[#4177FF] transition-colors cursor-pointer">
                     <span className="font-semibold text-gray-900 text-sm lg:text-base">{userData.preferences.learningMethod}</span>
                     <FaChevronRight className="text-gray-400 text-sm" />
                   </div>
@@ -151,7 +151,7 @@ export default function ProfileOverviewPage({ userData, onUpdateClick }) {
             <button className="px-6 py-2 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors">
               Reset
             </button>
-            <button 
+            <button
               onClick={onUpdateClick}
               className="px-6 py-2 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
             >
