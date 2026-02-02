@@ -20,6 +20,22 @@ export default function SertifikatTab() {
       focusProgram: "Sports & Atletik",
       completionDate: "18 Januari 2026",
       status: "Aktif"
+    },
+    {
+      id: 3,
+      certNumber: "CERT-2026-000124",
+      courseName: "Mengatur pernafa...",
+      focusProgram: "Sports & Atletik",
+      completionDate: "24 Januari 2026",
+      status: "Aktif"
+    },
+    {
+      id: 4,
+      certNumber: "CERT-2026-000124",
+      courseName: "Mengatur pernafa...",
+      focusProgram: "Sports & Atletik",
+      completionDate: "24 Januari 2026",
+      status: "Aktif"
     }
   ]
 

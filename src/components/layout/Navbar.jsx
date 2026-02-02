@@ -5,7 +5,6 @@ import vegan from "../../assets/images/vegan.png"
 import NotificationPopup from "./NotificationPopup"
 import profileImg from "../../assets/images/profile.jpg"
 
-// Import course icons
 import gymIcon from "../../assets/icon/course/iconoir_gym.svg"
 import bodyweightIcon from "../../assets/icon/course/bodyweight.svg"
 import fatlossIcon from "../../assets/icon/course/fatloss.svg"
@@ -46,13 +45,10 @@ export default function Navbar() {
   useEffect(() => {
     const currentPath = location.pathname
 
-    // Check if on courses pages
     if (currentPath.startsWith('/courses')) {
       setActiveMenu('Course')
       return
     }
-
-    // Check if on forum pages (including /forum, /forum-intro, /forum/*)
     if (currentPath.startsWith('/forum')) {
       setActiveMenu('Forum')
       return
@@ -122,7 +118,7 @@ export default function Navbar() {
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+
           <Link to="/home" className="flex items-center gap-1.5 sm:gap-2">
             <img src={logo} alt="SiMUG Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
             <span className="text-lg sm:text-xl font-bold text-gray-900">SiMUG</span>
@@ -147,7 +143,7 @@ export default function Navbar() {
                     setShowEventsDropdown(true)
                     setShowCourseDropdown(false)
                   }
-                  // Close all dropdowns when hovering other menu items
+
                   if (item.name !== "Course" && item.name !== "Events") {
                     setShowCourseDropdown(false)
                     setShowEventsDropdown(false)
@@ -158,10 +154,7 @@ export default function Navbar() {
                   <Link
                     to={item.path}
                     onClick={(e) => {
-                      // If it has dropdown, prevent default and let hover handle it
-                      // But still allow navigation on click
                       if (item.hasDropdown) {
-                        // Close dropdowns and navigate
                         setShowCourseDropdown(false)
                         setShowEventsDropdown(false)
                       }
@@ -176,13 +169,12 @@ export default function Navbar() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
-                    {/* Active/Hover Underline */}
                     <span
                       className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${hoveredMenu === item.name
+                        ? "w-full"
+                        : hoveredMenu === null && activeMenu === item.name
                           ? "w-full"
-                          : hoveredMenu === null && activeMenu === item.name
-                            ? "w-full"
-                            : "w-0"
+                          : "w-0"
                         }`}
                     ></span>
                   </Link>
@@ -197,13 +189,12 @@ export default function Navbar() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
-                    {/* Active/Hover Underline */}
                     <span
                       className={`absolute -bottom-2 left-0 h-1 bg-[#4177FF] rounded-full transition-all duration-300 ${hoveredMenu === item.name
+                        ? "w-full"
+                        : hoveredMenu === null && activeMenu === item.name
                           ? "w-full"
-                          : hoveredMenu === null && activeMenu === item.name
-                            ? "w-full"
-                            : "w-0"
+                          : "w-0"
                         }`}
                     ></span>
                   </button>
@@ -212,7 +203,10 @@ export default function Navbar() {
                 {/* Course Dropdown */}
                 {item.name === "Course" && showCourseDropdown && (
                   <div
-                    className="fixed left-0 right-0 top-[73px] bg-white shadow-2xl border-t border-gray-100 z-[60]"
+                    className="fixed left-0 right-0 top-[73px] bg-white shadow-2xl border-t border-gray-100 z-[60] animate-fade-in-down"
+                    style={{
+                      animation: 'fadeInDown 0.3s ease-out forwards'
+                    }}
                     onMouseLeave={() => {
                       setShowCourseDropdown(false)
                       setHoveredMenu(null)
@@ -229,7 +223,7 @@ export default function Navbar() {
                                   key={courseIdx}
                                   to="/courses"
                                   onClick={() => setShowCourseDropdown(false)}
-                                  className="flex items-start gap-3 p-3 rounded-2xl hover:bg-[#EAF0FF] transition-colors group"
+                                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-[#EAF0FF] transition-colors group"
                                 >
                                   <div className="w-12 h-12 bg-[#C5D9FF] rounded-full flex items-center justify-center shrink-0">
                                     <img src={course.icon} alt={course.name} className="w-6 h-6" />
@@ -268,6 +262,10 @@ export default function Navbar() {
                 {item.name === "Events" && showEventsDropdown && (
                   <div
                     className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[900px] bg-white shadow-2xl rounded-3xl border border-gray-100 z-60"
+                    style={{
+                      animation: 'scaleIn 0.25s ease-out forwards',
+                      transformOrigin: 'top center'
+                    }}
                     onMouseLeave={() => {
                       setShowEventsDropdown(false)
                       setHoveredMenu(null)
@@ -275,7 +273,6 @@ export default function Navbar() {
                   >
                     <div className="p-6">
                       <div className="grid grid-cols-2 gap-6">
-                        {/* Left Column - Events List */}
                         <div>
                           <div className="space-y-3">
                             {eventsList.map((event, idx) => (
@@ -295,7 +292,6 @@ export default function Navbar() {
                           </div>
                         </div>
 
-                        {/* Right Column - Promo Card */}
                         <div className="bg-gradient-to-br from-[#E5ECFF] to-[#F0F5FF] rounded-2xl p-4 flex flex-col">
                           <div className="relative mb-3 rounded-xl overflow-hidden bg-gray-200 h-32">
                             <img
@@ -303,7 +299,6 @@ export default function Navbar() {
                               alt="Event Promo"
                               className="w-full h-full object-cover"
                             />
-                            {/* Play Button Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center">
                               <button className="w-12 h-12 bg-[#000000] opacity-70 rounded-full flex items-center justify-center transition-colors shadow-lg">
                                 <svg className="w-6 h-6 text-[#FFFFFF] ml-0.5" fill="currentColor" viewBox="0 0 24 24">
@@ -333,9 +328,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right Side - Notification & Profile */}
           <div className="hidden md:flex items-center gap-2 sm:gap-4">
-            {/* Notification Bell */}
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
@@ -344,18 +337,15 @@ export default function Navbar() {
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
-                {/* Notification Badge */}
                 <span className="absolute bottom-4 sm:bottom-5 left-5 sm:left-6 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-[#4177FF] rounded-full border-2 border-white"></span>
               </button>
 
-              {/* Notification Popup */}
               <NotificationPopup
                 isOpen={showNotifications}
                 onClose={() => setShowNotifications(false)}
               />
             </div>
 
-            {/* Profile Picture */}
             <div className="relative profile-dropdown-container">
               <button
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
@@ -368,7 +358,6 @@ export default function Navbar() {
                 />
               </button>
 
-              {/* Profile Dropdown */}
               {showProfileDropdown && (
                 <div className="absolute right-0 top-full mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 animate-fade-in-down">
                   {/* Header */}
@@ -410,7 +399,6 @@ export default function Navbar() {
                       <span className="text-base font-medium text-gray-700 group-hover:text-gray-900">Leaderboard</span>
                     </button>
 
-                    {/* Pengaturan */}
                     <button
                       onClick={() => {
                         navigate('/profile/atur-simug')
@@ -465,7 +453,6 @@ export default function Navbar() {
                       <span className="text-base font-medium text-gray-700 group-hover:text-gray-900">Pusat Bantuan</span>
                     </button>
 
-                    {/* Log Out */}
                     <button
                       onClick={() => {
                         navigate('/login')
@@ -531,7 +518,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile - Notification & Profile */}
           <div className="px-4 py-3 border-t border-gray-100 flex items-center gap-3">
             <button className="relative w-10 h-10 bg-[#D9E4FF] rounded-full flex items-center justify-center">
               <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -23,6 +23,10 @@ import JawabPertanyaanPage from './pages/JawabPertanyaanPage'
 import TambahPertanyaanPage from './pages/TambahPertanyaanPage'
 import ForumBerandaPage from './pages/ForumBerandaPage'
 import ForumAboutPage from './pages/ForumAboutPage'
+import ForumSettingsPage from './pages/ForumSettingsPage'
+import { ForumProvider } from './context/ForumContext'
+import CheckoutPage from './pages/CheckoutPage'
+import EventsPage from './pages/EventsPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
@@ -53,6 +57,7 @@ function App() {
         <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
+        <Route path="/events" element={<EventsPage />} />
         {/* Catch-all route for 404 Not Found */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

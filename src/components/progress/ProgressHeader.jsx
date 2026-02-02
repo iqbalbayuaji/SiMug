@@ -46,7 +46,7 @@ export default function ProgressHeader({ userName, activeTab, setActiveTab, onCa
           onClick={() => setActiveTab("beranda")}
           className={`cursor-pointer pb-3 px-1 text-sm font-medium transition-colors relative ${activeTab === "beranda"
             ? "text-[#4177FF]"
-            : "text-[#1E1E1E] hover:text-gray-900"
+            : "text-gray-600 hover:text-gray-900"
             }`}
         >
           Beranda
