@@ -57,6 +57,7 @@ function App() {
         <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
+        <Route path="/events" element={<EventsPage />} />
         {/* Catch-all route for 404 Not Found */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
