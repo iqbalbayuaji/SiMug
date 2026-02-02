@@ -12,6 +12,7 @@ import RoadmapPage from './pages/courses/RoadmapPage'
 import CourseProgressDetailPage from './pages/courses/CourseProgressDetailPage'
 import AssignmentPage from './pages/courses/AssignmentPage'
 import ProfilePage from './pages/profiles/ProfilePage'
+import LeaderboardPage from './pages/LeaderboardPage'
 
 import ForumIntroPage from './pages/ForumIntroPage'
 import Forum from './pages/ForumPage'
@@ -26,40 +27,39 @@ import ForumSettingsPage from './pages/ForumSettingsPage'
 import { ForumProvider } from './context/ForumContext'
 import CheckoutPage from './pages/CheckoutPage'
 import EventsPage from './pages/EventsPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
     <Router>
-      <ForumProvider>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/landing" element={<Navigate to="/" replace />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/progress" element={<ProgressPage />} />
-          <Route path="/search" element={<SearchResultPage />} />
-          <Route path="/chatbot" element={<ChatbotPage />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:slug" element={<CourseDetailPage />} />
-          <Route path="/roadmap/:courseId" element={<RoadmapPage />} />
-          <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
-          <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/profile/*" element={<ProfilePage />} />
-          <Route path="/forum-intro" element={<ForumIntroPage />} />
-          <Route path="/forum" element={<Forum />} />
-          <Route path="/forum/search" element={<ForumSearchPage />} />
-          <Route path="/forum/beranda" element={<ForumBerandaPage />} />
-          <Route path="/forum/beranda/about" element={<ForumAboutPage />} />
-          <Route path="/forum/settings" element={<ForumSettingsPage />} />
-          <Route path="/jawab-pertanyaan" element={<JawabPertanyaanPage />} />
-          <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
-          <Route path="/artikel" element={<ArtikelPage />} />
-          <Route path="/artikel/:id" element={<ArtikelPage />} />
-          <Route path="/events" element={<EventsPage />} />
-        </Routes>
-      </ForumProvider>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/landing" element={<Navigate to="/" replace />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/progress" element={<ProgressPage />} />
+        <Route path="/search" element={<SearchResultPage />} />
+        <Route path="/chatbot" element={<ChatbotPage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/courses/:slug" element={<CourseDetailPage />} />
+        <Route path="/roadmap/:courseId" element={<RoadmapPage />} />
+        <Route path="/course-progress/:phaseId" element={<CourseProgressDetailPage />} />
+        <Route path="/assignment/:phaseId" element={<AssignmentPage />} />
+        <Route path="/profile/*" element={<ProfilePage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/forum-intro" element={<ForumIntroPage />} />
+        <Route path="/forum" element={<Forum />} />
+        <Route path="/forum/search" element={<ForumSearchPage />} />
+        <Route path="/forum/beranda" element={<ForumBerandaPage />} />
+        <Route path="/forum/beranda/about" element={<ForumAboutPage />} />
+        <Route path="/jawab-pertanyaan" element={<JawabPertanyaanPage />} />
+        <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
+        <Route path="/artikel" element={<ArtikelPage />} />
+        <Route path="/artikel/:id" element={<ArtikelPage />} />
+        {/* Catch-all route for 404 Not Found */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </Router>
   )
 }
