@@ -19,6 +19,7 @@ export default function CourseDetailPage() {
   const [relatedCourses, setRelatedCourses] = useState([])
   const [isWishlisted, setIsWishlisted] = useState(false)
   const [showVideoModal, setShowVideoModal] = useState(false)
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false)
   const contentRef = useRef(null)
 
   useEffect(() => {
@@ -37,6 +38,15 @@ export default function CourseDetailPage() {
         ? prev.filter(id => id !== moduleId)
         : [...prev, moduleId]
     )
+  }
+
+  const handleCheckoutClick = () => {
+    setShowCheckoutModal(true)
+  }
+
+  const handleConfirmCheckout = () => {
+    setShowCheckoutModal(false)
+    navigate('/checkout', { state: { course } })
   }
 
   if (!course) {
@@ -60,7 +70,7 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
       <Navbar />
-      
+
       {/* Progress Bar */}
       {/* <div className="fixed top-0 left-0 right-0 h-1 z-50 bg-white/20 backdrop-blur-sm">
         <div 
@@ -78,7 +88,7 @@ export default function CourseDetailPage() {
             <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
             <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-cyan-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }}></div>
           </div>
-          
+
           {/* Grid Pattern Overlay */}
           <div className="absolute inset-0 opacity-10" style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -107,13 +117,12 @@ export default function CourseDetailPage() {
               {/* Badge with Animation */}
               {course.badge && (
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm ${
-                    course.badge === 'Bestseller' 
-                      ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-orange-500/30' 
-                      : course.badge === 'New' 
-                        ? 'bg-gradient-to-r from-emerald-400 to-green-500 text-white shadow-lg shadow-green-500/30'
-                        : 'bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-lg shadow-blue-500/30'
-                  }`}>
+                  <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm ${course.badge === 'Bestseller'
+                    ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-orange-500/30'
+                    : course.badge === 'New'
+                      ? 'bg-gradient-to-r from-emerald-400 to-green-500 text-white shadow-lg shadow-green-500/30'
+                      : 'bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-lg shadow-blue-500/30'
+                    }`}>
                     <HiSparkles className="text-lg" />
                     {course.badge}
                   </span>
@@ -143,7 +152,7 @@ export default function CourseDetailPage() {
                   </div>
                   <span className="text-gray-400 text-sm">({course.totalRatings.toLocaleString()} ulasan)</span>
                 </div>
-                
+
                 <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/10">
                   <div className="p-1.5 bg-blue-400/20 rounded-lg">
                     <FaUsers className="text-blue-400" />
@@ -200,7 +209,7 @@ export default function CourseDetailPage() {
               <div className="relative">
                 {/* Glow Effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-60"></div>
-                
+
                 {/* Video Card */}
                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
                   <div className="relative aspect-video group cursor-pointer" onClick={() => setShowVideoModal(true)}>
@@ -210,7 +219,7 @@ export default function CourseDetailPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all"></div>
-                    
+
                     {/* Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="relative">
@@ -238,7 +247,7 @@ export default function CourseDetailPage() {
         {/* Wave Separator */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F8FAFF"/>
+            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F8FAFF" />
           </svg>
         </div>
       </section>
@@ -255,11 +264,10 @@ export default function CourseDetailPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
-                        : 'text-gray-600 hover:bg-gray-100'
-                    }`}
+                    className={`flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 ${activeTab === tab.id
+                      ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                      : 'text-gray-600 hover:bg-gray-100'
+                      }`}
                   >
                     <tab.icon className={activeTab === tab.id ? 'text-white' : 'text-gray-400'} />
                     <span className="hidden sm:inline">{tab.label}</span>
@@ -345,18 +353,19 @@ export default function CourseDetailPage() {
                     </div>
                   </div>
 
-                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1 mb-3 flex items-center justify-center gap-2">
+                  <button
+                    onClick={handleCheckoutClick}
+                    className="cursor-pointer w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1 mb-3 flex items-center justify-center gap-2">
                     <FaRocket />
                     Mulai Belajar Sekarang
                   </button>
 
-                  <button 
+                  <button
                     onClick={() => setIsWishlisted(!isWishlisted)}
-                    className={`w-full py-4 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 ${
-                      isWishlisted 
-                        ? 'bg-pink-50 text-pink-600 border-2 border-pink-200' 
-                        : 'border-2 border-gray-200 text-gray-700 hover:border-pink-200 hover:text-pink-600 hover:bg-pink-50'
-                    }`}
+                    className={`w-full py-4 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 ${isWishlisted
+                      ? 'bg-pink-50 text-pink-600 border-2 border-pink-200'
+                      : 'border-2 border-gray-200 text-gray-700 hover:border-pink-200 hover:text-pink-600 hover:bg-pink-50'
+                      }`}
                   >
                     {isWishlisted ? <FaHeart className="text-pink-500" /> : <FaRegHeart />}
                     {isWishlisted ? 'Tersimpan di Wishlist' : 'Tambah ke Wishlist'}
@@ -407,15 +416,15 @@ export default function CourseDetailPage() {
               <h2 className="text-3xl font-black text-gray-900 mb-2">Course Serupa</h2>
               <p className="text-gray-500">Eksplorasi course lainnya yang mungkin kamu suka</p>
             </div>
-            <Link 
-              to="/courses" 
+            <Link
+              to="/courses"
               className="hidden md:flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
             >
               Lihat Semua
               <FaChevronRight className="text-sm" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedCourses.map((relatedCourse, idx) => (
               <Link
@@ -431,24 +440,23 @@ export default function CourseDetailPage() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  
+
                   {relatedCourse.badge && (
-                    <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold ${
-                      relatedCourse.badge === 'Bestseller' ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white' :
+                    <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold ${relatedCourse.badge === 'Bestseller' ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white' :
                       relatedCourse.badge === 'New' ? 'bg-gradient-to-r from-emerald-400 to-green-500 text-white' :
-                      'bg-gradient-to-r from-blue-400 to-blue-600 text-white'
-                    }`}>
+                        'bg-gradient-to-r from-blue-400 to-blue-600 text-white'
+                      }`}>
                       {relatedCourse.badge}
                     </span>
                   )}
                 </div>
-                
+
                 <div className="p-6">
                   <h3 className="font-bold text-gray-900 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors text-lg">
                     {relatedCourse.title}
                   </h3>
                   <p className="text-sm text-gray-500 mb-4">{relatedCourse.instructor.name}</p>
-                  
+
                   <div className="flex items-center gap-3 mb-4">
                     <div className="flex items-center gap-1.5 bg-yellow-50 px-2.5 py-1 rounded-lg">
                       <FaStar className="text-yellow-400" />
@@ -456,7 +464,7 @@ export default function CourseDetailPage() {
                     </div>
                     <span className="text-gray-400 text-sm">({relatedCourse.totalRatings.toLocaleString()} ulasan)</span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                     <span className="text-2xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                       {formatPrice(relatedCourse.discountPrice)}
@@ -479,15 +487,15 @@ export default function CourseDetailPage() {
 
       {/* Video Modal */}
       {showVideoModal && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
           onClick={() => setShowVideoModal(false)}
         >
-          <div 
+          <div
             className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setShowVideoModal(false)}
               className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
             >
@@ -498,6 +506,87 @@ export default function CourseDetailPage() {
                 <FaPlay className="text-6xl mb-4 mx-auto opacity-50" />
                 <p className="text-lg">Video Preview</p>
                 <p className="text-sm text-gray-400 mt-2">Integrasi video akan ditambahkan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Checkout Confirmation Modal */}
+      {showCheckoutModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 modal-overlay"
+          onClick={() => setShowCheckoutModal(false)}
+        >
+          <div
+            className="relative w-full max-w-md bg-white rounded-2xl overflow-hidden shadow-2xl modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header with Gradient */}
+            <div className="relative bg-gradient-to-br from-blue-600 to-indigo-600 p-5 text-white overflow-hidden">
+              <div className="relative z-10">
+                <h3 className="text-2xl font-semibold mb-2">Konfirmasi Pembelian</h3>
+                <p className="text-blue-100 text-sm">Pastikan detail course sudah sesuai</p>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-5">
+              {/* Course Info */}
+              <div className="bg-gradient-to-br from-gray-50 to-blue-50/30 rounded-2xl p-4 mb-4">
+                <div className="flex gap-4">
+                  <img
+                    src={course.thumbnail}
+                    alt={course.title}
+                    className="w-20 h-20 rounded-xl object-cover"
+                  />
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-900 line-clamp-2 mb-1">{course.title}</h4>
+                    <p className="text-sm text-gray-600 mb-2">{course.instructor.name}</p>
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                        {formatPrice(course.discountPrice)}
+                      </span>
+                      {course.discountPrice < course.price && (
+                        <span className="text-sm text-gray-400 line-through">
+                          {formatPrice(course.price)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Confirmation Message */}
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <HiSparkles className="text-white text-sm" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Apakah kamu yakin?</p>
+                    <p className="text-sm text-gray-600">
+                      Kamu akan diarahkan ke halaman checkout untuk menyelesaikan pembayaran course ini.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowCheckoutModal(false)}
+                  className="cursor-pointer flex-1 px-6 py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-all"
+                >
+                  Batal
+                </button>
+                <button
+                  onClick={handleConfirmCheckout}
+                  className="cursor-pointer flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-blue-500/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                >
+                  <FaRocket className="text-sm" />
+                  Ya, Lanjutkan
+                </button>
               </div>
             </div>
           </div>

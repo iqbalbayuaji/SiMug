@@ -47,9 +47,9 @@ export default function ProgressPage() {
 
   // Calendar data for January 2026
   const daysInMonth = 31
-  const startDay = 3 // Wednesday (0 = Sunday)
+  const startDay = 3
   const currentDay = 16
-  const targetDays = [4, 6, 7, 16, 19] // Days with targets
+  const targetDays = [4, 6, 7, 16, 19]
 
   const getDayClass = (day) => {
     if (day === currentDay) return "bg-[#4177FF] text-white"
@@ -98,7 +98,6 @@ export default function ProgressPage() {
       {/* Mobile Calendar Page Overlay */}
       {isCalendarOpen && (
         <div className="fixed inset-0 bg-white z-[9999] overflow-y-auto animate-fadeIn lg:hidden">
-          {/* Header */}
           <div className="sticky top-0 bg-white z-20 border-b border-gray-100 px-4 py-3 flex items-center gap-3 shadow-sm">
             <button
               onClick={() => setIsCalendarOpen(false)}

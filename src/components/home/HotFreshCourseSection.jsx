@@ -73,13 +73,13 @@ export default function HotFreshCourseSection() {
             </div>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 gap-6 items-center relative z-10">
               {/* Left Side - Text Content */}
               <div className="text-white">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
                   Hot & Fresh Course
                 </h2>
-                <p className="text-medium mb-5 text-white/90 leading-relaxed">
+                <p className="text-medium lg:mb-5 text-white/90 leading-relaxed">
                   Segera bergabung dengan<br />
                   course-course terbaru yang baru<br />
                   saja launching di SiMug.
@@ -136,7 +136,7 @@ export default function HotFreshCourseSection() {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center">
+              <div className="lg:hidden flex justify-center">
                 <button className=" cursor-pointer bg-white text-[#4177FF] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-colors">
                   Lihat lebih banyak
                 </button>
