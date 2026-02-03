@@ -484,7 +484,7 @@ export default function LandingPage() {
             </motion.main>
 
             {/* Social Proof Stats - Mobile Only (Separated from Hero) */}
-            <section className="md:hidden bg-white py-8 px-6 mt-6 md:mt-0 mb-10 md:mb-0">
+            <section className="md:hidden bg-white py-6 px-4 mt-4 md:mt-0 mb-8 md:mb-0">
                 <div className="max-w-screen mx-auto bg-white rounded-2xl shadow-lg p-4">
                     <div className="grid grid-cols-1 gap-6">
                         {/* Stat 1 - 50.000+ */}

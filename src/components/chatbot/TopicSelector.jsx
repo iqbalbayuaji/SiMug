@@ -8,7 +8,7 @@ export default function TopicSelector({ topics, selectedTopic, onTopicClick }) {
             </h2>
 
             {/* Mobile: Horizontal Scroll */}
-            <div className="flex lg:hidden gap-3 overflow-x-auto scrollbar-hide mb-8 pb-2 justify-center">
+            <div className="flex lg:hidden gap-3 overflow-x-auto scrollbar-hide mb-8 pb-2 px-4 snap-x">
                 {topics.map((topic, index) => (
                     <TopicCard
                         key={topic.id}

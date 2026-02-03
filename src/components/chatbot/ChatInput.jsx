@@ -187,7 +187,7 @@ export default function ChatInput({ message, setMessage, inputMode, setInputMode
             </div>
 
             {/* Footer Text */}
-            <p className="text-center text-xs sm:text-sm text-gray-500 mt-7 px-12 animate-fadeIn animation-delay-1400">
+            <p className="text-center text-xs sm:text-sm text-gray-500 mt-7 px-4 sm:px-12 animate-fadeIn animation-delay-1400">
                 SiMug AI juga bisa melakukan kesalahan. Pelajari lebih lanjut tentang{' '}
                 <a href="#" className="text-gray-700 underline hover:text-blue-600 transition-colors">
                     pedoman pengguna
