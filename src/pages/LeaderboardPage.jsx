@@ -168,21 +168,21 @@ export default function LeaderboardPage() {
           {/* Back Button */}
           <Link
             to="/home"
-            className="inline-flex items-center gap-2 text-[#4177FF] font-regular hover:shadow-md transition-all animate-fadeIn bg-white px-4 py-2 rounded-full shadow-sm text-lg"
+            className="inline-flex items-center gap-1.5 xs:gap-2 text-[#4177FF] font-regular hover:shadow-md transition-all animate-fadeIn bg-white px-3 xs:px-4 py-1.5 xs:py-2 rounded-full shadow-sm text-sm xs:text-base md:text-lg"
             style={{ animationDelay: '0.1s' }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+            <svg className="w-4 h-4 xs:w-5 xs:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             Kembali
           </Link>
 
           {/* Header */}
-          <div className="text-center mb-32 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#4177FF] via-[#8CADFF] to-[#4177FF] bg-clip-text text-transparent mb-3">
+          <div className="text-center mb-16 xs:mb-20 sm:mb-24 md:mb-32 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#4177FF] via-[#8CADFF] to-[#4177FF] bg-clip-text text-transparent mb-2 xs:mb-3">
               PAPAN PERINGKAT
             </h1>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-sm xs:text-base md:text-lg px-4">
               Berikut ini hasil Leaderboard para pengguna SiMug
             </p>
           </div>

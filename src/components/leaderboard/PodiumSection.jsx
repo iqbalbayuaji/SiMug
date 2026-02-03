@@ -1,5 +1,7 @@
 import profileBanner from '../../assets/images/profilebanner.png'
 import kingIcon from '../../assets/icon/king.svg'
+import kontribusiIcon from '../../assets/icon/kontribusi.svg'
+import profileIcon from '../../assets/icon/profile.svg'
 
 export default function PodiumSection({ topThreeUsers, onUserSelect }) {
   return (
@@ -63,18 +65,12 @@ export default function PodiumSection({ topThreeUsers, onUserSelect }) {
                 onClick={() => onUserSelect(topThreeUsers[0])}
                 className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-1.5 lg:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-1.5 lg:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[7px] md:text-[9px] lg:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer"
               >
-                <svg className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden xs:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7h12M8 12h12M8 17h12M3 7h.01M3 12h.01M3 17h.01" />
-                </svg>
-                <span className="hidden xs:inline">Kontribusi</span>
-                <span className="xs:hidden">K</span>
+                <img src={kontribusiIcon} alt="Kontribusi" className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden sm:block" />
+                Kontribusi
               </button>
-              <button className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[8px] md:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer">
-                <svg className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 hidden xs:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="hidden xs:inline">Kunjungi</span>
-                <span className="xs:hidden">V</span>
+              <button className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-1.5 lg:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-1.5 lg:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[7px] md:text-[9px] lg:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer">
+                <img src={profileIcon} alt="Profile" className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 hidden sm:block" />
+                Kunjungi
               </button>
             </div>
           </div>
@@ -134,18 +130,12 @@ export default function PodiumSection({ topThreeUsers, onUserSelect }) {
                 onClick={() => onUserSelect(topThreeUsers[1])}
                 className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-1.5 lg:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-1.5 lg:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[7px] md:text-[9px] lg:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer"
               >
-                <svg className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden xs:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7h12M8 12h12M8 17h12M3 7h.01M3 12h.01M3 17h.01" />
-                </svg>
-                <span className="hidden xs:inline">Kontribusi</span>
-                <span className="xs:hidden">K</span>
+                <img src={kontribusiIcon} alt="Kontribusi" className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden sm:block" />
+                Kontribusi
               </button>
               <button className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-1.5 lg:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-1.5 lg:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[7px] md:text-[9px] lg:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer">
-                <svg className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden xs:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="hidden xs:inline">Kunjungi</span>
-                <span className="xs:hidden">V</span>
+                <img src={profileIcon} alt="Profile" className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden sm:block" />
+                Kunjungi
               </button>
             </div>
           </div>
@@ -204,18 +194,12 @@ export default function PodiumSection({ topThreeUsers, onUserSelect }) {
                 onClick={() => onUserSelect(topThreeUsers[2])}
                 className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-1.5 lg:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-1.5 lg:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[7px] md:text-[9px] lg:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer"
               >
-                <svg className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden xs:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7h12M8 12h12M8 17h12M3 7h.01M3 12h.01M3 17h.01" />
-                </svg>
-                <span className="hidden xs:inline">Kontribusi</span>
-                <span className="xs:hidden">K</span>
+                <img src={kontribusiIcon} alt="Kontribusi" className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden sm:block" />
+                Kontribusi
               </button>
               <button className="flex-1 py-0.5 xs:py-1 sm:py-1.5 md:py-1.5 lg:py-2 px-0.5 xs:px-1 sm:px-1.5 md:px-1.5 lg:px-2 bg-[#E5ECFF] text-[#4177FF] rounded-md xs:rounded-lg sm:rounded-xl text-[5px] xs:text-[6px] sm:text-[7px] md:text-[9px] lg:text-xs font-bold hover:bg-[#D0DFFF] transition-colors flex items-center justify-center gap-0.5 sm:gap-1 cursor-pointer">
-                <svg className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden xs:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="hidden xs:inline">Kunjungi</span>
-                <span className="xs:hidden">V</span>
+                <img src={profileIcon} alt="Profile" className="w-2 h-2 xs:w-2.5 xs:h-2.5 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 hidden sm:block" />
+                Kunjungi
               </button>
             </div>
           </div>
