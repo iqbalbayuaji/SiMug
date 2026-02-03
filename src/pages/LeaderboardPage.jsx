@@ -7,9 +7,9 @@ import LeaderboardTable from '../components/leaderboard/LeaderboardTable'
 import LeaderboardModals from '../components/leaderboard/LeaderboardModals'
 
 // Import mascot images
-import Leaderboard1 from '../assets/images/Leaderboard-1.png'
-import Leaderboard2 from '../assets/images/Leaderboard-2.png'
-import Leaderboard3 from '../assets/images/Leaderboard-3.png'
+import Leaderboard1 from '../assets/images/leaderboard-1.png'
+import Leaderboard2 from '../assets/images/leaderboard-2.png'
+import Leaderboard3 from '../assets/images/leaderboard-3.png'
 
 export default function LeaderboardPage() {
   const [showTipsModal, setShowTipsModal] = useState(false)
@@ -23,7 +23,7 @@ export default function LeaderboardPage() {
     } else {
       document.body.style.overflow = 'unset'
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset'
     }
@@ -188,13 +188,13 @@ export default function LeaderboardPage() {
           </div>
 
           {/* Top 3 Podium */}
-          <PodiumSection 
+          <PodiumSection
             topThreeUsers={topThreeUsers}
             onUserSelect={handleUserSelect}
           />
 
           {/* Leaderboard Table */}
-          <LeaderboardTable 
+          <LeaderboardTable
             leaderboardData={leaderboardData}
             onShowTips={() => setShowTipsModal(true)}
           />
@@ -204,7 +204,7 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Modals */}
-      <LeaderboardModals 
+      <LeaderboardModals
         showTipsModal={showTipsModal}
         showProfileModal={showProfileModal}
         selectedUser={selectedUser}
