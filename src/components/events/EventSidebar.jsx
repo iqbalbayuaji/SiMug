@@ -76,7 +76,9 @@ const EventSidebar = () => {
     return (
         <div className="flex flex-col">
             <DailyGrind />
-            <PinEvent />
+            <div className="hidden lg:block">
+                <PinEvent />
+            </div>
             <EventPromo />
         </div>
     );
