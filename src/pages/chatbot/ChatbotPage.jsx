@@ -229,20 +229,36 @@ export default function ChatbotPage() {
 
                             {/* Typing Indicator */}
                             {isTyping && <TypingIndicator />}
+
+                            {/* Inline Input Area - Shown when NO conversation is active */}
+                            {!isConversationActive && (
+                                <div className="mt-10">
+                                    <ChatInput
+                                        message={message}
+                                        setMessage={setMessage}
+                                        inputMode={inputMode}
+                                        setInputMode={setInputMode}
+                                        onSend={handleSendMessage}
+                                        selectedTopic={topics.find(t => t.id === selectedTopic)}
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
 
-                    {/* Input Area - Fixed at bottom of main content */}
-                    <div className="flex-none w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
-                        <ChatInput
-                            message={message}
-                            setMessage={setMessage}
-                            inputMode={inputMode}
-                            setInputMode={setInputMode}
-                            onSend={handleSendMessage}
-                            selectedTopic={topics.find(t => t.id === selectedTopic)}
-                        />
-                    </div>
+                    {/* Input Area - Fixed at bottom of main content - Shown ONLY when conversation IS active */}
+                    {isConversationActive && (
+                        <div className="flex-none w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+                            <ChatInput
+                                message={message}
+                                setMessage={setMessage}
+                                inputMode={inputMode}
+                                setInputMode={setInputMode}
+                                onSend={handleSendMessage}
+                                selectedTopic={topics.find(t => t.id === selectedTopic)}
+                            />
+                        </div>
+                    )}
                 </main>
             </div>
             
