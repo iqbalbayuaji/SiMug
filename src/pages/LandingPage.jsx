@@ -20,7 +20,7 @@ import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
 import CourseCard from '../components/CourseCard'
-import { landingCourses } from '../constants/landingCoursesData'
+import { coursesData, formatPrice } from '../constants/coursesData'
 import { testimonialsRow1, testimonialsRow2 } from '../constants/testimonialsData'
 
 // Mascot imports
@@ -55,7 +55,7 @@ export default function LandingPage() {
     const mascotSectionRef = useRef(null)
 
     // Use courses data from separate file
-    const courses = landingCourses
+    const courses = coursesData
 
     // Smooth scroll function
     const scrollToSection = (sectionId) => {
@@ -78,7 +78,7 @@ export default function LandingPage() {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 1024)
         }
-        
+
         checkMobile()
         window.addEventListener('resize', checkMobile)
         return () => window.removeEventListener('resize', checkMobile)
@@ -243,7 +243,7 @@ export default function LandingPage() {
             </nav>
 
             {/* Hero Section */}
-            <motion.main 
+            <motion.main
                 className="relative z-10"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -251,224 +251,224 @@ export default function LandingPage() {
             >
                 {/* Blue Glow Effect from Bottom - Mobile Only */}
                 <div className="md:hidden absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-blue-400/60 via-blue-300/30 to-transparent pointer-events-none z-0"></div>
-                
+
                 <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
-                <div className="flex flex-col lg:flex-col items-center justify-between relative">
-                    {/* Decorative Icon Spans - Hidden on mobile */}
-                    {/* Green Icon - Top Left */}
-                    <span className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12">
-                        <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </span>
-
-                    {/* Orange Icon - Top Right */}
-                    <span className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12">
-                        <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                    </span>
-
-                    {/* Main Heading */}
-                    <div className="grid place-items-center lg:text-center space-y-6 md:space-y-6 lg:space-y-8 min-h-[85vh] md:min-h-0 flex flex-col justify-center">
-                        {/* Badge - Desktop Only */}
-                        <div className="hidden md:inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full mb-7 shadow-md">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <div className="flex flex-col lg:flex-col items-center justify-between relative">
+                        {/* Decorative Icon Spans - Hidden on mobile */}
+                        {/* Green Icon - Top Left */}
+                        <span className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12">
+                            <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span className="font-semibold text-sm lg:text-base">#1 Platform Edukasi Kesehatan</span>
-                        </div>
+                        </span>
 
-                        {/* Header - Desktop Version (separated lines) */}
-                        <h1 className="hidden md:flex text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight flex-col items-center gap-1 md:gap-3 lg:gap-3">
-                            <span className="text-blue-600">Usaha Aja Gaakan Cukup</span>
-                            <div className='flex items-center lg:gap-3'>
-                                <span className="text-gray-900">Tanpa Arah yang Jelas</span>
-                                <span className="inline-flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-300 to-blue-600 rounded-xl lg:rounded-2xl ml-3 shadow-lg shadow-blue-400/70 -rotate-12">
-                                    <FaArrowTrendUp className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-                                </span>
-                            </div>
-                        </h1>
+                        {/* Orange Icon - Top Right */}
+                        <span className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12">
+                            <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </span>
 
-                        {/* Header - Mobile Version (Badge + Title + Description in one wrapper) */}
-                        <div className="md:hidden flex flex-col items-center space-y-4 mb-12 md:mb-0">
-                            {/* Badge - Mobile */}
-                            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full shadow-md">
+                        {/* Main Heading */}
+                        <div className="grid place-items-center lg:text-center space-y-6 md:space-y-6 lg:space-y-8 min-h-[85vh] md:min-h-0 flex flex-col justify-center">
+                            {/* Badge - Desktop Only */}
+                            <div className="hidden md:inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full mb-7 shadow-md">
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                 </svg>
-                                <span className="font-semibold text-sm">#1 Platform Edukasi Kesehatan</span>
+                                <span className="font-semibold text-sm lg:text-base">#1 Platform Edukasi Kesehatan</span>
                             </div>
 
-                            <h1 className="text-3xl font-bold leading-tight text-center">
-                                <span className="text-blue-600">Usaha Aja Gaakan Cukup </span>
-                                <span className="text-gray-900">Tanpa Arah yang Jelas</span>
+                            {/* Header - Desktop Version (separated lines) */}
+                            <h1 className="hidden md:flex text-3xl sm:text-5xl lg:text-5xl font-bold leading-tight flex-col items-center gap-1 md:gap-3 lg:gap-3">
+                                <span className="text-blue-600">Usaha Aja Gaakan Cukup</span>
+                                <div className='flex items-center lg:gap-3'>
+                                    <span className="text-gray-900">Tanpa Arah yang Jelas</span>
+                                    <span className="inline-flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-300 to-blue-600 rounded-xl lg:rounded-2xl ml-3 shadow-lg shadow-blue-400/70 -rotate-12">
+                                        <FaArrowTrendUp className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
+                                    </span>
+                                </div>
                             </h1>
-                            
-                            <p className="text-gray-900 text-base font-normal text-center leading-relaxed">
+
+                            {/* Header - Mobile Version (Badge + Title + Description in one wrapper) */}
+                            <div className="md:hidden flex flex-col items-center space-y-4 mb-12 md:mb-0">
+                                {/* Badge - Mobile */}
+                                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full shadow-md">
+                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span className="font-semibold text-sm">#1 Platform Edukasi Kesehatan</span>
+                                </div>
+
+                                <h1 className="text-3xl font-bold leading-tight text-center">
+                                    <span className="text-blue-600">Usaha Aja Gaakan Cukup </span>
+                                    <span className="text-gray-900">Tanpa Arah yang Jelas</span>
+                                </h1>
+
+                                <p className="text-gray-900 text-base font-normal text-center leading-relaxed">
+                                    Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
+                                </p>
+                            </div>
+
+                            {/* Description - Desktop */}
+                            <p className="hidden md:block text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 md:mt-2 leading-relaxed">
                                 Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
                             </p>
-                        </div>
 
-                        {/* Description - Desktop */}
-                        <p className="hidden md:block text-gray-900 text-base font-normal text-center lg:text-xl max-w-110 mx-auto lg:mx-0 mt-2 md:mt-2 leading-relaxed">
-                            Panduan sehat yang jelas, progresif, dan nggak ribet. Dari gratis sampai advance, semua ada jalurnya di <span className="font-bold text-gray-900">SiMug</span>
-                        </p>
+                            {/* CTA Button - Mobile with large margin */}
+                            <div className="md:hidden mt-8 mb-16 md:mb-0">
+                                <Link
+                                    to="/register"
+                                    className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                                >
+                                    Gabung Sekarang
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </Link>
+                            </div>
 
-                        {/* CTA Button - Mobile with large margin */}
-                        <div className="md:hidden mt-8 mb-16 md:mb-0">
-                            <Link
-                                to="/register"
-                                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-                            >
-                                Gabung Sekarang
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                            </Link>
-                        </div>
+                            {/* CTA Button - Desktop */}
+                            <div className="hidden md:block pt-8 md:pt-15 pb-8 md:pb-10">
+                                <Link
+                                    to="/register"
+                                    className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                                >
+                                    Gabung Sekarang
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </Link>
+                            </div>
 
-                        {/* CTA Button - Desktop */}
-                        <div className="hidden md:block pt-8 md:pt-15 pb-8 md:pb-10">
-                            <Link
-                                to="/register"
-                                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full text-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-                            >
-                                Gabung Sekarang
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                            </Link>
-                        </div>
-
-                        {/* Mascot Section with Scatter Animation - Hidden on mobile */}
-                        <div
-                            ref={mascotSectionRef}
-                            className="hidden md:block relative h-0 md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
-                        >
-                            {/* Mascot 1 - Center (main character with breathing effect) */}
+                            {/* Mascot Section with Scatter Animation - Hidden on mobile */}
                             <div
-                                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                ref={mascotSectionRef}
+                                className="hidden md:block relative h-0 md:h-[500px] lg:h-[600px] w-full max-w-5xl mx-auto mb-10"
+                            >
+                                {/* Mascot 1 - Center (main character with breathing effect) */}
+                                <div
+                                    className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                                     ${mascotScattered ? 'scale-125' : 'scale-100'}`}
-                            >
-                                <img
-                                    src={Mascot1}
-                                    alt="Mascot Center"
-                                    className={`w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain 
+                                >
+                                    <img
+                                        src={Mascot1}
+                                        alt="Mascot Center"
+                                        className={`w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-contain 
                                         ${mascotScattered ? 'animate-mascot-center mascot-hover-effect' : 'drop-shadow-[0_0_60px_rgba(59,130,246,0.7)]'}`}
-                                />
-                            </div>
+                                    />
+                                </div>
 
-                            {/* Mascot 2 - Top Left */}
-                            <div
-                                className={`absolute transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                                {/* Mascot 2 - Top Left */}
+                                <div
+                                    className={`absolute transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                                     ${mascotScattered
-                                        ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100'
-                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
-                            >
-                                <img
-                                    src={Mascot2}
-                                    alt="Mascot Top Left"
-                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                            ? 'left-[0%] md:left-[5%] top-[5%] opacity-100 scale-100'
+                                            : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                                >
+                                    <img
+                                        src={Mascot2}
+                                        alt="Mascot Top Left"
+                                        className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-1 mascot-hover-effect' : ''}`}
-                                />
-                            </div>
+                                    />
+                                </div>
 
-                            {/* Mascot 3 - Top Right */}
-                            <div
-                                className={`absolute transition-all duration-900 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-75
+                                {/* Mascot 3 - Top Right */}
+                                <div
+                                    className={`absolute transition-all duration-900 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-75
                                     ${mascotScattered
-                                        ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100'
-                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
-                            >
-                                <img
-                                    src={Mascot3}
-                                    alt="Mascot Top Right"
-                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                            ? 'right-[0%] md:right-[5%] top-[0%] opacity-100 scale-100'
+                                            : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                                >
+                                    <img
+                                        src={Mascot3}
+                                        alt="Mascot Top Right"
+                                        className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-2 mascot-hover-effect' : ''}`}
-                                />
-                            </div>
+                                    />
+                                </div>
 
-                            {/* Mascot 4 - Bottom Left */}
-                            <div
-                                className={`absolute transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-150
+                                {/* Mascot 4 - Bottom Left */}
+                                <div
+                                    className={`absolute transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-150
                                     ${mascotScattered
-                                        ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100'
-                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
-                            >
-                                <img
-                                    src={Mascot4}
-                                    alt="Mascot Bottom Left"
-                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                            ? 'left-[2%] md:left-[8%] bottom-[5%] opacity-100 scale-100'
+                                            : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                                >
+                                    <img
+                                        src={Mascot4}
+                                        alt="Mascot Bottom Left"
+                                        className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-3 mascot-hover-effect' : ''}`}
-                                />
-                            </div>
+                                    />
+                                </div>
 
-                            {/* Mascot 5 - Bottom Right */}
-                            <div
-                                className={`absolute transition-all duration-1100 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-200
+                                {/* Mascot 5 - Bottom Right */}
+                                <div
+                                    className={`absolute transition-all duration-1100 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-200
                                     ${mascotScattered
-                                        ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100'
-                                        : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
-                            >
-                                <img
-                                    src={Mascot5}
-                                    alt="Mascot Bottom Right"
-                                    className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
+                                            ? 'right-[2%] md:right-[8%] bottom-[8%] opacity-100 scale-100'
+                                            : 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50'}`}
+                                >
+                                    <img
+                                        src={Mascot5}
+                                        alt="Mascot Bottom Right"
+                                        className={`w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 object-contain 
                                         ${mascotScattered ? 'animate-mascot-float-4 mascot-hover-effect' : ''}`}
-                                />
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Social Proof Stats - Desktop Only */}
-                        <div className="hidden md:block mx-2 sm:mx-4 md:mx-10 mb-20 md:mb-0">
-                            <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start h-full">
-                                    {/* Stat 1 - 50.000+ (No border-left) */}
-                                    <div className="text-left pl-6 pr-2 flex flex-col">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-                                            <Counter value={50000} duration={2} />+
-                                        </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
-                                            User telah aktif dan gabung bersama SiMug
-                                        </p>
-                                    </div>
+                            {/* Social Proof Stats - Desktop Only */}
+                            <div className="hidden md:block mx-2 sm:mx-4 md:mx-10 mb-20 md:mb-0">
+                                <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start h-full">
+                                        {/* Stat 1 - 50.000+ (No border-left) */}
+                                        <div className="text-left pl-6 pr-2 flex flex-col">
+                                            <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                                                <Counter value={50000} duration={2} />+
+                                            </h4>
+                                            <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                                User telah aktif dan gabung bersama SiMug
+                                            </p>
+                                        </div>
 
-                                    {/* Stat 2 - 10.000+ */}
-                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-                                            <Counter value={10000} duration={2} />+
-                                        </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
-                                            User telah mencoba dan membuktikan hasil mereka
-                                        </p>
-                                    </div>
+                                        {/* Stat 2 - 10.000+ */}
+                                        <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
+                                            <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                                                <Counter value={10000} duration={2} />+
+                                            </h4>
+                                            <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                                User telah mencoba dan membuktikan hasil mereka
+                                            </p>
+                                        </div>
 
-                                    {/* Stat 3 - 250+ */}
-                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-                                            <Counter value={250} duration={1.5} />+
-                                        </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
-                                            Mentor aktif dan terverifikasi
-                                        </p>
-                                    </div>
+                                        {/* Stat 3 - 250+ */}
+                                        <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
+                                            <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                                                <Counter value={250} duration={1.5} />+
+                                            </h4>
+                                            <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                                Mentor aktif dan terverifikasi
+                                            </p>
+                                        </div>
 
-                                    {/* Stat 4 - 1.000+ */}
-                                    <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
-                                        <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-                                            <Counter value={1000} duration={1.8} />+
-                                        </h4>
-                                        <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
-                                            Komunitas aktif diseluruh wilayah Indonesia
-                                        </p>
+                                        {/* Stat 4 - 1.000+ */}
+                                        <div className="text-left border-l-2 border-gray-200 pl-6 pr-2 flex flex-col">
+                                            <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                                                <Counter value={1000} duration={1.8} />+
+                                            </h4>
+                                            <p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+                                                Komunitas aktif diseluruh wilayah Indonesia
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </motion.main>
 
@@ -521,8 +521,8 @@ export default function LandingPage() {
 
             {/* Why Choose SiMug Section - Smooth blue transition - Hidden on mobile */}
             <div className="hidden md:block relative -mt-36 mb-16 h-40 bg-gradient-to-b from-white via-blue-400/80 to-white"></div>
-            <motion.section 
-                id="tentang" 
+            <motion.section
+                id="tentang"
                 className="relative bg-white"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -621,7 +621,7 @@ export default function LandingPage() {
             </motion.section>
 
             {/* Benefits Section */}
-            <motion.section 
+            <motion.section
                 className="py-20 md:py-10 lg:py-20 bg-white"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -654,19 +654,19 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-500" preserveAspectRatio="none">
                                 <defs>
                                     <pattern id="circuit1" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                                        <path d="M30 0 L30 20 M30 40 L30 60 M0 30 L20 30 M40 30 L60 30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none"/>
-                                        <circle cx="30" cy="30" r="4" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1"/>
-                                        <circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                                        <path d="M30 0 L30 20 M30 40 L30 60 M0 30 L20 30 M40 30 L60 30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none" />
+                                        <circle cx="30" cy="30" r="4" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1" />
+                                        <circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.8)" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#circuit1)"/>
+                                <rect width="100%" height="100%" fill="url(#circuit1)" />
                             </svg>
                             {/* Animated Glow Line */}
                             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-300 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl group-hover:scale-150 group-hover:bg-blue-300/30 transition-all duration-700"></div>
                             {/* Floating Particles */}
                             <div className="absolute top-4 right-10 w-2 h-2 bg-blue-300/60 rounded-full group-hover:animate-ping"></div>
-                            <div className="absolute bottom-6 right-20 w-1.5 h-1.5 bg-blue-200/50 rounded-full group-hover:animate-ping" style={{animationDelay: '0.5s'}}></div>
+                            <div className="absolute bottom-6 right-20 w-1.5 h-1.5 bg-blue-200/50 rounded-full group-hover:animate-ping" style={{ animationDelay: '0.5s' }}></div>
                             <div className="relative z-10 flex items-center gap-5 h-full">
                                 <div className="flex-shrink-0 w-14 h-14 bg-blue-500/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-300/30 group-hover:border-blue-200/50 group-hover:bg-blue-400/40 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
                                     <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -693,10 +693,10 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-15 group-hover:opacity-30 transition-opacity duration-500" preserveAspectRatio="none">
                                 <defs>
                                     <pattern id="hexagon2" x="0" y="0" width="50" height="43.4" patternUnits="userSpaceOnUse">
-                                        <polygon points="25,0 50,12.5 50,37.5 25,50 0,37.5 0,12.5" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="0.8" transform="translate(0,-3)"/>
+                                        <polygon points="25,0 50,12.5 50,37.5 25,50 0,37.5 0,12.5" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="0.8" transform="translate(0,-3)" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#hexagon2)"/>
+                                <rect width="100%" height="100%" fill="url(#hexagon2)" />
                             </svg>
                             {/* Diagonal Lines */}
                             <div className="absolute inset-0 overflow-hidden">
@@ -731,15 +731,15 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-35 transition-opacity duration-500" preserveAspectRatio="none">
                                 <defs>
                                     <pattern id="nodes3" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                                        <circle cx="10" cy="10" r="3" fill="rgba(255,255,255,0.5)"/>
-                                        <circle cx="70" cy="30" r="2" fill="rgba(255,255,255,0.4)"/>
-                                        <circle cx="40" cy="70" r="2.5" fill="rgba(255,255,255,0.45)"/>
-                                        <line x1="10" y1="10" x2="70" y2="30" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5"/>
-                                        <line x1="70" y1="30" x2="40" y2="70" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5"/>
-                                        <line x1="40" y1="70" x2="10" y2="10" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5"/>
+                                        <circle cx="10" cy="10" r="3" fill="rgba(255,255,255,0.5)" />
+                                        <circle cx="70" cy="30" r="2" fill="rgba(255,255,255,0.4)" />
+                                        <circle cx="40" cy="70" r="2.5" fill="rgba(255,255,255,0.45)" />
+                                        <line x1="10" y1="10" x2="70" y2="30" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+                                        <line x1="70" y1="30" x2="40" y2="70" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
+                                        <line x1="40" y1="70" x2="10" y2="10" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#nodes3)"/>
+                                <rect width="100%" height="100%" fill="url(#nodes3)" />
                             </svg>
                             {/* Corner Accent */}
                             <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-blue-300/30 rounded-tr-2xl group-hover:w-24 group-hover:h-24 group-hover:border-blue-200/50 transition-all duration-500"></div>
@@ -771,19 +771,19 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-35 transition-opacity duration-500">
                                 <defs>
                                     <pattern id="grid4" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                                        <circle cx="15" cy="15" r="1" fill="rgba(147,197,253,0.6)"/>
-                                        <line x1="0" y1="15" x2="30" y2="15" stroke="rgba(147,197,253,0.15)" strokeWidth="0.5"/>
-                                        <line x1="15" y1="0" x2="15" y2="30" stroke="rgba(147,197,253,0.15)" strokeWidth="0.5"/>
+                                        <circle cx="15" cy="15" r="1" fill="rgba(147,197,253,0.6)" />
+                                        <line x1="0" y1="15" x2="30" y2="15" stroke="rgba(147,197,253,0.15)" strokeWidth="0.5" />
+                                        <line x1="15" y1="0" x2="15" y2="30" stroke="rgba(147,197,253,0.15)" strokeWidth="0.5" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#grid4)"/>
+                                <rect width="100%" height="100%" fill="url(#grid4)" />
                             </svg>
                             {/* Animated Wave Line */}
                             <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-400/50 to-transparent group-hover:via-blue-300/70 transition-all duration-500"></div>
                             {/* Orbiting Dots */}
                             <div className="absolute top-6 right-16 w-3 h-3 bg-blue-400/40 rounded-full group-hover:animate-bounce"></div>
-                            <div className="absolute top-10 right-8 w-2 h-2 bg-blue-300/50 rounded-full group-hover:animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                            <div className="absolute bottom-8 right-12 w-2.5 h-2.5 bg-blue-500/30 rounded-full group-hover:animate-bounce" style={{animationDelay: '0.4s'}}></div>
+                            <div className="absolute top-10 right-8 w-2 h-2 bg-blue-300/50 rounded-full group-hover:animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                            <div className="absolute bottom-8 right-12 w-2.5 h-2.5 bg-blue-500/30 rounded-full group-hover:animate-bounce" style={{ animationDelay: '0.4s' }}></div>
                             <div className="absolute top-0 left-1/2 w-48 h-32 bg-blue-600/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000"></div>
                             <div className="relative z-10 flex items-center gap-5 h-full">
                                 <div className="flex-shrink-0 w-14 h-14 bg-blue-700/40 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-500/30 group-hover:border-blue-400/50 group-hover:bg-blue-600/50 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
@@ -811,12 +811,12 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-15 group-hover:opacity-30 transition-opacity duration-500">
                                 <defs>
                                     <pattern id="bars5" x="0" y="0" width="40" height="60" patternUnits="userSpaceOnUse">
-                                        <rect x="5" y="40" width="6" height="20" rx="2" fill="rgba(255,255,255,0.3)"/>
-                                        <rect x="17" y="25" width="6" height="35" rx="2" fill="rgba(255,255,255,0.4)"/>
-                                        <rect x="29" y="10" width="6" height="50" rx="2" fill="rgba(255,255,255,0.5)"/>
+                                        <rect x="5" y="40" width="6" height="20" rx="2" fill="rgba(255,255,255,0.3)" />
+                                        <rect x="17" y="25" width="6" height="35" rx="2" fill="rgba(255,255,255,0.4)" />
+                                        <rect x="29" y="10" width="6" height="50" rx="2" fill="rgba(255,255,255,0.5)" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#bars5)"/>
+                                <rect width="100%" height="100%" fill="url(#bars5)" />
                             </svg>
                             {/* Rising Lines Animation */}
                             <div className="absolute bottom-0 right-20 w-[2px] h-12 bg-gradient-to-t from-blue-400/50 to-transparent group-hover:h-16 transition-all duration-500"></div>
@@ -825,7 +825,7 @@ export default function LandingPage() {
                             {/* Achievement Star */}
                             <div className="absolute top-4 right-6 opacity-30 group-hover:opacity-60 group-hover:rotate-180 transition-all duration-700">
                                 <svg className="w-8 h-8 text-blue-300" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                 </svg>
                             </div>
                             <div className="absolute bottom-0 left-1/4 w-48 h-24 bg-blue-500/15 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
@@ -846,8 +846,8 @@ export default function LandingPage() {
             </motion.section>
 
             {/* Features Grid Section */}
-            <motion.section 
-                id="fitur" 
+            <motion.section
+                id="fitur"
                 className="py-5 lg:py-10 bg-white"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -880,30 +880,30 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0">
                                 <defs>
                                     <pattern id="feat1-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                                        <path d="M0 20 L40 20 M20 0 L20 40" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none"/>
+                                        <path d="M0 20 L40 20 M20 0 L20 40" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#feat1-grid)"/>
+                                <rect width="100%" height="100%" fill="url(#feat1-grid)" />
                             </svg>
                             {/* Gradient Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-transparent to-transparent z-0"></div>
                             {/* Animated Glow */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-150 group-hover:bg-blue-400/30 transition-all duration-700 z-0"></div>
-                            
+
                             {/* Illustration - Learning Path - Hidden on Mobile */}
                             <div className="hidden md:block absolute top-4 right-4 w-24 h-24 md:w-32 md:h-32 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 z-10">
                                 <svg viewBox="0 0 120 120" className="w-full h-full">
                                     {/* Steps */}
-                                    <rect x="15" y="70" width="25" height="35" rx="4" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors duration-300"/>
-                                    <rect x="48" y="50" width="25" height="55" rx="4" className="fill-blue-500/60 group-hover:fill-blue-600/80 transition-colors duration-300"/>
-                                    <rect x="81" y="25" width="25" height="80" rx="4" className="fill-blue-600/70 group-hover:fill-blue-700/90 transition-colors duration-300"/>
+                                    <rect x="15" y="70" width="25" height="35" rx="4" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors duration-300" />
+                                    <rect x="48" y="50" width="25" height="55" rx="4" className="fill-blue-500/60 group-hover:fill-blue-600/80 transition-colors duration-300" />
+                                    <rect x="81" y="25" width="25" height="80" rx="4" className="fill-blue-600/70 group-hover:fill-blue-700/90 transition-colors duration-300" />
                                     {/* Progress Line */}
-                                    <path d="M27 65 L60 45 L93 20" stroke="rgba(37,99,235,0.6)" strokeWidth="2" fill="none" strokeDasharray="5,3" className="group-hover:stroke-blue-600 transition-colors duration-300"/>
+                                    <path d="M27 65 L60 45 L93 20" stroke="rgba(37,99,235,0.6)" strokeWidth="2" fill="none" strokeDasharray="5,3" className="group-hover:stroke-blue-600 transition-colors duration-300" />
                                     {/* Star */}
-                                    <circle cx="93" cy="15" r="8" className="fill-yellow-400 group-hover:animate-pulse"/>
+                                    <circle cx="93" cy="15" r="8" className="fill-yellow-400 group-hover:animate-pulse" />
                                 </svg>
                             </div>
-                            
+
                             {/* Content */}
                             <div className="absolute md:bottom-0 bottom-auto top-1/2 md:top-auto md:translate-y-0 -translate-y-1/2 md:-translate-y-0 left-0 right-0 p-5 z-10">
                                 <div className="flex items-center gap-2 mb-2">
@@ -917,7 +917,7 @@ export default function LandingPage() {
                                 <h3 className="text-gray-900 font-semibold text-lg mb-1 group-hover:text-blue-700 transition-colors">Pembelajaran Bertahap</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed">Mulai dari level dasar hingga mahir dengan kurikulum terstruktur.</p>
                             </div>
-                            
+
                             {/* Corner Accents */}
                             <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-blue-400/40 rounded-tl-2xl group-hover:w-16 group-hover:h-16 group-hover:border-blue-500/60 transition-all duration-500 z-10"></div>
                         </div>
@@ -935,40 +935,40 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-500 z-0">
                                 <defs>
                                     <pattern id="feat2-dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                                        <circle cx="15" cy="15" r="2" fill="rgba(59,130,246,0.3)"/>
+                                        <circle cx="15" cy="15" r="2" fill="rgba(59,130,246,0.3)" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#feat2-dots)"/>
+                                <rect width="100%" height="100%" fill="url(#feat2-dots)" />
                             </svg>
                             <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-transparent to-transparent z-0"></div>
-                            
+
                             {/* Animated Particles */}
                             <div className="absolute top-8 right-12 w-2 h-2 bg-blue-500/50 rounded-full group-hover:animate-ping z-10"></div>
-                            <div className="absolute top-16 right-6 w-1.5 h-1.5 bg-blue-400/40 rounded-full group-hover:animate-ping z-10" style={{animationDelay: '0.3s'}}></div>
-                            
+                            <div className="absolute top-16 right-6 w-1.5 h-1.5 bg-blue-400/40 rounded-full group-hover:animate-ping z-10" style={{ animationDelay: '0.3s' }}></div>
+
                             {/* Illustration - AI Brain - Hidden on Mobile */}
                             <div className="hidden md:block absolute top-3 right-3 w-28 h-28 md:w-36 md:h-36 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 z-10">
                                 <svg viewBox="0 0 120 120" className="w-full h-full">
                                     {/* Brain outline */}
-                                    <ellipse cx="60" cy="55" rx="35" ry="30" className="fill-none stroke-blue-400 group-hover:stroke-blue-500 transition-colors" strokeWidth="2"/>
+                                    <ellipse cx="60" cy="55" rx="35" ry="30" className="fill-none stroke-blue-400 group-hover:stroke-blue-500 transition-colors" strokeWidth="2" />
                                     {/* Neural connections */}
-                                    <circle cx="45" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
-                                    <circle cx="75" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
-                                    <circle cx="60" cy="65" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80"/>
-                                    <circle cx="50" cy="58" r="4" className="fill-blue-400/50"/>
-                                    <circle cx="70" cy="58" r="4" className="fill-blue-400/50"/>
+                                    <circle cx="45" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80" />
+                                    <circle cx="75" cy="45" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80" />
+                                    <circle cx="60" cy="65" r="6" className="fill-blue-400/60 group-hover:fill-blue-500/80" />
+                                    <circle cx="50" cy="58" r="4" className="fill-blue-400/50" />
+                                    <circle cx="70" cy="58" r="4" className="fill-blue-400/50" />
                                     {/* Connections */}
-                                    <line x1="45" y1="45" x2="75" y2="45" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
-                                    <line x1="45" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
-                                    <line x1="75" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
+                                    <line x1="45" y1="45" x2="75" y2="45" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5" />
+                                    <line x1="45" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5" />
+                                    <line x1="75" y1="45" x2="60" y2="65" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5" />
                                     {/* Pulse rings */}
-                                    <circle cx="60" cy="55" r="20" className="fill-none stroke-blue-400/40 group-hover:animate-ping" strokeWidth="1"/>
+                                    <circle cx="60" cy="55" r="20" className="fill-none stroke-blue-400/40 group-hover:animate-ping" strokeWidth="1" />
                                     {/* Chat bubbles */}
-                                    <rect x="85" y="70" width="25" height="18" rx="4" className="fill-blue-400/50"/>
-                                    <circle cx="90" cy="88" r="3" className="fill-blue-400/50"/>
+                                    <rect x="85" y="70" width="25" height="18" rx="4" className="fill-blue-400/50" />
+                                    <circle cx="90" cy="88" r="3" className="fill-blue-400/50" />
                                 </svg>
                             </div>
-                            
+
                             {/* Content */}
                             <div className="absolute md:bottom-0 bottom-auto top-1/2 md:top-auto md:translate-y-0 -translate-y-1/2 md:-translate-y-0 left-0 right-0 p-5 z-10">
                                 <div className="flex items-center gap-2 mb-2">
@@ -997,53 +997,53 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0">
                                 <defs>
                                     <pattern id="feat3-hex" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
-                                        <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="0.5" transform="translate(0,-4) scale(0.9)"/>
+                                        <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="none" stroke="rgba(59,130,246,0.3)" strokeWidth="0.5" transform="translate(0,-4) scale(0.9)" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#feat3-hex)"/>
+                                <rect width="100%" height="100%" fill="url(#feat3-hex)" />
                             </svg>
                             <div className="absolute inset-0 bg-gradient-to-t from-blue-100/80 via-white/30 to-transparent z-0"></div>
-                            
+
                             {/* Floating Gradient Orbs */}
                             <div className="absolute top-10 right-10 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
                             <div className="absolute bottom-20 left-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-                            
+
                             {/* Illustration - Mentorship Network - Hidden on Mobile */}
                             <div className="hidden md:block absolute top-8 left-1/2 -translate-x-1/2 w-48 h-48 md:w-56 md:h-56 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <svg viewBox="0 0 200 200" className="w-full h-full">
                                     {/* Central Mentor */}
-                                    <circle cx="100" cy="80" r="25" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors"/>
-                                    <circle cx="100" cy="70" r="12" className="fill-blue-500/70"/>
-                                    <ellipse cx="100" cy="95" rx="15" ry="8" className="fill-blue-500/60"/>
-                                    
+                                    <circle cx="100" cy="80" r="25" className="fill-blue-400/50 group-hover:fill-blue-500/70 transition-colors" />
+                                    <circle cx="100" cy="70" r="12" className="fill-blue-500/70" />
+                                    <ellipse cx="100" cy="95" rx="15" ry="8" className="fill-blue-500/60" />
+
                                     {/* Students around */}
                                     <g className="group-hover:animate-pulse">
-                                        <circle cx="45" cy="140" r="18" className="fill-blue-400/40"/>
-                                        <circle cx="45" cy="132" r="8" className="fill-blue-500/60"/>
-                                        <ellipse cx="45" cy="148" rx="10" ry="5" className="fill-blue-500/50"/>
+                                        <circle cx="45" cy="140" r="18" className="fill-blue-400/40" />
+                                        <circle cx="45" cy="132" r="8" className="fill-blue-500/60" />
+                                        <ellipse cx="45" cy="148" rx="10" ry="5" className="fill-blue-500/50" />
                                     </g>
-                                    <g className="group-hover:animate-pulse" style={{animationDelay: '0.2s'}}>
-                                        <circle cx="100" cy="160" r="18" className="fill-blue-400/40"/>
-                                        <circle cx="100" cy="152" r="8" className="fill-blue-500/60"/>
-                                        <ellipse cx="100" cy="168" rx="10" ry="5" className="fill-blue-500/50"/>
+                                    <g className="group-hover:animate-pulse" style={{ animationDelay: '0.2s' }}>
+                                        <circle cx="100" cy="160" r="18" className="fill-blue-400/40" />
+                                        <circle cx="100" cy="152" r="8" className="fill-blue-500/60" />
+                                        <ellipse cx="100" cy="168" rx="10" ry="5" className="fill-blue-500/50" />
                                     </g>
-                                    <g className="group-hover:animate-pulse" style={{animationDelay: '0.4s'}}>
-                                        <circle cx="155" cy="140" r="18" className="fill-blue-400/40"/>
-                                        <circle cx="155" cy="132" r="8" className="fill-blue-500/60"/>
-                                        <ellipse cx="155" cy="148" rx="10" ry="5" className="fill-blue-500/50"/>
+                                    <g className="group-hover:animate-pulse" style={{ animationDelay: '0.4s' }}>
+                                        <circle cx="155" cy="140" r="18" className="fill-blue-400/40" />
+                                        <circle cx="155" cy="132" r="8" className="fill-blue-500/60" />
+                                        <ellipse cx="155" cy="148" rx="10" ry="5" className="fill-blue-500/50" />
                                     </g>
-                                    
+
                                     {/* Connection Lines */}
-                                    <line x1="100" y1="105" x2="55" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
-                                    <line x1="100" y1="105" x2="100" y2="140" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
-                                    <line x1="100" y1="105" x2="145" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2"/>
-                                    
+                                    <line x1="100" y1="105" x2="55" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2" />
+                                    <line x1="100" y1="105" x2="100" y2="140" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2" />
+                                    <line x1="100" y1="105" x2="145" y2="125" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="4,2" />
+
                                     {/* Sparkles */}
-                                    <circle cx="70" cy="60" r="3" className="fill-blue-500/80 group-hover:animate-ping"/>
-                                    <circle cx="130" cy="55" r="2" className="fill-blue-500/70 group-hover:animate-ping" style={{animationDelay: '0.5s'}}/>
+                                    <circle cx="70" cy="60" r="3" className="fill-blue-500/80 group-hover:animate-ping" />
+                                    <circle cx="130" cy="55" r="2" className="fill-blue-500/70 group-hover:animate-ping" style={{ animationDelay: '0.5s' }} />
                                 </svg>
                             </div>
-                            
+
                             {/* Content */}
                             <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                                 <div className="flex items-center gap-2 mb-3">
@@ -1056,7 +1056,7 @@ export default function LandingPage() {
                                 </div>
                                 <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-blue-700 transition-colors">Jaringan Mentor Profesional</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed mb-4">Terhubung langsung dengan 200+ ahli kesehatan bersertifikat. Konsultasi langsung, feedback personal, dan bimbingan karir di bidang kesehatan.</p>
-                                
+
                                 {/* Stats */}
                                 <div className="flex gap-4">
                                     <div className="text-center">
@@ -1090,52 +1090,52 @@ export default function LandingPage() {
                             <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 z-0" preserveAspectRatio="none">
                                 <defs>
                                     <pattern id="feat4-wave" x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse">
-                                        <path d="M0 10 Q25 0, 50 10 T100 10" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none"/>
+                                        <path d="M0 10 Q25 0, 50 10 T100 10" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none" />
                                     </pattern>
                                 </defs>
-                                <rect width="100%" height="100%" fill="url(#feat4-wave)"/>
+                                <rect width="100%" height="100%" fill="url(#feat4-wave)" />
                             </svg>
                             <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-transparent to-white/50 z-0"></div>
-                            
+
                             {/* Floating Orbs */}
                             <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-48 h-48 bg-blue-300/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
                             <div className="absolute right-10 top-5 w-32 h-32 bg-blue-300/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
-                            
+
                             {/* Illustration - Community - Hidden on Mobile */}
                             <div className="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 w-40 h-32 md:w-56 md:h-44 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                                 <svg viewBox="0 0 220 150" className="w-full h-full">
                                     {/* Chat bubbles */}
-                                    <rect x="10" y="20" width="70" height="45" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
-                                    <polygon points="25,65 35,65 30,75" className="fill-blue-400/40 group-hover:fill-blue-500/60"/>
-                                    <rect x="20" y="32" width="50" height="4" rx="2" className="fill-blue-500/50"/>
-                                    <rect x="20" y="42" width="35" height="4" rx="2" className="fill-blue-500/40"/>
-                                    
-                                    <rect x="100" y="40" width="80" height="50" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors"/>
-                                    <polygon points="165,90 175,90 170,100" className="fill-blue-400/40 group-hover:fill-blue-500/60"/>
-                                    <rect x="110" y="55" width="60" height="4" rx="2" className="fill-blue-500/50"/>
-                                    <rect x="110" y="65" width="45" height="4" rx="2" className="fill-blue-500/40"/>
-                                    <rect x="110" y="75" width="30" height="4" rx="2" className="fill-blue-500/30"/>
-                                    
+                                    <rect x="10" y="20" width="70" height="45" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors" />
+                                    <polygon points="25,65 35,65 30,75" className="fill-blue-400/40 group-hover:fill-blue-500/60" />
+                                    <rect x="20" y="32" width="50" height="4" rx="2" className="fill-blue-500/50" />
+                                    <rect x="20" y="42" width="35" height="4" rx="2" className="fill-blue-500/40" />
+
+                                    <rect x="100" y="40" width="80" height="50" rx="8" className="fill-blue-400/40 group-hover:fill-blue-500/60 transition-colors" />
+                                    <polygon points="165,90 175,90 170,100" className="fill-blue-400/40 group-hover:fill-blue-500/60" />
+                                    <rect x="110" y="55" width="60" height="4" rx="2" className="fill-blue-500/50" />
+                                    <rect x="110" y="65" width="45" height="4" rx="2" className="fill-blue-500/40" />
+                                    <rect x="110" y="75" width="30" height="4" rx="2" className="fill-blue-500/30" />
+
                                     {/* User avatars */}
-                                    <circle cx="30" cy="110" r="18" className="fill-blue-400/50"/>
-                                    <circle cx="30" cy="105" r="7" className="fill-blue-500/70"/>
-                                    <ellipse cx="30" cy="120" rx="10" ry="5" className="fill-blue-500/60"/>
-                                    
-                                    <circle cx="80" cy="120" r="15" className="fill-blue-400/50"/>
-                                    <circle cx="80" cy="116" r="6" className="fill-blue-500/70"/>
-                                    <ellipse cx="80" cy="128" rx="8" ry="4" className="fill-blue-500/60"/>
-                                    
-                                    <circle cx="130" cy="125" r="18" className="fill-blue-400/50"/>
-                                    <circle cx="130" cy="120" r="7" className="fill-blue-500/70"/>
-                                    <ellipse cx="130" cy="135" rx="10" ry="5" className="fill-blue-500/60"/>
-                                    
+                                    <circle cx="30" cy="110" r="18" className="fill-blue-400/50" />
+                                    <circle cx="30" cy="105" r="7" className="fill-blue-500/70" />
+                                    <ellipse cx="30" cy="120" rx="10" ry="5" className="fill-blue-500/60" />
+
+                                    <circle cx="80" cy="120" r="15" className="fill-blue-400/50" />
+                                    <circle cx="80" cy="116" r="6" className="fill-blue-500/70" />
+                                    <ellipse cx="80" cy="128" rx="8" ry="4" className="fill-blue-500/60" />
+
+                                    <circle cx="130" cy="125" r="18" className="fill-blue-400/50" />
+                                    <circle cx="130" cy="120" r="7" className="fill-blue-500/70" />
+                                    <ellipse cx="130" cy="135" rx="10" ry="5" className="fill-blue-500/60" />
+
                                     {/* Activity dots */}
-                                    <circle cx="55" cy="15" r="4" className="fill-green-500/80 group-hover:animate-ping"/>
-                                    <circle cx="195" cy="50" r="3" className="fill-green-500/70 group-hover:animate-ping" style={{animationDelay: '0.3s'}}/>
-                                    <circle cx="175" cy="115" r="3" className="fill-green-500/60 group-hover:animate-ping" style={{animationDelay: '0.6s'}}/>
+                                    <circle cx="55" cy="15" r="4" className="fill-green-500/80 group-hover:animate-ping" />
+                                    <circle cx="195" cy="50" r="3" className="fill-green-500/70 group-hover:animate-ping" style={{ animationDelay: '0.3s' }} />
+                                    <circle cx="175" cy="115" r="3" className="fill-green-500/60 group-hover:animate-ping" style={{ animationDelay: '0.6s' }} />
                                 </svg>
                             </div>
-                            
+
                             {/* Content */}
                             <div className="absolute left-0 top-0 bottom-0 p-6 flex flex-col justify-center max-w-full md:max-w-[55%] z-10">
                                 <div className="flex items-center gap-2 mb-2">
@@ -1148,7 +1148,7 @@ export default function LandingPage() {
                                 </div>
                                 <h3 className="text-gray-900 font-bold text-xl mb-2 group-hover:text-blue-700 transition-colors">Forum Komunitas Aktif</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed">Diskusi, sharing pengalaman, dan support system dari 10.000+ member aktif. Berbagi tips kesehatan, challenge bersama, dan motivasi harian!</p>
-                                
+
                                 {/* Live indicator */}
                                 <div className="flex items-center gap-2 mt-4">
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -1221,14 +1221,14 @@ export default function LandingPage() {
                                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
 
                                 {/* Landing Assets - Diagonal Positioning */}
-                                <img 
-                                    src={landingAsset1} 
+                                <img
+                                    src={landingAsset1}
                                     alt="Asset 1"
                                     className="absolute top-0 right-5 w-80 h-80 object-contain opacity-100 z-10"
                                 />
-                                <img 
-                                    src={landingAsset2} 
-                                    alt="Asset 2" 
+                                <img
+                                    src={landingAsset2}
+                                    alt="Asset 2"
                                     className="absolute -bottom-2 left-5 w-80 h-80 object-contain opacity-100 z-10"
                                 />
 
@@ -1254,8 +1254,8 @@ export default function LandingPage() {
             </section>
 
             {/* Course Listing Section */}
-            <motion.section 
-                id="course" 
+            <motion.section
+                id="course"
                 className="py-10 lg:py-10 bg-white relative overflow-hidden"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1266,7 +1266,7 @@ export default function LandingPage() {
                 <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/40 rounded-2xl blur-xl"></div>
                 <div className="absolute top-5 right-20 w-24 h-24 bg-blue-200/40 rounded-2xl blur-xl"></div>
                 <div className="absolute top-40 right-1/3 w-18 h-18 bg-blue-300/30 rounded-2xl blur-xl"></div>
-                
+
                 {/* Small Decorative Rounded Squares */}
                 <div className="absolute top-16 left-1/4 w-12 h-12 bg-blue-100/60 rounded-xl blur-sm"></div>
                 <div className="absolute top-8 right-1/4 w-10 h-10 bg-blue-200/50 rounded-lg blur-sm"></div>
@@ -1289,41 +1289,37 @@ export default function LandingPage() {
                     <div className="flex justify-center gap-2 lg:gap-1 mb-8 lg:mb-10 overflow-x-auto scrollbar-hide">
                         <button
                             onClick={() => setActiveCategory('Kebugaran')}
-                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
-                                activeCategory === 'Kebugaran'
-                                    ? 'text-blue-600'
-                                    : 'text-gray-600 hover:text-blue-200'
-                            }`}
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${activeCategory === 'Kebugaran'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-blue-200'
+                                }`}
                         >
                             Kebugaran
                         </button>
                         <button
                             onClick={() => setActiveCategory('Olahraga')}
-                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
-                                activeCategory === 'Olahraga'
-                                    ? 'text-blue-600'
-                                    : 'text-gray-600 hover:text-blue-300'
-                            }`}
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${activeCategory === 'Olahraga'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-blue-300'
+                                }`}
                         >
                             Olahraga
                         </button>
                         <button
                             onClick={() => setActiveCategory('Nutrisi')}
-                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
-                                activeCategory === 'Nutrisi'
-                                    ? 'text-blue-600'
-                                    : 'text-gray-600 hover:text-blue-300'
-                            }`}
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${activeCategory === 'Nutrisi'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-blue-300'
+                                }`}
                         >
                             Nutrisi
                         </button>
                         <button
                             onClick={() => setActiveCategory('Mental')}
-                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${
-                                activeCategory === 'Mental'
-                                    ? 'text-blue-600'
-                                    : 'text-gray-600 hover:text-blue-300'
-                            }`}
+                            className={`cursor-pointer px-3 py-2 lg:px-6 lg:py-2 font-semibold text-sm lg:text-base transition-colors whitespace-nowrap ${activeCategory === 'Mental'
+                                ? 'text-blue-600'
+                                : 'text-gray-600 hover:text-blue-300'
+                                }`}
                         >
                             Mental
                         </button>
@@ -1337,23 +1333,23 @@ export default function LandingPage() {
                                     if (activeCategory === 'Kebugaran') return course.category === 'kebugaran';
                                     if (activeCategory === 'Olahraga') return course.category === 'sports';
                                     if (activeCategory === 'Nutrisi') return course.category === 'nutrisi';
-                                    if (activeCategory === 'Mental') return course.category === 'mental';
+                                    if (activeCategory === 'Mental') return course.category === 'mental-wellness';
                                     return true;
                                 })
                                 .slice(0, isMobile ? 4 : 8)
                                 .map((course) => (
                                     <CourseCard
                                         key={course.id}
-                                        image={course.image}
+                                        image={course.thumbnail}
                                         title={course.title}
-                                        instructor={course.instructor}
-                                        date={course.date}
+                                        instructor={course.instructor.name || course.instructor}
+                                        date={course.updatedAt || "Baru saja"}
                                         rating={course.rating}
-                                        ratingCount={course.ratingCount}
-                                        materialsCount={course.materialsCount}
+                                        ratingCount={`${(course.totalRatings / 1000).toFixed(1)}k rating`}
+                                        materialsCount={`${course.totalLessons} materi+`}
                                         duration={course.duration}
                                         level={course.level}
-                                        price={course.price}
+                                        price={formatPrice(course.price)}
                                     />
                                 ))}
                         </div>
@@ -1370,9 +1366,9 @@ export default function LandingPage() {
                     - 'object-contain' memastikan gambar tidak pecah dan menjaga proporsi asli
                 */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <img 
-                        src={lineBlue} 
-                        alt="Path Line" 
+                    <img
+                        src={lineBlue}
+                        alt="Path Line"
                         className="w-full h-[700px] object-contain opacity-70"
                     />
                 </div>
@@ -1389,21 +1385,21 @@ export default function LandingPage() {
                                 Itu Gimana Sih?
                             </h3>
                         </div>
-                            
+
                     </div>
 
                     {/* Roadmap Container */}
                     {/* SOLUSI ZOOM: Menggunakan scale(1) pada transform-origin untuk mencegah perubahan posisi saat zoom */}
-                    <div className="relative min-h-[700px] lg:min-h-[600px]" style={{transformOrigin: 'center center', transform: 'scale(1)'}}>
+                    <div className="relative min-h-[700px] lg:min-h-[600px]" style={{ transformOrigin: 'center center', transform: 'scale(1)' }}>
                         {/* Step 1 - Cari Kursus (Bottom Left) - Step asset, Icon, Road-img */}
-                        <div className="absolute bottom-24 left-0 lg:-left-1 z-10" style={{transformOrigin: 'left bottom'}}>
+                        <div className="absolute bottom-24 left-0 lg:-left-1 z-10" style={{ transformOrigin: 'left bottom' }}>
                             <div className="flex flex-col items-start gap-4 max-w-xs">
                                 {/* Step 1 Text Asset */}
-                                <img 
-                                    src={step1} 
-                                    alt="Step 1" 
+                                <img
+                                    src={step1}
+                                    alt="Step 1"
                                     className="w-48 lg:w-92 h-auto"
-                                    style={{transform: 'translate(-4.5rem, 0.5rem)', transformOrigin: 'left top'}}
+                                    style={{ transform: 'translate(-4.5rem, 0.5rem)', transformOrigin: 'left top' }}
                                 />
                                 {/* Search Icon - Adjustable position with margin */}
                                 <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-5">
@@ -1414,8 +1410,8 @@ export default function LandingPage() {
                                 {/* Road Image Illustration */}
                                 <div className="relative group">
                                     {/* Hover effect - positioned exactly behind road-img */}
-                                    <div 
-                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
+                                    <div
+                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300"
                                         style={{
                                             width: '176px',
                                             height: '176px',
@@ -1424,37 +1420,37 @@ export default function LandingPage() {
                                             transformOrigin: 'left top'
                                         }}
                                     ></div>
-                                    <img 
-                                        src={roadImg1} 
-                                        alt="Cari Kursus Illustration" 
+                                    <img
+                                        src={roadImg1}
+                                        alt="Cari Kursus Illustration"
                                         className="w-44 lg:w-52 h-auto rounded-2xl shadow-lg"
-                                        style={{transform: 'translate(-5rem, 1.25rem)', transformOrigin: 'left top'}}
+                                        style={{ transform: 'translate(-5rem, 1.25rem)', transformOrigin: 'left top' }}
                                     />
                                 </div>
                             </div>
                         </div>
 
                         {/* Step 2 - Tonton Kursus (Center Top) - Road-img, Icon, Step asset */}
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10" style={{transformOrigin: 'center top'}}>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10" style={{ transformOrigin: 'center top' }}>
                             <div className="flex flex-col items-center gap-4 max-w-sm">
                                 {/* Road Image Illustration - No white background */}
                                 {/* Play Icon - Adjustable position with margin */}
-                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg border border-gray-100 my-2" style={{transform: 'translateX(-3rem)', transformOrigin: 'center center'}}>
+                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg border border-gray-100 my-2" style={{ transform: 'translateX(-3rem)', transformOrigin: 'center center' }}>
                                     <svg className="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
+                                        <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                                 {/* Step 2 Text Asset */}
-                                <img 
-                                    src={step2} 
-                                    alt="Step 2" 
+                                <img
+                                    src={step2}
+                                    alt="Step 2"
                                     className="w-56 lg:w-96 h-auto"
-                                    style={{transform: 'translateY(-16rem)', transformOrigin: 'center top'}}
+                                    style={{ transform: 'translateY(-16rem)', transformOrigin: 'center top' }}
                                 />
                                 <div className="relative group">
                                     {/* Hover effect - positioned exactly behind road-img */}
-                                    <div 
-                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
+                                    <div
+                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300"
                                         style={{
                                             width: '208px',
                                             height: '208px',
@@ -1463,28 +1459,28 @@ export default function LandingPage() {
                                             transformOrigin: 'center top'
                                         }}
                                     ></div>
-                                    <img 
-                                        src={roadImg2} 
-                                        alt="Tonton Kursus Illustration" 
+                                    <img
+                                        src={roadImg2}
+                                        alt="Tonton Kursus Illustration"
                                         className="w-52 lg:w-60 h-auto rounded-2xl shadow-lg"
-                                        style={{transform: 'translate(-2rem, -10rem)', transformOrigin: 'center top'}}
+                                        style={{ transform: 'translate(-2rem, -10rem)', transformOrigin: 'center top' }}
                                     />
                                 </div>
                             </div>
                         </div>
 
                         {/* Step 3 - Dapatkan Reward (Bottom Right) - Step asset, Icon, Road-img */}
-                        <div className="absolute bottom-8 right-0 lg:right-8 z-10" style={{transformOrigin: 'right bottom'}}>
+                        <div className="absolute bottom-8 right-0 lg:right-8 z-10" style={{ transformOrigin: 'right bottom' }}>
                             <div className="flex flex-col items-end gap-4 max-w-xs">
                                 {/* Step 3 Text Asset */}
-                                <img 
-                                    src={step3} 
-                                    alt="Step 3" 
+                                <img
+                                    src={step3}
+                                    alt="Step 3"
                                     className="w-48 lg:w-92 h-auto"
-                                    style={{transform: 'translateX(7rem)', transformOrigin: 'right top'}}
+                                    style={{ transform: 'translateX(7rem)', transformOrigin: 'right top' }}
                                 />
                                 {/* Trophy Icon - Adjustable position with margin */}
-                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-2" style={{transform: 'translateY(4rem)', transformOrigin: 'center center'}}>
+                                <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-2xl shadow-lg border border-gray-100 my-2" style={{ transform: 'translateY(4rem)', transformOrigin: 'center center' }}>
                                     <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -1492,8 +1488,8 @@ export default function LandingPage() {
                                 {/* Road Image Illustration */}
                                 <div className="relative group">
                                     {/* Hover effect - positioned exactly behind road-img */}
-                                    <div 
-                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300" 
+                                    <div
+                                        className="absolute inset-0 bg-blue-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300"
                                         style={{
                                             width: '176px',
                                             height: '176px',
@@ -1502,11 +1498,11 @@ export default function LandingPage() {
                                             transformOrigin: 'right top'
                                         }}
                                     ></div>
-                                    <img 
-                                        src={roadImg3} 
-                                        alt="Dapatkan Reward Illustration" 
+                                    <img
+                                        src={roadImg3}
+                                        alt="Dapatkan Reward Illustration"
                                         className="w-44 lg:w-52 h-auto rounded-2xl shadow-lg"
-                                        style={{transform: 'translate(5rem, 5.5rem)', transformOrigin: 'right top'}}
+                                        style={{ transform: 'translate(5rem, 5.5rem)', transformOrigin: 'right top' }}
                                     />
                                 </div>
                             </div>
@@ -1536,13 +1532,13 @@ export default function LandingPage() {
                         {[...Array(3)].map((_, setIndex) => (
                             <div key={setIndex} className="flex gap-3 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow1.map((testimonial) => (
-                                    <div 
+                                    <div
                                         key={`${setIndex}-${testimonial.id}`}
                                         className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-3 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-56 lg:w-80 flex-shrink-0`}
                                     >
                                         <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
-                                            <img 
-                                                src={testimonial.avatar} 
+                                            <img
+                                                src={testimonial.avatar}
                                                 alt={testimonial.name}
                                                 className="w-9 h-9 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
@@ -1568,13 +1564,13 @@ export default function LandingPage() {
                         {[...Array(3)].map((_, setIndex) => (
                             <div key={setIndex} className="flex gap-3 lg:gap-6 flex-shrink-0">
                                 {testimonialsRow2.map((testimonial) => (
-                                    <div 
+                                    <div
                                         key={`${setIndex}-${testimonial.id}`}
                                         className={`${testimonial.bgColor === 'white' ? 'bg-white' : 'bg-[#EEF2FF]'} rounded-2xl p-3 lg:p-6 shadow-md hover:shadow-lg transition-shadow w-56 lg:w-80 flex-shrink-0`}
                                     >
                                         <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
-                                            <img 
-                                                src={testimonial.avatar} 
+                                            <img
+                                                src={testimonial.avatar}
                                                 alt={testimonial.name}
                                                 className="w-9 h-9 lg:w-12 lg:h-12 rounded-full flex-shrink-0 object-cover"
                                             />
@@ -1604,7 +1600,7 @@ export default function LandingPage() {
                         <div className="absolute top-1/2 right-1/4 w-12 h-12 bg-white/10 rounded-2xl blur-lg"></div>
                         <div className="absolute bottom-8 right-16 w-14 h-14 bg-white/10 rounded-2xl blur-lg"></div>
                         <div className="absolute top-6 left-1/3 w-10 h-10 bg-white/10 rounded-full blur-md"></div>
-                        
+
                         {/* Small decorative circles */}
                         <div className="absolute top-8 left-20 w-3 h-3 bg-white/30 rounded-full"></div>
                         <div className="absolute bottom-12 right-32 w-4 h-4 bg-white/30 rounded-full"></div>
@@ -1613,9 +1609,9 @@ export default function LandingPage() {
 
                         {/* Bottom Blue Component Illustration - Behind Button */}
                         <div className="absolute bottom-0 right-0 lg:-right-4 opacity-40 pointer-events-none">
-                            <img 
-                                src={bottomBlueComponent} 
-                                alt="Decorative Component" 
+                            <img
+                                src={bottomBlueComponent}
+                                alt="Decorative Component"
                                 className="w-64 lg:w-80 h-auto"
                             />
                         </div>
@@ -1630,7 +1626,7 @@ export default function LandingPage() {
                                     Langsung aja join, dijamin ga rugi deh.
                                 </p>
                             </div>
-                            <Link 
+                            <Link
                                 to="/login"
                                 className="relative bg-white text-lg text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 whitespace-nowrap z-20"
                             >
@@ -1641,7 +1637,7 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            
+
 
             <Footer />
         </div>

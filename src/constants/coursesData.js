@@ -1,31 +1,490 @@
 // Data dummy untuk courses (1 file)
 // Kategori: Kebugaran dan Fisik, Sports & Skill Training, Nutrisi & Gaya Hidup, dll
 
+// Data dummy untuk courses (1 file)
+// Kategori: Kebugaran dan Fisik, Sports & Skill Training, Nutrisi & Gaya Hidup, dll
+// Image imports for Landing Page Courses
+import CourseImg1 from "../assets/images/course_english_running.png"
+import CourseImg2 from "../assets/images/course_japanese_yoga.png"
+import CourseImg3 from "../assets/images/course_korean_basketball.png"
+import CourseImg4 from "../assets/images/course_german_nature.png"
+
+const landingCourses = [
+  {
+    id: 1,
+    image: CourseImg1,
+    category: "sports",
+    title: "Panduan Lari Marathon untuk Kesehatan: Dari 0 ke 42K dengan Aman",
+    instructor: "Budi Santoso",
+    date: "2 bulan lalu",
+    rating: 4.8,
+    ratingCount: "9.5k rating",
+    materialsCount: "20 materi+",
+    duration: "10 jam",
+    level: "Semua kalangan",
+    price: "Rp. 99.000"
+  },
+  {
+    id: 2,
+    image: CourseImg2,
+    category: "kebugaran",
+    title: "Yoga untuk Kesehatan Mental dan Fleksibilitas Tubuh",
+    instructor: "Sari Devi",
+    date: "2 bulan lalu",
+    rating: 4.8,
+    ratingCount: "9.5k rating",
+    materialsCount: "20 materi+",
+    duration: "10 jam",
+    level: "Semua kalangan",
+    price: "Rp. 59.000"
+  },
+  {
+    id: 3,
+    image: CourseImg3,
+    category: "kebugaran",
+    title: "HIIT untuk Kesehatan Jantung: Latihan Efektif 30 Menit",
+    instructor: "Rian Wijaya",
+    date: "2 bulan lalu",
+    rating: 4.8,
+    ratingCount: "9.5k rating",
+    materialsCount: "20 materi+",
+    duration: "10 jam",
+    level: "Semua kalangan",
+    price: "Rp. 79.000"
+  },
+  {
+    id: 4,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Gizi Olahraga: Atur Pola Makan untuk Performa dan Kesehatan",
+    instructor: "Dr. Andi Pratama",
+    date: "2 bulan lalu",
+    rating: 4.8,
+    ratingCount: "9.5k rating",
+    materialsCount: "20 materi+",
+    duration: "10 jam",
+    level: "Semua kalangan",
+    price: "Rp. 50.000"
+  },
+  {
+    id: 5,
+    image: CourseImg1,
+    category: "sports",
+    title: "Lari Jarak Jauh: Teknik dan Strategi untuk Atlet Menengah",
+    instructor: "Budi Santoso",
+    date: "1 bulan lalu",
+    rating: 4.9,
+    ratingCount: "1.2k rating",
+    materialsCount: "15 materi+",
+    duration: "8 jam",
+    level: "Menengah",
+    price: "Rp. 129.000"
+  },
+  {
+    id: 6,
+    image: CourseImg2,
+    category: "mental",
+    title: "Mindfulness Berbasis Olahraga: Kelola Stress dengan Aktivitas Fisik",
+    instructor: "Sari Devi",
+    date: "3 minggu lalu",
+    rating: 4.7,
+    ratingCount: "800 rating",
+    materialsCount: "12 materi+",
+    duration: "5 jam",
+    level: "Semua kalangan",
+    price: "Rp. 49.000"
+  },
+  {
+    id: 7,
+    image: CourseImg3,
+    category: "kebugaran",
+    title: "Calisthenics Fundamental: Kuasai Tubuhmu Tanpa Beban Luar",
+    instructor: "Rian Wijaya",
+    date: "1 bulan lalu",
+    rating: 4.8,
+    ratingCount: "2.1k rating",
+    materialsCount: "25 materi+",
+    duration: "12 jam",
+    level: "Semua kalangan",
+    price: "Rp. 89.000"
+  },
+  {
+    id: 8,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Meal Prep Sehat: Hemat Waktu dan Uang untuk Hidup Lebih Baik",
+    instructor: "Dr. Andi Pratama",
+    date: "2 minggu lalu",
+    rating: 4.9,
+    ratingCount: "3.5k rating",
+    materialsCount: "18 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 75.000"
+  },
+  {
+    id: 9,
+    image: CourseImg1,
+    category: "sports",
+    title: "Teknik Dasar Sepak Bola: Dari Dribbling hingga Shooting",
+    instructor: "Ahmad Fauzi",
+    date: "1 bulan lalu",
+    rating: 4.7,
+    ratingCount: "1.8k rating",
+    materialsCount: "22 materi+",
+    duration: "9 jam",
+    level: "Pemula",
+    price: "Rp. 85.000"
+  },
+  {
+    id: 10,
+    image: CourseImg2,
+    category: "kebugaran",
+    title: "Pilates untuk Postur Tubuh yang Lebih Baik",
+    instructor: "Linda Wijaya",
+    date: "3 minggu lalu",
+    rating: 4.8,
+    ratingCount: "1.5k rating",
+    materialsCount: "18 materi+",
+    duration: "7 jam",
+    level: "Semua kalangan",
+    price: "Rp. 69.000"
+  },
+  {
+    id: 11,
+    image: CourseImg3,
+    category: "sports",
+    title: "Basket untuk Pemula: Fundamental dan Teknik Dasar",
+    instructor: "Doni Prasetyo",
+    date: "2 minggu lalu",
+    rating: 4.6,
+    ratingCount: "950 rating",
+    materialsCount: "16 materi+",
+    duration: "8 jam",
+    level: "Pemula",
+    price: "Rp. 79.000"
+  },
+  {
+    id: 12,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Diet Seimbang: Panduan Lengkap Nutrisi Harian",
+    instructor: "Dr. Sarah Amelia",
+    date: "1 bulan lalu",
+    rating: 4.9,
+    ratingCount: "2.8k rating",
+    materialsCount: "24 materi+",
+    duration: "10 jam",
+    level: "Semua kalangan",
+    price: "Rp. 95.000"
+  },
+  {
+    id: 13,
+    image: CourseImg1,
+    category: "mental",
+    title: "Meditasi untuk Atlet: Tingkatkan Fokus dan Performa",
+    instructor: "Yoga Pratama",
+    date: "2 minggu lalu",
+    rating: 4.8,
+    ratingCount: "1.3k rating",
+    materialsCount: "14 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 55.000"
+  },
+  {
+    id: 14,
+    image: CourseImg2,
+    category: "kebugaran",
+    title: "Zumba Dance Fitness: Bakar Kalori dengan Cara Menyenangkan",
+    instructor: "Maria Santos",
+    date: "3 minggu lalu",
+    rating: 4.7,
+    ratingCount: "2.2k rating",
+    materialsCount: "20 materi+",
+    duration: "8 jam",
+    level: "Semua kalangan",
+    price: "Rp. 65.000"
+  },
+  {
+    id: 15,
+    image: CourseImg3,
+    category: "sports",
+    title: "Renang untuk Pemula: Teknik Gaya Bebas dan Dada",
+    instructor: "Eko Saputra",
+    date: "1 bulan lalu",
+    rating: 4.8,
+    ratingCount: "1.7k rating",
+    materialsCount: "19 materi+",
+    duration: "9 jam",
+    level: "Pemula",
+    price: "Rp. 89.000"
+  },
+  {
+    id: 16,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Suplemen Olahraga: Panduan Memilih yang Tepat",
+    instructor: "Dr. Andi Pratama",
+    date: "2 minggu lalu",
+    rating: 4.6,
+    ratingCount: "1.1k rating",
+    materialsCount: "15 materi+",
+    duration: "5 jam",
+    level: "Menengah",
+    price: "Rp. 70.000"
+  },
+  {
+    id: 17,
+    image: CourseImg1,
+    category: "mental",
+    title: "Manajemen Stress untuk Kehidupan Sehat",
+    instructor: "Psikolog Dewi",
+    date: "3 minggu lalu",
+    rating: 4.9,
+    ratingCount: "2.5k rating",
+    materialsCount: "17 materi+",
+    duration: "7 jam",
+    level: "Semua kalangan",
+    price: "Rp. 60.000"
+  },
+  {
+    id: 18,
+    image: CourseImg2,
+    category: "kebugaran",
+    title: "Stretching dan Flexibility: Cegah Cedera Olahraga",
+    instructor: "Fitri Handayani",
+    date: "1 bulan lalu",
+    rating: 4.7,
+    ratingCount: "1.4k rating",
+    materialsCount: "16 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 45.000"
+  },
+  {
+    id: 19,
+    image: CourseImg3,
+    category: "sports",
+    title: "Bulu Tangkis: Teknik Smash dan Strategi Permainan",
+    instructor: "Taufik Hidayat",
+    date: "2 minggu lalu",
+    rating: 4.9,
+    ratingCount: "3.2k rating",
+    materialsCount: "21 materi+",
+    duration: "10 jam",
+    level: "Menengah",
+    price: "Rp. 99.000"
+  },
+  {
+    id: 20,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Hidrasi Optimal: Pentingnya Air untuk Performa",
+    instructor: "Dr. Sarah Amelia",
+    date: "3 minggu lalu",
+    rating: 4.6,
+    ratingCount: "890 rating",
+    materialsCount: "12 materi+",
+    duration: "4 jam",
+    level: "Semua kalangan",
+    price: "Rp. 40.000"
+  },
+  {
+    id: 21,
+    image: CourseImg1,
+    category: "mental",
+    title: "Tidur Berkualitas untuk Recovery Optimal",
+    instructor: "Dr. Bambang",
+    date: "1 bulan lalu",
+    rating: 4.8,
+    ratingCount: "1.9k rating",
+    materialsCount: "15 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 55.000"
+  },
+  {
+    id: 22,
+    image: CourseImg2,
+    category: "kebugaran",
+    title: "Bodyweight Training: Latihan Tanpa Alat di Rumah",
+    instructor: "Rian Wijaya",
+    date: "2 minggu lalu",
+    rating: 4.8,
+    ratingCount: "2.3k rating",
+    materialsCount: "23 materi+",
+    duration: "11 jam",
+    level: "Semua kalangan",
+    price: "Rp. 75.000"
+  },
+  {
+    id: 23,
+    image: CourseImg3,
+    category: "sports",
+    title: "Voli: Teknik Passing, Smash, dan Blocking",
+    instructor: "Rivan Nurmulki",
+    date: "3 minggu lalu",
+    rating: 4.7,
+    ratingCount: "1.6k rating",
+    materialsCount: "18 materi+",
+    duration: "8 jam",
+    level: "Pemula",
+    price: "Rp. 80.000"
+  },
+  {
+    id: 24,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Protein untuk Pembentukan Otot: Panduan Lengkap",
+    instructor: "Dr. Andi Pratama",
+    date: "1 minggu lalu",
+    rating: 4.9,
+    ratingCount: "2.7k rating",
+    materialsCount: "19 materi+",
+    duration: "7 jam",
+    level: "Menengah",
+    price: "Rp. 85.000"
+  },
+  {
+    id: 25,
+    image: CourseImg1,
+    category: "mental",
+    title: "Motivasi Diri: Tetap Konsisten dalam Olahraga",
+    instructor: "Coach Hendra",
+    date: "2 minggu lalu",
+    rating: 4.8,
+    ratingCount: "2.1k rating",
+    materialsCount: "16 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 50.000"
+  },
+  {
+    id: 26,
+    image: CourseImg2,
+    category: "kebugaran",
+    title: "Core Strength: Latihan Perut dan Punggung yang Efektif",
+    instructor: "Fitri Handayani",
+    date: "1 bulan lalu",
+    rating: 4.7,
+    ratingCount: "1.8k rating",
+    materialsCount: "17 materi+",
+    duration: "7 jam",
+    level: "Semua kalangan",
+    price: "Rp. 65.000"
+  },
+  {
+    id: 27,
+    image: CourseImg3,
+    category: "sports",
+    title: "Tenis Meja: Teknik Forehand dan Backhand",
+    instructor: "Sutrisno",
+    date: "3 minggu lalu",
+    rating: 4.6,
+    ratingCount: "1.2k rating",
+    materialsCount: "14 materi+",
+    duration: "6 jam",
+    level: "Pemula",
+    price: "Rp. 60.000"
+  },
+  {
+    id: 28,
+    image: CourseImg4,
+    category: "nutrisi",
+    title: "Karbohidrat Sehat: Energi untuk Aktivitas Harian",
+    instructor: "Dr. Sarah Amelia",
+    date: "2 minggu lalu",
+    rating: 4.8,
+    ratingCount: "1.5k rating",
+    materialsCount: "16 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 55.000"
+  },
+  {
+    id: 29,
+    image: CourseImg1,
+    category: "mental",
+    title: "Visualisasi untuk Mencapai Target Fitness",
+    instructor: "Yoga Pratama",
+    date: "1 minggu lalu",
+    rating: 4.9,
+    ratingCount: "1.7k rating",
+    materialsCount: "13 materi+",
+    duration: "5 jam",
+    level: "Semua kalangan",
+    price: "Rp. 45.000"
+  },
+  {
+    id: 30,
+    image: CourseImg2,
+    category: "mental",
+    title: "Breathing Techniques: Teknik Pernapasan untuk Relaksasi",
+    instructor: "Sari Devi",
+    date: "2 minggu lalu",
+    rating: 4.8,
+    ratingCount: "1.4k rating",
+    materialsCount: "14 materi+",
+    duration: "5 jam",
+    level: "Semua kalangan",
+    price: "Rp. 48.000"
+  },
+  {
+    id: 31,
+    image: CourseImg3,
+    category: "mental",
+    title: "Positive Mindset: Bangun Mental Juara",
+    instructor: "Coach Hendra",
+    date: "3 minggu lalu",
+    rating: 4.7,
+    ratingCount: "1.6k rating",
+    materialsCount: "15 materi+",
+    duration: "6 jam",
+    level: "Semua kalangan",
+    price: "Rp. 52.000"
+  },
+  {
+    id: 32,
+    image: CourseImg4,
+    category: "mental",
+    title: "Overcoming Anxiety: Atasi Kecemasan dengan Olahraga",
+    instructor: "Psikolog Dewi",
+    date: "1 bulan lalu",
+    rating: 4.9,
+    ratingCount: "2.3k rating",
+    materialsCount: "18 materi+",
+    duration: "7 jam",
+    level: "Semua kalangan",
+    price: "Rp. 65.000"
+  }
+]
+
 export const courseCategories = [
-  { id: 'kebugaran', name: 'Kebugaran dan Fisik', icon: 'gymIcon' },
-  { id: 'sports', name: 'Sports & Skill Training', icon: 'soccerIcon' },
-  { id: 'nutrisi', name: 'Nutrisi & Gaya Hidup', icon: 'foodIcon' },
-  { id: 'yoga', name: 'Yoga & Mindfulness', icon: 'yogaIcon' },
-  { id: 'martial-arts', name: 'Martial Arts', icon: 'martialIcon' },
-  { id: 'cardio', name: 'Cardio & Endurance', icon: 'runIcon' },
-  { id: 'bodybuilding', name: 'Bodybuilding & Muscle', icon: 'muscleIcon' },
-  { id: 'recovery', name: 'Recovery & Mobility', icon: 'recoveryIcon' },
-  { id: 'mental-wellness', name: 'Mental Wellness', icon: 'brainIcon' },
+  { id: 'kebugaran', name: 'Kesehatan Olahraga & Fisik', icon: 'gymIcon' },
+  { id: 'sports', name: 'Pelatihan Olahraga & Skill', icon: 'soccerIcon' },
+  { id: 'nutrisi', name: 'Gizi & Nutrisi Olahraga', icon: 'foodIcon' },
+  { id: 'yoga', name: 'Yoga & Kesehatan Mental', icon: 'yogaIcon' },
+  { id: 'martial-arts', name: 'Bela Diri & Pertahanan', icon: 'martialIcon' },
+  { id: 'cardio', name: 'Kardio & Daya Tahan', icon: 'runIcon' },
+  { id: 'bodybuilding', name: 'Pembentukan Otot & Kekuatan', icon: 'muscleIcon' },
+  { id: 'recovery', name: 'Pemulihan & Mobilitas', icon: 'recoveryIcon' },
+  { id: 'mental-wellness', name: 'Kesehatan Mental & Psikologi Olahraga', icon: 'brainIcon' },
 ]
 
 const baseCoursesData = [
   // ============ KEBUGARAN DAN FISIK ============
   {
     id: 1,
-    slug: 'fitness-fundamental-pemula',
-    title: 'Fitness Fundamental untuk Pemula',
+    slug: 'kesehatan-olahraga-fundamental',
+    title: 'Dasar Kesehatan Olahraga & Fitness untuk Pemula',
     shortDescription:
-      'Pelajari dasar-dasar fitness dan bangun fondasi kuat untuk perjalanan kebugaranmu.',
-    description: `Course ini dirancang khusus untuk kamu yang baru memulai perjalanan fitness. Kamu akan mempelajari teknik dasar yang benar, cara menggunakan peralatan gym dengan aman, dan bagaimana menyusun program latihan yang efektif.
+      'Pelajari fondasi kesehatan olahraga yang benar untuk mencegah cedera dan meningkatkan kualitas hidup.',
+    description: `Course ini dirancang khusus untuk kamu yang ingin memulai perjalanan kesehatan olahraga dengan benar. Kamu akan mempelajari teknik dasar yang aman, cara menggunakan peralatan dengan benar untuk mencegah cedera, dan bagaimana menyusun program latihan yang mendukung kesehatan jangka panjang.
 
-Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip progressive overload, dan pentingnya recovery. Course ini cocok untuk siapa saja yang ingin memulai gaya hidup sehat tanpa risiko cedera.`,
+Dengan panduan step-by-step, kamu akan memahami anatomi dasar, prinsip latihan yang sehat, pentingnya recovery untuk kesehatan, dan bagaimana olahraga dapat meningkatkan metabolisme dan sistem imun. Course ini cocok untuk siapa saja yang ingin memulai gaya hidup sehat dengan fondasi yang kuat.`,
     category: 'kebugaran',
-    categoryLabel: 'Kebugaran dan Fisik',
+    categoryLabel: 'Kesehatan Olahraga & Fisik',
     level: 'Pemula',
     duration: '8 jam',
     totalModules: 6,
@@ -48,12 +507,12 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
       totalStudents: 25000,
     },
     features: [
-      'Teknik dasar gerakan compound & isolation',
-      'Cara menggunakan peralatan gym dengan benar',
-      'Menyusun program latihan mingguan',
-      'Manajemen recovery dan istirahat',
-      'Tracking progress yang efektif',
-      'Tips nutrisi dasar untuk pemula',
+      'Teknik dasar gerakan yang aman untuk kesehatan sendi',
+      'Pencegahan cedera olahraga untuk pemula',
+      'Menyusun program latihan yang mendukung kesehatan',
+      'Manajemen recovery dan pemulihan optimal',
+      'Tracking kesehatan dan progress fitness',
+      'Dasar nutrisi untuk mendukung kesehatan olahraga',
     ],
     requirements: [
       'Tidak memerlukan pengalaman fitness sebelumnya',
@@ -239,7 +698,7 @@ Dengan panduan step-by-step, kamu akan memahami anatomi dasar otot, prinsip prog
 
 Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu akan mempelajari gerakan-gerakan yang efektif untuk membangun kekuatan, massa otot, dan daya tahan.`,
     category: 'kebugaran',
-    categoryLabel: 'Kebugaran dan Fisik',
+    categoryLabel: 'Kesehatan Olahraga & Fisik',
     level: 'Semua Level',
     duration: '6 jam',
     totalModules: 5,
@@ -356,7 +815,7 @@ Dari push-up dasar hingga variasi advanced seperti muscle-up progression, kamu a
 
 Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, dan jenis latihan yang optimal untuk fat loss. Semua berbasis research terbaru!`,
     category: 'kebugaran',
-    categoryLabel: 'Kebugaran dan Fisik',
+    categoryLabel: 'Kesehatan Olahraga & Fisik',
     level: 'Semua Level',
     duration: '10 jam',
     totalModules: 8,
@@ -458,7 +917,7 @@ Kamu akan belajar tentang defisit kalori yang tepat, macronutrient balancing, da
 
 Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, uppercut), dan kombinasi yang efektif. Cocok untuk fitness maupun self-defense!`,
     category: 'sports',
-    categoryLabel: 'Sports & Skill Training',
+    categoryLabel: 'Pelatihan Olahraga & Skill',
     level: 'Pemula',
     duration: '7 jam',
     totalModules: 6,
@@ -562,7 +1021,7 @@ Course ini mengajarkan stance, footwork, pukulan dasar (jab, cross, hook, upperc
 
 Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, dan defensive basics. Dilengkapi dengan drills yang bisa kamu latih sendiri!`,
     category: 'sports',
-    categoryLabel: 'Sports & Skill Training',
+    categoryLabel: 'Pelatihan Olahraga & Skill',
     level: 'Semua Level',
     duration: '9 jam',
     totalModules: 7,
@@ -651,7 +1110,7 @@ Pelajari fundamental dribbling, berbagai teknik shooting, passing yang efektif, 
 
 Cocok untuk pemula yang ingin belajar dari nol, atau pemain rekreasional yang ingin meningkatkan skill dasar mereka.`,
     category: 'sports',
-    categoryLabel: 'Sports & Skill Training',
+    categoryLabel: 'Pelatihan Olahraga & Skill',
     level: 'Pemula',
     duration: '8 jam',
     totalModules: 6,
@@ -703,14 +1162,14 @@ Cocok untuk pemula yang ingin belajar dari nol, atau pemain rekreasional yang in
   // ============ NUTRISI & GAYA HIDUP ============
   {
     id: 7,
-    slug: 'basic-nutrition-101',
-    title: 'Basic Nutrition 101',
-    shortDescription: 'Pahami dasar nutrisi untuk mendukung goals fitness dan kesehatanmu.',
-    description: `Nutrisi adalah 80% dari hasil fitness! Course ini akan mengajarkan fundamental nutrisi yang sering disalahpahami.
+    slug: 'gizi-dasar-atlet',
+    title: 'Gizi Dasar untuk Atlet & Kesehatan Olahraga',
+    shortDescription: 'Pahami dasar gizi olahraga untuk mendukung performa, pemulihan, dan kesehatan jangka panjang.',
+    description: `Gizi adalah fondasi kesehatan dan performa olahraga! Course ini akan mengajarkan fundamental nutrisi olahraga yang evidence-based.
 
-Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang sesuai dengan goals-mu. Tidak ada diet ekstrem, hanya ilmu yang applicable!`,
+Dari memahami kebutuhan energi atlet, macronutrients untuk performa optimal, micronutrients untuk kesehatan, hingga menyusun meal plan yang mendukung goals olahraga dan kesehatan. Tidak ada diet ekstrem, hanya ilmu gizi yang applicable untuk kehidupan sehari-hari!`,
     category: 'nutrisi',
-    categoryLabel: 'Nutrisi & Gaya Hidup',
+    categoryLabel: 'Gizi & Nutrisi Olahraga',
     level: 'Pemula',
     duration: '6 jam',
     totalModules: 5,
@@ -733,12 +1192,12 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
       totalStudents: 25000,
     },
     features: [
-      'Memahami macronutrients (protein, carbs, fats)',
-      'Micronutrients essential',
-      'Menghitung kebutuhan kalori',
-      'Meal planning basics',
-      'Membaca label nutrisi',
-      'Suplemen: mana yang perlu?',
+      'Memahami kebutuhan energi untuk atlet',
+      'Macronutrients untuk performa olahraga optimal',
+      'Micronutrients essential untuk kesehatan',
+      'Meal planning untuk atlet',
+      'Timing nutrisi sebelum dan sesudah latihan',
+      'Hidrasi dan elektrolit untuk kesehatan',
     ],
     requirements: ['Tidak ada prasyarat', 'Kalkulator/app untuk tracking', 'Open mind untuk belajar'],
     curriculum: [
@@ -807,7 +1266,7 @@ Dari memahami macronutrients, micronutrients, hingga menyusun meal plan yang ses
 
 Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hemat waktu, hemat uang, tetap sehat!`,
     category: 'nutrisi',
-    categoryLabel: 'Nutrisi & Gaya Hidup',
+    categoryLabel: 'Gizi & Nutrisi Olahraga',
     level: 'Semua Level',
     duration: '5 jam',
     totalModules: 4,
@@ -886,7 +1345,7 @@ Dari perencanaan, belanja efisien, cooking batch, hingga storage yang benar. Hem
 
 Pelajari tentang stress management, anxiety coping, mindfulness, dan cara membangun resilience mental.`,
     category: 'nutrisi',
-    categoryLabel: 'Nutrisi & Gaya Hidup',
+    categoryLabel: 'Gizi & Nutrisi Olahraga',
     level: 'Semua Level',
     duration: '7 jam',
     totalModules: 6,
@@ -965,7 +1424,7 @@ Pelajari tentang stress management, anxiety coping, mindfulness, dan cara memban
 
 Dari sleep hygiene, circadian rhythm, hingga mengatasi insomnia ringan. Bangun kembali kebiasaan tidur yang sehat!`,
     category: 'nutrisi',
-    categoryLabel: 'Nutrisi & Gaya Hidup',
+    categoryLabel: 'Gizi & Nutrisi Olahraga',
     level: 'Semua Level',
     duration: '4 jam',
     totalModules: 4,
@@ -1037,7 +1496,7 @@ Dari sleep hygiene, circadian rhythm, hingga mengatasi insomnia ringan. Bangun k
 
 Dari basic poses, breathing techniques, hingga simple flows yang bisa kamu praktikkan setiap hari.`,
     category: 'yoga',
-    categoryLabel: 'Yoga & Mindfulness',
+    categoryLabel: 'Yoga & Kesehatan Mental',
     level: 'Pemula',
     duration: '6 jam',
     totalModules: 5,
@@ -1128,7 +1587,7 @@ Dari basic poses, breathing techniques, hingga simple flows yang bisa kamu prakt
 
 Dari guided meditation, breathing exercises, hingga mindfulness dalam aktivitas sehari-hari.`,
     category: 'yoga',
-    categoryLabel: 'Yoga & Mindfulness',
+    categoryLabel: 'Yoga & Kesehatan Mental',
     level: 'Semua Level',
     duration: '5 jam',
     totalModules: 4,
@@ -1195,7 +1654,7 @@ Dari guided meditation, breathing exercises, hingga mindfulness dalam aktivitas 
 
 Expect to sweat! Ini bukan yoga yang slow dan gentle, tapi powerful dan energizing.`,
     category: 'yoga',
-    categoryLabel: 'Yoga & Mindfulness',
+    categoryLabel: 'Yoga & Kesehatan Mental',
     level: 'Menengah',
     duration: '7 jam',
     totalModules: 6,
@@ -1242,7 +1701,7 @@ Expect to sweat! Ini bukan yoga yang slow dan gentle, tapi powerful dan energizi
 
 Dari stance, footwork, punches, kicks, elbows, knees, hingga clinch basics. All-in-one striking art!`,
     category: 'martial-arts',
-    categoryLabel: 'Martial Arts',
+    categoryLabel: 'Bela Diri & Pertahanan',
     level: 'Pemula',
     duration: '8 jam',
     totalModules: 7,
@@ -1314,7 +1773,7 @@ Dari stance, footwork, punches, kicks, elbows, knees, hingga clinch basics. All-
 
 Pelajari positions, escapes, submissions, dan strategy dalam grappling.`,
     category: 'martial-arts',
-    categoryLabel: 'Martial Arts',
+    categoryLabel: 'Bela Diri & Pertahanan',
     level: 'Pemula',
     duration: '9 jam',
     totalModules: 8,
@@ -1360,7 +1819,7 @@ Pelajari positions, escapes, submissions, dan strategy dalam grappling.`,
 
 Dari basic kicks hingga advanced spinning kicks. Improve flexibility, power, dan technique!`,
     category: 'martial-arts',
-    categoryLabel: 'Martial Arts',
+    categoryLabel: 'Bela Diri & Pertahanan',
     level: 'Semua Level',
     duration: '6 jam',
     totalModules: 5,
@@ -1407,7 +1866,7 @@ Dari basic kicks hingga advanced spinning kicks. Improve flexibility, power, dan
 
 Dengan progressive training plan, injury prevention tips, dan proper running form. Start your running journey!`,
     category: 'cardio',
-    categoryLabel: 'Cardio & Endurance',
+    categoryLabel: 'Kardio & Daya Tahan',
     level: 'Pemula',
     duration: '8 minggu program',
     totalModules: 8,
@@ -1474,7 +1933,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
 
 20-30 menit workout yang intense, efektif, dan bisa dilakukan di mana saja. No equipment needed!`,
     category: 'cardio',
-    categoryLabel: 'Cardio & Endurance',
+    categoryLabel: 'Kardio & Daya Tahan',
     level: 'Menengah',
     duration: '6 jam',
     totalModules: 5,
@@ -1529,7 +1988,7 @@ Dengan progressive training plan, injury prevention tips, dan proper running for
 
 Dari basic cycling form hingga advanced training zones dan periodization.`,
     category: 'cardio',
-    categoryLabel: 'Cardio & Endurance',
+    categoryLabel: 'Kardio & Daya Tahan',
     level: 'Semua Level',
     duration: '7 jam',
     totalModules: 6,
@@ -1575,7 +2034,7 @@ Dari basic cycling form hingga advanced training zones dan periodization.`,
 
 Dari freestyle, backstroke, breaststroke, hingga butterfly. Swim faster and more efficient!`,
     category: 'cardio',
-    categoryLabel: 'Cardio & Endurance',
+    categoryLabel: 'Kardio & Daya Tahan',
     level: 'Menengah',
     duration: '8 jam',
     totalModules: 7,
@@ -1625,7 +2084,7 @@ export const additionalCourses1 = [
 
 Course ini mengajarkan fundamental bodybuilding: split training, progressive overload, nutrition untuk muscle gain, dan recovery yang optimal. Cocok untuk pemula yang serius ingin membangun massa otot.`,
     category: 'bodybuilding',
-    categoryLabel: 'Bodybuilding & Muscle',
+    categoryLabel: 'Pembentukan Otot & Kekuatan',
     level: 'Pemula',
     duration: '10 jam',
     totalModules: 8,
@@ -1684,7 +2143,7 @@ Course ini mengajarkan fundamental bodybuilding: split training, progressive ove
 
 Dari mengatasi takut air, floating, hingga menguasai 4 gaya renang: freestyle, backstroke, breaststroke, dan butterfly. Step by step dengan video underwater yang jelas.`,
     category: 'cardio',
-    categoryLabel: 'Cardio & Endurance',
+    categoryLabel: 'Kardio & Daya Tahan',
     level: 'Pemula',
     duration: '12 jam',
     totalModules: 10,
@@ -1730,7 +2189,7 @@ Dari mengatasi takut air, floating, hingga menguasai 4 gaya renang: freestyle, b
 
 Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik-teknik yang digunakan di level kompetitif.`,
     category: 'martial-arts',
-    categoryLabel: 'Martial Arts',
+    categoryLabel: 'Bela Diri & Pertahanan',
     level: 'Lanjutan',
     duration: '9 jam',
     totalModules: 7,
@@ -1775,7 +2234,7 @@ Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik
     shortDescription: 'Tingkatkan permainan badminton dengan teknik yang benar.',
     description: `Badminton adalah olahraga yang membutuhkan speed, agility, dan technique. Course ini mengajarkan fundamental hingga advanced badminton skills.`,
     category: 'sports',
-    categoryLabel: 'Sports & Skill Training',
+    categoryLabel: 'Pelatihan Olahraga & Skill',
     level: 'Semua Level',
     duration: '7 jam',
     totalModules: 6,
@@ -1818,7 +2277,7 @@ Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik
     shortDescription: 'Masuk ke dunia CrossFit dengan fundamental yang kuat.',
     description: `CrossFit menggabungkan weightlifting, gymnastics, dan cardio dalam workout yang intense. Perfect untuk yang suka variety dan challenge!`,
     category: 'kebugaran',
-    categoryLabel: 'Kebugaran dan Fisik',
+    categoryLabel: 'Kesehatan Olahraga & Fisik',
     level: 'Menengah',
     duration: '8 jam',
     totalModules: 7,
@@ -1862,7 +2321,7 @@ Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik
     shortDescription: 'Tingkatkan flexibility dan mobility untuk performa optimal.',
     description: `Flexibility sering diabaikan padahal sangat penting untuk injury prevention dan performance. Course ini mengajarkan stretching yang benar dan progressive flexibility training.`,
     category: 'recovery',
-    categoryLabel: 'Recovery & Mobility',
+    categoryLabel: 'Pemulihan & Mobilitas',
     level: 'Semua Level',
     duration: '5 jam',
     totalModules: 5,
@@ -1905,7 +2364,7 @@ Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik
     shortDescription: 'Recovery mandiri dengan foam rolling dan self-massage.',
     description: `Foam rolling adalah cara efektif untuk recovery, mengurangi muscle soreness, dan meningkatkan mobility. Pelajari teknik yang benar untuk setiap muscle group.`,
     category: 'recovery',
-    categoryLabel: 'Recovery & Mobility',
+    categoryLabel: 'Pemulihan & Mobilitas',
     level: 'Semua Level',
     duration: '4 jam',
     totalModules: 4,
@@ -1949,7 +2408,7 @@ Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik
     shortDescription: 'Kelola stress dengan teknik yang terbukti efektif.',
     description: `Stress adalah bagian dari hidup, tapi kita bisa belajar mengelolanya. Course ini mengajarkan berbagai teknik stress management yang bisa langsung dipraktikkan.`,
     category: 'mental-wellness',
-    categoryLabel: 'Mental Wellness',
+    categoryLabel: 'Kesehatan Mental & Psikologi Olahraga',
     level: 'Semua Level',
     duration: '6 jam',
     totalModules: 5,
@@ -1992,7 +2451,7 @@ Pelajari dari pro boxer bagaimana membaca lawan, timing yang perfect, dan teknik
     shortDescription: 'Belajar makan dengan mindful dan bangun relationship yang sehat dengan food.',
     description: `Mindful eating bukan diet, tapi cara baru memandang makanan. Pelajari bagaimana makan dengan awareness, mengenali hunger cues, dan menikmati makanan tanpa guilt.`,
     category: 'mental-wellness',
-    categoryLabel: 'Mental Wellness',
+    categoryLabel: 'Kesehatan Mental & Psikologi Olahraga',
     level: 'Semua Level',
     duration: '5 jam',
     totalModules: 4,
@@ -2039,7 +2498,7 @@ export const additionalCourses2 = [
     shortDescription: 'Bangun kekuatan maksimal dengan powerlifting training.',
     description: `Powerlifting fokus pada 3 lift utama: squat, bench press, dan deadlift. Course ini mengajarkan teknik yang benar untuk memaksimalkan strength gains.`,
     category: 'bodybuilding',
-    categoryLabel: 'Bodybuilding & Muscle',
+    categoryLabel: 'Pembentukan Otot & Kekuatan',
     level: 'Menengah',
     duration: '11 jam',
     totalModules: 9,
@@ -2088,7 +2547,7 @@ export const additionalCourses2 = [
     shortDescription: 'Pelajari teknik dasar tennis yang benar.',
     description: `Tennis adalah olahraga yang elegant dan challenging. Course ini mengajarkan fundamental strokes, footwork, dan game strategy untuk pemula.`,
     category: 'sports',
-    categoryLabel: 'Sports & Skill Training',
+    categoryLabel: 'Pelatihan Olahraga & Skill',
     level: 'Pemula',
     duration: '8 jam',
     totalModules: 7,
@@ -2131,7 +2590,7 @@ export const additionalCourses2 = [
     shortDescription: 'Tingkatkan skill volleyball untuk bermain lebih baik.',
     description: `Volleyball membutuhkan teamwork, timing, dan technique. Course ini mengajarkan fundamental skills hingga advanced techniques.`,
     category: 'sports',
-    categoryLabel: 'Sports & Skill Training',
+    categoryLabel: 'Pelatihan Olahraga & Skill',
     level: 'Semua Level',
     duration: '7 jam',
     totalModules: 6,
@@ -2175,7 +2634,7 @@ export const additionalCourses2 = [
     shortDescription: 'Nutrisi nabati yang optimal untuk performa olahraga.',
     description: `Plant-based diet bisa mendukung performa atletik dengan nutrisi yang tepat. Course ini mengajarkan bagaimana memenuhi kebutuhan protein, vitamin, dan mineral dari sumber nabati.`,
     category: 'nutrisi',
-    categoryLabel: 'Nutrisi & Gaya Hidup',
+    categoryLabel: 'Gizi & Nutrisi Olahraga',
     level: 'Semua Level',
     duration: '6 jam',
     totalModules: 5,
@@ -2218,7 +2677,7 @@ export const additionalCourses2 = [
     shortDescription: 'Pahami supplement mana yang worth it dan mana yang hype.',
     description: `Dunia supplement penuh dengan marketing hype. Course ini memberikan panduan evidence-based tentang supplement yang benar-benar efektif untuk performa dan recovery.`,
     category: 'nutrisi',
-    categoryLabel: 'Nutrisi & Gaya Hidup',
+    categoryLabel: 'Gizi & Nutrisi Olahraga',
     level: 'Semua Level',
     duration: '5 jam',
     totalModules: 4,
@@ -2255,8 +2714,63 @@ export const additionalCourses2 = [
   },
 ]
 
+// Transform landingCourses to match schema matches courseData structure
+const transformedLandingCourses = landingCourses.map((course) => {
+  // Map category 'mental' to 'mental-wellness'
+  const categoryMap = {
+    'mental': 'mental-wellness',
+    // add other mappings if necessary, currently mostly matching
+  };
+
+  const mappedCategory = categoryMap[course.category] || course.category;
+
+  // Find category label
+  const catObj = courseCategories.find(c => c.id === mappedCategory);
+  const categoryLabel = catObj ? catObj.name : 'General';
+
+  return {
+    id: 900 + course.id, // Offset ID significantly to avoid collision with existing IDs (1-34)
+    slug: course.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    title: course.title,
+    shortDescription: `Course tentang ${course.title}. ${course.level}.`,
+    description: `Pelajari ${course.title} secara mendalam bersama ${course.instructor}. Course ini masuk dalam kategori ${categoryLabel} dan dirancang untuk tingkat ${course.level}. \n\nDurasi pembelajaran sekitar ${course.duration} dengan total materi yang komprehensif.`,
+    category: mappedCategory,
+    categoryLabel: categoryLabel,
+    level: course.level,
+    duration: course.duration,
+    totalModules: 5, // Default
+    totalLessons: parseInt(course.materialsCount) || 15,
+    price: parseInt(course.price.replace(/[^0-9]/g, '')) || 99000,
+    discountPrice: (parseInt(course.price.replace(/[^0-9]/g, '')) || 99000), // No discount logic for landing data, just use price
+    rating: course.rating,
+    totalRatings: parseInt(course.ratingCount.replace(/[^0-9]/g, '')) * 100 || 50,
+    totalStudents: parseInt(course.ratingCount.replace(/[^0-9]/g, '')) * 500 || 500, // Estimate
+    thumbnail: course.image,
+    previewVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    instructor: {
+      name: course.instructor,
+      avatar: `https://ui-avatars.com/api/?name=${course.instructor.replace(/ /g, '+')}&background=random`,
+      title: 'Expert Instructor',
+      bio: `Instructor berpengalaman di bidang ${categoryLabel}.`,
+      totalCourses: 1,
+      totalStudents: 1000,
+    },
+    features: [
+      'Materi komprehensif',
+      'Akses selamanya',
+      'Sertifikat penyelesaian',
+      'Konsultasi instruktur'
+    ],
+    requirements: ['Semangat belajar tinggi', 'Perangkat untuk akses materi'],
+    curriculum: [],
+    reviews: [],
+    badge: null,
+    updatedAt: course.date
+  }
+});
+
 // Merge all course data
-const allCoursesData = [...baseCoursesData, ...additionalCourses1, ...additionalCourses2]
+const allCoursesData = [...baseCoursesData, ...additionalCourses1, ...additionalCourses2, ...transformedLandingCourses]
 
 // Export merged data
 export { allCoursesData as coursesData }
@@ -2287,3 +2801,4 @@ export const formatPrice = (price) => {
     minimumFractionDigits: 0,
   }).format(price)
 }
+

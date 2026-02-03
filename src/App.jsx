@@ -28,6 +28,7 @@ import { ForumProvider } from './context/ForumContext'
 import CheckoutPage from './pages/CheckoutPage'
 import EventsPage from './pages/EventsPage'
 import EventsIntroPage from './pages/EventsIntroPage'
+import DiscussionRoomPage from './pages/forum/DiscussionRoomPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Route path="/artikel/:id" element={<ArtikelPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events-intro" element={<EventsIntroPage />} />
+        <Route path="/forum/room/:roomId" element={<DiscussionRoomPage />} />
         {/* Catch-all route for 404 Not Found */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
