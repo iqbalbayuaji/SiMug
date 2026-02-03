@@ -22,6 +22,8 @@ import Footer from '../components/layout/Footer'
 import CourseCard from '../components/CourseCard'
 import { landingCourses } from '../constants/landingCoursesData'
 import { testimonialsRow1, testimonialsRow2 } from '../constants/testimonialsData'
+import Ilustrasi4 from "../assets/images/ilustrasi4.svg"
+import Ilustrasi5 from "../assets/images/ilustrasi5.svg"
 
 // Mascot imports
 import Mascot1 from "../assets/maskot/mascot1.png"
@@ -341,6 +343,24 @@ export default function LandingPage() {
                             </Link>
                         </div>
 
+
+                        {/* Decoration Above Mascot - Left Side */}
+                        <div className="hidden xl:flex absolute left-0 top-40 items-end z-0 pointer-events-none -ml-60">
+                             <div className="mb-16 -mr-10 z-0">
+                                <img src={gridHiasan} alt="" className="w-40 h-30 opacity-60" />
+                             </div>
+                             <div className="z-10">
+                                <img src={Ilustrasi4} alt="Decoration" className="w-[240px] h-auto object-contain" />
+                             </div>
+                        </div>
+
+                        {/* Decoration Above Mascot - Right Side */}
+                        <div className="hidden xl:flex absolute right-0 top-45 items-end z-0 pointer-events-none -mr-20 flex-row-reverse">
+                             <div className="z-10">
+                                <img src={Ilustrasi5} alt="Decoration" className="w-[300px] h-auto object-contain" />
+                             </div>
+                        </div>
+
                         {/* Mascot Section with Scatter Animation - Hidden on mobile */}
                         <div
                             ref={mascotSectionRef}
@@ -520,7 +540,7 @@ export default function LandingPage() {
             </section>
 
             {/* Why Choose SiMug Section - Smooth blue transition - Hidden on mobile */}
-            <div className="hidden md:block relative -mt-36 mb-16 h-40 bg-gradient-to-b from-white via-blue-400/80 to-white"></div>
+            <div className="hidden md:block relative -mt-36 mb-16 h-40"></div>
             <motion.section 
                 id="tentang" 
                 className="relative bg-white"
@@ -1276,7 +1296,7 @@ export default function LandingPage() {
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
                     {/* Section Header */}
-                    <div className="text-center mb-8 lg:mb-8">
+                    <div className="text-center mb-8 lg:mb-8 mt-8 lg:mt-8">
                         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                             Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
                         </h2>
