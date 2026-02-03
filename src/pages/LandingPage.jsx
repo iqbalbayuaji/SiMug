@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate, useMotionTemplate } from 'framer-motion'
 import gridHiasan from "../assets/images/grid-hiasan.png"
 import ImageCard1 from "../assets/images/fitness_training_card.png"
 import ImageCard2 from "../assets/images/running_progress_card.png"
@@ -49,6 +49,15 @@ function Counter({ value, duration = 2 }) {
 }
 
 export default function LandingPage() {
+    let mouseX = useMotionValue(0)
+    let mouseY = useMotionValue(0)
+
+    function handleMouseMove({ currentTarget, clientX, clientY }) {
+        let { left, top } = currentTarget.getBoundingClientRect()
+        mouseX.set(clientX - left)
+        mouseY.set(clientY - top)
+    }
+
     const [scrolled, setScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mascotScattered, setMascotScattered] = useState(false)
@@ -256,20 +265,27 @@ export default function LandingPage() {
                 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-40">
                 <div className="flex flex-col lg:flex-col items-center justify-between relative">
-                    {/* Decorative Icon Spans - Hidden on mobile */}
                     {/* Green Icon - Top Left */}
-                    <span className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12">
+                    <motion.div 
+                        animate={{ y: [0, -15, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="hidden md:inline-flex absolute top-8 left-4 lg:top-12 lg:left-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#41FFC9] to-[#2DD4A8] rounded-2xl shadow-lg shadow-green-400/50 rotate-12"
+                    >
                         <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                    </span>
+                    </motion.div>
 
                     {/* Orange Icon - Top Right */}
-                    <span className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12">
+                    <motion.div 
+                        animate={{ y: [0, -15, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className="hidden md:inline-flex absolute top-16 right-4 lg:top-20 lg:right-20 items-center justify-center w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-[#FF6741] to-[#FF4520] rounded-2xl shadow-lg shadow-orange-400/50 -rotate-12"
+                    >
                         <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                    </span>
+                    </motion.div>
 
                     {/* Main Heading */}
                     <div className="grid place-items-center lg:text-center space-y-6 md:space-y-6 lg:space-y-8 min-h-[85vh] md:min-h-0 flex flex-col justify-center">
@@ -349,16 +365,24 @@ export default function LandingPage() {
                              <div className="mb-16 -mr-10 z-0">
                                 <img src={gridHiasan} alt="" className="w-40 h-30 opacity-60" />
                              </div>
-                             <div className="z-10">
+                             <motion.div 
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                                className="z-10"
+                             >
                                 <img src={Ilustrasi4} alt="Decoration" className="w-[240px] h-auto object-contain" />
-                             </div>
+                             </motion.div>
                         </div>
 
                         {/* Decoration Above Mascot - Right Side */}
                         <div className="hidden xl:flex absolute right-0 top-45 items-end z-0 pointer-events-none -mr-20 flex-row-reverse">
-                             <div className="z-10">
+                             <motion.div 
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                                className="z-10"
+                             >
                                 <img src={Ilustrasi5} alt="Decoration" className="w-[300px] h-auto object-contain" />
-                             </div>
+                             </motion.div>
                         </div>
 
                         {/* Mascot Section with Scatter Animation - Hidden on mobile */}
@@ -443,8 +467,23 @@ export default function LandingPage() {
 
                         {/* Social Proof Stats - Desktop Only */}
                         <div className="hidden md:block mx-2 sm:mx-4 md:mx-10 mb-20 md:mb-0">
-                            <div className="max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start h-full">
+                            <div 
+                                className="group relative max-w-screen mx-auto bg-white rounded-2xl self-center shadow-lg p-4 sm:p-6 lg:px-7 lg:py-5 overflow-hidden"
+                                onMouseMove={handleMouseMove}
+                            >
+                                <motion.div
+                                    className="pointer-events-none absolute -inset-px transition duration-300 opacity-0 group-hover:opacity-100"
+                                    style={{
+                                        background: useMotionTemplate`
+                                            radial-gradient(
+                                                400px circle at ${mouseX}px ${mouseY}px,
+                                                rgba(59, 130, 246, 0.15),
+                                                transparent 80%
+                                            )
+                                        `
+                                    }}
+                                />
+                                <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-start h-full">
                                     {/* Stat 1 - 50.000+ (No border-left) */}
                                     <div className="text-left pl-6 pr-2 flex flex-col">
                                         <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
