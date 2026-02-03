@@ -64,7 +64,7 @@ export default function EventsIntroPage() {
                     </div>
                 </div>
 
-                <div className="relative z-10 text-center max-w-3xl px-6 pt-10 md:pt-20">
+                <div className="relative z-10 text-center max-w-3xl px-6 lg:pt-10 pt-20 md:pt-20">
                     <div className="space-y-2 mb-4">
                         <h1 className="text-3xl md:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent tracking-tight">
                             Temukan Campaign dan Aktivitas
@@ -91,7 +91,7 @@ export default function EventsIntroPage() {
                         </svg>
                     </button>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12 mt-16 px-4">
+                    <div className="flex lg:flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12 mt-16 px-4">
 
                         <div className="bg-white/90 backdrop-blur-sm px-5 py-2.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-blue-50 transform -rotate-2 hover:rotate-0 transition-all duration-300 hover:shadow-lg w-40 sm:w-auto">
                             <div className="text-xl sm:text-2xl font-semibold text-blue-600">1.000+</div>
