@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate, useMotionTemplate } from 'framer-motion'
 import gridHiasan from "../assets/images/grid-hiasan.png"
 import ImageCard1 from "../assets/images/fitness_training_card.png"
 import ImageCard2 from "../assets/images/running_progress_card.png"
@@ -22,6 +22,8 @@ import Footer from '../components/layout/Footer'
 import CourseCard from '../components/CourseCard'
 import { coursesData, formatPrice } from '../constants/coursesData'
 import { testimonialsRow1, testimonialsRow2 } from '../constants/testimonialsData'
+import Ilustrasi4 from "../assets/images/ilustrasi4.svg"
+import Ilustrasi5 from "../assets/images/ilustrasi5.svg"
 
 // Mascot imports
 import Mascot1 from "../assets/maskot/mascot1.png"
@@ -47,6 +49,15 @@ function Counter({ value, duration = 2 }) {
 }
 
 export default function LandingPage() {
+    let mouseX = useMotionValue(0)
+    let mouseY = useMotionValue(0)
+
+    function handleMouseMove({ currentTarget, clientX, clientY }) {
+        let { left, top } = currentTarget.getBoundingClientRect()
+        mouseX.set(clientX - left)
+        mouseY.set(clientY - top)
+    }
+
     const [scrolled, setScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mascotScattered, setMascotScattered] = useState(false)
@@ -1276,7 +1287,7 @@ export default function LandingPage() {
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
                     {/* Section Header */}
-                    <div className="text-center mb-8 lg:mb-8">
+                    <div className="text-center mb-8 lg:mb-8 mt-8 lg:mt-8">
                         <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                             Daftar Kursus <span className="text-blue-600">Relevan SiMug</span>
                         </h2>

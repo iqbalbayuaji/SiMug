@@ -75,13 +75,14 @@ export default function HeroSection() {
         <div className="absolute bottom-10 right-[5%] w-24 h-24 bg-[#0039C9]/10 rounded-full blur-2xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pt-8 pt-10 lg:pb-16 pb-10 sm:py-12 lg:py-16 relative z-10 flex items-center lg:min-h-[100vh] md:min-h-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pt-2 pt-4 lg:pb-16 pb-10 sm:py-12 lg:py-16 relative z-10 flex items-center lg:min-h-[100vh] md:min-h-0">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-36 items-center w-full">
           {/* Left Content */}
           <motion.div
             initial="initial"
             animate="animate"
             variants={fadeInUpVariants}
+            className="-mt-10 lg:-mt-16"
           >
             {/* Badge Platform Kesehatan No. 1 */}
             <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-2 sm:px-3 py-0 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 0px 10px rgba(65, 119, 255, 0.15)' }}>
