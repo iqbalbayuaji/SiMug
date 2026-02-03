@@ -55,7 +55,7 @@ function App() {
         <Route path="/forum/search" element={<ForumSearchPage />} />
         <Route path="/forum/beranda" element={<ForumBerandaPage />} />
         <Route path="/forum/beranda/about" element={<ForumAboutPage />} />
-        <Route path="/jawab-pertanyaan" element={<JawabPertanyaanPage />} />
+        <Route path="/jawab-pertanyaan" element={<ForumProvider><JawabPertanyaanPage /></ForumProvider>} />
         <Route path="/tambah-pertanyaan" element={<TambahPertanyaanPage />} />
         <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/artikel/:id" element={<ArtikelPage />} />
