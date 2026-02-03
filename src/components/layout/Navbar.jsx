@@ -64,7 +64,7 @@ export default function Navbar() {
     { name: "Home", path: "/home" },
     { name: "Progress", path: "/progress" },
     { name: "Course", path: "/courses", hasDropdown: true },
-    { name: "Events", hasDropdown: true },
+    { name: "Events", path: "/events-intro" },
     { name: "Forum", path: "/forum-intro" },
     { name: "SiMug AI", path: "/chatbot" }
   ]
@@ -137,17 +137,10 @@ export default function Navbar() {
                   setHoveredMenu(item.name)
                   if (item.name === "Course") {
                     setShowCourseDropdown(true)
-                    setShowEventsDropdown(false)
-                  }
-                  if (item.name === "Events") {
-                    setShowEventsDropdown(true)
+                  } else {
                     setShowCourseDropdown(false)
                   }
-
-                  if (item.name !== "Course" && item.name !== "Events") {
-                    setShowCourseDropdown(false)
-                    setShowEventsDropdown(false)
-                  }
+                  setShowEventsDropdown(false)
                 }}
               >
                 {item.path ? (
