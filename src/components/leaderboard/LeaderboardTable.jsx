@@ -49,15 +49,14 @@ export default function LeaderboardTable({ leaderboardData, onShowTips }) {
             className="bg-[#4177FF] text-white px-2 xs:px-3 py-1 xs:py-1.5 rounded-lg font-semibold hover:bg-[#3461DB] transition-colors flex items-center gap-1 xs:gap-2 shadow-lg text-xs xs:text-sm md:text-base cursor-pointer"
           >
             <img src={aiWhiteIcon} alt="AI Icon" className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6" />
-            <span className="hidden xs:inline">SIMUG Tips</span>
-            <span className="xs:hidden">Tips</span>
+            SIMUG Tips
           </button>
           <button className="w-8 h-8 xs:w-9 xs:h-9 md:w-10 md:h-10 bg-[#4177FF] text-white rounded-full hover:bg-[#3461DB] transition-colors flex items-center justify-center shadow-lg">
             <svg className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
-        </div>
+        </div>      
       </div>
 
       {/* Leaderboard Table */}
