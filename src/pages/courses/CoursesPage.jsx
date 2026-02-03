@@ -54,7 +54,7 @@ export default function CoursesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F8FAFF] to-white">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#4177FF] to-[#10348F] py-20 md:py-28">
         {/* Background Pattern */}
@@ -64,24 +64,24 @@ export default function CoursesPage() {
             backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }}></div>
-          
+
           {/* Organic shapes */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] -translate-x-1/4 translate-y-1/4"></div>
           <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-blue-300/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-          
+
           {/* Floating elements */}
           <div className="absolute top-20 left-[10%] w-2 h-2 bg-white/40 rounded-full animate-pulse"></div>
           <div className="absolute top-40 right-[15%] w-3 h-3 bg-white/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute bottom-32 left-[20%] w-2 h-2 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
           <div className="absolute top-1/3 right-[25%] w-2 h-2 bg-white/35 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
           <div className="absolute bottom-20 right-[10%] w-3 h-3 bg-white/25 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-          
+
           {/* Decorative geometric shapes */}
           <div className="absolute top-32 left-[15%] w-16 h-16 border-2 border-white/10 rounded-lg rotate-12 animate-pulse"></div>
           <div className="absolute bottom-40 right-[20%] w-20 h-20 border-2 border-white/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
           <div className="absolute top-1/2 left-[8%] w-12 h-12 border-2 border-white/10 rounded-lg -rotate-12 animate-pulse" style={{ animationDelay: '2s' }}></div>
-          
+
           {/* Decorative lines */}
           <svg className="absolute top-0 left-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
             <line x1="0" y1="30%" x2="20%" y2="30%" stroke="white" strokeWidth="1" strokeDasharray="5,5" />
@@ -90,7 +90,7 @@ export default function CoursesPage() {
             <circle cx="85%" cy="25%" r="4" fill="white" opacity="0.2" />
             <circle cx="90%" cy="80%" r="2" fill="white" opacity="0.3" />
           </svg>
-          
+
           {/* Gradient overlay for depth */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-700/10"></div>
         </div>
@@ -169,9 +169,9 @@ export default function CoursesPage() {
                 {/* Main card */}
                 <div className="relative z-10 bg-white rounded-3xl p-6 shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
                   <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl mb-4 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop" 
-                      alt="Course Preview" 
+                    <img
+                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop"
+                      alt="Course Preview"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -224,7 +224,7 @@ export default function CoursesPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="sticky top-[65px] md:top-[73px] z-40 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm overflow-hidden">
+      <section className="top-[65px] md:top-[73px] z-40 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="relative">
             <div className="flex items-center gap-2 md:gap-3 animate-scroll-categories">
@@ -233,11 +233,10 @@ export default function CoursesPage() {
                 <div key={setIndex} className="flex items-center gap-2 md:gap-3">
                   <button
                     onClick={() => handleCategoryChange('all')}
-                    className={`px-4 md:px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 ${
-                      selectedCategory === 'all'
-                        ? 'bg-[#4177FF] text-white shadow-lg shadow-blue-500/25'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
+                    className={`px-4 md:px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 ${selectedCategory === 'all'
+                      ? 'bg-[#4177FF] text-white shadow-lg shadow-blue-500/25'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
                   >
                     Semua Course
                   </button>
@@ -245,11 +244,10 @@ export default function CoursesPage() {
                     <button
                       key={`${category.id}-${setIndex}`}
                       onClick={() => handleCategoryChange(category.id)}
-                      className={`px-4 md:px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 ${
-                        selectedCategory === category.id
-                          ? 'bg-[#4177FF] text-white shadow-lg shadow-blue-500/25'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                      }`}
+                      className={`px-4 md:px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all flex-shrink-0 ${selectedCategory === category.id
+                        ? 'bg-[#4177FF] text-white shadow-lg shadow-blue-500/25'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        }`}
                     >
                       {category.name}
                     </button>
@@ -268,8 +266,8 @@ export default function CoursesPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-                {selectedCategory === 'all' 
-                  ? 'Semua Course' 
+                {selectedCategory === 'all'
+                  ? 'Semua Course'
                   : courseCategories.find(c => c.id === selectedCategory)?.name}
               </h2>
               <p className="text-gray-500 mt-1">{filteredCourses.length} course ditemukan</p>
@@ -287,71 +285,71 @@ export default function CoursesPage() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredCourses.slice(0, visibleCount).map((course) => (
-                <Link
-                  key={course.id}
-                  to={`/courses/${course.slug}`}
-                  className="h-full border border-[#DBDBDB] rounded-2xl p-4 hover:border-blue-300 hover:shadow-lg transition-all bg-white flex flex-col"
-                >
-                  {/* Course Image */}
-                  <div className="relative h-52 bg-gray-800 rounded-2xl overflow-hidden mb-4">
-                    <img
-                      src={course.thumbnail}
-                      alt={course.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Course+Image'
-                      }}
-                    />
-                  </div>
-
-                  {/* Course Info */}
-                  <div className="flex flex-col flex-1">
-                    <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 mb-2">
-                      {course.title}
-                    </h3>
-
-                    <p className="text-sm text-gray-400 mb-4">
-                      {course.instructor.name} • {course.duration}
-                    </p>
-
-                    {/* Stats - Simple Pill Style */}
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-700">
-                        <FaStar className="text-yellow-400" />
-                        <span className="font-semibold">{course.rating}</span>
-                      </div>
-                      <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
-                        {course.totalRatings.toLocaleString()} rating
-                      </div>
-                      <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
-                        {course.totalLessons} materi+
-                      </div>
-                      <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
-                        {course.duration}
-                      </div>
+                  <Link
+                    key={course.id}
+                    to={`/courses/${course.slug}`}
+                    className="h-full border border-[#DBDBDB] rounded-2xl p-4 hover:border-blue-300 hover:shadow-lg transition-all bg-white flex flex-col"
+                  >
+                    {/* Course Image */}
+                    <div className="relative h-52 bg-gray-800 rounded-2xl overflow-hidden mb-4">
+                      <img
+                        src={course.thumbnail}
+                        alt={course.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.target.src = 'https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Course+Image'
+                        }}
+                      />
                     </div>
 
-                    <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-4 w-fit">
-                      {course.level}
-                    </div>
+                    {/* Course Info */}
+                    <div className="flex flex-col flex-1">
+                      <h3 className="font-bold text-lg text-gray-900 leading-tight line-clamp-2 mb-2">
+                        {course.title}
+                      </h3>
 
-                    {/* Price & CTA */}
-                    <div className="flex items-center justify-between gap-2 mt-auto">
-                      <div>
+                      <p className="text-sm text-gray-400 mb-4">
+                        {course.instructor.name} • {course.duration}
+                      </p>
 
-                        <span className="text-2xl font-bold text-[#4177FF]">
-                          {formatPrice(course.discountPrice)}
+                      {/* Stats - Simple Pill Style */}
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="flex items-center gap-1 bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-700">
+                          <FaStar className="text-yellow-400" />
+                          <span className="font-semibold">{course.rating}</span>
+                        </div>
+                        <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
+                          {course.totalRatings.toLocaleString()} rating
+                        </div>
+                        <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
+                          {course.totalLessons} materi+
+                        </div>
+                        <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600">
+                          {course.duration}
+                        </div>
+                      </div>
+
+                      <div className="bg-white px-3 py-1.5 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-4 w-fit">
+                        {course.level}
+                      </div>
+
+                      {/* Price & CTA */}
+                      <div className="flex items-center justify-between gap-2 mt-auto">
+                        <div>
+
+                          <span className="text-2xl font-bold text-[#4177FF]">
+                            {formatPrice(course.discountPrice)}
+                          </span>
+                        </div>
+                        <span className="bg-[#E5ECFF] text-[#4177FF] px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-1 whitespace-nowrap">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                          </svg>
+                          Mulai Belajar
                         </span>
                       </div>
-                      <span className="bg-[#E5ECFF] text-[#4177FF] px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-1 whitespace-nowrap">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                        Mulai Belajar
-                      </span>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
                 ))}
               </div>
               {visibleCount < filteredCourses.length && (

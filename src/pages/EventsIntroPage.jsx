@@ -91,7 +91,7 @@ export default function EventsIntroPage() {
                         </svg>
                     </button>
 
-                    <div className="flex lg:flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12 mt-16 px-4">
+                    <div className="flex lg:flex-row sm:flex-row items-center justify-center gap-4 sm:gap-8 lg:gap-12 mt-16 px-4">
 
                         <div className="bg-white/90 backdrop-blur-sm px-5 py-2.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-blue-50 transform -rotate-2 hover:rotate-0 transition-all duration-300 hover:shadow-lg w-40 sm:w-auto">
                             <div className="text-xl sm:text-2xl font-semibold text-blue-600">1.000+</div>
