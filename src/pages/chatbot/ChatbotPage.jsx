@@ -198,7 +198,7 @@ export default function ChatbotPage() {
 
 
                     <div className="flex-1 overflow-y-auto w-full">
-                        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 pb-32"> {/* Added pb-32 for input space */}
+                        <div className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 ${isConversationActive ? 'pb-32' : 'pb-10'}`}>
                             <DecorativeBlobs />
 
                             {/* Show Header and Topics only when no conversation */}

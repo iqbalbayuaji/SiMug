@@ -311,14 +311,14 @@ export default function LandingPage() {
                         {/* Header - Mobile Version (Badge + Title + Description in one wrapper) */}
                         <div className="md:hidden flex flex-col items-center space-y-4 mb-12 md:mb-0">
                             {/* Badge - Mobile */}
-                            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full shadow-md">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md">
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                 </svg>
-                                <span className="font-semibold text-sm">#1 Platform Edukasi Kesehatan</span>
+                                <span className="font-semibold text-xs sm:text-sm">#1 Platform Edukasi Kesehatan</span>
                             </div>
 
-                            <h1 className="text-3xl font-bold leading-tight text-center">
+                            <h1 className="text-2xl sm:text-3xl font-bold leading-tight text-center">
                                 <span className="text-blue-600">Usaha Aja Gaakan Cukup </span>
                                 <span className="text-gray-900">Tanpa Arah yang Jelas</span>
                             </h1>
@@ -532,7 +532,7 @@ export default function LandingPage() {
             </motion.main>
 
             {/* Social Proof Stats - Mobile Only (Separated from Hero) */}
-            <section className="md:hidden bg-white py-8 px-6 mt-6 md:mt-0 mb-10 md:mb-0">
+            <section className="md:hidden bg-white py-6 px-4 mt-4 md:mt-0 mb-8 md:mb-0">
                 <div className="max-w-screen mx-auto bg-white rounded-2xl shadow-lg p-4">
                     <div className="grid grid-cols-1 gap-6">
                         {/* Stat 1 - 50.000+ */}
