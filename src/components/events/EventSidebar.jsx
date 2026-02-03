@@ -1,8 +1,7 @@
-import React from 'react';
 import { BsInfoCircleFill, BsPinAngleFill, BsCalendarEvent, BsArrowRight } from 'react-icons/bs';
-import Event1 from '../../assets/images/event1.png';
-import Event2 from '../../assets/images/event2.png';
-import Event3 from '../../assets/images/event3.png';
+import { motion } from 'framer-motion';
+import PinEvent from './PinEvent';
+
 
 const DailyGrind = () => {
     const tasks = [
@@ -49,54 +48,27 @@ const DailyGrind = () => {
     );
 };
 
-const PinEventItem = ({ image, title, date }) => (
-    <div className="flex gap-3 bg-white border border-gray-100 p-3 rounded-xl hover:shadow-sm transition-shadow">
-        <div className="w-20 h-14 bg-gray-200 rounded-lg overflow-hidden shrink-0">
-            {image ? <img src={image} alt={title} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-gray-300"></div>}
-        </div>
-        <div className="flex-1 min-w-0">
-            <h4 className="text-sm font-bold text-gray-900 truncate">{title}</h4>
-            <div className="flex items-center text-xs text-blue-500 mt-1">
-                <BsCalendarEvent className="mr-1" />
-                {date}
-            </div>
-        </div>
-        <button className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full h-fit self-center">
-            Lanjutkan →
-        </button>
-    </div>
-);
 
-const PinEvent = () => {
-    return (
-        <div className="bg-white border border-gray-100 rounded-2xl p-4 mb-6 shadow-sm">
-            <div className="flex justify-between items-center mb-4 text-blue-600">
-                <div className="flex items-center gap-2 font-bold text-lg">
-                    <BsPinAngleFill /> PIN Event
-                </div>
-                <BsInfoCircleFill className="opacity-50 text-gray-400" />
-            </div>
-            <div className="space-y-3">
-                <PinEventItem title="Marathon Campaign Kota..." date="1 Jan - 2 Feb" image={Event1} />
-                <PinEventItem title="Train Boxing with Coach..." date="1 Jan - 2 Feb" image={Event2} />
-                <PinEventItem title="Train Boxing with Coach..." date="1 Jan - 2 Feb" image={Event3} />
-            </div>
-        </div>
-    );
-};
+
 
 const EventPromo = () => {
     return (
-        <div className="bg-blue-600 rounded-2xl p-6 text-white relative overflow-hidden shadow-md">
-            <div className="absolute right-0 bottom-0 w-32 h-32 bg-white opacity-10 rounded-full translate-x-1/2 translate-y-1/2"></div>
+        <motion.div
+            whileHover={{ y: -3, scale: 1.00 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="cursor-pointer bg-blue-600 rounded-2xl p-6 text-white relative overflow-hidden shadow-md group"
+        >
+            <div className="absolute left-0 top-0 w-24 h-24 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:scale-130"></div>
+            <div className="absolute right-0 bottom-0 w-32 h-32 bg-white opacity-20 rounded-full translate-x-1/2 translate-y-1/2 transition-transform duration-300 group-hover:scale-130"></div>
+
             <div className="relative z-10">
-                <h3 className="text-lg font-bold mb-1">Bingung mau ikut event apa?</h3>
+                <h3 className="text-lg font-semibold mb-1">Bingung mau ikut event apa?</h3>
                 <p className="text-blue-100 text-sm mb-4">Tanyain aja ke MUGION sekarang!</p>
-                <button className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors w-fit ml-auto">
-                    ✨ Hi, MUG
+                <button className="cursor-pointer bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors w-fit ml-auto">
+                    Hi, MUG
                 </button>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
