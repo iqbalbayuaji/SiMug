@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaCreditCard, FaWallet, FaUniversity, FaLock, FaInfoCircle, FaArrowLeft, FaChevronDown } from 'react-icons/fa';
 import { HiTicket } from 'react-icons/hi';
+import { FiZap } from 'react-icons/fi';
 import BniPayment from '../assets/images/bni-payment.png';
 import MandiriPayment from '../assets/images/mandiri-payment.png';
 import BcaPayment from '../assets/images/bca-payment.png';
@@ -66,69 +67,95 @@ const CheckoutPage = () => {
 
                     {/* Billing Address */}
                     <div className="bg-white rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden">
-                        <div className="bg-[#4177ff] px-5 py-3 flex items-center gap-4 text-white">
-                            <div className="bg-white/20 p-2.5 rounded-full">
-                                <FaUser className="text-xl" />
+                        <div className="bg-[#4177ff] px-6 py-4 flex items-center gap-4 text-white relative overflow-hidden">
+                            <div className="bg-white rounded-full p-2.5 flex items-center justify-center">
+                                <FaUser className="text-xl text-[#4177ff]" />
                             </div>
-                            <h2 className="font-semibold text-xl">Alamat Penagihan</h2>
+                            <h2 className="font-bold text-2xl tracking-tight z-10">Alamat Penagihan</h2>
+
+                            {/* Decorative circles in header */}
+                            <div className="absolute right-[-10px] top-[-10px] w-32 h-32 bg-white/10 rounded-full"></div>
+                            <div className="absolute right-20 top-0 w-24 h-24 bg-white/5 rounded-full"></div>
                         </div>
-                        <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700">Nama Lengkap:</label>
-                                <input
-                                    name="fullName"
-                                    value={formData.fullName}
-                                    onChange={handleChange}
-                                    placeholder="Masukkan Nama Lengkap"
-                                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm placeholder-gray-400"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700">Alamat E-Mail:</label>
-                                <input
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="contoh: example@gmail.com"
-                                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm placeholder-gray-400"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700">Asal Negara:</label>
-                                <div className="relative">
-                                    <select
-                                        name="country"
-                                        value={formData.country}
+                        <div className="p-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-8">
+                                <div className="space-y-2">
+                                    <label className="text-base font-bold text-gray-700">Nama Lengkap:</label>
+                                    <input
+                                        name="fullName"
+                                        value={formData.fullName}
                                         onChange={handleChange}
-                                        className={`w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm appearance-none bg-white cursor-pointer ${!formData.country ? 'text-gray-400' : 'text-gray-900'}`}
-                                    >
-                                        <option value="" disabled>Masukkan ID Negara</option>
-                                        <option value="ID">Indonesia</option>
-                                        <option value="MY">Malaysia</option>
-                                        <option value="SG">Singapore</option>
-                                    </select>
-                                    <FaChevronDown className="absolute right-4 top-4 text-gray-400 text-xs pointer-events-none" />
+                                        placeholder="Masukkan Nama Lengkap"
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm placeholder-gray-400 bg-gray-50/30 font-medium"
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-base font-bold text-gray-700">Alamat E-Mail:</label>
+                                    <input
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="contoh: example@gmail.com"
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm placeholder-gray-400 bg-gray-50/30 font-medium"
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-base font-bold text-gray-700">Asal Negara:</label>
+                                    <div className="relative">
+                                        <select
+                                            name="country"
+                                            value={formData.country}
+                                            onChange={handleChange}
+                                            className={`w-full border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm appearance-none bg-gray-50/30 cursor-pointer font-medium ${!formData.country ? 'text-gray-400' : 'text-gray-900'}`}
+                                        >
+                                            <option value="" disabled>Masukkan ID Negara</option>
+                                            <option value="ID">Indonesia</option>
+                                            <option value="MY">Malaysia</option>
+                                            <option value="SG">Singapore</option>
+                                        </select>
+                                        <FaChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none" />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-base font-bold text-gray-700">No. Telp:</label>
+                                    <input
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="contoh: +62 8123 4567 89"
+                                        className="w-full border border-gray-200 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm placeholder-gray-400 bg-gray-50/30 font-medium"
+                                    />
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-bold text-gray-700">No. Telp:</label>
-                                <input
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="contoh: +62 8123 4567 89"
-                                    className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4177ff]/50 focus:border-[#4177ff] transition-all text-sm placeholder-gray-400"
-                                />
-                            </div>
+                            {/* Separator */}
+                            <div className="h-px bg-gray-200 w-full mb-6"></div>
 
-                            <div className="md:col-span-2 text-xs text-[#4177ff] mt-2 font-medium">
-                                * SiMug diwajibkan oleh hukum untuk menagih pajak transaksi yang berlaku untuk pembelian yang dilakukan dalam yuridiksi tertentu.
-                            </div>
+                            {/* Footer area with legal text and button */}
+                            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                                <div className="text-[13px] leading-relaxed text-gray-400 font-medium max-w-md">
+                                    <span className="text-[#4177ff] font-bold text-lg mr-1">*</span>
+                                    SiMug diwajibkan oleh hukum untuk menagih pajak setiap transaksi yang berlaku.
+                                </div>
 
+                                <button className="relative overflow-hidden bg-[#4177ff] text-white py-2.5 px-5 rounded-xl flex items-center gap-3 transition-all hover:bg-blue-600 group cursor-pointer shrink-0 shadow-lg shadow-blue-500/20">
+                                    {/* Icon Container with double ring effect */}
+                                    <div className="relative flex items-center justify-center w-7 h-7 rounded-full border border-white/30 bg-white/10 shrink-0">
+                                        <div className="absolute inset-[-2px] rounded-full border border-white/5"></div>
+                                        <FiZap className="text-sm text-white fill-white" />
+                                    </div>
+
+                                    <span className="text-lg font-bold">Pakai MugCoin</span>
+
+                                    {/* Decorative subtle highlights */}
+                                    <div className="absolute -right-4 -top-4 w-12 h-12 bg-white/10 rounded-full blur-lg transition-transform group-hover:scale-110"></div>
+                                    <div className="absolute right-0 bottom-0 w-16 h-16 bg-blue-400/30 rounded-full -mr-6 -mb-6"></div>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
