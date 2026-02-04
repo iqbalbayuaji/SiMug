@@ -14,7 +14,7 @@ export default function OverviewTab({ course }) {
       {/* Description Section */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#4177ff] to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
             <HiSparkles className="text-white text-xl" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Tentang Course Ini</h2>
@@ -56,7 +56,7 @@ export default function OverviewTab({ course }) {
       {/* Target Audience - New Section */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30">
+          <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#4177ff] to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
             <FaUsers className="text-white text-xl" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900">Untuk Siapa Course Ini?</h2>
@@ -65,9 +65,9 @@ export default function OverviewTab({ course }) {
           {targetAudience.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-4 p-5 bg-gradient-to-r from-purple-50 via-white to-violet-50 rounded-2xl border border-purple-100/50 hover:shadow-lg hover:shadow-purple-100/50 transition-all duration-300"
+              className="flex items-center gap-4 p-5 bg-gradient-to-r from-blue-50 via-white to-blue-50 rounded-2xl border border-blue-100/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center shadow-md">
+              <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#4177ff] to-blue-600 rounded-xl flex items-center justify-center shadow-md">
                 <item.icon className="text-white text-lg" />
               </div>
               <span className="text-gray-700 font-medium">{item.text}</span>

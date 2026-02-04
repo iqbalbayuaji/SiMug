@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 import komunitasImg from "../../assets/images/Komunitas-Onine.jpeg";
-
-const suggestions = [
-    { id: 1, name: 'Calisthenics Indonesia', members: '1.528', color: 'bg-blue-600' },
-    { id: 2, name: 'Pelari Kalcer Bandung', members: '2.128', color: 'bg-yellow-400' },
-    { id: 3, name: 'Nutrisi Sehat SiMug', members: '1.028', color: 'bg-orange-500' },
-];
+import { forums } from '../../constants/forumData';
 
 const topics = [
     {
@@ -39,14 +34,14 @@ const ForumSuggestions = () => {
                 <button className="text-blue-500 cursor-pointer text-xs font-medium hover:underline">Segarkan ↻</button>
             </div>
             <div className="space-y-2 px-3 py-2">
-                {suggestions.map((item) => (
+                {forums.map((item) => (
                     <Link
                         key={item.id}
-                        to="/forum/beranda"
+                        to={`/forum/beranda/${item.id}`}
                         className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
                     >
                         <div className={`w-10 h-10 rounded-full shrink-0 overflow-hidden`}>
-                            <img src={komunitasImg} alt={item.name} className="w-full h-full object-cover" />
+                            <img src={item.avatar || komunitasImg} alt={item.name} className="w-full h-full object-cover" />
                         </div>
                         <div>
                             <h4 className="font-bold text-gray-800 text-sm">{item.name}</h4>

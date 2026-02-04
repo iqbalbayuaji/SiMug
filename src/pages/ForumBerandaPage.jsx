@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import ForumBanner from '../components/forum/ForumBanner';
 import ForumProfileSection from '../components/forum/ForumProfileSection';
@@ -7,9 +8,14 @@ import ForumAboutCard from '../components/forum/ForumAboutCard';
 import ForumInfoCard from '../components/forum/ForumInfoCard';
 import ForumThreadSection from '../components/forum/threads/ForumThreadSection';
 import ForumQuestionSection from '../components/forum/questions/ForumQuestionSection';
+import { forums } from '../constants/forumData';
 
 export default function ForumBerandaPage() {
+    const { id } = useParams();
     const [activeTab, setActiveTab] = useState('Tentang');
+
+    // Default to first forum if no ID or not found (or handle 404)
+    const activeForum = forums.find(f => f.id === parseInt(id)) || forums[0];
 
     return (
         <div className="min-h-screen bg-gray-50 pb-20 font-sans">
@@ -21,15 +27,15 @@ export default function ForumBerandaPage() {
 
             <div className="-mt-12 bg-transparent relative z-20">
                 <ForumProfileSection
-                    title="Komunitas Kebugaran SiMug"
-                    description="Wadah berbagi tips kebugaran, pola makan sehat, dan motivasi olahraga harian untuk hidup yang lebih baik."
-                    memberCount="12.3k member"
-                    avatarColor="bg-blue-500"
+                    title={activeForum.name}
+                    description={activeForum.description}
+                    memberCount={`${activeForum.members} member`}
+                    avatarColor={activeForum.color}
                 />
             </div>
 
             {/* Tabs Navigation */}
-            <ForumTabs activeTab={activeTab} onTabChange={setActiveTab} />
+            <ForumTabs activeTab={activeTab} onTabChange={setActiveTab} forumId={activeForum.id} />
 
             <div className="mt-8">
                 {activeTab === 'Tentang' && (
@@ -37,31 +43,18 @@ export default function ForumBerandaPage() {
                         {/* Sidebar Kiri - Hidden on mobile, visible on desktop */}
                         <div className="hidden lg:block space-y-6">
                             <ForumAboutCard
-                                createdDate="12 Januari 2023"
-                                location="Jakarta, Indonesia"
-                                memberCount="12.345 user"
-                                founder="Budi Santoso"
+                                createdDate={activeForum.foundedDate}
+                                location={activeForum.location}
+                                memberCount={`${activeForum.stats.members} user`}
+                                founder={activeForum.founder}
                             />
                         </div>
 
                         {/* Content Kanan */}
                         <div className="space-y-6">
                             <ForumInfoCard
-                                adminMessage="Selamat datang di Komunitas Kebugaran SiMug! Di sini kita saling berbagi tips latihan, resep sehat, dan saling memotivasi untuk mencapai target kesehatan masing-masing. Tanpa drama, fokus pada progres!"
-                                topics={[
-                                    {
-                                        title: "Program Latihan & Gym",
-                                        description: "Diskusi seputar program latihan beban, kalistenik, dan tips gym pemula hingga pro."
-                                    },
-                                    {
-                                        title: "Nutrisi & Diet Sehat",
-                                        description: "Berbagi resep makanan sehat, panduan nutrisi, dan cara mengatur pola makan."
-                                    },
-                                    {
-                                        title: "Motivasi & Konsistensi",
-                                        description: "Tempat berbagi tips menjaga semangat latihan dan kesehatan mental."
-                                    }
-                                ]}
+                                adminMessage={activeForum.aboutMessage}
+                                topics={activeForum.topics}
                             />
                         </div>
                     </div>

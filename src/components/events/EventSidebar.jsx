@@ -1,5 +1,6 @@
 import { BsInfoCircleFill, BsPinAngleFill, BsCalendarEvent, BsArrowRight } from 'react-icons/bs';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import PinEvent from './PinEvent';
 
 
@@ -11,8 +12,9 @@ const DailyGrind = () => {
     ];
 
     return (
-        <div className="bg-white border border-gray-100 rounded-2xl p-4 mb-6 shadow-sm">
-            <div className="bg-blue-600 rounded-xl p-4 text-white mb-4 relative overflow-hidden">
+        <div className="bg-white border border-gray-100 rounded-2xl mb-6 shadow-sm">
+
+            <div className="bg-blue-600 rounded-t-xl p-4 text-white mb-4 relative overflow-hidden">
                 {/* Decor */}
                 <div className="absolute right-0 top-0 w-32 h-32 bg-white opacity-10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
                 <div className="flex justify-between items-start mb-1">
@@ -25,7 +27,7 @@ const DailyGrind = () => {
                 </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3 px-4">
                 {tasks.map(task => (
                     <div key={task.id} className="flex items-center justify-between p-3 border border-gray-100 rounded-xl hover:bg-gray-50 bg-white">
                         <div>
@@ -64,9 +66,12 @@ const EventPromo = () => {
             <div className="relative z-10">
                 <h3 className="text-lg font-semibold mb-1">Bingung mau ikut event apa?</h3>
                 <p className="text-blue-100 text-sm mb-4">Tanyain aja ke MUGION sekarang!</p>
-                <button className="cursor-pointer bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors w-fit ml-auto">
+                <Link
+                    to="/chatbot"
+                    className="cursor-pointer bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors w-fit ml-auto"
+                >
                     Hi, MUG
-                </button>
+                </Link>
             </div>
         </motion.div>
     );

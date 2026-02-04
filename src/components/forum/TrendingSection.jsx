@@ -1,42 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const trendingArticles = [
-    {
-        id: 1,
-        category: 'Fitness',
-        title: 'Bagaimana cara menjaga konsistensi workout dirumah?',
-        author: 'Imam Hambali',
-        time: '2 minggu lalu',
-        image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', // Gym/Fitness
-    },
-    {
-        id: 2,
-        category: 'Atletik',
-        title: 'Bagaimana cara menjaga konsistensi workout dirumah?',
-        author: 'Imam Hambali',
-        time: '2 minggu lalu',
-        image: 'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', // Home workout
-    },
-    {
-        id: 3,
-        category: 'Workout',
-        title: 'Bagaimana cara menjaga konsistensi workout dirumah?',
-        author: 'Imam Hambali',
-        time: '2 minggu lalu',
-        image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', // Outdoor workout
-    },
-];
+import { articles } from '../../constants/forumData';
 
 export default function TrendingSection() {
     return (
         <section className="mb-1 lg:mt-2">
             <h2 className="block lg:hidden text-lg font-bold text-gray-800 mb-3.5 mt-2">Artikel Populer</h2>
             <div className="flex gap-4 overflow-x-auto pb-4 lg:custom-scrollbar snap-x">
-                {trendingArticles.map((article) => (
+                {articles.map((article) => (
                     <Link
                         key={article.id}
-                        to="/artikel"
+                        to={`/artikel/${article.id}`}
                         className="flex-shrink-0 w-[300px] h-[200px] relative rounded-xl overflow-hidden shadow-md cursor-pointer group snap-center"
                     >
                         <img
@@ -68,3 +42,4 @@ export default function TrendingSection() {
         </section>
     );
 }
+

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { FaPlay, FaStar, FaClock, FaBook, FaCheckCircle, FaChevronRight, FaChevronLeft, FaSearch, FaInstagram, FaYoutube } from 'react-icons/fa'
 import logo from "../../assets/images/logo-simug.png"
 import Footer from '../../components/layout/Footer'
+import ReviewsTab from '../../components/courses/ReviewsTab'
 
 export default function CourseProgressDetailPage() {
   const { phaseId } = useParams()
@@ -168,6 +169,32 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
       { id: 6, title: 'Fase 6 : Latihan Dasar', materials: 0, tasks: 2, duration: '15 menit' },
       { id: 7, title: 'Fase 7 : Full Body Workout', materials: 0, tasks: 2, duration: '15 menit' },
       { id: 8, title: 'Fase 8 : Pendinginan', materials: 0, tasks: 2, duration: '8 menit' },
+    ],
+    reviews: [
+      {
+        id: 1,
+        user: "Budi Santoso",
+        avatar: "https://i.pravatar.cc/150?u=budi",
+        rating: 5,
+        date: "2 hari yang lalu",
+        comment: "Materi sangat mudah dipahami dan instruktur menjelaskan dengan sangat detail. Sangat direkomendasikan untuk pemula!"
+      },
+      {
+        id: 2,
+        user: "Siti Aminah",
+        avatar: "https://i.pravatar.cc/150?u=siti",
+        rating: 4,
+        date: "1 minggu yang lalu",
+        comment: "Konten bagus, tapi videonya kadang buffering. Overall good experience."
+      },
+      {
+        id: 3,
+        user: "Rizky Ramadhan",
+        avatar: "https://i.pravatar.cc/150?u=rizky",
+        rating: 5,
+        date: "2 minggu yang lalu",
+        comment: "Latihan otot inti benar-benar terasa dampaknya. Makasih master!"
+      }
     ]
   }
 
@@ -307,7 +334,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
               <div className="flex overflow-x-auto border-b border-gray-200 scrollbar-hide">
                 <button
                   onClick={() => setActiveTab('overview')}
-                  className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'overview'
+                  className={`cursor-pointer px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'overview'
                     ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
                     : 'text-gray-400 hover:text-gray-600'
                     }`}
@@ -316,7 +343,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
                 </button>
                 <button
                   onClick={() => setActiveTab('review')}
-                  className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'review'
+                  className={`cursor-pointer px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'review'
                     ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
                     : 'text-gray-400 hover:text-gray-600'
                     }`}
@@ -325,7 +352,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
                 </button>
                 <button
                   onClick={() => setActiveTab('pengumuman')}
-                  className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'pengumuman'
+                  className={`cursor-pointer px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'pengumuman'
                     ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
                     : 'text-gray-400 hover:text-gray-600'
                     }`}
@@ -478,9 +505,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
                 )}
 
                 {activeTab === 'review' && (
-                  <div className="text-center py-12 text-gray-500">
-                    Belum ada review untuk course ini
-                  </div>
+                  <ReviewsTab course={courseData} />
                 )}
 
                 {activeTab === 'pengumuman' && (
