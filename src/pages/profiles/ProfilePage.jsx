@@ -137,8 +137,8 @@ export default function ProfilePage() {
                     <span className="text-sm font-medium opacity-90">Total MugCoin</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-4xl font-bold">{userData.mugCoin.toLocaleString()}</span>
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <span className="text-2xl xs:text-3xl sm:text-4xl font-bold">{userData.mugCoin.toLocaleString()}</span>
+                    <svg className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
                     </svg>
@@ -147,9 +147,9 @@ export default function ProfilePage() {
                 <div className="flex-shrink-0">
                   <button
                     onClick={() => navigate('/profile/tukar-coin')}
-                    className="cursor-pointer bg-white text-[#4177FF] font-semibold py-2.5 px-4 rounded-xl hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
+                    className="cursor-pointer bg-white text-[#4177FF] font-semibold py-2 xs:py-2 sm:py-2.5 px-2.5 xs:px-3 sm:px-4 rounded-lg xs:rounded-xl text-xs xs:text-sm sm:text-base hover:bg-blue-50 transition-colors flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2 whitespace-nowrap"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                     </svg>
                     Tukar Coin
@@ -356,10 +356,10 @@ export default function ProfilePage() {
 
       {/* Edit Banner Modal */}
       {showBannerModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-modal-scale-in">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 xs:p-4 animate-fade-in">
+          <div className="bg-white rounded-xl xs:rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-modal-scale-in">
             {/* Banner Preview */}
-            <div className="relative h-32 overflow-hidden">
+            <div className="relative h-24 xs:h-28 sm:h-32 overflow-hidden">
               <img
                 src={selectedBanner || imgBanner}
                 alt="Banner Preview"
@@ -368,39 +368,39 @@ export default function ProfilePage() {
             </div>
 
             {/* Modal Content */}
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-1">Edit Banner</h2>
-              <p className="text-gray-600 mb-5">Perbarui banner profile kamu disini.</p>
+            <div className="p-4 xs:p-5 sm:p-6">
+              <h2 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 mb-1">Edit Banner</h2>
+              <p className="text-xs xs:text-sm sm:text-base text-gray-600 mb-4 xs:mb-5">Perbarui banner profile kamu disini.</p>
 
               {/* Upload Section */}
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-2 xs:gap-3 mb-2 xs:mb-3">
                 <input
                   type="text"
                   placeholder="Upload banner baru"
-                  className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#4177FF] transition-colors text-sm cursor-pointer"
+                  className="flex-1 px-3 xs:px-4 py-2 xs:py-2.5 border-2 border-gray-200 rounded-lg xs:rounded-xl focus:outline-none focus:border-[#4177FF] transition-colors text-xs xs:text-sm cursor-pointer"
                   readOnly
                 />
-                <button className="cursor-pointer flex items-center gap-2 px-5 py-2.5 bg-blue-50 text-[#4177FF] font-semibold rounded-xl hover:bg-blue-100 transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button className="cursor-pointer flex items-center gap-1.5 xs:gap-2 px-3 xs:px-4 sm:px-5 py-2 xs:py-2.5 bg-blue-50 text-[#4177FF] font-semibold rounded-lg xs:rounded-xl hover:bg-blue-100 transition-colors text-xs xs:text-sm sm:text-base">
+                  <svg className="w-3.5 h-3.5 xs:w-4 xs:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                   Pilih
                 </button>
               </div>
 
-              <p className="text-xs text-gray-500 mb-5 flex items-center gap-1">
+              <p className="text-[10px] xs:text-xs text-gray-500 mb-4 xs:mb-5 flex items-center gap-1">
                 <span className="text-[#4177FF]">★</span>
                 Pilih file PNG atau JPG max. 5 MB.
               </p>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-gray-200">
+              <div className="flex items-center justify-end gap-2 xs:gap-3 pt-3 border-t border-gray-200">
                 <button
                   onClick={() => {
                     setShowBannerModal(false)
                     setSelectedBanner(null)
                   }}
-                  className="cursor-pointer px-5 py-2.5 text-gray-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+                  className="cursor-pointer px-3 xs:px-4 sm:px-5 py-2 xs:py-2.5 text-gray-700 font-semibold rounded-lg xs:rounded-xl hover:bg-gray-100 transition-colors text-xs xs:text-sm sm:text-base"
                 >
                   Batalkan
                 </button>
@@ -409,7 +409,7 @@ export default function ProfilePage() {
                     setShowBannerModal(false)
                     setShowUpdateModal(true)
                   }}
-                  className="cursor-pointer px-5 py-2.5 bg-[#4177FF] text-white font-semibold rounded-xl hover:bg-[#3461D9] transition-colors"
+                  className="cursor-pointer px-3 xs:px-4 sm:px-5 py-2 xs:py-2.5 bg-[#4177FF] text-white font-semibold rounded-lg xs:rounded-xl hover:bg-[#3461D9] transition-colors text-xs xs:text-sm sm:text-base"
                 >
                   Simpan Banner
                 </button>
