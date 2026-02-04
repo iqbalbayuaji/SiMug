@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import logo from "../../assets/images/logo-simug.png"
+import logo from "../../assets/images/logo-simugbgwhite.png"
 import vegan from "../../assets/images/vegan.png"
 import NotificationPopup from "./NotificationPopup"
 import profileImg from "../../assets/images/profile.jpg"
@@ -70,7 +70,8 @@ export default function Navbar() {
     { name: "Course", path: "/courses", hasDropdown: true },
     { name: "Events", path: "/events-intro" },
     { name: "Forum", path: "/forum-intro" },
-    { name: "SiMug AI", path: "/chatbot" }
+    { name: "SiMug AI", path: "/chatbot" },
+    { name: "Leaderboard", path: "/leaderboard", mobileOnly: true }
   ]
 
   const eventsList = [
@@ -119,7 +120,8 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 relative">
+    <>
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
 
@@ -133,7 +135,7 @@ export default function Navbar() {
             className="hidden md:flex items-center gap-4 lg:gap-8"
             onMouseLeave={() => setHoveredMenu(null)}
           >
-            {menuItems.map((item) => (
+            {menuItems.filter(item => !item.mobileOnly).map((item) => (
               <div
                 key={item.name}
                 className="relative"
@@ -524,9 +526,10 @@ export default function Navbar() {
           <div className="px-4 py-3">
             {/* Profile Header with Notification Button */}
             <div className="flex items-center gap-3">
-              <button
+              <Link
+                to="/profile"
                 onClick={() => {
-                  setShowProfileDropdown(true)
+                  setIsMobileMenuOpen(false)
                 }}
                 className="w-12 h-12 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]"
               >
@@ -535,14 +538,17 @@ export default function Navbar() {
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
-              </button>
+              </Link>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-gray-900">Rizki Fiko</p>
                 <p className="text-xs text-gray-500">rizki.fiko@example.com</p>
               </div>
               <button
                 onClick={() => {
-                  setShowNotifications(true)
+                  setIsMobileMenuOpen(false)
+                  setTimeout(() => {
+                    setShowNotifications(true)
+                  }, 50)
                 }}
                 className="relative w-10 h-10 bg-[#D9E4FF] rounded-full flex items-center justify-center"
               >
@@ -561,214 +567,82 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Mobile Notification Popup */}
-      {showNotifications && isMobileMenuOpen && (
-        <>
-          <div 
-            className="md:hidden fixed inset-0 z-[60]"
-            onClick={() => setShowNotifications(false)}
-          />
-          <div className="md:hidden fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl z-[70] max-h-[80vh] flex flex-col">
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
-              <h3 className="text-base font-bold text-gray-900">Notifikasi</h3>
-              <button 
-                onClick={() => setShowNotifications(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
+    </nav>
 
-            {/* Sub Header */}
-            <div className="flex items-center justify-between px-4 py-2 border-b border-gray-100">
-              <p className="text-xs text-gray-600">
-                Kamu punya <span className="text-[#4177FF] font-semibold">2 notifikasi</span>
-              </p>
-              <button className="flex items-center gap-1 text-[#4177FF] text-xs font-medium">
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
-                </svg>
-                Tandai baca
-              </button>
-            </div>
+      {/* Full Screen Notification - Mobile Only */}
+      {showNotifications && (
+        <div className="md:hidden fixed inset-0 bg-white z-[100] flex flex-col">
+          {/* Header */}
+          <div className="flex items-center gap-3 px-4 py-4 border-b border-gray-200">
+            <button
+              onClick={() => {
+                setShowNotifications(false)
+                setIsMobileMenuOpen(true)
+              }}
+              className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100"
+            >
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <h2 className="text-lg font-bold text-gray-900">Notifikasi</h2>
+          </div>
 
-            {/* Notifications List */}
-            <div className="flex-1 overflow-y-auto px-4 py-3">
-              <div className="space-y-2">
-                <div className="bg-[#F5F7FF] rounded-xl p-3">
-                  <div className="flex items-start gap-2">
-                    <div className="w-10 h-10 rounded-full bg-[#4177FF] flex items-center justify-center flex-shrink-0">
-                      <img src={logo} alt="SiMug" className="w-6 h-6" />
+          {/* Sub Header */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+            <p className="text-sm text-gray-600">
+              Kamu punya <span className="text-[#4177FF] font-semibold">2 notifikasi</span>
+            </p>
+            <button className="flex items-center gap-1 text-[#4177FF] text-sm font-medium">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+              </svg>
+              Tandai baca
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-3">
+              <div className="bg-[#F5F7FF] rounded-xl p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#4177FF] flex items-center justify-center flex-shrink-0">
+                    <img src={logo} alt="SiMug" className="w-7 h-7" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-bold text-sm text-gray-900">SiMug Official</h4>
+                      <span className="text-xs text-gray-400 flex-shrink-0">16:10</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-2 mb-1">
-                        <h4 className="font-bold text-xs text-gray-900">SiMug Official</h4>
-                        <span className="text-[10px] text-gray-400 flex-shrink-0">16:10</span>
-                      </div>
-                      <p className="text-xs text-gray-600">Segera gabung course supaya diskon tid...</p>
-                    </div>
+                    <p className="text-sm text-gray-600">Segera gabung course supaya diskon tidak terlewat!</p>
                   </div>
                 </div>
-                <div className="bg-[#F5F7FF] rounded-xl p-3">
-                  <div className="flex items-start gap-2">
-                    <div className="w-10 h-10 rounded-full bg-[#4177FF] flex items-center justify-center flex-shrink-0">
-                      <img src={logo} alt="SiMug" className="w-6 h-6" />
+              </div>
+              <div className="bg-[#F5F7FF] rounded-xl p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#4177FF] flex items-center justify-center flex-shrink-0">
+                    <img src={logo} alt="SiMug" className="w-7 h-7" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-bold text-sm text-gray-900">SiMug Official</h4>
+                      <span className="text-xs text-gray-400 flex-shrink-0">16:05</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-2 mb-1">
-                        <h4 className="font-bold text-xs text-gray-900">SiMug Official</h4>
-                        <span className="text-[10px] text-gray-400 flex-shrink-0">16:05</span>
-                      </div>
-                      <p className="text-xs text-gray-600">Makasih banyak udah mau gabung! Yuk...</p>
-                    </div>
+                    <p className="text-sm text-gray-600">Makasih banyak udah mau gabung! Yuk mulai belajar sekarang.</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Footer */}
-            <div className="px-4 py-3 border-t border-gray-100">
-              <button className="text-xs text-[#4177FF] font-semibold ml-auto block">
-                Lihat daftar notifikasi
-              </button>
-            </div>
           </div>
-        </>
-      )}
 
-      {/* Mobile Profile Popup */}
-      {showProfileDropdown && isMobileMenuOpen && (
-        <>
-          <div 
-            className="md:hidden fixed inset-0 z-[60]"
-            onClick={() => setShowProfileDropdown(false)}
-          />
-          <div className="md:hidden fixed inset-x-4 top-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl z-[70] max-h-[80vh] flex flex-col">
-            {/* Header */}
-            <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
-              <h3 className="text-base font-bold text-gray-800">Informasi Profil</h3>
-              <button 
-                onClick={() => setShowProfileDropdown(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-              </button>
-            </div>
-
-            {/* Menu Items */}
-            <div className="flex-1 overflow-y-auto py-2">
-              <Link
-                to="/profile"
-                onClick={() => {
-                  setShowProfileDropdown(false)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-[#E8F0FF] transition-colors"
-              >
-                <div className="w-8 h-8 bg-[#E8F0FF] rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Edit Profil</span>
-              </Link>
-
-              <Link
-                to="/leaderboard"
-                onClick={() => {
-                  setShowProfileDropdown(false)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-[#E8F0FF] transition-colors"
-              >
-                <div className="w-8 h-8 bg-[#E8F0FF] rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Leaderboard</span>
-              </Link>
-
-              <Link
-                to="/profile/atur-simug"
-                onClick={() => {
-                  setShowProfileDropdown(false)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-[#E8F0FF] transition-colors"
-              >
-                <div className="w-8 h-8 bg-[#E8F0FF] rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Pengaturan</span>
-              </Link>
-
-              <Link
-                to="/profile/simug-plus"
-                onClick={() => {
-                  setShowProfileDropdown(false)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-[#E8F0FF] transition-colors"
-              >
-                <div className="w-8 h-8 bg-[#E8F0FF] rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">SiMug Plus</span>
-              </Link>
-
-              <div className="border-t border-gray-200 my-2"></div>
-
-              <Link
-                to="/profile/pusat-bantuan"
-                onClick={() => {
-                  setShowProfileDropdown(false)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-[#E8F0FF] transition-colors"
-              >
-                <div className="w-8 h-8 bg-[#E8F0FF] rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Pusat Bantuan</span>
-              </Link>
-
-              <Link
-                to="/login"
-                onClick={() => {
-                  setShowProfileDropdown(false)
-                  setIsMobileMenuOpen(false)
-                }}
-                className="w-full px-4 py-2.5 flex items-center gap-3 hover:bg-red-50 transition-colors"
-              >
-                <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-red-600">Log Out</span>
-              </Link>
-            </div>
-
-            {/* Version */}
-            <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
-              <p className="text-xs text-gray-400 text-center">V. 1.0.1</p>
-            </div>
+          {/* Footer */}
+          <div className="px-4 py-4 border-t border-gray-100">
+            <button className="text-sm text-[#4177FF] font-semibold">
+              Lihat semua notifikasi
+            </button>
           </div>
-        </>
+        </div>
       )}
-    </nav>
+    </>
   )
 }
