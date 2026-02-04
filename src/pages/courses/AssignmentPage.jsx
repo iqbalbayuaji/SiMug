@@ -468,8 +468,10 @@ export default function AssignmentPage() {
               </button>
               <button
                 onClick={() => {
+                  console.log('🚀 Navigating to course-progress with phaseId:', phaseId)
+                  console.log('🎁 Passing state: { showReward: true }')
                   setShowResultPopup(false)
-                  navigate(-1)
+                  navigate(`/course-progress/${phaseId}`, { state: { showReward: true } })
                 }}
                 className="flex-1 py-2.5 px-6 bg-[#4177FF] text-white font-bold text-base rounded-full hover:bg-[#3461D9] transition-colors"
               >
