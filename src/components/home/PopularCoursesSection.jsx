@@ -104,9 +104,9 @@ export default function PopularCoursesSection() {
                       .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
                       .map((course) => (
                         <div key={course.id} className="w-full">
-                          <Link to="/courses" className="block h-full border border-[#DBDBDB] rounded-2xl p-3 hover:border-blue-300 hover:shadow-lg transition-all">
+                          <Link to="/courses" className="block h-full border border-[#DBDBDB] rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-3 hover:border-blue-300 hover:shadow-lg transition-all">
                             {/* Course Image */}
-                            <div className="relative h-40 bg-gray-800 rounded-xl overflow-hidden mb-3">
+                            <div className="relative h-32 xs:h-36 sm:h-40 md:h-36 lg:h-40 bg-gray-800 rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-3">
                               <img
                                 src={course.image}
                                 alt={course.title}
@@ -116,47 +116,47 @@ export default function PopularCoursesSection() {
                                 }}
                               />
                               {/* Free Trial Badge */}
-                              <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
+                              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] xs:text-xs font-semibold shadow-md">
                                 {course.badge}
                               </div>
                             </div>
 
                             {/* Course Info */}
                             <div>
-                              <h3 className="font-bold text-base text-gray-900 leading-tight line-clamp-2 mb-2 min-h-[40px]">
+                              <h3 className="font-bold text-sm xs:text-sm sm:text-base text-gray-900 leading-tight line-clamp-2 mb-1.5 sm:mb-2 min-h-[36px] xs:min-h-[38px] sm:min-h-[40px]">
                                 {course.title}
                               </h3>
 
-                              <p className="text-xs text-gray-400 mb-3">
+                              <p className="text-[10px] xs:text-xs text-gray-400 mb-2 sm:mb-3">
                                 {course.instructor} • {course.duration}
                               </p>
 
                               {/* Stats - Simple Pill Style */}
-                              <div className="flex flex-wrap gap-1.5 mb-2">
-                                <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-700">
-                                  <FaStar className="text-yellow-400 text-xs" />
+                              <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
+                                <div className="flex items-center gap-0.5 sm:gap-1 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-gray-200 text-[10px] xs:text-xs text-gray-700">
+                                  <FaStar className="text-yellow-400 text-[10px] xs:text-xs" />
                                   <span className="font-semibold">{course.rating}</span>
                                 </div>
-                                <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
+                                <div className="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-gray-200 text-[10px] xs:text-xs text-gray-600">
                                   {course.totalRatings}
                                 </div>
-                                <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
+                                <div className="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-gray-200 text-[10px] xs:text-xs text-gray-600">
                                   {course.materials}
                                 </div>
-                                <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600">
+                                <div className="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-gray-200 text-[10px] xs:text-xs text-gray-600">
                                   {course.time}
                                 </div>
                               </div>
 
-                              <div className="bg-white px-2 py-1 rounded-lg border border-gray-200 text-xs text-gray-600 inline-block mb-3">
+                              <div className="bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-gray-200 text-[10px] xs:text-xs text-gray-600 inline-block mb-2 sm:mb-3">
                                 {course.category}
                               </div>
 
                               {/* Price & CTA */}
-                              <div className="flex items-center justify-between gap-2">
-                                <p className="text-2xl font-bold text-[#4177FF]">{course.price}</p>
-                                <span className="bg-[#E5ECFF] text-[#4177FF] px-3 py-1.5 rounded-sm text-base font-semibold flex items-center gap-1 whitespace-nowrap">
-                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <div className="flex items-center justify-between gap-1.5 sm:gap-2">
+                                <p className="text-lg xs:text-xl sm:text-2xl lg:text-xl xl:text-2xl font-bold text-[#4177FF]">{course.price}</p>
+                                <span className="bg-[#E5ECFF] text-[#4177FF] px-1.5 py-1 xs:px-2 xs:py-1 sm:px-3 sm:py-1.5 lg:px-2 lg:py-1 xl:px-3 xl:py-1.5 rounded-sm text-[10px] xs:text-[10px] sm:text-base lg:text-xs xl:text-base font-semibold flex items-center gap-0.5 xs:gap-1 whitespace-nowrap">
+                                  <svg className="w-5 h-4 xs:w-3.5 xs:h-3.5 sm:w-5 sm:h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                   </svg>
                                   Mulai Belajar
