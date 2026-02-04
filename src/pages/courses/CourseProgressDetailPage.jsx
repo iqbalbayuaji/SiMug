@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
 import { FaPlay, FaStar, FaClock, FaBook, FaCheckCircle, FaChevronRight, FaChevronLeft, FaSearch, FaInstagram, FaYoutube } from 'react-icons/fa'
 import logo from "../../assets/images/logo-simug.png"
 import Footer from '../../components/layout/Footer'
@@ -7,11 +7,46 @@ import Footer from '../../components/layout/Footer'
 export default function CourseProgressDetailPage() {
   const { phaseId } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
   const [activeTab, setActiveTab] = useState('overview')
   const [showMenu, setShowMenu] = useState(false)
   const [showTaskPopup, setShowTaskPopup] = useState(false)
   const [showProgressSidebar, setShowProgressSidebar] = useState(false)
   const [selectedPhase, setSelectedPhase] = useState(5) // Default Fase 5
+  const [showRewardPopup, setShowRewardPopup] = useState(false)
+  const [countdown, setCountdown] = useState(3)
+
+  // Check if we should show reward popup
+  useEffect(() => {
+    console.log('CourseProgressDetailPage mounted')
+    console.log('location.state:', location.state)
+    console.log('showReward value:', location.state?.showReward)
+    
+    if (location.state?.showReward) {
+      console.log('✅ Showing reward popup!')
+      setShowRewardPopup(true)
+      setCountdown(3)
+      
+      // Clear the state to prevent showing again on refresh
+      window.history.replaceState({}, document.title)
+      
+      // Start countdown
+      const interval = setInterval(() => {
+        setCountdown(prev => {
+          if (prev <= 0.1) {
+            clearInterval(interval)
+            setShowRewardPopup(false)
+            return 0
+          }
+          return prev - 0.1
+        })
+      }, 100)
+      
+      return () => clearInterval(interval)
+    } else {
+      console.log('❌ No showReward state found')
+    }
+  }, [location])
 
   // Phase data with lessons for each phase
   const phaseData = {
@@ -304,33 +339,43 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
 
             {/* Tabs */}
             <div className="bg-white">
-              <div className="flex overflow-x-auto border-b border-gray-200 scrollbar-hide">
-                <button
-                  onClick={() => setActiveTab('overview')}
-                  className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'overview'
-                    ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
-                    : 'text-gray-400 hover:text-gray-600'
-                    }`}
-                >
-                  Overview
-                </button>
-                <button
-                  onClick={() => setActiveTab('review')}
-                  className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'review'
-                    ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
-                    : 'text-gray-400 hover:text-gray-600'
-                    }`}
-                >
-                  Review
-                </button>
-                <button
-                  onClick={() => setActiveTab('pengumuman')}
-                  className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'pengumuman'
-                    ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
-                    : 'text-gray-400 hover:text-gray-600'
-                    }`}
-                >
-                  Pengumuman
+              <div className="flex items-center justify-between border-b border-gray-200">
+                <div className="flex overflow-x-auto scrollbar-hide">
+                  <button
+                    onClick={() => setActiveTab('overview')}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'overview'
+                      ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
+                      : 'text-gray-400 hover:text-gray-600'
+                      }`}
+                  >
+                    Overview
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('review')}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'review'
+                      ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
+                      : 'text-gray-400 hover:text-gray-600'
+                      }`}
+                  >
+                    Review
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('pengumuman')}
+                    className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition-colors whitespace-nowrap ${activeTab === 'pengumuman'
+                      ? 'text-[#4177FF] border-b-2 border-[#4177FF]'
+                      : 'text-gray-400 hover:text-gray-600'
+                      }`}
+                  >
+                    Pengumuman
+                  </button>
+                </div>
+                
+                {/* Konsultasi Button */}
+                <button className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 mr-4 bg-[#E8F0FF] text-[#4177FF] rounded-lg hover:bg-[#D0E3FF] transition-colors font-medium text-sm whitespace-nowrap">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                  <span className="hidden sm:inline">Konsultasi</span>
                 </button>
               </div>
 
@@ -753,6 +798,70 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
               >
                 Ya, kerjakan
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Reward Popup with Countdown */}
+      {showRewardPopup && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full animate-scale-in relative overflow-hidden">
+            {/* Circular Countdown Timer - Top Right */}
+            <div className="absolute top-4 right-4 z-10">
+              <div className="relative w-12 h-12">
+                <svg className="w-12 h-12 -rotate-90">
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="20"
+                    fill="none"
+                    stroke="#E5E7EB"
+                    strokeWidth="3"
+                  />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="20"
+                    fill="none"
+                    stroke="#FFFFFF"
+                    strokeWidth="3"
+                    strokeDasharray={`${2 * Math.PI * 20}`}
+                    strokeDashoffset={`${2 * Math.PI * 20 * (1 - countdown / 3)}`}
+                    strokeLinecap="round"
+                    className="transition-all duration-100"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xs font-bold text-white">{Math.ceil(countdown)}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Header - Extends beyond container */}
+            <div className="bg-gradient-to-r from-[#5B8FFF] to-[#4177FF] -mx-4 px-10 py-6 sm:py-10 text-center rounded-t-[2rem]">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">Reward Kamu</h2>
+            </div>
+
+            {/* Content */}
+            <div className="px-6 py-8 text-center bg-white rounded-b-3xl">
+              {/* XP Display */}
+              <div className="mb-6">
+                <div className="text-6xl sm:text-7xl font-bold text-[#4177FF] mb-2 animate-bounce-slow">
+                  +500
+                </div>
+                <div className="text-2xl sm:text-3xl font-semibold text-[#4177FF]">
+                  MUG XP
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-gray-200 my-6"></div>
+
+              {/* Auto Close Info */}
+              <p className="text-sm text-gray-400">
+                Klik untuk melanjutkan
+              </p>
             </div>
           </div>
         </div>
