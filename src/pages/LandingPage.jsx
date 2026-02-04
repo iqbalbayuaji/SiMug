@@ -17,6 +17,7 @@ import lineBlue from "../assets/images/lineblue.png"
 import bottomBlueComponent from "../assets/images/bottom-blue-component.png"
 import logoSimug from "../assets/images/logo-simug.png"
 import { FaArrowTrendUp, FaInstagram, FaYoutube, FaFacebook, FaXTwitter } from "react-icons/fa6"
+import { TbRobot } from "react-icons/tb"
 import { HiLightningBolt, HiMenu, HiX } from "react-icons/hi"
 import Footer from '../components/layout/Footer'
 import CourseCard from '../components/CourseCard'
@@ -653,10 +654,10 @@ export default function LandingPage() {
                             </div>
                             <div className="pt-4 px-1">
                                 <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-4">
-                                    Membantu hidup sehat dengan arah yang jelas
+                                    Motivasi untuk bertumbuh dan berkembang
                                 </h3>
                                 <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-2">
-                                    SiMug menyediakan program dan course progresif agar pengguna tidak bingung harus mulai dari mana dan bisa berkembang sesuai level.
+                                    SiMug membantu meningkatkan motivasi pengguna melalui alur yang interaktif serta user friendly
                                 </p>
                             </div>
                         </div>
@@ -672,10 +673,10 @@ export default function LandingPage() {
                             </div>
                             <div className="pt-4 px-1">
                                 <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-4">
-                                    Membantu hidup sehat dengan arah yang jelas
+                                    Membentuk komunitas sehat
                                 </h3>
                                 <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-2">
-                                    SiMug menyediakan program dan course progresif agar pengguna tidak bingung harus mulai dari mana dan bisa berkembang sesuai level.
+                                    SiMug menyediakan wadah bagi pengguna untuk saling berbagi pengalaman, tips, dan motivasi
                                 </p>
                             </div>
                         </div>
@@ -732,9 +733,7 @@ export default function LandingPage() {
                             <div className="absolute bottom-6 right-20 w-1.5 h-1.5 bg-blue-200/50 rounded-full group-hover:animate-ping" style={{animationDelay: '0.5s'}}></div>
                             <div className="relative z-10 flex items-center gap-5 h-full">
                                 <div className="flex-shrink-0 w-14 h-14 bg-blue-500/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-blue-300/30 group-hover:border-blue-200/50 group-hover:bg-blue-400/40 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                                    <svg className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                    </svg>
+                                    <TbRobot className="w-7 h-7 text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" />
                                 </div>
                                 <div>
                                     <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-100 transition-colors">AI-Powered Health Companion</h3>

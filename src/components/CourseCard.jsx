@@ -22,7 +22,7 @@ export default function CourseCard({
         )}
       </div>
       <div className="p-1">
-        <h3 className="text-base font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3rem]">
+        <h3 className="text-base font-semibold text-gray-900 mt-2 mb-2 line-clamp-2 min-h-[3rem]">
           {title}
         </h3>
         <p className="text-xs text-gray-500 mb-3">{instructor} • {date}</p>
