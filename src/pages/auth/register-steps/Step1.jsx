@@ -15,10 +15,10 @@ export default function Step1({
   return (
     <>
       {/* Step 1 - Section Kiri - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-4 md:py-6 lg:py-8 overflow-y-auto">
+      <div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 md:px-16 lg:px-20 py-4 md:py-5 lg:py-6 h-screen overflow-hidden">
         {/* Step Indicator */}
-        <div className="mb-6 md:mb-6 mt-15">
-          <div className="hidden lg:block flex justify-between items-center mb-3">
+        <div className="mb-4 md:mb-4 mt-12">
+          <div className="hidden lg:block flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-[#4177FF]">
               Langkah {currentStep} dari {totalSteps}
             </span>
@@ -61,13 +61,13 @@ export default function Step1({
         </div>
 
         {/* Title */}
-        <div className="mb-5 md:mb-6">
-          <h1 className="text-xl sm:text-3xl md:text-3xl font-semibold lg:font-bold text-gray-900 leading-tight mb-2">
+        <div className="mb-4 md:mb-5">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold lg:font-bold text-gray-900 leading-tight mb-2">
             Hi, Selamat Bergabung,
             <br />
             Buruan <span className="text-gray-900">Daftarin Akunmu!</span>
           </h1>
-          <p className="text-xs md:text-base text-gray-500">
+          <p className="text-xs md:text-sm text-gray-500">
             Jangan tunda-tunda lagi. Segera daftarkan akun dan
             <br className="hidden sm:block" />
             mulai program pengembangan diri SiMug sekarang.
@@ -75,7 +75,7 @@ export default function Step1({
         </div>
 
         {/* Form */}
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-6 md:space-y-5 flex-1">
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-4 md:space-y-4 flex-1">
           {/* Nama Lengkap */}
           <div className="relative">
             <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
@@ -122,7 +122,7 @@ export default function Step1({
           </div>
 
           {/* Password & Konfirmasi Password */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="relative">
               <label className="absolute -top-2 left-3 bg-white px-1 text-xs font-medium text-gray-700">
                 Password
@@ -152,7 +152,7 @@ export default function Step1({
           </div>
 
           {/* Terms Checkbox */}
-          <div className="flex items-center gap-2 text-sm mt-5">
+          <div className="flex items-center gap-2 text-sm">
             <input
               type="checkbox"
               id="terms"
@@ -182,7 +182,7 @@ export default function Step1({
           </button>
 
           {/* Footer Text */}
-          <p className="text-xs text-gray-500 text-center mt-3">
+          <p className="text-xs text-gray-500 text-center">
             Dengan melanjutkan ini, Saya telah menyetujui
             <br />
             <span className="font-semibold text-gray-700">kebijakan pengguna</span> dan{" "}
@@ -192,7 +192,7 @@ export default function Step1({
       </div>
 
       {/* Step 1 - Section Kanan - Blue Background */}
-      <div className="hidden lg:flex lg:w-1/2 relative m-5 rounded-3xl overflow-hidden bg-gradient-to-br from-[#4177FF] to-[#3461D9]">
+      <div className="hidden lg:flex lg:w-1/2 relative m-5 rounded-3xl overflow-hidden bg-gradient-to-br from-[#4177FF] to-[#3461D9] h-[calc(100vh-2.5rem)]">
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10">
           <Link to="/login" className="flex items-center gap-2 text-white text-sm hover:opacity-80 transition">
@@ -204,8 +204,46 @@ export default function Step1({
           </div>
         </div>
 
+        {/* Center Image with Decorative Dots */}
+        <div className="flex items-start justify-center w-full h-full relative pt-32">
+          {/* Decorative Dots */}
+          {/* Top Left Dots */}
+          <div className="absolute top-[15%] left-[10%] w-3 h-3 rounded-full bg-[#5989FF] opacity-60"></div>
+          <div className="absolute top-[20%] left-[15%] w-2 h-2 rounded-full bg-[#5989FF] opacity-40"></div>
+          <div className="absolute top-[12%] left-[18%] w-2.5 h-2.5 rounded-full bg-[#5989FF] opacity-50"></div>
+          
+          {/* Top Right Dots */}
+          <div className="absolute top-[18%] right-[12%] w-3 h-3 rounded-full bg-[#5989FF] opacity-60"></div>
+          <div className="absolute top-[25%] right-[8%] w-2 h-2 rounded-full bg-[#5989FF] opacity-40"></div>
+          <div className="absolute top-[15%] right-[18%] w-2.5 h-2.5 rounded-full bg-[#5989FF] opacity-50"></div>
+          
+          {/* Bottom Left Dots */}
+          <div className="absolute bottom-[20%] left-[8%] w-3 h-3 rounded-full bg-[#5989FF] opacity-60"></div>
+          <div className="absolute bottom-[15%] left-[14%] w-2 h-2 rounded-full bg-[#5989FF] opacity-40"></div>
+          <div className="absolute bottom-[25%] left-[12%] w-2.5 h-2.5 rounded-full bg-[#5989FF] opacity-50"></div>
+          
+          {/* Bottom Right Dots */}
+          <div className="absolute bottom-[22%] right-[10%] w-3 h-3 rounded-full bg-[#5989FF] opacity-60"></div>
+          <div className="absolute bottom-[18%] right-[16%] w-2 h-2 rounded-full bg-[#5989FF] opacity-40"></div>
+          <div className="absolute bottom-[28%] right-[14%] w-2.5 h-2.5 rounded-full bg-[#5989FF] opacity-50"></div>
+
+          {/* Large Background Circles */}
+          <div className="absolute top-[10%] left-[5%] w-64 h-64 rounded-full bg-[#5989FF] opacity-10"></div>
+          <div className="absolute bottom-[10%] right-[5%] w-72 h-72 rounded-full bg-[#5989FF] opacity-10"></div>
+
+          {/* Main Image */}
+          <div className="relative z-10 w-[55%] max-w-[380px]">
+            <img 
+              src="/src/assets/images/register.png" 
+              alt="Register Illustration" 
+              className="w-full h-auto object-contain drop-shadow-2xl select-none pointer-events-none"
+              draggable="false"
+            />
+          </div>
+        </div>
+
         {/* Carousel */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[92%] max-w-3xl">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[92%] max-w-2xl">
           <StackedCarousel
             slides={[
               {

@@ -83,7 +83,7 @@ export default function StackedCarousel({
   return (
     <div className={`relative ${className}`}>
       {/* Stacked Carousel Container */}
-      <div className="relative h-[180px] md:h-[200px]">
+      <div className="relative h-[140px] md:h-[160px]">
         <div className="relative w-full h-full">
           {slides.map((slide, index) => (
             <div
@@ -92,16 +92,16 @@ export default function StackedCarousel({
               style={getSlideStyle(index)}
               onClick={() => goToSlide(index)}
             >
-              <div className="bg-[#9AB7FF] backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-2xl h-full flex flex-col justify-center">
+              <div className="bg-[#9AB7FF] backdrop-blur-md rounded-3xl p-4 md:p-6 shadow-2xl h-full flex flex-col justify-center">
                 {/* Content */}
                 <div className="text-white text-left">
                   {slide.title && (
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 text-white">
+                    <h3 className="text-lg md:text-xl font-bold mb-2 text-white">
                       {slide.title}
                     </h3>
                   )}
                   {slide.description && (
-                    <p className="text-sm md:text-base text-white/80 leading-relaxed">
+                    <p className="text-xs md:text-sm text-white/80 leading-relaxed">
                       {slide.description}
                     </p>
                   )}
