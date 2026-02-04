@@ -9,7 +9,7 @@ export default function ProfileTukarCoinPage() {
       id: 1,
       name: 'Merchandise SiMug',
       coin: 750,
-      image: 'https://via.placeholder.com/200x150/6B95FF/ffffff?text=Merch',
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop',
       description: 'Kaos official SiMug size L',
       stock: 15,
       expired: '31 Des 2026'
@@ -18,7 +18,7 @@ export default function ProfileTukarCoinPage() {
       id: 2,
       name: 'Tumbler SiMug',
       coin: 600,
-      image: 'https://via.placeholder.com/200x150/6B95FF/ffffff?text=Tumbler',
+      image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=300&fit=crop',
       description: 'Tumbler stainless steel 500ml',
       stock: 20,
       expired: '31 Des 2026'
@@ -27,7 +27,7 @@ export default function ProfileTukarCoinPage() {
       id: 3,
       name: 'Topi SiMug',
       coin: 500,
-      image: 'https://via.placeholder.com/200x150/6B95FF/ffffff?text=Topi',
+      image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=300&fit=crop',
       description: 'Topi baseball official SiMug',
       stock: 30,
       expired: '31 Des 2026'
@@ -36,7 +36,7 @@ export default function ProfileTukarCoinPage() {
       id: 4,
       name: 'Tas Gym SiMug',
       coin: 1200,
-      image: 'https://via.placeholder.com/200x150/6B95FF/ffffff?text=Tas',
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop',
       description: 'Tas gym multifungsi ukuran besar',
       stock: 10,
       expired: '31 Des 2026'
@@ -45,7 +45,7 @@ export default function ProfileTukarCoinPage() {
       id: 5,
       name: 'Handuk Olahraga SiMug',
       coin: 400,
-      image: 'https://via.placeholder.com/200x150/6B95FF/ffffff?text=Handuk',
+      image: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&h=300&fit=crop',
       description: 'Handuk microfiber ukuran 40x80cm',
       stock: 25,
       expired: '31 Des 2026'
@@ -54,7 +54,7 @@ export default function ProfileTukarCoinPage() {
       id: 6,
       name: 'Botol Minum SiMug',
       coin: 350,
-      image: 'https://via.placeholder.com/200x150/6B95FF/ffffff?text=Botol',
+      image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=300&fit=crop&q=80',
       description: 'Botol minum sport 750ml BPA free',
       stock: 40,
       expired: '31 Des 2026'
@@ -64,10 +64,6 @@ export default function ProfileTukarCoinPage() {
   const filteredRewards = rewards.filter(reward => 
     reward.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
-
-  const handleRedeem = (reward) => {
-    alert(`Menukar ${reward.coin} MugCoin untuk ${reward.name}`)
-  }
 
   return (
     <div className="space-y-6">
@@ -141,7 +137,6 @@ export default function ProfileTukarCoinPage() {
 
               {/* Button - Always at bottom */}
               <button
-                onClick={() => handleRedeem(reward)}
                 className="w-full bg-[#4177FF] text-white font-semibold py-3 rounded-xl hover:bg-[#3461D9] transition-colors flex items-center justify-center gap-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

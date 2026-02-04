@@ -1,6 +1,9 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { FaChevronLeft } from "react-icons/fa"
-import StackedCarousel from "../../../components/StackedCarousel"
+import register1 from "../../../assets/images/register1.png"
+import register2 from "../../../assets/images/register2.png"
+import register3 from "../../../assets/images/register3.png"
 
 export default function Step1({
   formData,
@@ -12,6 +15,34 @@ export default function Step1({
   totalSteps,
   getStepLabel
 }) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const slides = [
+    {
+      image: register1,
+      title: "Progres Dapat, Pengalaman Juga Dapat",
+      description: "Ikuti berbagai event menarik di SIMUG, kumpulkan pengalaman, dan raih hadiah seru sambil tetap fokus ke kesehatanmu."
+    },
+    {
+      image: register2,
+      title: "Dari Mulai Sampai Konsisten",
+      description: "SIMUG bukan cuma bantu kamu mulai hidup sehat, tapi juga menjaga ritmenya lewat pendampingan dan sistem progres yang terarah."
+    },
+    {
+      image: register3,
+      title: "Belajar Sehat, Nggak Sendirian",
+      description: "Di SIMUG, kamu ditemani mentor berpengalaman, forum diskusi aktif, dan chatbot AI yang siap bantu kapan pun kamu butuh."
+    }
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <>
       {/* Step 1 - Section Kiri - Form */}
@@ -232,9 +263,9 @@ export default function Step1({
           <div className="absolute bottom-[10%] right-[5%] w-72 h-72 rounded-full bg-[#5989FF] opacity-10"></div>
 
           {/* Main Image */}
-          <div className="relative z-10 w-[55%] max-w-[380px]">
+          <div className="relative z-10 w-[55%] max-w-[380px] transition-all duration-500">
             <img 
-              src="/src/assets/images/register.png" 
+              src={slides[currentSlide].image}
               alt="Register Illustration" 
               className="w-full h-auto object-contain drop-shadow-2xl select-none pointer-events-none"
               draggable="false"
@@ -242,26 +273,33 @@ export default function Step1({
           </div>
         </div>
 
-        {/* Carousel */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[92%] max-w-2xl">
-          <StackedCarousel
-            slides={[
-              {
-                title: "Mulai Perjalanan Sehatmu",
-                description: "Bergabung dengan ribuan pengguna lain yang sudah memulai gaya hidup sehat bersama SiMug."
-              },
-              {
-                title: "Program Terstruktur",
-                description: "Dapatkan akses ke program kesehatan yang dirancang khusus oleh para ahli."
-              },
-              {
-                title: "Komunitas Supportif",
-                description: "Temukan teman-teman baru yang memiliki tujuan yang sama dalam perjalanan kesehatanmu."
-              }
-            ]}
-            autoPlayInterval={4000}
-            showDots={true}
-          />
+        {/* Text Content and Dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[92%] max-w-2xl text-center">
+          {/* Text Content */}
+          <div className="mb-6 px-4">
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-4 transition-all duration-500">
+              {slides[currentSlide].title}
+            </h2>
+            <p className="text-sm md:text-base text-white/90 leading-relaxed transition-all duration-500">
+              {slides[currentSlide].description}
+            </p>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  index === currentSlide
+                    ? 'w-8 h-3 bg-white'
+                    : 'w-3 h-3 bg-white/40 hover:bg-white/60'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

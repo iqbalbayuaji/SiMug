@@ -70,6 +70,23 @@ body {
   }
 }
 
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out both;
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2s ease-in-out infinite;
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
