@@ -2801,4 +2801,3 @@ export const formatPrice = (price) => {
     minimumFractionDigits: 0,
   }).format(price)
 }
-

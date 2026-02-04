@@ -94,7 +94,7 @@ export default function HeroSection() {
               <span className="text-[#4177FF] font-semibold text-xs sm:text-sm">#Platform Kesehatan No. 1</span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl md:text-4xl lg:text-4xl font-semibold mb-1 lg:mb-4 sm:mb-4">
+            <h1 className="text-2xl sm:text-4xl md:text-4xl lg:text-5xl font-bold mb-1 lg:mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-[#4177FF] to-[#6B95FF] bg-clip-text text-transparent">
                 Belajar Kesehatan dan Kebugaraan
               </span>{" "}
