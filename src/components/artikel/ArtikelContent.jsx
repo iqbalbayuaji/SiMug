@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
-export default function ArtikelContent() {
+export default function ArtikelContent({ article }) {
     const [isLiked, setIsLiked] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
+
+    if (!article) {
+        return (
+            <div className="bg-white rounded-2xl p-10 text-center shadow-sm border border-gray-100">
+                <p className="text-gray-500">Artikel tidak ditemukan</p>
+            </div>
+        )
+    }
 
     return (
         <article className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
@@ -10,8 +18,8 @@ export default function ArtikelContent() {
             <div className="p-5">
                 <div className="relative w-full h-56 lg:h-96 bg-gradient-to-br from-blue-100 to-blue-200 overflow-hidden rounded-xl group">
                     <img
-                        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=400&fit=crop"
-                        alt="Featured Article"
+                        src={article.image}
+                        alt={article.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     {/* View Stats Overlay */}
@@ -37,20 +45,20 @@ export default function ArtikelContent() {
             <div className="px-8 pb-8">
                 {/* Title */}
                 <h1 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4 leading-tight">
-                    Mengapa "Consistency is Key" Adalah Aturan Emas dalam Membentuk Tubuh Ideal
+                    {article.title}
                 </h1>
 
                 {/* Author & Meta Info */}
                 <div className="flex items-center gap-4 mb-6 pb-6 pt-2 border-b border-gray-100">
                     <div className="flex items-center gap-3">
                         <img
-                            src="https://ui-avatars.com/api/?name=Raka+Pratama&background=4177FF&color=fff"
-                            alt="Raka Pratama"
+                            src={article.authorAvatar}
+                            alt={article.author}
                             className="w-10 h-10 rounded-full"
                         />
                         <div className="hidden lg:block">
-                            <p className="text-sm font-semibold text-gray-900">Raka Pratama</p>
-                            <p className="text-xs text-gray-500">2 hari lalu</p>
+                            <p className="text-sm font-semibold text-gray-900">{article.author}</p>
+                            <p className="text-xs text-gray-500">{article.time}</p>
                         </div>
                     </div>
 
@@ -89,32 +97,10 @@ export default function ArtikelContent() {
                 </div>
 
                 {/* Article Body */}
-                <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        Banyak orang bergabung dengan gym atau mulai lari pagi dengan motivasi yang berapi-api di minggu pertama. Namun, statistik menunjukkan bahwa <strong className="font-semibold">lebih dari 60% pemula berhenti di bulan pertama</strong>. Kenapa? Karena mereka mengejar hasil instan, bukan membangun kebiasaan.
-                    </p>
-
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        Membentuk otot atau menurunkan berat badan bukanlah proses semalam. Tubuh membutuhkan waktu untuk beradaptasi dengan beban latihan baru. Rasa pegal (DOMS) itu wajar, dan justru pertanda bahwa otot sedang "dibangun ulang" menjadi lebih kuat.
-                    </p>
-
-                    {/* Quote/Highlight */}
-                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-[#4177FF] p-6 rounded-r-xl my-6">
-                        <p className="text-lg font-medium text-gray-800 italic">
-                            "Motivation gets you started. Habit is what keeps you going. Jangan menunggu 'lagi mood' untuk berolahraga, karena mood itu fluktuatif, sedangkan disiplin itu absolut."
-                        </p>
-                    </div>
-
-                    <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 mt-8 mb-4">Tips Menjaga Konsistensi</h2>
-
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        Mulailah dengan target kecil yang realistis. Daripada memaksakan diri lari 10km di hari pertama, cobalah 2-3km namun rutin setiap dua hari sekali. Catat progres latihanmu, entah itu beban angkatan yang bertambah atau durasi lari yang semakin cepat.
-                    </p>
-
-                    <p className="text-gray-700 leading-relaxed">
-                        Ingat, latihan yang "jelek" pun tetap lebih baik daripada tidak latihan sama sekali. Nikmati prosesnya, dengarkan tubuhmu, dan jadikan olahraga sebagai perayaan atas apa yang tubuhmu bisa lakukan, bukan hukuman atas apa yang kamu makan.
-                    </p>
-                </div>
+                <div
+                    className="prose prose-lg max-w-none text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: article.content }}
+                />
             </div>
         </article>
     );

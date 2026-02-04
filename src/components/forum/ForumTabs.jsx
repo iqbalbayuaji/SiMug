@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function ForumTabs({ activeTab, onTabChange }) {
+export default function ForumTabs({ activeTab, onTabChange, forumId }) {
     const tabs = ['Tentang', 'Threads', 'Diskusi', 'Pertanyaan'];
     const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
     const tabsRef = useRef([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const activeTabIndex = tabs.indexOf(activeTab);
@@ -16,6 +18,14 @@ export default function ForumTabs({ activeTab, onTabChange }) {
             });
         }
     }, [activeTab]);
+
+    const handleTabClick = (tab) => {
+        if (tab === 'Diskusi') {
+            navigate(`/forum/room/${forumId}`);
+        } else {
+            onTabChange && onTabChange(tab);
+        }
+    };
 
     return (
         <div className="px-4 lg:px-0 mt-1 lg:mt-6">
@@ -34,7 +44,7 @@ export default function ForumTabs({ activeTab, onTabChange }) {
                         <button
                             key={tab}
                             ref={(el) => (tabsRef.current[index] = el)}
-                            onClick={() => onTabChange && onTabChange(tab)}
+                            onClick={() => handleTabClick(tab)}
                             className={`cursor-pointer pb-4 px-1 font-medium text-sm transition-colors relative ${activeTab === tab
                                 ? 'text-blue-600'
                                 : 'text-gray-500 hover:text-gray-700'

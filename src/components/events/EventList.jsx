@@ -4,6 +4,8 @@ import EventCard from './EventCard';
 import PinEvent from './PinEvent';
 import Event1 from '../../assets/images/event1.png';
 import Event2 from '../../assets/images/event2.png';
+import Event3 from '../../assets/images/event3.png';
+import FitnessCard from '../../assets/images/fitness_training_card.png';
 
 const EventList = () => {
     const [activeTab, setActiveTab] = useState('Semua');
@@ -30,25 +32,62 @@ const EventList = () => {
             sponsor: "SIMUG x Pocari Sweat Indonesia",
             image: Event1,
             date: "1 Jan - 2 Feb",
-            description: "Tantangan selama 30 hari yang berfokus pada peningkatan kekuatan tubuh secara bertahap dan aman. Setiap fase dirancang untuk membantu tubuh beradaptasi dengan baik, dimulai dari latihan dasar hingga kombinasi gerakan yang lebih menantang. Event ini cocok bagi kamu yang ingin membangun kekuatan...",
+            description: "Tantangan selama 30 hari yang berfokus pada peningkatan kekuatan tubuh secara bertahap dan aman. Setiap fase dirancang untuk membantu tubuh beradaptasi dengan baik, dimulai dari latihan dasar hingga kombinasi gerakan yang lebih menantang.",
             tags: ["Kolaborasi", "Terbatas"],
             stats: { likes: 203, participants: 150, shares: 23 },
             type: "Online",
-            category: "Umum"
+            category: "Kolaborasi",
+            isFollowed: true
         },
         {
             id: 2,
-            title: "30 Hari Tantangan Tubuh Lebih Kuat | Edisi 2026",
-            sponsor: "SIMUG x Pocari Sweat Indonesia",
+            title: "Urban Night Run: Jakarta Selatan 5K",
+            sponsor: "SIMUG x Adidas Indonesia",
             image: Event2,
-            date: "1 Jan - 2 Feb",
-            description: "Tantangan selama 30 hari yang berfokus pada peningkatan kekuatan tubuh secara bertahap dan aman...",
-            tags: ["Kolaborasi", "Terbatas"],
-            stats: { likes: 203, participants: 150, shares: 23 },
+            date: "15 Feb 2026",
+            description: "Rasakan sensasi lari malam di jantung Jakarta Selatan. Rute aman dengan fasilitas water station setiap 2km dan medali eksklusif untuk semua finisher. Bergabunglah dengan ratusan pelari lainnya!",
+            tags: ["Trending", "Offline"],
+            stats: { likes: 512, participants: 300, shares: 89 },
+            type: "Offline",
+            category: "Trending",
+            isFollowed: false
+        },
+        {
+            id: 3,
+            title: "Webinar: Strategi Nutrisi untuk Recovery Otot",
+            sponsor: "SIMUG Health Team",
+            image: Event3,
+            date: "10 Feb 2026",
+            description: "Pelajari bagaimana nutrisi yang tepat dapat mempercepat proses pemulihan otot setelah latihan intens. Dibawakan oleh ahli gizi olahraga bersertifikat.",
+            tags: ["Edukasi", "Gratis"],
+            stats: { likes: 124, participants: 450, shares: 45 },
             type: "Online",
-            category: "Umum"
+            category: "SIMUG",
+            isFollowed: false
+        },
+        {
+            id: 4,
+            title: "Masterclass: Teknik Angkat Beban yang Benar",
+            sponsor: "SIMUG Academy",
+            image: FitnessCard,
+            date: "20 Feb 2026",
+            description: "Sesi intensif 3 jam mendalami teknik dasar hingga advanced dalam latihan angkat beban (Weightlifting) untuk menghindari cedera dan memaksimalkan hasil.",
+            tags: ["Pro", "Workshop"],
+            stats: { likes: 342, participants: 50, shares: 12 },
+            type: "Online",
+            category: "SIMUG",
+            isFollowed: true
         },
     ];
+
+    const filteredEvents = mockEvents.filter(event => {
+        if (activeTab === 'Semua') return true;
+        if (activeTab === 'Diikuti') return event.isFollowed;
+        if (activeTab === 'Trending') return event.category === 'Trending';
+        if (activeTab === 'Event SIMUG') return event.category === 'SIMUG';
+        if (activeTab === 'Event Kolaborasi') return event.category === 'Kolaborasi';
+        return true;
+    });
 
     return (
         <div className="bg-white rounded-2xl p-0">
@@ -102,9 +141,15 @@ const EventList = () => {
 
             {/* List */}
             <div>
-                {mockEvents.map((event) => (
-                    <EventCard key={event.id} event={event} />
-                ))}
+                {filteredEvents.length > 0 ? (
+                    filteredEvents.map((event) => (
+                        <EventCard key={event.id} event={event} />
+                    ))
+                ) : (
+                    <div className="py-20 text-center">
+                        <p className="text-gray-400">Belum ada event di kategori ini.</p>
+                    </div>
+                )}
             </div>
 
             {/* Mobile Pin Popup */}

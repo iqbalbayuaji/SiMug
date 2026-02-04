@@ -9,6 +9,7 @@ import CurriculumTab from '../../components/courses/CurriculumTab'
 import InstructorTab from '../../components/courses/InstructorTab'
 import ReviewsTab from '../../components/courses/ReviewsTab'
 import { getCourseBySlug, getRelatedCourses, formatPrice } from '../../constants/coursesData'
+import CourseCard from '../../components/CourseCard'
 
 export default function CourseDetailPage() {
   const { slug } = useParams()
@@ -104,19 +105,20 @@ export default function CourseDetailPage() {
             {/* Left Content - 3 cols */}
             <div className="lg:col-span-3">
               {/* Breadcrumb with Glassmorphism */}
-              <nav className="inline-flex items-center gap-2 text-sm bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8">
-                <Link to="/courses" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
-                  <span>Courses</span>
-                </Link>
-                <FaChevronRight className="text-gray-600 text-xs" />
-                <Link to={`/courses?category=${course.category}`} className="text-gray-400 hover:text-white transition-colors">
-                  {course.categoryLabel}
-                </Link>
-              </nav>
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                {/* Breadcrumb with Glassmorphism */}
+                <nav className="inline-flex items-center gap-2 text-sm bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                  <Link to="/courses" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                    <span>Courses</span>
+                  </Link>
+                  <FaChevronRight className="text-gray-600 text-xs" />
+                  <Link to={`/courses?category=${course.category}`} className="text-gray-400 hover:text-white transition-colors">
+                    {course.categoryLabel}
+                  </Link>
+                </nav>
 
-              {/* Badge with Animation */}
-              {course.badge && (
-                <div className="inline-flex items-center gap-2 mb-6">
+                {/* Badge with Animation */}
+                {course.badge && (
                   <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm ${course.badge === 'Bestseller'
                     ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-orange-500/30'
                     : course.badge === 'New'
@@ -126,8 +128,8 @@ export default function CourseDetailPage() {
                     <HiSparkles className="text-lg" />
                     {course.badge}
                   </span>
-                </div>
-              )}
+                )}
+              </div>
 
               {/* Title with Gradient */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
@@ -413,7 +415,7 @@ export default function CourseDetailPage() {
         <section className="max-w-7xl mx-auto px-6 py-16">
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-black text-gray-900 mb-2">Course Serupa</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Course Serupa</h2>
               <p className="text-gray-500">Eksplorasi course lainnya yang mungkin kamu suka</p>
             </div>
             <Link
@@ -426,56 +428,22 @@ export default function CourseDetailPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {relatedCourses.map((relatedCourse, idx) => (
-              <Link
-                key={relatedCourse.id}
-                to={`/courses/${relatedCourse.slug}`}
-                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 hover:-translate-y-2"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={relatedCourse.thumbnail}
-                    alt={relatedCourse.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-                  {relatedCourse.badge && (
-                    <span className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold ${relatedCourse.badge === 'Bestseller' ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white' :
-                      relatedCourse.badge === 'New' ? 'bg-gradient-to-r from-emerald-400 to-green-500 text-white' :
-                        'bg-gradient-to-r from-blue-400 to-blue-600 text-white'
-                      }`}>
-                      {relatedCourse.badge}
-                    </span>
-                  )}
-                </div>
-
-                <div className="p-6">
-                  <h3 className="font-bold text-gray-900 line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors text-lg">
-                    {relatedCourse.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-4">{relatedCourse.instructor.name}</p>
-
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center gap-1.5 bg-yellow-50 px-2.5 py-1 rounded-lg">
-                      <FaStar className="text-yellow-400" />
-                      <span className="font-bold text-gray-900">{relatedCourse.rating}</span>
-                    </div>
-                    <span className="text-gray-400 text-sm">({relatedCourse.totalRatings.toLocaleString()} ulasan)</span>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-2xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                      {formatPrice(relatedCourse.discountPrice)}
-                    </span>
-                    {relatedCourse.discountPrice < relatedCourse.price && (
-                      <span className="text-sm text-gray-400 line-through">
-                        {formatPrice(relatedCourse.price)}
-                      </span>
-                    )}
-                  </div>
-                </div>
+            {relatedCourses.map((relatedCourse) => (
+              <Link key={relatedCourse.id} to={`/courses/${relatedCourse.slug}`}>
+                <CourseCard
+                  image={relatedCourse.thumbnail}
+                  title={relatedCourse.title}
+                  instructor={relatedCourse.instructor.name}
+                  date={relatedCourse.duration} // Using duration as date substitute or find better match if available
+                  rating={relatedCourse.rating}
+                  ratingCount={relatedCourse.totalRatings}
+                  materialsCount={`${relatedCourse.totalLessons} Materi`}
+                  duration={relatedCourse.duration}
+                  level={relatedCourse.level}
+                  price={formatPrice(relatedCourse.discountPrice)}
+                  hasFreeTrial={false} // Assuming default false or derived logic
+                  imageHeight="h-52"
+                />
               </Link>
             ))}
           </div>

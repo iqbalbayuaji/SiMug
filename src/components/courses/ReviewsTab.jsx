@@ -10,7 +10,7 @@ export default function ReviewsTab({ course }) {
   }
 
   return (
-    <div className="p-8 md:p-10">
+    <div className="py-2 px-3">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-500/30">
           <FaStar className="text-white text-xl" />
@@ -22,7 +22,7 @@ export default function ReviewsTab({ course }) {
       <div className="bg-gradient-to-br from-yellow-50 via-orange-50 to-amber-50 rounded-3xl p-8 mb-10 border border-yellow-100/50">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="text-center md:text-left md:border-r md:border-yellow-200/50 md:pr-8">
-            <div className="text-7xl font-black bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent mb-2">
+            <div className="text-7xl font-bold bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent mb-2">
               {course.rating}
             </div>
             <div className="flex items-center justify-center md:justify-start gap-1 mb-3">
@@ -59,8 +59,8 @@ export default function ReviewsTab({ course }) {
       {/* Reviews List */}
       <div className="space-y-6">
         {course.reviews.map((review) => (
-          <div 
-            key={review.id} 
+          <div
+            key={review.id}
             className="bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg hover:shadow-gray-100/50 transition-all duration-300"
           >
             <div className="flex items-start gap-4">
@@ -85,7 +85,7 @@ export default function ReviewsTab({ course }) {
                   <span className="text-sm text-gray-400 bg-gray-100 px-3 py-1 rounded-full">{review.date}</span>
                 </div>
                 <div className="relative">
-                  <FaQuoteLeft className="absolute -top-1 -left-1 text-blue-100 text-2xl" />
+                  <FaQuoteLeft className="absolute -top-1 -left-1 text-[#4177ff]/20 text-2xl" />
                   <p className="text-gray-600 pl-6">{review.comment}</p>
                 </div>
               </div>

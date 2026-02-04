@@ -21,6 +21,16 @@ const CheckoutPage = () => {
 
     const [paymentMethod, setPaymentMethod] = useState(''); // 'mandiri', 'bri', etc.
     const [paymentType, setPaymentType] = useState('bank'); // 'ewallet', 'card', 'bank'
+    const [showMugCoinPopup, setShowMugCoinPopup] = useState(false); // State for MugCoin popup
+
+    // Prevent scrolling when popup is open
+    React.useEffect(() => {
+        if (showMugCoinPopup) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [showMugCoinPopup]);
 
     // Validation
     const isValid = formData.fullName && formData.email && formData.country && formData.phone && paymentMethod;
@@ -142,7 +152,10 @@ const CheckoutPage = () => {
                                     SiMug diwajibkan oleh hukum untuk menagih pajak setiap transaksi yang berlaku.
                                 </div>
 
-                                <button className="relative overflow-hidden bg-[#4177ff] text-white py-2.5 px-5 rounded-xl flex items-center gap-3 transition-all hover:bg-blue-600 group cursor-pointer shrink-0 shadow-lg shadow-blue-500/20">
+                                <button
+                                    onClick={() => setShowMugCoinPopup(true)} // Open popup on click
+                                    className="relative overflow-hidden bg-[#4177ff] text-white py-2.5 px-5 rounded-xl flex items-center gap-3 transition-all hover:bg-blue-600 group cursor-pointer shrink-0 shadow-lg shadow-blue-500/20"
+                                >
                                     {/* Icon Container with double ring effect */}
                                     <div className="relative flex items-center justify-center w-7 h-7 rounded-full border border-white/30 bg-white/10 shrink-0">
                                         <div className="absolute inset-[-2px] rounded-full border border-white/5"></div>
@@ -318,6 +331,67 @@ const CheckoutPage = () => {
                 </div>
 
             </div>
+            {/* MugCoin Popup */}
+            {showMugCoinPopup && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+                        onClick={() => setShowMugCoinPopup(false)}
+                    ></div>
+
+                    {/* Popup Content */}
+                    <div className="bg-white rounded-[32px] p-8 w-full max-w-sm relative z-10 animate-fade-in shadow-2xl flex flex-col items-center text-center">
+                        {/* Header Icon */}
+                        <div className="relative mb-6">
+                            <div className="w-24 h-24 bg-[#578afe]/20 rounded-full flex items-center justify-center">
+                                <div className="w-16 h-16 bg-[#578afe]/40 rounded-full flex items-center justify-center">
+                                    <FiZap className="text-4xl text-[#4177ff] fill-[#4177ff]" />
+                                </div>
+                            </div>
+                            {/* Blue glow effect behind */}
+                            <div className="absolute inset-0 bg-blue-400/20 blur-xl rounded-full -z-10"></div>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                            Gunakan <span className="text-[#4177ff]">MugCoin</span>
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-gray-500 text-[15px] leading-relaxed mb-1">
+                            Apakah Kamu yakin mau pakai MugCoin?
+                        </p>
+                        <p className="text-gray-500 text-[15px] leading-relaxed mb-4">
+                            MugCoin akan berkurang setelah transaksi
+                        </p>
+
+                        {/* Balance Info */}
+                        <p className="text-[#578afe] font-semibold text-[15px] mb-8">
+                            MugCoin Kamu: <span className="">5.000 MC</span>
+                        </p>
+
+                        {/* Actions */}
+                        <div className="flex gap-4 w-full">
+                            <button
+                                onClick={() => setShowMugCoinPopup(false)}
+                                className="cursor-pointer flex-1 py-3 px-4 rounded-full bg-[#EBF1FF] text-[#4177ff] font-bold text-base hover:bg-blue-100 transition-colors"
+                            >
+                                Batalkan
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setShowMugCoinPopup(false);
+                                    // Handle logic here, e.g., apply discount
+                                }}
+                                className="cursor-pointer flex-1 py-3 px-4 rounded-full bg-[#3B82F6] text-white font-bold text-base hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/30"
+                            >
+                                Ya, gunakan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

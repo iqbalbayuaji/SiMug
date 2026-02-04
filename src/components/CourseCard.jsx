@@ -9,12 +9,13 @@ export default function CourseCard({
   duration,
   level,
   price,
-  hasFreeTrial = true
+  hasFreeTrial = true,
+  imageHeight = "h-37"
 }) {
   return (
     <div className="bg-white p-2 border border-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
       <div className="relative">
-        <img src={image} alt={title} className="rounded-xl w-full h-37 border border-gray-200 object-cover" />
+        <img src={image} alt={title} className={`rounded-xl w-full ${imageHeight} border border-gray-200 object-cover`} />
         {hasFreeTrial && (
           <span className="absolute top-3 right-3 bg-white text-gray-900 text-xs font-semibold px-3 py-1 rounded-full shadow-md">
             Free Trial

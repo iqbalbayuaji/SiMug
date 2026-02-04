@@ -7,6 +7,7 @@ import decoKursus2 from "../../assets/icon/progress/deco-kursus2.svg"
 import decoEkplor from "../../assets/icon/progress/deco-eksplor.svg"
 import decoEksplor2 from "../../assets/icon/progress/deco-eksplor2.svg"
 import infoIcon from "../../assets/icon/duo-icons_info.svg"
+import { Link } from 'react-router-dom'
 
 export default function StatsCards() {
   return (
@@ -71,12 +72,15 @@ export default function StatsCards() {
             </div>
 
             <div className="flex justify-end">
-              <button className="bg-[#527ADF] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#6B95FF] transition-colors flex items-center gap-2 w-[90px]">
+              <Link
+                to="/events"
+                className="bg-[#527ADF] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#6B95FF] transition-colors flex items-center gap-2 w-[90px]"
+              >
                 Lihat
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -143,12 +147,15 @@ export default function StatsCards() {
             </div>
 
             <div className="flex justify-end pt-2 ">
-              <button className="cursor-pointer bg-[#527ADF] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#6B95FF] transition-colors flex items-center gap-2 w-[90px]">
+              <Link
+                to="/events"
+                className="cursor-pointer bg-[#527ADF] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#6B95FF] transition-colors flex items-center gap-2 w-[90px]"
+              >
                 Lihat
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
