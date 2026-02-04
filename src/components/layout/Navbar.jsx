@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import logo from "../../assets/images/logo-simug.png"
+import logo from "../../assets/images/logo-simugbgwhite.png"
 import vegan from "../../assets/images/vegan.png"
 import NotificationPopup from "./NotificationPopup"
 import profileImg from "../../assets/images/profile.jpg"
@@ -53,6 +53,10 @@ export default function Navbar() {
       setActiveMenu('Forum')
       return
     }
+    if (currentPath.startsWith('/events')) {
+      setActiveMenu('Events')
+      return
+    }
 
     const activeItem = menuItems.find(item => item.path === currentPath)
     if (activeItem) {
@@ -66,7 +70,8 @@ export default function Navbar() {
     { name: "Course", path: "/courses", hasDropdown: true },
     { name: "Events", path: "/events-intro" },
     { name: "Forum", path: "/forum-intro" },
-    { name: "SiMug AI", path: "/chatbot" }
+    { name: "SiMug AI", path: "/chatbot" },
+    { name: "Leaderboard", path: "/leaderboard", mobileOnly: true }
   ]
 
   const eventsList = [
@@ -115,7 +120,8 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 relative">
+    <>
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
 
@@ -129,7 +135,7 @@ export default function Navbar() {
             className="hidden md:flex items-center gap-4 lg:gap-8"
             onMouseLeave={() => setHoveredMenu(null)}
           >
-            {menuItems.map((item) => (
+            {menuItems.filter(item => !item.mobileOnly).map((item) => (
               <div
                 key={item.name}
                 className="relative"
@@ -321,6 +327,7 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Notification & Profile - Hidden on mobile, shown on desktop */}
           <div className="hidden md:flex items-center gap-2 sm:gap-4">
             <div className="relative">
               <button
@@ -471,7 +478,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Shows on mobile to access navigation */}
           <button
             className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -492,6 +499,7 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute left-0 right-0 top-full bg-white border-t border-gray-100 shadow-lg z-50">
+          {/* Navigation Links */}
           <div className="px-4 py-3 space-y-1">
             {menuItems.map((item) => (
               <Link
@@ -511,30 +519,130 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="px-4 py-3 border-t border-gray-100 flex items-center gap-3">
-            <button className="relative w-10 h-10 bg-[#D9E4FF] rounded-full flex items-center justify-center">
-              <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-              <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
-            </button>
-            <button
-              onClick={() => {
-                navigate('/profile')
-                setIsMobileMenuOpen(false)
-              }}
-              className="w-10 h-10 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]"
-            >
-              <img
-                src={profileImg}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </button>
-            <span className="text-sm font-medium text-gray-900">Rizki Fiko</span>
+          {/* Divider */}
+          <div className="border-t border-gray-200"></div>
+
+          {/* Profile & Notification Section */}
+          <div className="px-4 py-3">
+            {/* Profile Header with Notification Button */}
+            <div className="flex items-center gap-3">
+              <Link
+                to="/profile"
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                }}
+                className="w-12 h-12 rounded-full bg-white overflow-hidden border-2 border-[#4177FF]"
+              >
+                <img
+                  src={profileImg}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-gray-900">Rizki Fiko</p>
+                <p className="text-xs text-gray-500">rizki.fiko@example.com</p>
+              </div>
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  setTimeout(() => {
+                    setShowNotifications(true)
+                  }, 50)
+                }}
+                className="relative w-10 h-10 bg-[#D9E4FF] rounded-full flex items-center justify-center"
+              >
+                <svg className="w-5 h-5 text-[#4177FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#4177FF] rounded-full border-2 border-white"></span>
+              </button>
+            </div>
+
+            {/* Version */}
+            <div className="mt-3 pt-3 border-t border-gray-200">
+              <p className="text-xs text-gray-400 text-center">V. 1.0.1</p>
+            </div>
           </div>
         </div>
       )}
+
     </nav>
+
+      {/* Full Screen Notification - Mobile Only */}
+      {showNotifications && (
+        <div className="md:hidden fixed inset-0 bg-white z-[100] flex flex-col">
+          {/* Header */}
+          <div className="flex items-center gap-3 px-4 py-4 border-b border-gray-200">
+            <button
+              onClick={() => {
+                setShowNotifications(false)
+                setIsMobileMenuOpen(true)
+              }}
+              className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100"
+            >
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <h2 className="text-lg font-bold text-gray-900">Notifikasi</h2>
+          </div>
+
+          {/* Sub Header */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+            <p className="text-sm text-gray-600">
+              Kamu punya <span className="text-[#4177FF] font-semibold">2 notifikasi</span>
+            </p>
+            <button className="flex items-center gap-1 text-[#4177FF] text-sm font-medium">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+              </svg>
+              Tandai baca
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-3">
+              <div className="bg-[#F5F7FF] rounded-xl p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#4177FF] flex items-center justify-center flex-shrink-0">
+                    <img src={logo} alt="SiMug" className="w-7 h-7" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-bold text-sm text-gray-900">SiMug Official</h4>
+                      <span className="text-xs text-gray-400 flex-shrink-0">16:10</span>
+                    </div>
+                    <p className="text-sm text-gray-600">Segera gabung course supaya diskon tidak terlewat!</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[#F5F7FF] rounded-xl p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#4177FF] flex items-center justify-center flex-shrink-0">
+                    <img src={logo} alt="SiMug" className="w-7 h-7" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-bold text-sm text-gray-900">SiMug Official</h4>
+                      <span className="text-xs text-gray-400 flex-shrink-0">16:05</span>
+                    </div>
+                    <p className="text-sm text-gray-600">Makasih banyak udah mau gabung! Yuk mulai belajar sekarang.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="px-4 py-4 border-t border-gray-100">
+            <button className="text-sm text-[#4177FF] font-semibold">
+              Lihat semua notifikasi
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   )
 }

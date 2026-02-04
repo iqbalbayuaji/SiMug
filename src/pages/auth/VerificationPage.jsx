@@ -204,21 +204,9 @@ export default function VerificationPage() {
         </div>
 
         {/* Course/Education Icons with Background */}
-        {/* Book Icon - Top Left */}
-        <div className="absolute top-24 left-[8%] bg-white/60 backdrop-blur-sm p-4 rounded-2xl shadow-lg border border-[#4177FF]/20" style={{ animation: 'float 5s ease-in-out infinite' }}>
-          <svg className="w-10 h-10 text-[#4177FF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-        </div>
 
-        {/* Graduation Cap - Top Right */}
-        <div className="absolute top-32 right-[10%] bg-white/60 backdrop-blur-sm p-4 rounded-2xl shadow-lg border border-[#4177FF]/20" style={{ animation: 'floatSlow 6s ease-in-out infinite' }}>
-          <svg className="w-11 h-11 text-[#0039C9]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-          </svg>
-        </div>
+
+
 
         {/* Certificate - Middle Left */}
         <div className="absolute top-[48%] left-[5%] bg-white/60 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-[#4177FF]/20" style={{ animation: 'floatReverse 5.5s ease-in-out infinite' }}>
@@ -249,13 +237,6 @@ export default function VerificationPage() {
           </svg>
         </div>
 
-        {/* Apple/Nutrition - Top Center */}
-        <div className="absolute top-20 left-[42%] bg-white/60 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-[#4177FF]/20" style={{ animation: 'float 4s ease-in-out infinite' }}>
-          <svg className="w-9 h-9 text-[#0039C9]" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2a1 1 0 011 1c0 1.5-.5 2.5-1 3-.5-.5-1-1.5-1-3a1 1 0 011-1zm5 6c-1.5 0-2.8.6-3.7 1.6-.5-.9-1.3-1.6-2.3-1.6s-1.8.7-2.3 1.6C7.8 8.6 6.5 8 5 8 2.2 8 0 10.2 0 13s2.2 5 5 5c1.5 0 2.8-.6 3.7-1.6.5.9 1.3 1.6 2.3 1.6s1.8-.7 2.3-1.6c.9 1 2.2 1.6 3.7 1.6 2.8 0 5-2.2 5-5s-2.2-5-5-5z" />
-          </svg>
-        </div>
-
         {/* Trophy - Bottom Center */}
         <div className="absolute bottom-[38%] right-[18%] bg-white/60 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-[#4177FF]/20" style={{ animation: 'floatSlow 5.5s ease-in-out infinite' }}>
           <svg className="w-9 h-9 text-[#4177FF]" fill="currentColor" viewBox="0 0 24 24">
@@ -263,12 +244,6 @@ export default function VerificationPage() {
           </svg>
         </div>
 
-        {/* Yoga/Meditation - Middle Top Left */}
-        <div className="absolute top-[28%] left-[15%] bg-white/60 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-[#0039C9]/20" style={{ animation: 'floatReverse 4.5s ease-in-out infinite' }}>
-          <svg className="w-9 h-9 text-[#0039C9]" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" />
-          </svg>
-        </div>
 
         {/* Brain/Learning - Bottom Left Area */}
         <div className="absolute bottom-[48%] left-[8%] bg-white/60 backdrop-blur-sm p-3 rounded-2xl shadow-lg border border-[#4177FF]/20" style={{ animation: 'float 6s ease-in-out infinite' }}>
