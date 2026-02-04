@@ -14,7 +14,7 @@ export default function CourseProgressDetailPage() {
   const [showProgressSidebar, setShowProgressSidebar] = useState(false)
   const [selectedPhase, setSelectedPhase] = useState(5) // Default Fase 5
   const [showRewardPopup, setShowRewardPopup] = useState(false)
-  const [countdown, setCountdown] = useState(3)
+  const [countdown, setCountdown] = useState(2.5)
 
   // Check if we should show reward popup
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function CourseProgressDetailPage() {
     if (location.state?.showReward) {
       console.log('✅ Showing reward popup!')
       setShowRewardPopup(true)
-      setCountdown(3)
+      setCountdown(2.5)
       
       // Clear the state to prevent showing again on refresh
       window.history.replaceState({}, document.title)
@@ -805,8 +805,14 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
 
       {/* Reward Popup with Countdown */}
       {showRewardPopup && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full animate-scale-in relative overflow-hidden">
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={() => setShowRewardPopup(false)}
+        >
+          <div 
+            className="bg-white rounded-3xl shadow-2xl max-w-md w-full animate-scale-in relative overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Circular Countdown Timer - Top Right */}
             <div className="absolute top-4 right-4 z-10">
               <div className="relative w-12 h-12">
@@ -827,7 +833,7 @@ Selain itu, kursus ini juga dilengkapi dengan panduan intensitas latihan yang am
                     stroke="#FFFFFF"
                     strokeWidth="3"
                     strokeDasharray={`${2 * Math.PI * 20}`}
-                    strokeDashoffset={`${2 * Math.PI * 20 * (1 - countdown / 3)}`}
+                    strokeDashoffset={`${2 * Math.PI * 20 * (1 - countdown / 2.5)}`}
                     strokeLinecap="round"
                     className="transition-all duration-100"
                   />
