@@ -1,4 +1,6 @@
-export default function MemberSidebar({ members }) {
+import { FiX } from 'react-icons/fi'
+
+export default function MemberSidebar({ members, isOpen, onClose }) {
     const getAvatarColor = (name) => {
         const colors = [
             'bg-blue-500',
@@ -39,10 +41,16 @@ export default function MemberSidebar({ members }) {
     )
 
     return (
-        <div className="w-64 bg-white border-l border-gray-200 p-4 overflow-y-auto">
-            {renderMemberList(members.founders, 'Founder')}
-            {renderMemberList(members.admins, 'Admin')}
-            {renderMemberList(members.members, 'Member')}
+        <div className={`
+            ${isOpen ? 'w-64 translate-x-0' : 'w-0 translate-x-full lg:w-64 lg:translate-x-0'}
+            fixed lg:relative inset-y-0 right-0 z-[70] lg:z-30
+            bg-white border-l border-gray-200 transition-all duration-300 overflow-hidden
+        `}>
+            <div className="w-64 p-4 h-full overflow-y-auto">
+                {renderMemberList(members.founders, 'Founder')}
+                {renderMemberList(members.admins, 'Admin')}
+                {renderMemberList(members.members, 'Member')}
+            </div>
         </div>
     )
 }

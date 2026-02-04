@@ -20,7 +20,7 @@ export default function MessageInput() {
     }
 
     return (
-        <div className="border-t border-gray-200 bg-white p-4">
+        <div className="border-t border-gray-200 bg-white px-4 md:px-7 py-4">
             <div className="flex items-center gap-3">
                 <button className="text-blue-500 hover:text-blue-600 transition-colors">
                     <FiPaperclip className="w-5 h-5" />
@@ -32,7 +32,7 @@ export default function MessageInput() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyPress={handleKeyPress}
-                        placeholder="Kirim pesan ke forum"
+                        placeholder="Tanya seputar tips olahraga..."
                         className="flex-1 bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400"
                     />
                     <button className="text-blue-500 hover:text-blue-600 transition-colors">

@@ -24,7 +24,7 @@ export default function ChatMessage({ message }) {
     }
 
     return (
-        <div className="flex gap-3 p-4 hover:bg-gray-50 transition-colors">
+        <div className="flex gap-3 p-3 md:p-4 ml-0 md:ml-5 hover:bg-gray-50 transition-colors">
             {/* Avatar */}
             <div className={`w-10 h-10 rounded-full ${getAvatarColor(message.username)} flex items-center justify-center flex-shrink-0`}>
                 <span className="text-white font-semibold text-sm">
