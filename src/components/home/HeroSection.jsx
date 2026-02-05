@@ -85,7 +85,7 @@ export default function HeroSection() {
             className="-mt-10 lg:-mt-16"
           >
             {/* Badge Platform Kesehatan No. 1 */}
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-2 sm:px-3 py-0 sm:py-2.5 rounded-full mb-4 sm:mb-5" style={{ boxShadow: '0 0px 10px rgba(65, 119, 255, 0.15)' }}>
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 bg-[#E8F0FF] px-2 sm:px-3 py-0 sm:py-2.5 rounded-full mb-4 md:mb-4 sm:mb-2 mt-10 md:mt-0 lg:mt-0" style={{ boxShadow: '0 0px 10px rgba(65, 119, 255, 0.15)' }}>
               <div className="w-7 h-7 sm:w-7 sm:h-7 bg-[#4177FF] rounded-full flex items-center justify-center">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
